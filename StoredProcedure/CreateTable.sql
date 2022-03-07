@@ -13,7 +13,7 @@ create table t_recipe(
     intro varchar2(2000) not null,
     category varchar2(20) not null,
     ingredients varchar2(4000) not null,
-    contents varchar2(4000) not null,
+    details varchar2(4000) not null,
     createdat date default sysdate not null,
     updatedat date default sysdate not null,
     viewcount number default 0 not null,

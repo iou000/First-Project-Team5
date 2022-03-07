@@ -22,7 +22,7 @@ create or replace procedure comment_insert(
 is
 begin
     insert into t_comment(id, grade, contents, createdat, updatedat, user_id, recipe_id)
-    values(comment_seq.nextval, p_grade, p_contents, sysdate, sysdate, p_user_id, p_recipe_id);
+    values(comment_seq.nextval, p_grade, p_contents, default, default, p_user_id, p_recipe_id);
 end;
 /
 
@@ -79,7 +79,7 @@ is
     is
     begin
         insert into t_comment(id, grade, contents, createdat, updatedat, user_id, recipe_id)
-        values(comment_seq.nextval, p_grade, p_contents, sysdate, sysdate, p_user_id, p_recipe_id);
+        values(comment_seq.nextval, p_grade, p_contents, default, default, p_user_id, p_recipe_id);
     end;
     
     -- 평가 수정 프로시저
