@@ -4,6 +4,10 @@ import java.sql.*;
 import javax.naming.*;
 import javax.sql.*;
 
+/**
+ * @author jihye
+ *
+ */
 public class DBManager {
 	public static Connection getConnection() {
 		
@@ -16,6 +20,7 @@ public class DBManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.print("check");
 		return conn;
 	}
 
@@ -37,4 +42,4 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
-} //end class
+} 
