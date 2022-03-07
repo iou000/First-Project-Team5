@@ -1,5 +1,9 @@
 package com.team5.vo;
 
+/**
+ * @author jihye
+ *
+ */
 public class UserVO {
   private String id;
   private String username;
