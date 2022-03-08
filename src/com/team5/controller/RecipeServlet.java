@@ -13,7 +13,7 @@ import com.team5.controller.action.Action;
  * @author jihye
  *
  */
-@WebServlet("/Recipe")
+@WebServlet("/RecipeServlet")
 public class RecipeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
