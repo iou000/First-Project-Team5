@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.team5.vo.CommentVO;
+
 import util.DBManager;
 
 /**
@@ -14,17 +15,22 @@ import util.DBManager;
  *
  */
 public class CommentDAO {
-	private Connection conn;
-	private CallableStatement cstmt;
-	private ResultSet rs;
-
 	public CommentDAO() {
 		
 	}
 	
+	private static CommentDAO instance = new CommentDAO();
+	public static CommentDAO getInstance() {
+		return instance;
+	}
+	
+
 	// 특정 레시피ID에 해당하는 평가 목록을 불러오는 메소드
 	public List<CommentVO> selectComments(int recipe_id) {
 		List<CommentVO> list = new ArrayList<>();
+		Connection conn = null;
+		CallableStatement cstmt = null;
+		ResultSet rs = null;
 		try {
 			// 연결 설정
 			conn = DBManager.getConnection();
@@ -58,6 +64,9 @@ public class CommentDAO {
 	
 	// 새로운 평가를 추가하는 메소드
 	public void insertComments(int grade, String contents, int user_id, int recipe_id) {
+		Connection conn = null;
+		CallableStatement cstmt = null;
+
 		try {
 			// 연결 설정
 			conn = DBManager.getConnection();
@@ -80,6 +89,8 @@ public class CommentDAO {
 	
 	// 평가를 수정하는 메소드
 	public void updateComments(int id, int grade, String contents) {
+		Connection conn = null;
+		CallableStatement cstmt = null;
 		try {
 			// 연결 설정
 			conn = DBManager.getConnection();
@@ -101,6 +112,8 @@ public class CommentDAO {
 	
 	// 평가를 삭제하는 메소드
 	public void deleteComments(int id) {
+		Connection conn = null;
+		CallableStatement cstmt = null;
 		try {
 			// 연결 설정
 			conn = DBManager.getConnection();
