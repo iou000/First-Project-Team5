@@ -1,20 +1,16 @@
 package com.team5.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.team5.controller.action.Action;
 
-/**
- * @author jihye
- *
- */
-@WebServlet("/Recipe")
-public class RecipeServlet extends HttpServlet {
+@WebServlet("/test")
+public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
