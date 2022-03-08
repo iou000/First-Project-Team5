@@ -13,30 +13,23 @@ import com.team5.controller.action.Action;
  * @author jihye
  *
  */
-@WebServlet("/RecipeServlet")
+@WebServlet("/app")
 public class RecipeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		System.out.println("RecipeServlet : " + command);
 
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);
-		
 
 		if (action != null) {
 			action.execute(request, response);
 		}
-		
-		System.out.println("checking");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		doGet(request, response);
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	}
 }
