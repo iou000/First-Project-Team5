@@ -20,16 +20,16 @@ public class RecipeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		String command = request.getParameter("command");
-//		System.out.println("RecipeServlet : " + command);
-//
-//		ActionFactory af = ActionFactory.getInstance();
-//		Action action = af.getAction(command);
-//		
-//
-//		if (action != null) {
-//			action.execute(request, response);
-//		}
+		String command = request.getParameter("command");
+		System.out.println("RecipeServlet : " + command);
+
+		ActionFactory af = ActionFactory.getInstance();
+		Action action = af.getAction(command);
+		
+
+		if (action != null) {
+			action.execute(request, response);
+		}
 		
 		System.out.println("check");
 	}
