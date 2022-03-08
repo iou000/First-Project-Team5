@@ -2,6 +2,10 @@ package com.team5.vo;
 
 import java.sql.Date;
 
+/**
+ * @author SJH
+ *
+ */
 public class CommentVO {
 	private int id;
 	private int grade;
