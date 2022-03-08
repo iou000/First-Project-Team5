@@ -4,7 +4,6 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.team5.vo.CommentVO;
 
@@ -26,8 +25,8 @@ public class CommentDAO {
 	
 
 	// 특정 레시피ID에 해당하는 평가 목록을 불러오는 메소드
-	public List<CommentVO> selectComments(int recipe_id) {
-		List<CommentVO> list = new ArrayList<>();
+	public ArrayList<CommentVO> getComments(int recipe_id) {
+		ArrayList<CommentVO> list = new ArrayList<>();
 		Connection conn = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
