@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import util.DBManager;
 import com.team5.vo.UserVO;
 
+import oracle.jdbc.OracleTypes;
+
 /**
  * @author jihye
  *
@@ -22,40 +24,59 @@ public class UserDAO {
 	public static UserDAO getInstance() {
 		return instance;
 	}
+	public ArrayList<UserVO> listMember() {
+		  
+		ArrayList<UserVO> memberList = new ArrayList<UserVO>();
+		String sql = "select * from user01.t_user";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+            	System.out.println(rs.getString("id"));
+            	System.out.println(rs.getString("username"));
+            	System.out.println(rs.getString("password"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return memberList;
+	}
 
 	public ArrayList<UserVO> selectUser() throws SQLException {
 		ArrayList<UserVO> list = new ArrayList<UserVO>();
-		String runSP = "{ call user_pack.user_select_all() }";
 		Connection conn = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
 		
 
 		try {
-			conn = DBManager.getConnection();
-			cstmt = conn.prepareCall(runSP);
-
-			try {
-				cstmt.execute();
-				rs = (ResultSet) cstmt.getObject(2);
-
-				while (rs.next()) {
-					UserVO userVO = new UserVO();
-					userVO.setUsername(rs.getString("username"));
-					userVO.setPassword(rs.getString("password"));
-					list.add(userVO);
-				}
-
-				System.out.println("º∫∞¯");
-
-			} catch (SQLException e) {
-				System.out.println("«¡∑ŒΩ√¿˙ø°º≠ ø°∑Ø πﬂª˝!");
-				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-			}
-		} finally {
-			DBManager.close(conn, cstmt, rs);
-		}
-		System.out.print(list);
+            conn = DBManager.getConnection();
+            cstmt = conn
+                    .prepareCall("{call SP_MEMBER_LIST(:rtn)}");
+            cstmt.registerOutParameter(1, OracleTypes.CURSOR);  //Ïª§ÏÑúÎ•º Î¶¨ÌÑ¥Î∞õÍ∏∞ÏúÑÌï¥ ÏïÑÏõÉÌååÎùºÎØ∏ÌÑ∞ÏßÄÏ†ï
+            cstmt.executeUpdate();  //ÌîÑÎ°úÏãúÏ†Ä Ïã§Ìñâ. -> Ï°∞Ìöå
+            rs = (ResultSet) cstmt.getObject(1);  //Î∞òÌôòÎêú Ïª§ÏÑú ResultSet ÏúºÎ°ú Î∞õÍ∏∞
+            while (rs.next()) {
+            	System.out.println(rs.getString("id"));
+            	System.out.println(rs.getString("username"));
+            	System.out.println(rs.getString("password"));
+            }
+            rs.close();
+            cstmt.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        } finally {
+            try {
+            	DBManager.close(conn, cstmt);
+            } catch (Exception e) { }
+        }
 		return list;
 	}
 }
