@@ -18,8 +18,13 @@ public class CommentDAO {
 	private CallableStatement cstmt;
 	private ResultSet rs;
 
-	public CommentDAO() {
-		
+	private CommentDAO() {
+	}
+
+	private static CommentDAO instance = new CommentDAO();
+
+	public static CommentDAO getInstance() {
+		return instance;
 	}
 	
 	// 특정 레시피ID에 해당하는 평가 목록을 불러오는 메소드

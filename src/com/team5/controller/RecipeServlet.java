@@ -30,7 +30,7 @@ public class RecipeServlet extends HttpServlet {
 			action.execute(request, response);
 		}
 		
-		System.out.println("check");
+		System.out.println("checking");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
