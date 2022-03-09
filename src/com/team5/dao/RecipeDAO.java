@@ -2,8 +2,9 @@ package com.team5.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.team5.vo.RecipeVO;
 
@@ -50,7 +51,7 @@ public class RecipeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, cstmt, rs);
+			DBManager.close(conn, cstmt);
 		}
 	}//end insertRecipe
 	
@@ -80,11 +81,11 @@ public class RecipeDAO {
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, cstmt, rs);
+			DBManager.close(conn, cstmt);
 		}
 	}//end updateRecipe
 	
-	//레시피 삭제
+	// 레시피 삭제
 	public void deleteRecipe(int id) {
 		//호출할 저장 프로시저
 		String runSP = "{ CALL recipes_pack.recipes_delete(?)}";
@@ -104,15 +105,15 @@ public class RecipeDAO {
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, cstmt, rs);
+			DBManager.close(conn, cstmt);
 		}
 	}// end deleteRecipe
 	
-	//레시피 상세 조회 프로시저
+	// 레시피 상세 조회
 	public RecipeVO selectRecipeById(int id) {
 		// 호출할 저장 프로시저
 		String runSP = "{ CALL recipes_pack.recipes_select_by_id(?, ?)}";
-		RecipeVO vo = new RecipeVO();
+		RecipeVO recipeVO = new RecipeVO();
 		
 		try {
 			// DB연결
@@ -123,23 +124,24 @@ public class RecipeDAO {
 			cstmt.setInt(1, id);
 			// 출력 파라미터
 			cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
-			//실행
+			//실행 (리턴값이 ResultSet임)
 			cstmt.execute();
 			//레시피 상세 조회 결과 받아오기
-			ResultSet rs = (ResultSet)cstmt.getObject(2);
+			rs = (ResultSet)cstmt.getObject(2);
 			while(rs.next()) {
-				vo.setId(rs.getInt("id"));
-				vo.setImage(rs.getString("image"));
-				vo.setTitle(rs.getString("title"));
-				vo.setIntro(rs.getString("intro"));
-				vo.setCategory(rs.getString("category"));
-				vo.setIngredients(rs.getString("ingredients"));
-				vo.setDetails(rs.getString("details"));
-				vo.setCreatedAt(rs.getDate("createdat"));
-				vo.setUpdatedAt(rs.getDate("updatedat"));
-				vo.setViewcount(rs.getInt("viewcount"));
-				vo.setUser_id(rs.getInt("user_id"));
-				vo.setUsername(rs.getString("username"));
+				recipeVO.setId(rs.getInt("id"));
+				recipeVO.setImage(rs.getString("image"));
+				recipeVO.setTitle(rs.getString("title"));
+				recipeVO.setIntro(rs.getString("intro"));
+				recipeVO.setCategory(rs.getString("category"));
+				recipeVO.setIngredients(rs.getString("ingredients"));
+				recipeVO.setDetails(rs.getString("details"));
+				recipeVO.setCreatedAt(rs.getDate("createdat"));
+				recipeVO.setUpdatedAt(rs.getDate("updatedat"));
+				recipeVO.setViewcount(rs.getInt("viewcount"));
+				recipeVO.setUser_id(rs.getInt("user_id"));
+				recipeVO.setGrade(rs.getInt("grade"));
+				recipeVO.setUsername(rs.getString("username"));
 			}
 			
 		} catch (Exception e){
@@ -147,8 +149,49 @@ public class RecipeDAO {
 		} finally {
 			DBManager.close(conn, cstmt, rs);
 		}
-		return vo;
+		return recipeVO;
 	}//end selectRecipeById
 	
+	// 레시피 리스트 조회
+	public List<RecipeVO> selectRecipeList(String category, String search_text) {
+		//레시피 리스트 생성
+		List<RecipeVO> recipeList= new ArrayList<>();
+		//레시피 VO 생성
+		// 호출할 저장 프로시저
+		String runSP = "{ CALL recipes_pack.recipes_select_list(?, ?, ?)}";
+		
+		try {
+			// DB연결
+			conn = DBManager.getConnection();
+			// CallableStatement로 저장 프로시저 호출
+			cstmt = conn.prepareCall(runSP);
+			// 입력 파라미터
+			cstmt.setString(1, category);
+			cstmt.setString(2, search_text);
+			// 출력 파라미터
+			cstmt.registerOutParameter(3, oracle.jdbc.OracleTypes.CURSOR);
+			//실행
+			cstmt.execute();
+			//레시피 상세 조회 결과 받아오기
+			rs = (ResultSet)cstmt.getObject(3);
+			while(rs.next()) {
+				RecipeVO recipeVO = new RecipeVO();
+				recipeVO.setId(rs.getInt("id"));
+				recipeVO.setTitle(rs.getString("title"));
+				recipeVO.setImage(rs.getString("image"));
+				recipeVO.setViewcount(rs.getInt("viewcount"));
+				recipeVO.setUsername(rs.getString("username"));
+				recipeVO.setGrade(rs.getInt("grade"));
+				
+				recipeList.add(recipeVO);
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, cstmt, rs);
+		}
+		
+		return recipeList;
+	}//end selectRecipeList
 	
 }
