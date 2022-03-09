@@ -20,13 +20,13 @@ public class RecipeViewAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String url = "recipe/recipeView.jsp";
-	    String recipeSeq = request.getParameter("recipeSeq").trim();
+	    int recipeId = Integer.parseInt(request.getParameter("recipeId").trim());
 	    
 	    RecipeDAO recipeDAO = RecipeDAO.getInstance();
-	    RecipeVO recipeVO = recipeDAO.selectContents(recipeDAO.getRecipes());
+	    RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
 	    
 	    CommentDAO commentDAO = CommentDAO.getInstance();
-	    ArrayList<CommentVO> commentList = commentDAO.getComments(recipeVO.getId());
+	    ArrayList<CommentVO> commentList = commentDAO.getComments(recipeId);
 	    
 	    request.setAttribute("recipeVO", recipeVO);
 	    request.setAttribute("commentList", commentList);
