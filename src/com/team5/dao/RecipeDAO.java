@@ -28,7 +28,7 @@ public class RecipeDAO {
 	public void insertRecipe(RecipeVO recipeVO) {
 		//호출할 SQL 문장
 		String runSP = "{ CALL recipes_pack.recipes_insert(?, ?, ?, ?, ?, ?, ?)}";
-	    
+		
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -38,7 +38,7 @@ public class RecipeDAO {
 			cstmt.setString(1, recipeVO.getTitle());
 			cstmt.setString(2, recipeVO.getIntro());
 			cstmt.setString(3, recipeVO.getCategory());
-			cstmt.setString(4, recipeVO.getIngrediens());
+			cstmt.setString(4, recipeVO.getIngredients());
 			cstmt.setString(5, recipeVO.getDetails());
 			cstmt.setString(6, recipeVO.getImage());
 			cstmt.setInt(7, recipeVO.getUser_id());
@@ -69,7 +69,7 @@ public class RecipeDAO {
 			cstmt.setString(2, recipeVO.getTitle());
 			cstmt.setString(3, recipeVO.getIntro());
 			cstmt.setString(4, recipeVO.getCategory());
-			cstmt.setString(5, recipeVO.getIngrediens());
+			cstmt.setString(5, recipeVO.getIngredients());
 			cstmt.setString(6, recipeVO.getDetails());
 			cstmt.setString(7, recipeVO.getImage());
 			
@@ -85,7 +85,7 @@ public class RecipeDAO {
 	}//end updateRecipe
 	
 	//레시피 삭제
-	public void deleteRecipe(int recipe_id) {
+	public void deleteRecipe(int id) {
 		//호출할 저장 프로시저
 		String runSP = "{ CALL recipes_pack.recipes_delete(?)}";
 		
@@ -95,11 +95,11 @@ public class RecipeDAO {
 			// CallableStatement로 저장 프로시저 호출
 			cstmt = conn.prepareCall(runSP);
 			// 저장프로시저 파라미터 입력
-			cstmt.setInt(1, recipe_id);
+			cstmt.setInt(1, id);
 			
 			System.out.println(runSP);
 			cstmt.executeUpdate();
-			System.out.println(recipe_id+"번 "+"레시피 삭제 완료");
+			System.out.println(id+"번 "+"레시피 삭제 완료");
 			
 		} catch (Exception e){
 			e.printStackTrace();
@@ -107,5 +107,48 @@ public class RecipeDAO {
 			DBManager.close(conn, cstmt, rs);
 		}
 	}// end deleteRecipe
+	
+	//레시피 상세 조회 프로시저
+	public RecipeVO selectRecipeById(int id) {
+		// 호출할 저장 프로시저
+		String runSP = "{ CALL recipes_pack.recipes_select_by_id(?, ?)}";
+		RecipeVO vo = new RecipeVO();
+		
+		try {
+			// DB연결
+			conn = DBManager.getConnection();
+			// CallableStatement로 저장 프로시저 호출
+			cstmt = conn.prepareCall(runSP);
+			// 입력 파라미터
+			cstmt.setInt(1, id);
+			// 출력 파라미터
+			cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+			//실행
+			cstmt.execute();
+			//레시피 상세 조회 결과 받아오기
+			ResultSet rs = (ResultSet)cstmt.getObject(2);
+			while(rs.next()) {
+				vo.setId(rs.getInt("id"));
+				vo.setImage(rs.getString("image"));
+				vo.setTitle(rs.getString("title"));
+				vo.setIntro(rs.getString("intro"));
+				vo.setCategory(rs.getString("category"));
+				vo.setIngredients(rs.getString("ingredients"));
+				vo.setDetails(rs.getString("details"));
+				vo.setCreatedAt(rs.getDate("createdat"));
+				vo.setUpdatedAt(rs.getDate("updatedat"));
+				vo.setViewcount(rs.getInt("viewcount"));
+				vo.setUser_id(rs.getInt("user_id"));
+				vo.setUsername(rs.getString("username"));
+			}
+			
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, cstmt, rs);
+		}
+		return vo;
+	}//end selectRecipeById
+	
 	
 }

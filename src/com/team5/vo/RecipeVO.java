@@ -12,13 +12,14 @@ public class RecipeVO {
 	private String title;
 	private String intro;
 	private String category;
-	private String ingrediens;
+	private String ingredients;
 	private String details;
 	private Date createdAt;
 	private Date updatedAt;
 	private int viewcount;
 	private int user_id;
 	private int grade;
+	private String username;
 	
 	
 	//	getter/setter
@@ -52,11 +53,11 @@ public class RecipeVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getIngrediens() {
-		return ingrediens;
+	public String getIngredients() {
+		return ingredients;
 	}
-	public void setIngrediens(String ingrediens) {
-		this.ingrediens = ingrediens;
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
 	}
 	public String getDetails() {
 		return details;
@@ -93,6 +94,12 @@ public class RecipeVO {
 	}
 	public void setGrade(int grade) {
 		this.grade = grade;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String string) {
+		this.username = string;
 	}
 
 }
