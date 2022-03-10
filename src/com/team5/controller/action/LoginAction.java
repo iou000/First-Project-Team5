@@ -10,8 +10,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * @author jihye
- */
+*
+*클래스 : LoginAction
+*작성자 : 김지혜
+*작성일 : 3/10/22
+*
+**/
 public class LoginAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response)

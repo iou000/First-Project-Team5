@@ -8,9 +8,12 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * @author jihye
- *
- */
+*
+*클래스 : UserDAO
+*작성자 : 김지혜
+*작성일 : 3/7/22
+*
+**/
 public class UserDAO {
 	private UserDAO() {
 	}
