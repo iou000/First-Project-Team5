@@ -1,12 +1,15 @@
 package com.team5.dao;
 
-import com.team5.vo.RecipeVO;
-import com.team5.vo.UserVO;
-import oracle.jdbc.OracleTypes;
-import util.DBManager;
-
-import java.sql.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import util.DBManager;
+import com.team5.vo.UserVO;
+
+import oracle.jdbc.OracleTypes;
 
 /**
  * @author jihye
@@ -21,39 +24,32 @@ public class UserDAO {
 	public static UserDAO getInstance() {
 		return instance;
 	}
-
-	Connection conn = null;
-	CallableStatement cstmt = null;
-	ResultSet rs = null;
-
-	// 유저 생성
-	public void insertUser(UserVO userVO) {
-		// 호출할 SQL 문장
-		String runSP = "{ CALL user_pack.user_insert(?, ?)}";
-
+	public ArrayList<UserVO> listMember() {
+		  
+		ArrayList<UserVO> memberList = new ArrayList<UserVO>();
+		String sql = "select * from user01.t_user";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
-			// DB연결
 			conn = DBManager.getConnection();
-			// CallableStatement로 저장 프로시저 호출
-			cstmt = conn.prepareCall(runSP);
-			// 저장프로시저 파라미터 입력
-			cstmt.setString(1, userVO.getUsername());
-			cstmt.setString(2, userVO.getPassword());
-
-			System.out.println(runSP);
-			//실행
-			cstmt.executeUpdate();
-			System.out.println("유저 생성 완료");
-
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+            	System.out.println(rs.getString("id"));
+            	System.out.println(rs.getString("username"));
+            	System.out.println(rs.getString("password"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, cstmt);
+			DBManager.close(conn, pstmt, rs);
 		}
-	}//end insertUser
+		return memberList;
+	}
 
-	// 유저s select
-	public ArrayList<UserVO> selectUsers() throws SQLException {
+	public ArrayList<UserVO> selectUser() throws SQLException {
 		ArrayList<UserVO> list = new ArrayList<UserVO>();
 		Connection conn = null;
 		CallableStatement cstmt = null;
@@ -83,37 +79,4 @@ public class UserDAO {
         }
 		return list;
 	}
-
-	// 유저 select
-	public UserVO selectUserById(int id) {
-		// 호출할 저장 프로시저
-		String runSP = "{ CALL user_pack.user_select_by_id(?, ?)}";
-		UserVO userVO = new UserVO();
-
-		try {
-			// DB연결
-			conn = DBManager.getConnection();
-			// CallableStatement로 저장 프로시저 호출
-			cstmt = conn.prepareCall(runSP);
-			// 입력 파라미터
-			cstmt.setInt(1, id);
-			// 출력 파라미터
-			cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
-			//실행 (리턴값: ResultSet)
-			cstmt.execute();
-			//레시피 상세 조회 결과 받아오기
-			rs = (ResultSet)cstmt.getObject(2);
-			while(rs.next()) {
-				userVO.setId(rs.getInt("id"));
-				userVO.setUsername(rs.getString("username"));
-				userVO.setPassword(rs.getString("password"));
-			}
-
-		} catch (Exception e){
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, cstmt, rs);
-		}
-		return userVO;
-	}//end selectUserById
 }
