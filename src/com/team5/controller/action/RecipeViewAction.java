@@ -28,8 +28,8 @@ public class RecipeViewAction implements Action {
 	    CommentDAO commentDAO = CommentDAO.getInstance();
 	    ArrayList<CommentVO> commentList = commentDAO.getComments(recipeId);
 	    
-	    request.setAttribute("recipeVO", recipeVO);
-	    request.setAttribute("commentList", commentList);
+	    //request.setAttribute("recipeVO", recipeVO);
+	    //request.setAttribute("commentList", commentList);
 	    request.getRequestDispatcher(url).forward(request, response);
 	}
 }
