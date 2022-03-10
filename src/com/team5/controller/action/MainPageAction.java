@@ -23,7 +23,7 @@ public class MainPageAction implements Action {
 		
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
 		// 카테고리 또는 검색어를 통해서 레시피 조회
-		ArrayList<RecipeVO> recipeList = recipeDAO.selectRecipeList(category, search);
+		ArrayList<RecipeVO> recipeList = (ArrayList<RecipeVO>) recipeDAO.selectRecipeList(category, search);
 
 		request.setAttribute("recipeList", recipeList);
 		request.getRequestDispatcher(url).forward(request, response);
