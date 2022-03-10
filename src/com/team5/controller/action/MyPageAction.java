@@ -15,6 +15,9 @@ import com.team5.dao.UserDAO;
 import com.team5.vo.RecipeVO;
 import com.team5.vo.UserVO;
 
+/**
+ * @author jihye
+ */
 public class MyPageAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
