@@ -9,18 +9,21 @@ import javax.sql.*;
  *
  */
 public class DBManager {
-	public static Connection getConnection() {
-		
-		Connection conn = null;
+	static {
 		try {
-			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/oracle");
-			conn = ds.getConnection();
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.print("check");
+	}
+	public static Connection getConnection() {
+
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@edudb_high?TNS_ADMIN=/Users/mac/Documents/wallet/Wallet_edudb", "user01", "xxxxxxAt21cc");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return conn;
 	}
 
@@ -42,4 +45,4 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
-} 
+}

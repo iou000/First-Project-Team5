@@ -1,7 +1,7 @@
 package com.team5.dao;
 
-import com.team5.util.DBManager;
 import com.team5.vo.RecipeVO;
+import util.DBManager;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
