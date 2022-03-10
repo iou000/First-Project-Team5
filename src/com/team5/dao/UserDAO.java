@@ -24,32 +24,40 @@ public class UserDAO {
 	public static UserDAO getInstance() {
 		return instance;
 	}
-	public ArrayList<UserVO> listMember() {
-		  
-		ArrayList<UserVO> memberList = new ArrayList<UserVO>();
-		String sql = "select * from user01.t_user";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+
+	Connection conn = null;
+	CallableStatement cstmt = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+
+	// 유저 생성
+	public void insertUser(UserVO userVO) {
+		// 호출할 SQL 문장
+		String runSP = "{ CALL user_pack.user_insert(?, ?)}";
+
 		try {
+			// DB연결
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-            	System.out.println(rs.getString("id"));
-            	System.out.println(rs.getString("username"));
-            	System.out.println(rs.getString("password"));
-			}
+			// CallableStatement로 저장 프로시저 호출
+			cstmt = conn.prepareCall(runSP);
+			// 저장프로시저 파라미터 입력
+			cstmt.setString(1, userVO.getUsername());
+			cstmt.setString(2, userVO.getPassword());
+
+			System.out.println(runSP);
+			//실행
+			cstmt.executeUpdate();
+			System.out.println("유저 생성 완료");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt, rs);
+			DBManager.close(conn, cstmt);
 		}
-		return memberList;
-	}
+	}//end insertUser
 
-	public ArrayList<UserVO> selectUser() throws SQLException {
+	// 유저s select
+	public ArrayList<UserVO> selectUsers() throws SQLException {
 		ArrayList<UserVO> list = new ArrayList<UserVO>();
 		Connection conn = null;
 		CallableStatement cstmt = null;
@@ -78,5 +86,95 @@ public class UserDAO {
             } catch (Exception e) { }
         }
 		return list;
+	}
+
+	// 유저 select by id
+	public UserVO selectUserById(int id) {
+		// 호출할 저장 프로시저
+		String runSP = "{ CALL user_pack.user_select_by_id(?, ?)}";
+		UserVO userVO = new UserVO();
+
+		try {
+			// DB연결
+			conn = DBManager.getConnection();
+			// CallableStatement로 저장 프로시저 호출
+			cstmt = conn.prepareCall(runSP);
+			// 입력 파라미터
+			cstmt.setInt(1, id);
+			// 출력 파라미터
+			cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+			//실행 (리턴값: ResultSet)
+			cstmt.execute();
+			//레시피 상세 조회 결과 받아오기
+			rs = (ResultSet)cstmt.getObject(2);
+			while(rs.next()) {
+				userVO.setId(rs.getInt("id"));
+				userVO.setUsername(rs.getString("username"));
+				userVO.setPassword(rs.getString("password"));
+			}
+
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, cstmt, rs);
+		}
+		return userVO;
+	}//end selectUserById
+
+	// 유저 select by username
+	public UserVO selectUserByUsername(String username) {
+		// 호출할 저장 프로시저
+		String runSP = "{ CALL user_pack.user_select_by_username(?, ?)}";
+		UserVO userVO = new UserVO();
+
+		try {
+			// DB연결
+			conn = DBManager.getConnection();
+			// CallableStatement로 저장 프로시저 호출
+			cstmt = conn.prepareCall(runSP);
+			// 입력 파라미터
+			cstmt.setString(1, username);
+			// 출력 파라미터
+			cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+			//실행 (리턴값: ResultSet)
+			cstmt.execute();
+			//레시피 상세 조회 결과 받아오기
+			rs = (ResultSet)cstmt.getObject(2);
+			while(rs.next()) {
+				userVO.setId(rs.getInt("id"));
+				userVO.setUsername(rs.getString("username"));
+				userVO.setPassword(rs.getString("password"));
+			}
+
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, cstmt, rs);
+		}
+		return userVO;
+	}//end selectUserByUsername
+
+	public boolean IsExistByUsername(String username) {
+		String sql = "SELECT user_pack.is_user_exists(?) from dual;";
+
+		try {
+			// DB연결
+			conn = DBManager.getConnection();
+			// prepareStatement 저장 프로시저 호출
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+
+//			if (rs.next()) {
+//				result = 1;
+//			} else {
+//				result = -1;
+//			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return true;
 	}
 }
