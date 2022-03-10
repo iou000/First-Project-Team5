@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team5.dao.CommentDAO;
+import com.team5.dao.RecipeDAO;
 import com.team5.vo.CommentVO;
+import com.team5.vo.RecipeVO;
 
 /**
  * @author SJH
@@ -21,13 +23,13 @@ public class RecipeViewAction implements Action {
 	    String url = "recipe/recipeView.jsp";
 
 	    RecipeDAO recipeDAO = RecipeDAO.getInstance();
-	    RecipeVO recipeVO = recipeDAO.selectContents(recipeDAO.getId());
+	    //RecipeVO recipeVO = recipeDAO.selectContents(recipeDAO.getId());
 	    
 	    CommentDAO commentDAO = CommentDAO.getInstance();
-	    ArrayList<CommentVO> commentList = commentDAO.selectComments(recipeDAO.getId());
+	    //ArrayList<CommentVO> commentList = commentDAO.selectComments(recipeDAO.getId());
 	    
-	    request.setAttribute("recipeVO", recipeVO);
-	    request.setAttribute("commentList", commentList);
+	    //request.setAttribute("recipeVO", recipeVO);
+	    //request.setAttribute("commentList", commentList);
 	    request.getRequestDispatcher(url).forward(request, response);
 	}
 }
