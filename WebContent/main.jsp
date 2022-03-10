@@ -10,24 +10,21 @@
 </head>
 <body>
 	<!-- 검색어를 통해서 레시미 목록 조회 -->
-	<div id="search">
-		<form method="post" action="app?command=mainpage">
-			<input type="text" id="keyword" value=""/>
-			<input type="hidden" id="category" value=""/>
+	<div align="center">
+		<form id="searchForm" method="post" action="app?command=mainpage" onsubmit="searchWithKeyword()">
+			<input type="text" name="keyword" value="" placeholder="키워드를 입력해주세요!"/>
+			<input type="hidden" name="category" value=""/>
 			<input type="submit" value="검색"/>
+			<hr>
+			<button type="button" id="1" value="" onclick="searchWithCategory(this.id)">전체</button>
+			<button type="button" id="2" value="korean" onclick="searchWithCategory(this.id)">한식</button>
+			<button type="button" id="3" value="western" onclick="searchWithCategory(this.id)">양식</button>
+			<button type="button" id="4" value="japanese" onclick="searchWithCategory(this.id)">일식</button>
+			<button type="button" id="5" value="chinese" onclick="searchWithCategory(this.id)">중식</button>
+			<button type="button" id="6" value="flour-based" onclick="searchWithCategory(this.id)">분식</button>
+			<button type="button" id="7" value="snack" onclick="searchWithCategory(this.id)">간식</button>
+			<button type="button" id="8" value="dessert" onclick="searchWithCategory(this.id)">디저트</button>
 		</form>
-		<script>
-		</script>
-	</div>
-	
-	<!-- 카테고리를 통해서 레시피 목록 조회 -->
-	<div id="categories">
-		<button type="button" id="item" value="all">전체</button>
-		<button type="button" id="item" value="korean">한식</button>
-		<button type="button" id="item" value="western">양식</button>
-		<button type="button" id="item" value="japanese">일식</button>
-		<button type="button" id="item" value="chinese">중식</button>
-		<button type="button" id="item" value="flour-based">분식</button>
 	</div>
 	
 	<!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
@@ -50,14 +47,31 @@
 <!-- Javascript -->
 <script type="text/javascript">
 	/*
+	$("#testbtn").click(function() {
+		var testVal = $("#testbtn").val();
+		alert(testVal);
+	});
+
 	$("button[name=testbtn]").click(function() {
 		var testVal = $("button[name=testbtn]").val();
 		alert(testVal);
 	});
 	*/
-	$("#item").click(function() {
+	
+	function searchWithCategory(id) {
+		var foodCategory = document.getElementById(id).value;
+		$("input[name=category]").attr("value", foodCategory);
+		$("#searchForm").submit();
+	}
+	
+	function searchWithKeyword() {
+		var foodKeyword = $("input[name=keyword]").val();
+	}
+	
+	/*$("#item").click(function() {
 		var foodCategory = $("#item").val(); // id=item인 butoon 값 받아오기
 		$("#category").attr("value", foodCategory); // id=category인 input에 값 넣기
+		alert(foodCategory);
 		$.ajax({
 			url : 'app?command=mainpage',
 			type : 'POST',
@@ -71,6 +85,6 @@
 				}
 			}
 		});
-	});
+	});*/
 </script>
 </html>
