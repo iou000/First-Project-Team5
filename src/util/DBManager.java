@@ -9,8 +9,15 @@ import javax.sql.*;
  *
  */
 public class DBManager {
+	static {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public static Connection getConnection() {
-		
+
 		Connection conn = null;
 		try {
 			Context initContext = new InitialContext();
@@ -20,7 +27,6 @@ public class DBManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.print("check");
 		return conn;
 	}
 
@@ -42,4 +48,4 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
-} 
+}
