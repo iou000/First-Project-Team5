@@ -8,7 +8,7 @@
 
   <article>
     <h2> My Page </h2>
-    <p> 안녕하세요 ${userVO.username} 님!!  </p>
+    <p> 안녕하세요 ${loginUser.username} 님!!  </p>
     <p> 내가 올린 레시피 </p>
     <c:forEach items="${recipeVOS}"  var="recipeVOS">
     <tr>
