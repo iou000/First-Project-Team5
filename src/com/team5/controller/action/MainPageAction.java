@@ -17,7 +17,7 @@ import com.team5.vo.RecipeVO;
 public class MainPageAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "main.jsp";
+		String url = "/main.jsp";
 		String keyword = request.getParameter("keyword").trim();
 		String category = request.getParameter("category").trim();
 		

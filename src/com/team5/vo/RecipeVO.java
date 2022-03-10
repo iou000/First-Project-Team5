@@ -20,8 +20,6 @@ public class RecipeVO {
 	private int user_id;
 	private int grade;
 	private String username;
-	
-	
 	//	getter/setter
 	public int getId() {
 		return id;

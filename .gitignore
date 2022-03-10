@@ -48,8 +48,14 @@ cmake-build-*/
 *.iws
 
 # IntelliJ
+.idea
+.idea/*.xml
+*.iml
 out/
-
+gen
+build
+rebel.xml
+WebContent/META-INF/context.xml
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 

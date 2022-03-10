@@ -1,15 +1,13 @@
 package com.team5.dao;
 
+import com.team5.vo.RecipeVO;
+import util.DBManager;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.team5.vo.RecipeVO;
-
-import util.DBManager;
-
 
 
 /**
@@ -28,7 +26,6 @@ public class RecipeDAO {
 	Connection conn = null;
     CallableStatement cstmt = null;
 	ResultSet rs = null;
-    
 
 	/**
 	 * @Author  : seop
@@ -40,7 +37,6 @@ public class RecipeDAO {
 	public void insertRecipe(RecipeVO recipeVO) {
 		// 호출할 SQL 문장
 		String runSP = "{ CALL recipes_pack.recipes_insert(?, ?, ?, ?, ?, ?, ?)}";
-		
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -54,20 +50,16 @@ public class RecipeDAO {
 			cstmt.setString(5, recipeVO.getDetails());
 			cstmt.setString(6, recipeVO.getImage());
 			cstmt.setInt(7, recipeVO.getUser_id());
-			
 			System.out.println(runSP);
 			//실행
 			cstmt.executeUpdate();
 			System.out.println("레시피 생성 완료");
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, cstmt);
 		}
 	}//end insertRecipe
-	
-	
 	/**
 	 * @Author  : seop
 	 * @Date    : 2022. 3. 9.
@@ -78,7 +70,6 @@ public class RecipeDAO {
 	public void updateRecipe(RecipeVO recipeVO) {
 		// 호출할 저장 프로시저
 		String runSP = "{ CALL recipes_pack.recipes_update(?, ?, ?, ?, ?, ?, ?)}";
-		
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -92,20 +83,16 @@ public class RecipeDAO {
 			cstmt.setString(5, recipeVO.getIngredients());
 			cstmt.setString(6, recipeVO.getDetails());
 			cstmt.setString(7, recipeVO.getImage());
-			
 			System.out.println(runSP);
 			//실행
 			cstmt.executeUpdate();
 			System.out.println(recipeVO.getId()+"번  "+"레시피 수정 완료");
-			
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, cstmt);
 		}
 	}//end updateRecipe
-	
-	
 	/**
 	 * @Author  : seop
 	 * @Date    : 2022. 3. 9.
@@ -116,7 +103,6 @@ public class RecipeDAO {
 	public void deleteRecipe(int id) {
 		// 호출할 저장 프로시저
 		String runSP = "{ CALL recipes_pack.recipes_delete(?)}";
-		
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -124,20 +110,16 @@ public class RecipeDAO {
 			cstmt = conn.prepareCall(runSP);
 			// 저장프로시저 파라미터 입력
 			cstmt.setInt(1, id);
-			
 			System.out.println(runSP);
 			//실행
 			cstmt.executeUpdate();
 			System.out.println(id+"번 "+"레시피 삭제 완료");
-			
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, cstmt);
 		}
 	}// end deleteRecipe
-	
-	
 	/**
 	 * @Author  : seop
 	 * @Date    : 2022. 3. 9.
@@ -149,7 +131,6 @@ public class RecipeDAO {
 		// 호출할 저장 프로시저
 		String runSP = "{ CALL recipes_pack.recipes_select_by_id(?, ?)}";
 		RecipeVO recipeVO = new RecipeVO();
-		
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -178,7 +159,6 @@ public class RecipeDAO {
 				recipeVO.setGrade(rs.getInt("grade"));
 				recipeVO.setUsername(rs.getString("username"));
 			}
-			
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
@@ -186,8 +166,6 @@ public class RecipeDAO {
 		}
 		return recipeVO;
 	}//end selectRecipeById
-	
-	
 	/**
 	 * @Author  : seop
 	 * @Date    : 2022. 3. 9.
@@ -200,7 +178,6 @@ public class RecipeDAO {
 		List<RecipeVO> recipeList= new ArrayList<>();
 		// 호출할 저장 프로시저
 		String runSP = "{ CALL recipes_pack.recipes_select_list(?, ?, ?)}";
-		
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -226,7 +203,6 @@ public class RecipeDAO {
 				
 				recipeList.add(recipeVO);
 			}
-			
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
@@ -235,7 +211,6 @@ public class RecipeDAO {
 		
 		return recipeList;
 	}//end selectRecipeList
-	
 	/**
 	 * @Author  : seop
 	 * @Date    : 2022. 3. 9.
@@ -248,7 +223,6 @@ public class RecipeDAO {
 		List<RecipeVO> recipeList= new ArrayList<>();
 		// 호출할 저장 프로시저
 		String runSP = "{ CALL recipes_pack.recipes_select_list_by_user_id(?, ?)}";
-		
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -273,14 +247,11 @@ public class RecipeDAO {
 				
 				recipeList.add(recipeVO);
 			}
-			
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, cstmt, rs);
 		}
-		
 		return recipeList;
 	}//end selectRecipeListByUserId
-	
 }
