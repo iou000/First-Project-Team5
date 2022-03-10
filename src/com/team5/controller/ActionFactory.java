@@ -1,5 +1,10 @@
 package com.team5.controller;
-import com.team5.controller.action.*;
+
+import com.team5.controller.action.Action;
+import com.team5.controller.action.MainPageAction;
+import com.team5.controller.action.MyPageAction;
+import com.team5.controller.action.RecipeInsertAction;
+import com.team5.controller.action.RecipeViewAction;
 
 /**
  * @author jihye
@@ -20,7 +25,6 @@ public class ActionFactory {
         Action action = null;
 
         System.out.println("ActionFactory  : " + command);
-
         if (command.equals("main")) {
             action = new MainPageAction();
         } else if (command.equals("mypage")) {
@@ -37,7 +41,15 @@ public class ActionFactory {
             action = new LoginAction();
         } else if (command.equals("logout")) {
             action = new LogoutAction();
-        }
+        } else if (command.equals("mainpage")) {
+          action = new MainPageAction();
+        } else if(command.equals("mypage")) {
+          action = new MyPageAction();
+        } else if(command.equals("recipe_viiew")) {
+          action = new RecipeViewAction();
+        } else if(command.equals("recipe_insert")) {
+          action = new RecipeInsertAction();
+		}
         return action;
     }
 }
