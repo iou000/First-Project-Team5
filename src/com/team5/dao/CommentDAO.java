@@ -1,6 +1,7 @@
 package com.team5.dao;
 
 import com.team5.vo.CommentVO;
+import com.team5.vo.RecipeVO;
 import util.DBManager;
 
 import java.sql.CallableStatement;
@@ -20,34 +21,46 @@ public class CommentDAO {
 	public static CommentDAO getInstance() {
 		return instance;
 	}
-	
 
+	Connection conn = null;
+	CallableStatement cstmt = null;
+	ResultSet rs = null;
+
+	/**
+	*
+	*메소드 : getCommentsById
+	*작성자 : 김지혜
+	*작성일 : 3/10/22
+	*
+	**/
 	// 특정 레시피ID에 해당하는 평가 목록을 불러오는 메소드
-	public ArrayList<CommentVO> getComments(int recipe_id) {
-		ArrayList<CommentVO> list = new ArrayList<>();
-		Connection conn = null;
-		CallableStatement cstmt = null;
-		ResultSet rs = null;
+	public ArrayList<CommentVO> getCommentsById(int recipe_id) {
+		ArrayList<CommentVO> commentVOS = new ArrayList<>();
+		String runSP = "{ CALL comment_pack.comment_select_by_recipe_id(?, ?)}";
+		CommentVO commentVO = new CommentVO();
 		try {
-			// 연결 설정
+			// DB연결
 			conn = DBManager.getConnection();
-			// CallableStatement를 통해서 저장프로시저 호출
-			cstmt = conn.prepareCall("{call comment_select(?)}");
-			// 저장프로시저에 포함된 매개변수 설정
+			// CallableStatement로 저장 프로시저 호출
+			cstmt = conn.prepareCall(runSP);
+			// 입력 파라미터
 			cstmt.setInt(1, recipe_id);
-			
-			// 저장프로시저  실행 결과를 ResultSet에 저장
-			rs = cstmt.executeQuery();
+			// 출력 파라미터
+			cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+			//실행 (리턴값: ResultSet)
+			cstmt.execute();
+			//레시피 상세 조회 결과 받아오기
+			rs = (ResultSet)cstmt.getObject(2);
 			// ResultSet에 저장된 각각의 결과에 대해서
 			while (rs.next()) {
 				// CommentVO 객체를 생성해서 author, grade, contents, updatedat을 설정
-				CommentVO vo = new CommentVO();
-				vo.setAuthor(rs.getString("us"));
-				vo.setGrade(rs.getInt("gr"));
-				vo.setContents(rs.getString("co"));
-				vo.setUpdatedat(rs.getDate("up"));
+				CommentVO vo = commentVO;
+				vo.setAuthor(rs.getString("username"));
+				vo.setGrade(rs.getInt("grade"));
+				vo.setContents(rs.getString("contents"));
+				vo.setUpdatedAt(rs.getDate("updatedAt"));
 				// 생성한 각각의 CommentVO 객체를 리스트에 추가
-				list.add(vo);
+				commentVOS.add(vo);
 			}
 			
 			// 사용한 conn, cstmt, rs 종료
@@ -56,7 +69,7 @@ public class CommentDAO {
 			e.printStackTrace();
 		}
 		// 최종적으로 리스트를 반환
-		return list;
+		return commentVOS;
 	}
 	
 	// 새로운 평가를 추가하는 메소드

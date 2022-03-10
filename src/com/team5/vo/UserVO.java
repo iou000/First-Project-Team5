@@ -1,9 +1,12 @@
 package com.team5.vo;
 
 /**
- * @author jihye
- *
- */
+*
+*클래스 : UserVO
+*작성자 : 김지혜
+*작성일 : 3/7/22
+*
+**/
 public class UserVO {
 	private int id;
 	private String username;

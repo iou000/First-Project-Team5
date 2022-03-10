@@ -11,10 +11,6 @@ import com.team5.controller.action.MyPageAction;
 import com.team5.controller.action.RecipeInsertAction;
 import com.team5.controller.action.RecipeViewAction;
 
-/**
- * @author jihye
- *
- */
 public class ActionFactory {
     private static ActionFactory instance = new ActionFactory();
 

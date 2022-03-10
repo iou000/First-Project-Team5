@@ -11,8 +11,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * @author jihye
- */
+*
+*클래스 : JoinAction
+*작성자 : 김지혜
+*작성일 : 3/10/22
+*
+**/
 public class JoinAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response)

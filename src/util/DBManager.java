@@ -5,9 +5,12 @@ import javax.naming.*;
 import javax.sql.*;
 
 /**
- * @author jihye
- *
- */
+*
+*클래스 : DBManager
+*작성자 : 김지혜
+*작성일 : 3/7/22
+*
+**/
 public class DBManager {
 	static {
 		try {

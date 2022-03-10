@@ -16,8 +16,12 @@ import com.team5.vo.RecipeVO;
 import com.team5.vo.UserVO;
 
 /**
- * @author jihye
- */
+*
+*클래스 : MyPageAction
+*작성자 : 김지혜
+*작성일 : 3/8/22
+*
+**/
 public class MyPageAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
