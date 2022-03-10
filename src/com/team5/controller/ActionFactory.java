@@ -3,6 +3,7 @@ package com.team5.controller;
 import com.team5.controller.action.Action;
 import com.team5.controller.action.MainPageAction;
 import com.team5.controller.action.MyPageAction;
+import com.team5.controller.action.RecipeInsertAction;
 import com.team5.controller.action.RecipeViewAction;
 
 /**
@@ -31,6 +32,8 @@ public class ActionFactory {
 			action = new MyPageAction();
 		} else if(command.equals("recipe_viiew")) {
 			action = new RecipeViewAction();
+		} else if(command.equals("recipe_insert")) {
+			action = new RecipeInsertAction();
 		}
 		return action;
 	}
