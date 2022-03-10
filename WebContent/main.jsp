@@ -11,7 +11,7 @@
 <body>
 	<!-- 검색어를 통해서 레시미 목록 조회 -->
 	<div align="center">
-		<form id="searchForm" method="post" action="app?command=mainpage" onsubmit="searchWithKeyword()">
+		<form id="searchForm" method="post" action="app?command=mainpage" onclick="searchWithKeyword()">
 			<input type="text" name="keyword" value="" placeholder="키워드를 입력해주세요!"/>
 			<input type="hidden" name="category" value=""/>
 			<input type="submit" value="검색"/>
