@@ -10,17 +10,17 @@ import javax.sql.*;
  */
 public class DBManager {
 	public static Connection getConnection() {
-
+		
 		Connection conn = null;
 		try {
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
 			DataSource ds = (DataSource) envContext.lookup("jdbc/oracle");
 			conn = ds.getConnection();
-			System.out.println("db connected");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.print("check");
 		return conn;
 	}
 
@@ -42,4 +42,4 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
-}
+} 

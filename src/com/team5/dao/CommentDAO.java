@@ -15,6 +15,7 @@ import util.DBManager;
  */
 public class CommentDAO {
 	public CommentDAO() {
+		
 	}
 	
 	private static CommentDAO instance = new CommentDAO();
