@@ -20,7 +20,10 @@ public class DBManager {
 
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@edudb_high?TNS_ADMIN=/Users/mac/Documents/wallet/Wallet_edudb", "user01", "xxxxxxAt21cc");
+			Context initContext = new InitialContext();
+			Context envContext = (Context) initContext.lookup("java:/comp/env");
+			DataSource ds = (DataSource) envContext.lookup("jdbc/oracle");
+			conn = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

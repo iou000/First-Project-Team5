@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource
+            name="jdbc/oracle"
+            auth="Container"
+            type="javax.sql.DataSource"
+            driverClassName="oracle.jdbc.OracleDriver"
+            url="jdbc:oracle:thin:@edudb_high?TNS_ADMIN=/Users/mac/Wallet_edudb"
+            username="user01"
+            password="xxxxxxAt21cc"
+            maxActive="50"
+            maxWait="-1"/>
+</Context>
