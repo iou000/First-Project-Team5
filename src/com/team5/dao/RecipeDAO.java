@@ -11,6 +11,7 @@ import com.team5.vo.RecipeVO;
 import util.DBManager;
 
 
+
 /**
  * @author    : seop
  * @Date      : 2022. 3. 9.
@@ -27,7 +28,7 @@ public class RecipeDAO {
 	Connection conn = null;
     CallableStatement cstmt = null;
 	ResultSet rs = null;
-   
+    
 
 	/**
 	 * @Author  : seop
@@ -39,6 +40,7 @@ public class RecipeDAO {
 	public void insertRecipe(RecipeVO recipeVO) {
 		// 호출할 SQL 문장
 		String runSP = "{ CALL recipes_pack.recipes_insert(?, ?, ?, ?, ?, ?, ?)}";
+		
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -54,6 +56,7 @@ public class RecipeDAO {
 			cstmt.setInt(7, recipeVO.getUser_id());
 			
 			System.out.println(runSP);
+			//실행
 			cstmt.executeUpdate();
 			System.out.println("레시피 생성 완료");
 			
@@ -91,6 +94,7 @@ public class RecipeDAO {
 			cstmt.setString(7, recipeVO.getImage());
 			
 			System.out.println(runSP);
+			//실행
 			cstmt.executeUpdate();
 			System.out.println(recipeVO.getId()+"번  "+"레시피 수정 완료");
 			
@@ -278,4 +282,5 @@ public class RecipeDAO {
 		
 		return recipeList;
 	}//end selectRecipeListByUserId
+	
 }
