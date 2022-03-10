@@ -25,7 +25,7 @@ public class ActionFactory {
 		
 		System.out.println("ActionFactory  : " + command);
 
-		if(command.equals("search") || command.equals("category")) {
+		if(command.equals("mainpage")) {
 			action = new MainPageAction();
 		} else if(command.equals("mypage")) {
 			action = new MyPageAction();
