@@ -15,8 +15,6 @@ import com.team5.controller.action.Action;
  */
 @WebServlet("/app")
 public class RecipeServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		System.out.println("RecipeServlet : " + command);
@@ -30,6 +28,6 @@ public class RecipeServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		doGet(request, response);
 	}
 }

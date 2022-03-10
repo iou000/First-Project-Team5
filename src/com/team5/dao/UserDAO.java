@@ -6,11 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import util.DBManager;
+import com.team5.util.DBManager;
 import com.team5.vo.UserVO;
 
 import oracle.jdbc.OracleTypes;
-
 /**
  * @author jihye
  *
