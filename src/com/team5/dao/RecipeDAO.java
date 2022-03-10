@@ -152,9 +152,9 @@ public class RecipeDAO {
 				recipeVO.setCategory(rs.getString("category"));
 				recipeVO.setIngredients(rs.getString("ingredients"));
 				recipeVO.setDetails(rs.getString("details"));
-				recipeVO.setCreatedAt(rs.getDate("createdat"));
-				recipeVO.setUpdatedAt(rs.getDate("updatedat"));
-				recipeVO.setViewcount(rs.getInt("viewcount"));
+				recipeVO.setCreatedAt(rs.getDate("createdAt"));
+				recipeVO.setUpdatedAt(rs.getDate("updatedAt"));
+				recipeVO.setViewcount(rs.getInt("viewCount"));
 				recipeVO.setUser_id(rs.getInt("user_id"));
 				recipeVO.setGrade(rs.getInt("grade"));
 				recipeVO.setUsername(rs.getString("username"));

@@ -6,9 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author jihye
- *
- */
+*
+*클래스 : LoginFormAction
+*작성자 : 김지혜
+*작성일 : 3/10/22
+*
+**/
 public class LoginFormAction implements Action {
 
   @Override

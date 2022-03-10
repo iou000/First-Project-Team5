@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.team5.controller.action.Action;
 
 /**
- * @author jihye
- *
- */
+*
+*클래스 : RecipeServlet
+*작성자 : 김지혜
+*작성일 : 3/7/22
+*
+**/
 @WebServlet("/app")
 public class RecipeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
