@@ -1,15 +1,6 @@
 package com.team5.controller;
 
-import com.team5.controller.action.Action;
-import com.team5.controller.action.JoinAction;
-import com.team5.controller.action.JoinFormAction;
-import com.team5.controller.action.LoginAction;
-import com.team5.controller.action.LoginFormAction;
-import com.team5.controller.action.LogoutAction;
-import com.team5.controller.action.MainPageAction;
-import com.team5.controller.action.MyPageAction;
-import com.team5.controller.action.RecipeInsertAction;
-import com.team5.controller.action.RecipeViewAction;
+import com.team5.controller.action.*;
 
 public class ActionFactory {
     private static ActionFactory instance = new ActionFactory();
@@ -43,14 +34,16 @@ public class ActionFactory {
         } else if (command.equals("logout")) {
             action = new LogoutAction();
         } else if (command.equals("mainpage")) {
-          action = new MainPageAction();
-        } else if(command.equals("mypage")) {
-          action = new MyPageAction();
-        } else if(command.equals("recipe_viiew")) {
-          action = new RecipeViewAction();
-        } else if(command.equals("recipe_insert")) {
-          action = new RecipeInsertAction();
-		}
+            action = new MainPageAction();
+        } else if (command.equals("mypage")) {
+            action = new MyPageAction();
+        } else if (command.equals("recipe_viiew")) {
+            action = new RecipeViewAction();
+        } else if (command.equals("recipe_insert")) {
+            action = new RecipeInsertAction();
+        } else if (command.equals("insert_comment")) {
+            action = new CommentAction();
+        }
         return action;
     }
 }

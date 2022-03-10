@@ -23,10 +23,10 @@ public class DBManager {
 
 		Connection conn = null;
 		try {
-			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/oracle");
-			conn = ds.getConnection();
+//			Context initContext = new InitialContext();
+//			Context envContext = (Context) initContext.lookup("java:/comp/env");
+//			DataSource ds = (DataSource) envContext.lookup("jdbc/oracle");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@edudb_high?TNS_ADMIN=/Users/mac/Wallet_edudb", "user01", "xxxxxxAt21cc");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
