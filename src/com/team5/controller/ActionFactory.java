@@ -1,6 +1,11 @@
 package com.team5.controller;
 
 import com.team5.controller.action.Action;
+import com.team5.controller.action.JoinAction;
+import com.team5.controller.action.JoinFormAction;
+import com.team5.controller.action.LoginAction;
+import com.team5.controller.action.LoginFormAction;
+import com.team5.controller.action.LogoutAction;
 import com.team5.controller.action.MainPageAction;
 import com.team5.controller.action.MyPageAction;
 import com.team5.controller.action.RecipeInsertAction;
