@@ -30,7 +30,11 @@
 					<h1>${recipeVO.title}</h1>
 					<span> by. ${recipeVO.username}</span>
 					<div class="updateAndDelete">
-						<a href="#">수정</a> | <a href="#">삭제</a>
+						<form name="udform" method="post" action="app?command=recipe_update">
+							<input type="hidden" name="recipe_id" value="${recipeVO.id}" />
+							<button type="button" onclick="fnUpdateRecipe(); return false;">수정</button>
+							<button type="button" onclick="fnDeleteRecipe(); return false;">삭제</button>
+						</form>
 					</div>
 				</div>
 				<div class="intro">
@@ -50,7 +54,6 @@
 				</div>
 			</div>
 			<!-- // 레시피 상세 내용 영역 -->
-			
 		</div>
 		<!-- // 레시피 상세 뷰 -->
 		<div>
@@ -81,4 +84,20 @@
 				<br>
 			</c:forEach>
 		</div>
+
 </div>
+<script>
+	
+	/* 레시피 삭제 seop */
+	function fnDeleteRecipe(){
+		if(confirm("삭제하시겠습니까?")){
+			$('form[name=udform]').attr({action:"app?command=recipe_delete", method:'post'}).submit();
+		}
+	}
+	/* 레시피 수정 seop */
+	function fnUpdateRecipe(){
+		if(confirm("수정하시겠습니까?")){
+			$('form[name=udform]').attr({action:"app?command=recipe_update", method:'post'}).submit();
+		}
+	}
+</script>

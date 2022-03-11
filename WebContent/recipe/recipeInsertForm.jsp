@@ -25,7 +25,7 @@
 </head>
 <body>
 	 <div>
-	 	<form name="form" method="post" action="/app?command=recipe_insert" onsubmit="return recipeInsertSubmit()">
+	 	<form name="form" method="post" action="app?command=recipe_insert" onsubmit="return recipeInsertSubmit()">
 	 		<div class="recipeInsertForm">
 	 			<label class="recipeInsertLabel"> 레시피 제목
 	 				<input class="recipeInput"type="text" name="title" value="" placeholder="레시피 제목을 입력하세요" />
