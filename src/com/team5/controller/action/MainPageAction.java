@@ -17,12 +17,10 @@ import com.team5.vo.RecipeVO;
 public class MainPageAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/main.jsp";
-		String keyword = "";
-		String category = "";
+		String url = "main.jsp";
 
-//		String keyword = request.getParameter("keyword").trim();
-//		String category = request.getParameter("category").trim();
+		String keyword = request.getParameter("keyword");
+		String category = request.getParameter("category");
 
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
 		// 카테고리 또는 검색어를 통해서 레시피 조회
