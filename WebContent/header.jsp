@@ -55,6 +55,9 @@
                     </li>
                 </c:otherwise>
             </c:choose>
+            <li>
+                <a href="app?command=mainpage">MAIN PAGE</a>
+            </li>
         </ul>
     </nav>
     <!--마이페이지 로그인 끝-->

@@ -35,6 +35,8 @@ public class ActionFactory {
           action = new RecipeViewAction();
         } else if(command.equals("recipe_insert")) {
           action = new RecipeInsertAction();
+        } else if(command.equals("comment_insert")) {
+            action = new CommentInsertAction();
         }
         return action;
     }

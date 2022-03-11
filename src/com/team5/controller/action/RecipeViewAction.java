@@ -20,26 +20,20 @@ public class RecipeViewAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "recipe/recipeView.jsp";
-        // 원래 클릭하면 recipeId 넘어가는거 일단 고정해둠 _ 지혜
-        //int recipeId = Integer.parseInt(request.getParameter("recipeId"));
-        int recipeId = 18;
+        int recipeId = Integer.parseInt(request.getParameter("recipeId"));
 
         HttpSession session = request.getSession();
         UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 
-        if (loginUser == null) {
-            url = "app?command=login_form";
-        } else {
-            RecipeDAO recipeDAO = RecipeDAO.getInstance();
-            RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
+        RecipeDAO recipeDAO = RecipeDAO.getInstance();
+        RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
 
-            CommentDAO commentDAO = CommentDAO.getInstance();
-            ArrayList<CommentVO> commentList = commentDAO.getCommentsById(recipeId);
+        CommentDAO commentDAO = CommentDAO.getInstance();
+        ArrayList<CommentVO> commentList = commentDAO.getCommentsById(recipeId);
 
-            request.setAttribute("loginUser", loginUser);
-            request.setAttribute("recipeVO", recipeVO);
-            request.setAttribute("commentList", commentList);
-        }
+        request.setAttribute("loginUser", loginUser);
+        request.setAttribute("recipeVO", recipeVO);
+        request.setAttribute("commentList", commentList);
 
         request.getRequestDispatcher(url).forward(request, response);
     }

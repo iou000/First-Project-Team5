@@ -15,8 +15,8 @@
       <div id="bestProduct">
         <c:forEach items="${recipeVOS }"  var="recipeVO">
           <div id="item">
-            <a href="app?command=recipe_view">
-              <img src="product_images/don.jpg" />
+            <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
+              <img src="images/don.jpg" />
               <h3> ${recipeVO.id} </h3>
               <p>${recipeVO.title} </p>
               <p>${recipeVO.image} </p>
