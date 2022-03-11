@@ -21,8 +21,6 @@ public class ActionFactory {
             action = new MainPageAction();
         } else if (command.equals("mypage")) {
             action = new MyPageAction();
-        } else if (command.equals("recipeView")) {
-            action = new RecipeViewAction();
         } else if (command.equals("join_form")) {
             action = new JoinFormAction();
         } else if (command.equals("join")) {
@@ -34,15 +32,13 @@ public class ActionFactory {
         } else if (command.equals("logout")) {
             action = new LogoutAction();
         } else if (command.equals("mainpage")) {
-            action = new MainPageAction();
-        } else if (command.equals("mypage")) {
-            action = new MyPageAction();
-        } else if (command.equals("recipe_viiew")) {
-            action = new RecipeViewAction();
-        } else if (command.equals("recipe_insert")) {
-            action = new RecipeInsertAction();
-        } else if (command.equals("insert_comment")) {
-            action = new CommentAction();
+          action = new MainPageAction();
+        } else if(command.equals("mypage")) {
+          action = new MyPageAction();
+        } else if(command.equals("recipe_view")) {
+          action = new RecipeViewAction();
+        } else if(command.equals("recipe_insert")) {
+          action = new RecipeInsertAction();
         }
         return action;
     }

@@ -28,12 +28,12 @@
 	</div>
 	
 	<!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
-	<div id="recipes">         
+	<div id="recipes">
 		<c:forEach items="${recipeList}" var="recipeVO">
 			<div id="item">
 				<a href="app?command=recipe_view&id=${recipeList.id}">
 					<img src="recipe_images/${recipeList.image}"/>
-					<h3>${recipeVO.title}</h3>    
+					<h3>${recipeVO.title}</h3>
 					<p>${recipeVO.author}</p>
 				</a>    
 			</div>
@@ -46,18 +46,6 @@
 
 <!-- Javascript -->
 <script type="text/javascript">
-	/*
-	$("#testbtn").click(function() {
-		var testVal = $("#testbtn").val();
-		alert(testVal);
-	});
-
-	$("button[name=testbtn]").click(function() {
-		var testVal = $("button[name=testbtn]").val();
-		alert(testVal);
-	});
-	*/
-	
 	function searchWithCategory(id) {
 		var foodCategory = document.getElementById(id).value;
 		$("input[name=category]").attr("value", foodCategory);
@@ -67,24 +55,5 @@
 	function searchWithKeyword() {
 		var foodKeyword = $("input[name=keyword]").val();
 	}
-	
-	/*$("#item").click(function() {
-		var foodCategory = $("#item").val(); // id=item인 butoon 값 받아오기
-		$("#category").attr("value", foodCategory); // id=category인 input에 값 넣기
-		alert(foodCategory);
-		$.ajax({
-			url : 'app?command=mainpage',
-			type : 'POST',
-			data : {
-				category : foodCategory
-			},
-			dataType : 'JSON',
-			success:function(result) {
-				if(result=='1') {
-					alert('성공');
-				}
-			}
-		});
-	});*/
 </script>
 </html>
