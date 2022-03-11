@@ -11,16 +11,15 @@
 </head>
 <body>
 	<!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
-	<div id="recipes">
-		<c:forEach items="${recipeList}" var="recipeVO">
-			<div id="item">
-				<a href="app?command=recipe_view&id=${recipeList.id}">
-					<img src="recipe_images/${recipeList.image}"/>
-					<h3>${recipeVO.title}</h3>
-					<p>${recipeVO.author}</p>
-				</a>    
-			</div>
-		</c:forEach>      
+	<div id="recipes" align="center">
+		<c:forEach var="recipeVO" items="${recipeList}">
+			<a href="app?command=mainpage&id=${recipeVO.id}">테스트</a>
+			<!-- <img src="recipe_images/${recipeVO.image}"/> -->
+			${recipeVO.title}
+			${recipeVO.grade}
+			${recipeVO.username}
+			<br> 
+		</c:forEach>
 	</div>
 </body>
 
