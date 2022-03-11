@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ include file="../header.jsp" %>
 <article>
 	<h1>recipeVO Test</h1>
 	<h2>${recipeVO.title}</h2>
