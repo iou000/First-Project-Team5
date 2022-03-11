@@ -16,8 +16,8 @@ public class ActionFactory {
     public Action getAction(String command) {
         Action action = null;
 
-        System.out.println("ActionFactory  : " + command);
-        if (command.equals("mainpage")) {
+        System.out.println("ActionFactory : " + command);
+        if (command.equals("main")) {
             action = new MainPageAction();
         } else if (command.equals("mypage")) {
             action = new MyPageAction();
