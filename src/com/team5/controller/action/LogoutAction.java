@@ -18,7 +18,7 @@ public class LogoutAction implements Action {
     public void execute(HttpServletRequest request,
                         HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/app?command=index";
+        String url = "/app?command=mainpage";
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();

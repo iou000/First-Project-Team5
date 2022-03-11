@@ -1,8 +1,8 @@
 <!-- author SJH -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../header.jsp" %>
+<%@ include file="./header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,4 +26,16 @@
 <!-- jQuery 3.5.1 -->
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+<!-- Javascript -->
+<script type="text/javascript">
+	function searchWithCategory(id) {
+		var foodCategory = document.getElementById(id).value;
+		$("input[name=category]").attr("value", foodCategory);
+		$("#searchForm").submit();
+	}
+
+	function searchWithKeyword() {
+		var foodKeyword = $("input[name=keyword]").val();
+	}
+</script>
 </html>
