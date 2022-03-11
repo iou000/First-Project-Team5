@@ -19,14 +19,14 @@
 				<input type="hidden" name="category" value=""/>
 				<input type="submit" value="검색"/>
 				<hr>
-				<button type="button" id="1" value="" onclick="searchWithCategory(this.id)">전체</button>
-				<button type="button" id="2" value="korean" onclick="searchWithCategory(this.id)">한식</button>
-				<button type="button" id="3" value="western" onclick="searchWithCategory(this.id)">양식</button>
-				<button type="button" id="4" value="japanese" onclick="searchWithCategory(this.id)">일식</button>
-				<button type="button" id="5" value="chinese" onclick="searchWithCategory(this.id)">중식</button>
-				<button type="button" id="6" value="flour-based" onclick="searchWithCategory(this.id)">분식</button>
-				<button type="button" id="7" value="snack" onclick="searchWithCategory(this.id)">간식</button>
-				<button type="button" id="8" value="dessert" onclick="searchWithCategory(this.id)">디저트</button>
+				<button type="button" id="all" value="" onclick="searchWithCategory(this.id)">전체</button>
+				<button type="button" id="korean" value="한식" onclick="searchWithCategory(this.id)">한식</button>
+				<button type="button" id="western" value="양식" onclick="searchWithCategory(this.id)">양식</button>
+				<button type="button" id="japanese" value="일식" onclick="searchWithCategory(this.id)">일식</button>
+				<button type="button" id="chinese" value="중식" onclick="searchWithCategory(this.id)">중식</button>
+				<button type="button" id="flour-based" value="분식" onclick="searchWithCategory(this.id)">분식</button>
+				<button type="button" id="snack" value="간식" onclick="searchWithCategory(this.id)">간식</button>
+				<button type="button" id="dessert" value="디저트" onclick="searchWithCategory(this.id)">디저트</button>
 			</form>
 		</div>
 	    <!--로고 들어가는 곳 시작--->
@@ -51,6 +51,11 @@
 	
 	function searchWithKeyword() {
 		var foodKeyword = $("input[name=keyword]").val();
+		// 키워드가 입력되지 않은 상태에서 검색 버튼을 누르면 알림창 띄우기
+		/*if(foodKeyword == null || foodKeyword == "") {
+			alert('키워드를 먼저 입력해주세요!');
+			$("input[name=keyword]").focus();
+		}*/
 	}
 </script>
 </html>
