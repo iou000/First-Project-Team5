@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author jihye
- *
- */
+*
+*클래스 : Action
+*작성자 : 김지혜
+*작성일 : 3/8/22
+*
+**/
 public interface Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

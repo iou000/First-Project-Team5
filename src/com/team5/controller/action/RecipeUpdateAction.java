@@ -1,50 +1,50 @@
 package com.team5.controller.action;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 import com.team5.dao.RecipeDAO;
 import com.team5.dao.UserDAO;
 import com.team5.vo.RecipeVO;
 import com.team5.vo.UserVO;
 
+
+
 /**
-*
-*클래스 : MyPageAction
-*작성자 : 김지혜
-*작성일 : 3/8/22
-*
-**/
-public class MyPageAction implements Action {
+ * @author    : seop
+ * @Date      : 2022. 3. 11.
+ * @ClassName : RecipeDeleteAction
+ * @Comment   : 레시피 수정 Action
+ */
+public class RecipeUpdateAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String url = "/mypage/mypage.jsp";
+		String url = "main.jsp";
+		
 		HttpSession session = request.getSession();
 		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
-
-		if (loginUser == null) {
+		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+        
+        if (loginUser == null) {
 			url = "app?command=login_form";
 		}
 		else {
-			UserDAO userDAO = UserDAO.getInstance();
+			
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
+			recipeDAO.deleteRecipe(recipeId);
 
-			List<RecipeVO> recipeVOS = recipeDAO.selectRecipeListByUserId(1);
-
-			System.out.println("MyPageAction");
-			request.setAttribute("loginUser", loginUser);
-			request.setAttribute("recipeVOS", recipeVOS);
+			System.out.println("RecipeUpdateAction");
 		}
-
-	
-		request.getRequestDispatcher(url).forward(request, response);
+		
+        request.getRequestDispatcher(url).forward(request, response);
 	}
 }
+

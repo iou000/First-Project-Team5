@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.team5.controller.action.Action;
 
 /**
- * @author jihye
- *
- */
+*
+*클래스 : RecipeServlet
+*작성자 : 김지혜
+*작성일 : 3/7/22
+*
+**/
 @WebServlet("/app")
 public class RecipeServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		System.out.println("RecipeServlet : " + command);
@@ -30,6 +31,7 @@ public class RecipeServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
+		doGet(request, response);
 	}
 }
