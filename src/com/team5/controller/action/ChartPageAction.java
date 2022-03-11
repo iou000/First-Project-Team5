@@ -13,6 +13,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+*
+*클래스 : ChartPageAction
+*작성자 : 김지혜
+*작성일 : 3/11/22
+*
+**/
 public class ChartPageAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

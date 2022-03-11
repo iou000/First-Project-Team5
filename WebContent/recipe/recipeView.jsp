@@ -31,13 +31,17 @@
 				<div class="title">
 					<h1>${recipeVO.title}</h1>
 					<span> by. ${recipeVO.username}</span>
-					<div class="updateAndDelete">
-						<form name="udform" method="post" action="app?command=recipe_update">
-							<input type="hidden" name="recipe_id" value="${recipeVO.id}" />
-							<button type="button" onclick="fnUpdateRecipe(); return false;">수정</button>
-							<button type="button" onclick="fnDeleteRecipe(); return false;">삭제</button>
-						</form>
-					</div>
+					<c:choose>
+						<c:when test="${recipeVO.user_id eq sessionScope.loginUser.id}">
+							<div class="updateAndDelete">
+								<form name="udform" method="post" action="app?command=recipe_update">
+									<input type="hidden" name="recipe_id" value="${recipeVO.id}" />
+									<button type="button" onclick="fnUpdateRecipe(); return false;">수정</button>
+									<button type="button" onclick="fnDeleteRecipe(); return false;">삭제</button>
+								</form>
+							</div>
+						</c:when>
+					</c:choose>
 				</div>
 				<div class="intro">
 					<h4>${recipeVO.intro}</h4>
