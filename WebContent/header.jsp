@@ -1,12 +1,12 @@
 <!-- author SJH -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Main Page</title> 
+    <meta charset="UTF-8">
+    <title>Main Page</title>
 </head>
 
 <body>
@@ -42,16 +42,44 @@
 		</div>
 		
 	    <!--로고 들어가는 곳 시작--->
-	   	<div id="logo">
-	
-	    </div>
-	    <!--로고 들어가는 곳 끝-->
+        <%--    <div id="logo">--%>
+        <%--        로고--%>
+        <%--    </div>--%>
+        <!--로고 들어가는 곳 끝-->
+        <!--마이페이지 로그인 시작-->
+        <!-- author 김지혜 -->
+        <nav id="catagory_menu">
+            <ul>
+                <c:choose>
+                    <c:when test="${empty sessionScope.loginUser}">
+                        <li>
+                            <a href="app?command=login_form" style="width:110px;">LOGIN</a>
+                        </li>
+                        <li><a href="app?command=join_form">JOIN</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li style="color:orange">
+                                ${sessionScope.loginUser.username}님 안녕하세요~~
+                        </li>
+                        <li><a href="app?command=logout">LOGOUT</a></li>
+                        <li>
+                            <a href="app?command=mypage">MY PAGE</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+                <li>
+                    <a href="app?command=mainpage">MAIN PAGE</a>
+                </li>
+            </ul>
+        </nav>
+        <!--마이페이지 로그인 끝-->
     </header>
     <!--헤더파일 들어가는 곳 끝 -->
 </body>
 
 <!-- jQuery 3.5.1 -->
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
 
 <!-- Javascript -->
 <script type="text/javascript">

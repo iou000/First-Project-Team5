@@ -31,14 +31,12 @@ public class ActionFactory {
             action = new LoginAction();
         } else if (command.equals("logout")) {
             action = new LogoutAction();
-        } else if (command.equals("mainpage")) {
-          action = new MainPageAction();
-        } else if(command.equals("mypage")) {
-          action = new MyPageAction();
         } else if(command.equals("recipe_view")) {
           action = new RecipeViewAction();
         } else if(command.equals("recipe_insert")) {
           action = new RecipeInsertAction();
+        } else if(command.equals("comment_insert")) {
+            action = new CommentInsertAction();
         }
         return action;
     }

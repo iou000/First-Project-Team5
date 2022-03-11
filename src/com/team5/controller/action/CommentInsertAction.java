@@ -1,18 +1,12 @@
 package com.team5.controller.action;
 
 import com.team5.dao.CommentDAO;
-import com.team5.dao.UserDAO;
-import com.team5.vo.CommentVO;
-import com.team5.vo.UserVO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Date;
 
 /**
 *
@@ -21,10 +15,10 @@ import java.util.Date;
 *작성일 : 3/11/22
 *
 **/
-public class CommentAction implements Action {
+public class CommentInsertAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "app?command=recipeView";
+        String url = "app?command=recipe_view";
 
         // comment 생성
         String contents = request.getParameter("contents");
@@ -35,6 +29,8 @@ public class CommentAction implements Action {
         // commentDAO insertComments
         CommentDAO commentDAO = CommentDAO.getInstance();
         commentDAO.insertComments(grade, contents, userId, recipeId);
+
+        url = url + "&recipeId=" + recipeId;
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);

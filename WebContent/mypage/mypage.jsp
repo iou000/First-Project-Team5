@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- @author jihye -->
+<!-- @author 김지혜 -->
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <%-- <%@ include file="sub_img.html"%>  --%>
@@ -9,18 +9,43 @@
   <article>
     <h2> My Page </h2>
     <p> 안녕하세요 ${loginUser.username} 님!!  </p>
-    <p> 내가 올린 레시피 </p>
-    <c:forEach items="${recipeVOS}"  var="recipeVOS">
-    <tr>
-      <td> ${recipeVOS.image}</td>
-      <td> ${recipeVOS.title} </td>
-      <td> ${recipeVOS.username} </td>
-<%--         <td>
-          <a href="NonageServlet?command=order_detail&oseq=${orderVO.oseq}">
-            조회 </a>
-       </td> --%>
-    </tr>
-    </c:forEach>
+
+    <div id="front">
+      <h2> 내가 올린 레시피 </h2>
+      <div id="bestProduct">
+        <c:forEach items="${recipeVOS }"  var="recipeVO">
+          <div id="item">
+            <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
+              <img src="images/don.jpg" />
+              <h3> ${recipeVO.id} </h3>
+              <p>${recipeVO.title} </p>
+              <p>${recipeVO.image} </p>
+              <p>${recipeVO.viewcount} </p>
+              <p>${recipeVO.username} </p>
+            </a>
+          </div>
+        </c:forEach>
+      </div>
+      <div class="clear"></div>
+
+      <h2> 나의 댓글 </h2>
+      <div id="bestProduct">
+        <c:forEach items="${recipeVOS }"  var="recipeVO">
+          <div id="item">
+            <a href="app?command=recipe_view">
+              <img src="product_images/don.jpg" />
+              <h3> ${recipeVO.id} </h3>
+              <p>${recipeVO.title} </p>
+              <p>${recipeVO.image} </p>
+              <p>${recipeVO.viewcount} </p>
+              <p>${recipeVO.username} </p>
+            </a>
+          </div>
+        </c:forEach>
+      </div>
+      <div class="clear"></div>
+    </div>
+
 
     
 <%--    <form name="form" method="post">--%>

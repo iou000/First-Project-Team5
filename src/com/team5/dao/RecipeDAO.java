@@ -173,6 +173,13 @@ public class RecipeDAO {
 	 * @return  : List<RecipeVO>
 	 * @Comment : 레시피 리스트 조회(카테고리,검색어, 평점순)
 	 */
+	/**
+	 * @Author  : seop
+	 * @Date    : 2022. 3. 9.
+	 * @Method  : selectRecipeList
+	 * @return  : List<RecipeVO>
+	 * @Comment : 레시피 리스트 조회(카테고리,검색어, 평점순)
+	 */
 	public List<RecipeVO> selectRecipeList(String category, String search_text) {
 		// 레시피 리스트 생성
 		List<RecipeVO> recipeList= new ArrayList<>();
@@ -200,7 +207,7 @@ public class RecipeDAO {
 				recipeVO.setViewcount(rs.getInt("viewcount"));
 				recipeVO.setUsername(rs.getString("username"));
 				recipeVO.setGrade(rs.getInt("grade"));
-				
+
 				recipeList.add(recipeVO);
 			}
 		} catch (Exception e){
@@ -208,7 +215,7 @@ public class RecipeDAO {
 		} finally {
 			DBManager.close(conn, cstmt, rs);
 		}
-		
+
 		return recipeList;
 	}//end selectRecipeList
 	/**
