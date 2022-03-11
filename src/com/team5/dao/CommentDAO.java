@@ -1,7 +1,6 @@
 package com.team5.dao;
 
 import com.team5.vo.CommentVO;
-import com.team5.vo.RecipeVO;
 import util.DBManager;
 
 import java.sql.CallableStatement;
@@ -37,7 +36,6 @@ public class CommentDAO {
 	public ArrayList<CommentVO> getCommentsById(int recipe_id) {
 		ArrayList<CommentVO> commentVOS = new ArrayList<>();
 		String runSP = "{ CALL comment_pack.comment_select_by_recipe_id(?, ?)}";
-		CommentVO commentVO = new CommentVO();
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -54,13 +52,13 @@ public class CommentDAO {
 			// ResultSet에 저장된 각각의 결과에 대해서
 			while (rs.next()) {
 				// CommentVO 객체를 생성해서 author, grade, contents, updatedat을 설정
-				CommentVO vo = commentVO;
-				vo.setAuthor(rs.getString("username"));
-				vo.setGrade(rs.getInt("grade"));
-				vo.setContents(rs.getString("contents"));
-				vo.setUpdatedAt(rs.getDate("updatedAt"));
+				CommentVO commentVO = new CommentVO();
+				commentVO.setAuthor(rs.getString("username"));
+				commentVO.setGrade(rs.getInt("grade"));
+				commentVO.setContents(rs.getString("contents"));
+				commentVO.setUpdatedAt(rs.getDate("updatedAt"));
 				// 생성한 각각의 CommentVO 객체를 리스트에 추가
-				commentVOS.add(vo);
+				commentVOS.add(commentVO);
 			}
 			
 			// 사용한 conn, cstmt, rs 종료
