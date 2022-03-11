@@ -1,3 +1,4 @@
+<!-- author seop -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
@@ -22,7 +23,6 @@
 
 </style>
 </head>
-<!-- seop -->
 <body>
 	 <div>
 	 	<form name="form" method="post" action="/app?command=recipe_insert" onsubmit="return recipeInsertSubmit()">
@@ -46,14 +46,14 @@
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 재료
-	 				<input class="recipeInput" type="text" name="ingredients"value="" placeholder="레시피 재료을 입력하세요">
+	 				<input class="recipeInput" type="text" name="ingredients" value="" placeholder="레시피 재료을 입력하세요" />
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 설명
 	 				<textarea class="recipeInput" type="text" name="details" value="" placeholder="레시피를 설명해주세요"></textarea>
 	 			</label>  
 	 			<label class="recipeInsertLabel"> 이미지
-	 				<textarea class="recipeInput" type="text" name="image" value="" placeholder="이미지"></textarea>
+	 				<input class="recipeInput" type="text" name="image" value="" placeholder="이미지" />
 	 			</label>
 	 		</div>
 	 		<div>
@@ -63,7 +63,7 @@
 	 </div>
 </body>
 <script>
-	//submit 유효성 검사
+	/* submit 유효성 검사 */
 	function recipeInsertSubmit(e) {
 		var title = $('input[name=title]').val();
 		console.log(title);

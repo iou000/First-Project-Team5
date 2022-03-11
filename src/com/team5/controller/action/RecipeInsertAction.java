@@ -33,10 +33,10 @@ public class RecipeInsertAction implements Action {
 		RecipeVO recipeVO = new RecipeVO();
 		recipeVO.setImage("recipe.jpg");
 		recipeVO.setTitle(request.getParameter("title"));
-		recipeVO.setIntro(request.getParameter("intro"));
+		recipeVO.setIntro(request.getParameter("intro").replace("\r\n","<br>"));
 		recipeVO.setCategory(request.getParameter("category"));
 		recipeVO.setIngredients(request.getParameter("ingredients"));
-		recipeVO.setDetails(request.getParameter("details"));
+		recipeVO.setDetails(request.getParameter("details").replace("\r\n","<br>"));
 		recipeVO.setUser_id(1);
 		
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
