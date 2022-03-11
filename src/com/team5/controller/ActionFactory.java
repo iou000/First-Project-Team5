@@ -30,8 +30,6 @@ public class ActionFactory {
             action = new MainPageAction();
         } else if (command.equals("mypage")) {
             action = new MyPageAction();
-        } else if (command.equals("recipeView")) {
-            action = new RecipeViewAction();
         } else if (command.equals("join_form")) {
             action = new JoinFormAction();
         } else if (command.equals("join")) {
@@ -46,7 +44,7 @@ public class ActionFactory {
           action = new MainPageAction();
         } else if(command.equals("mypage")) {
           action = new MyPageAction();
-        } else if(command.equals("recipe_viiew")) {
+        } else if(command.equals("recipe_view")) {
           action = new RecipeViewAction();
         } else if(command.equals("recipe_insert")) {
           action = new RecipeInsertAction();
