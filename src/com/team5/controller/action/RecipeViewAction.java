@@ -21,16 +21,16 @@ public class RecipeViewAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String url = "recipe/recipeView.jsp";
-	    int recipeId = Integer.parseInt(request.getParameter("recipeId").trim());
+	    //int recipeId = Integer.parseInt(request.getParameter("recipeId").trim());
 
 	    RecipeDAO recipeDAO = RecipeDAO.getInstance();
-	    RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
+	    RecipeVO recipeVO = recipeDAO.selectRecipeById(48);
 
-	    CommentDAO commentDAO = CommentDAO.getInstance();
-	    ArrayList<CommentVO> commentList = commentDAO.getComments(recipeId);
+	    //CommentDAO commentDAO = CommentDAO.getInstance();
+	    //ArrayList<CommentVO> commentList = commentDAO.getComments(1);
 
 	    request.setAttribute("recipeVO", recipeVO);
-	    request.setAttribute("commentList", commentList);
+	    //request.setAttribute("commentList", commentList);
 	    request.getRequestDispatcher(url).forward(request, response);
 	}
 }
