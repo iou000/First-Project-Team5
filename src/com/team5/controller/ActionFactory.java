@@ -17,10 +17,12 @@ public class ActionFactory {
         Action action = null;
 
         System.out.println("ActionFactory : " + command);
-        if (command.equals("main")) {
+        if (command.equals("mainpage")) {
             action = new MainPageAction();
         } else if (command.equals("mypage")) {
             action = new MyPageAction();
+        } else if (command.equals("chartpage")) {
+            action = new ChartPageAction();
         } else if (command.equals("join_form")) {
             action = new JoinFormAction();
         } else if (command.equals("join")) {
