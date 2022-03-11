@@ -1,3 +1,5 @@
+<!-- @author 김지혜 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
@@ -58,7 +60,7 @@
 		<!-- // 레시피 상세 뷰 -->
 		<div>
 			<h1>댓글 작성 form</h1>
-			<form method="post" action="app?command=insert_comment">
+			<form method="post" action="app?command=comment_insert">
 				<fieldset>
 					<legend></legend>
 					<label>Content</label>

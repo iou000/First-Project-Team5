@@ -1,3 +1,5 @@
+<!-- @author 김지혜 -->
+
 function go_save() {
     if (document.join_form.username.value === "") {
         alert("아이디를 입력하여 주세요.");

@@ -13,12 +13,13 @@
 	<!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
 	<div id="recipes" align="center">
 		<c:forEach var="recipeVO" items="${recipeList}">
-			<a href="app?command=mainpage&id=${recipeVO.id}">테스트</a>
-			<!-- <img src="recipe_images/${recipeVO.image}"/> -->
-			${recipeVO.title}
-			${recipeVO.grade}
-			${recipeVO.username}
-			<br> 
+			<a href="app?command=recipe_view&recipeId=${recipeVO.id}">
+				<!-- <img src="recipe_images/${recipeVO.image}"/> -->
+				${recipeVO.title}
+				${recipeVO.grade}
+				${recipeVO.username}
+			</a>
+			<br>
 		</c:forEach>
 	</div>
 </body>

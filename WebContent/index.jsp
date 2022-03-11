@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mac
-  Date: 3/9/22
-  Time: 1:08 AM
-  To change this template use File | Settings | File Templates.
---%>
+<!-- @author 김지혜 -->
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
