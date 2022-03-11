@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>레시피 상세 페이지</title>
-	<link rel="stylesheet" type="text/css" href="./recipeView.css">
+	<link href="css/recipeView.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -13,7 +14,7 @@
 		<div class="content">
 			<!-- 레시피 이미지 영역 //-->
 			<div class="imageArea">
-				<img src="../images/don.jpg" alt="">
+				<img src="images/don.jpg" alt="">
 			</div>
 			<!-- // 레시피 이미지 영억 -->
 			
