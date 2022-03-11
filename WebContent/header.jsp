@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <title>Main Page</title>
 </head>
-
 <body>
 	<!--헤더파일 들어가는 곳 시작 -->
 	<header>

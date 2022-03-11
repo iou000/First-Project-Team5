@@ -14,7 +14,8 @@
 	<div id="recipes" align="center">
 		<c:forEach var="recipeVO" items="${recipeList}">
 			<a href="app?command=recipe_view&recipeId=${recipeVO.id}">
-				<!-- <img src="recipe_images/${recipeVO.image}"/> -->
+				<!-- <img src="recipe/${recipeVO.image}"/> -->
+				<img src="recipe/dup.imb"/>
 				${recipeVO.title}
 				${recipeVO.grade}
 				${recipeVO.username}
@@ -27,16 +28,4 @@
 <!-- jQuery 3.5.1 -->
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-<!-- Javascript -->
-<script type="text/javascript">
-	function searchWithCategory(id) {
-		var foodCategory = document.getElementById(id).value;
-		$("input[name=category]").attr("value", foodCategory);
-		$("#searchForm").submit();
-	}
-
-	function searchWithKeyword() {
-		var foodKeyword = $("input[name=keyword]").val();
-	}
-</script>
 </html>
