@@ -184,8 +184,8 @@ public class RecipeDAO {
 			// CallableStatement로 저장 프로시저 호출
 			cstmt = conn.prepareCall(runSP);
 			// 입력 파라미터
-			cstmt.setString(1, category);
-			cstmt.setString(2, search_text);
+			cstmt.setString(1, "");
+			cstmt.setString(2, "");
 			// 출력 파라미터
 			cstmt.registerOutParameter(3, oracle.jdbc.OracleTypes.CURSOR);
 			//실행 (리턴값: ResultSet)

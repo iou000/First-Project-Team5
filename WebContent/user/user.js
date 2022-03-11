@@ -20,7 +20,7 @@ function username_check() {
     document.join_form.username.focus();
     return;
   }
-  var url = "app?command=username_check_form&username="
+  var app"app?command=username_check_form&username="
 + document.join_form.username.value;
   window.open( url, "_blank_1",
 "toolbar=no, menubar=no, scrollbars=yes, resizable=no, wusernameth=330, height=200");
