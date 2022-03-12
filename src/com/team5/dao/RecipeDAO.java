@@ -46,10 +46,6 @@ public class RecipeDAO {
 			// CallableStatement로 저장 프로시저 호출
 			cstmt = conn.prepareCall(runSP);
 			
-			// 이미지 경로를 불러와서 File 및 FileInputStream 객체 생성
-			//File file = new File("images/recipe/main_img.jpg");
-			//FileInputStream fis = new FileInputStream(file);
-			
 			// 저장프로시저 파라미터 입력
 			cstmt.setString(1, recipeVO.getTitle());
 			cstmt.setString(2, recipeVO.getIntro());
@@ -57,7 +53,6 @@ public class RecipeDAO {
 			cstmt.setString(4, recipeVO.getIngredients());
 			cstmt.setString(5, recipeVO.getDetails());
 			cstmt.setString(6, recipeVO.getImage());
-			//cstmt.setBinaryStream(6, fis, (int) file.length()); // 경로에 있는 이미지를 불러와서 DB에 업로드
 			cstmt.setInt(7, recipeVO.getUser_id());
 			System.out.println(runSP);
 			
