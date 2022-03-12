@@ -24,19 +24,23 @@ public class RecipeInsertAction implements Action {
 		String url = "app?command=mainpage";
 		HttpSession session = request.getSession();
 		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
-
-		RecipeVO recipeVO = new RecipeVO();
-		recipeVO.setTitle(request.getParameter("title"));
-		recipeVO.setIntro(request.getParameter("intro").replace("\r\n","<br>"));
-		recipeVO.setCategory(request.getParameter("category"));
-		recipeVO.setIngredients(request.getParameter("ingredients"));
-		recipeVO.setDetails(request.getParameter("details").replace("\r\n","<br>"));
-		recipeVO.setImage("recipe.jpg");
-		recipeVO.setUser_id(loginUser.getId());
 		
-		RecipeDAO recipeDAO = RecipeDAO.getInstance();
-		recipeDAO.insertRecipe(recipeVO);
-		System.out.println(recipeVO.getTitle());
+		if (loginUser == null) {
+			url = "app?command=login_form";
+		}
+		else {
+			RecipeVO recipeVO = new RecipeVO();
+			recipeVO.setTitle(request.getParameter("title"));
+			recipeVO.setIntro(request.getParameter("intro").replace("\r\n","<br>")); //개행문자를 <br>로 바꿔서 DB에 저장
+			recipeVO.setCategory(request.getParameter("category"));
+			recipeVO.setIngredients(request.getParameter("ingredients"));
+			recipeVO.setDetails(request.getParameter("details").replace("\r\n","<br>")); //개행문자를 <br>로 바꿔서 DB에 저장
+			recipeVO.setImage("recipe.jpg");
+			recipeVO.setUser_id(loginUser.getId()); //레시피 생성시 현재 세션에 있는 사용자의 ID를 등록함.
+			
+			RecipeDAO recipeDAO = RecipeDAO.getInstance();
+			recipeDAO.insertRecipe(recipeVO); //레시피 생성
+		}
 		
 	    response.sendRedirect(url);
 	}

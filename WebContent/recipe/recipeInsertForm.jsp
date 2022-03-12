@@ -1,4 +1,4 @@
-<!-- 레시피 생성 폼 seop -->
+<!-- 레시피 생성 폼 @author seop -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
@@ -53,33 +53,65 @@
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 설명
-	 				<textarea class="recipeInput" type="text" name="details" value="" placeholder="레시피를 설명해주세요"></textarea>
+	 				<textarea class="recipeInput" name="details" placeholder="레시피를 설명해주세요"></textarea>
 	 			</label>  
 	 			<label class="recipeInsertLabel"> 이미지
 	 				<input class="recipeInput" type="text" name="image" value="" placeholder="이미지" />
 	 			</label>
 	 		</div>
 	 		<div>
-	 			<button type="submit">등록d</button>
+	 			<button type="submit">레시피 등록하기</button>
 	 		</div>
 	 	</form>
 	 </div>
 </body>
 <script>
-	/* submit 유효성 검사 */
+	/* submit 유효성 검사 @author seop */
 	function recipeInsertSubmit(e) {
 		var title = $('input[name=title]').val();
-		console.log(title);
+		var intro = $('input[name=intro]').val();
+		var category = $('input[name=category]').val();
+		var ingredients = $('input[name=ingredients]').val();
+		var details = $('input[name=details]').val();
+		var image = $('input[name=image]').val();
+		
 		if(title == null || title == "") {
-			alert('제목을 입려해주세요');
+			alert('제목을 입력해주세요.');
 			$('input[name=title]').focus();
 			return false;
 		}
-		else{
-			if(confirm('레시피 생성 할게요?')){
+		else if(intro == null || intro == ""){
+			alert('레시피 소개를 입력해주세요.');
+			$('input[name=intro]').focus();
+			return false;
+		}
+		else if(category == null || category == ""){
+			alert('레시피 분류 골라주세요.');
+			$('input[name=category]').focus();
+			return false;
+		}
+		else if(ingredients == null || ingredients == ""){
+			alert('레시피 재료를 입력해주세요.');
+			$('input[name=ingredients]').focus();
+			return false;
+		}
+		else if(details == null || details == ""){
+			alert('레시피 설명을 입력해주세요.');
+			$('input[name=details]').focus();
+			return false;
+		}
+		else if(image == null || image == ""){
+			if(confirm('이미지 없이 레시피를 생성할까요?')){
 				return true;
 			}
-			return false
+			$('input[name=image]').focus();
+			return false;
+		}
+		else{
+			if(confirm('레시피를 생성 할까요?')){
+				return true;
+			}
+			return false;
 		}
 	}
 
