@@ -46,10 +46,10 @@ public class RecipeInsertAction implements Action {
 		recipeVO.setImage(imageFileName);*/
 		
 		recipeVO.setTitle(request.getParameter("title"));
-		recipeVO.setIntro(request.getParameter("intro").replace("\r\n","<br>"));
+		recipeVO.setIntro(request.getParameter("intro").replace("\r\n","<br>")); //개행문자를 <br>로 변경 후 DB에 저장
 		recipeVO.setCategory(request.getParameter("category"));
 		recipeVO.setIngredients(request.getParameter("ingredients"));
-		recipeVO.setDetails(request.getParameter("details").replace("\r\n","<br>"));
+		recipeVO.setDetails(request.getParameter("details").replace("\r\n","<br>")); //개행문자를 <br>로 변경 후 DB에 저장
 		recipeVO.setImage(request.getParameter("image"));
 		recipeVO.setUser_id(loginUser.getId());
 		

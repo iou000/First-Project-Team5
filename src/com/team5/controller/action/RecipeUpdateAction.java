@@ -40,16 +40,16 @@ public class RecipeUpdateAction implements Action {
 		else {
 			RecipeVO recipeVO = new RecipeVO();
 	        recipeVO.setTitle(request.getParameter("title"));
-	        recipeVO.setIntro(request.getParameter("intro"));
+	        recipeVO.setIntro(request.getParameter("intro").replace("\r\n","<br>")); //개행문자를 <br>로 변경 후 DB에 저장
 	        recipeVO.setCategory(request.getParameter("category"));
 	        recipeVO.setIngredients(request.getParameter("ingredients"));
-	        recipeVO.setDetails(request.getParameter("details"));
+	        recipeVO.setDetails(request.getParameter("details").replace("\r\n","<br>")); //개행문자를 <br>로 변경 후 DB에 저장
 	        recipeVO.setImage(request.getParameter("image"));
 	        
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
 			recipeDAO.updateRecipe(recipeId,recipeVO); //레시피 업데이트
 			
-			url += "&recipeId="+recipeId; //수정한 레시피로 이동하기 위한 url 설정.
+			url += "&recipeId="+recipeId; //수정한 레시피 상세로 이동하기 위한 url 설정.
 		}
         response.sendRedirect(url);
 	}

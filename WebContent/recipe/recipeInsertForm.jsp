@@ -73,7 +73,7 @@
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 소개
-	 				<input type="text" class="recipeInput" name="intro" placeholder="레시피에 대해서 소개해주세요."/>
+	 				<textarea class="recipeInput" name="intro" placeholder="레시피 소개 입력하세요"></textarea>
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 분류
@@ -125,10 +125,10 @@
 	/* submit 유효성 검사 @author seop */
 	function recipeInsertSubmit(e) {
 		var title = $('input[name=title]').val();
-		var intro = $('input[name=intro]').val();
-		var category = $('input[name=category]').val();
+		var intro = $('textarea[name=intro]').val();
+		var category = $('select[name=category]').val();
 		var ingredients = $('input[name=ingredients]').val();
-		var details = $('input[name=details]').val();
+		var details = $('textarea[name=details]').val();
 		var image = $('input[name=image]').val();
 		
 		if(title == null || title == "") {

@@ -35,7 +35,6 @@
 	 			<label class="recipeInsertLabel"> 레시피 소개
 	 				<textarea class="recipeInput" name="intro" placeholder="레시피 소개 입력하세요">${recipeVO.intro}</textarea>
 	 			</label>
-	 			<h1>${recipeVO.category}</h1>
 	 			<label class="recipeInsertLabel"> 레시피 분류
 	 				 <select class="bikeStyle" name="category">
                         <option>-- 레시피 분류 선택 --</option>
@@ -71,10 +70,10 @@
 	/* submit 유효성 검사 @author seop */
 	function recipeInsertSubmit(e) {
 		var title = $('input[name=title]').val();
-		var intro = $('input[name=intro]').val();
-		var category = $('input[name=category]').val();
+		var intro = $('textarea[name=intro]').val();
+		var category = $('select[name=category]').val();
 		var ingredients = $('input[name=ingredients]').val();
-		var details = $('input[name=details]').val();
+		var details = $('textarea[name=details]').val();
 		var image = $('input[name=image]').val();
 		
 		if(title == null || title == "") {
@@ -110,7 +109,7 @@
 			return false;
 		}
 		else{
-			if(confirm('레시피를 생성 할까요?')){
+			if(confirm('레시피를 수정 할까요?')){
 				return true;
 			}
 			return false;
