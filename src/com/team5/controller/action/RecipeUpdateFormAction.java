@@ -31,7 +31,7 @@ public class RecipeUpdateFormAction implements Action {
 		} else {
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
 			RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId); //DB에서 해당 레시피 정보를 받아옴
-			recipeVO.setDetails(recipeVO.getDetails().replace("<br>","\r\n")); // DB에서 가져온 문자열의 <br>을 줄바꿈문자로 변경.
+			recipeVO.setDetails(recipeVO.getDetails().replace("<br>","\r\n")); // DB에서 가져온 문자열의 <br>을 줄바꿈 문자로 변경.
 			
 			request.setAttribute("recipeVO", recipeVO); //DB에서 받아온 레시피 정보를 request객체에 바인딩.
 		}
