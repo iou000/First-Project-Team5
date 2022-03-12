@@ -37,7 +37,6 @@
         <button type="button" id="flour-based" value="분식" onclick="searchWithCategory(this.id)">분식</button>
         <button type="button" id="snack" value="간식" onclick="searchWithCategory(this.id)">간식</button>
         <button type="button" id="dessert" value="디저트" onclick="searchWithCategory(this.id)">디저트</button>
-        <hr>
     </div>
 
     <!--로고 들어가는 곳 시작--->
@@ -73,15 +72,15 @@
                 <a href="app?command=chartpage">CHART PAGE</a>
             </li>
         </ul>
+        <hr>
     </nav>
     <!--마이페이지 로그인 끝-->
 </header>
 <!--헤더파일 들어가는 곳 끝 -->
 </body>
 
-<!-- jQuery 3.5.1 -->
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <!-- Javascript -->
 <script type="text/javascript">
