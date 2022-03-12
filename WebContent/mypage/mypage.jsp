@@ -1,52 +1,47 @@
 <!-- @author 김지혜 -->
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
-<%-- <%@ include file="sub_img.html"%>  --%>
-<%-- <%@ include file="sub_menu.jsp" %>    --%>
-
-  <article>
-    <h2> My Page </h2>
-    <p> 안녕하세요 ${loginUser.username} 님!!  </p>
-
-    <div id="front">
-      <h2> 내가 올린 레시피 </h2>
-      <div id="bestProduct">
-        <c:forEach items="${recipeVOS }"  var="recipeVO">
-          <div id="item">
-            <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
-              <img src="images/don.jpg" />
-              <h3> ${recipeVO.id} </h3>
-              <p>${recipeVO.title} </p>
-              <p>${recipeVO.image} </p>
-              <p>${recipeVO.viewcount} </p>
-              <p>${recipeVO.username} </p>
-            </a>
-          </div>
-        </c:forEach>
-      </div>
-      <div class="clear"></div>
-
-      <h2> 나의 댓글 </h2>
-      <div id="bestProduct">
-        <c:forEach items="${recipeVOS }"  var="recipeVO">
-          <div id="item">
-            <a href="app?command=recipe_view">
-              <img src="product_images/don.jpg" />
-              <h3> ${recipeVO.id} </h3>
-              <p>${recipeVO.title} </p>
-              <p>${recipeVO.image} </p>
-              <p>${recipeVO.viewcount} </p>
-              <p>${recipeVO.username} </p>
-            </a>
-          </div>
-        </c:forEach>
-      </div>
-      <div class="clear"></div>
-    </div>
-
-
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>My Page</title>
+</head>
+<body>
+	<article>
+    	<h2>My Page</h2>
+    	<p> 안녕하세요 ${loginUser.username} 님!!  </p>
+		<a href="app?command=recipe_insert&id=${loginUser.id}">레시피 만들기</a>
+		<div id="front">
+			<h2> 내가 올린 레시피 </h2>
+			<div id="myrecipe">
+	        	<c:forEach items="${recipeVOS }"  var="recipeVO">
+		        	<div id="item">
+			            <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
+			              <img src="images/don.jpg" />
+			              <p>${recipeVO.title} ${recipeVO.image} ${recipeVO.viewcount} ${recipeVO.username}</p>
+			            </a>
+		            </div>
+	        	</c:forEach>
+	       	</div>
+	       	<hr>
+	       	
+	       	<h2> 나의 댓글 </h2>
+	       	<div id="bestProduct">
+	       		<c:forEach items="${recipeVOS }"  var="recipeVO">
+	       			<div id="item">
+	       				<a href="app?command=recipe_view">
+	       					<img src="images/don.jpg" />
+	       					<p>${recipeVO.title} ${recipeVO.image} ${recipeVO.viewcount} ${recipeVO.username} </p>
+	      				</a>
+	     			</div>
+	    		</c:forEach>
+	    	</div>
+	    </div>
+    </article>
+</body>
+</html>
     
 <%--    <form name="form" method="post">--%>
 
@@ -77,6 +72,6 @@
 <%--        class="cancel"  onclick="location.href='NonageServlet?command=index'">--%>
 <%--      </div>--%>
 <%--    </form>--%>
-  </article>
+
 
 <%-- <%@ include file="../footer.jsp" %> --%>

@@ -1,13 +1,16 @@
 package com.team5.dao;
 
-import com.team5.vo.RecipeVO;
-import util.DBManager;
-
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.team5.vo.RecipeVO;
+
+import util.DBManager;
 
 
 /**
@@ -36,21 +39,28 @@ public class RecipeDAO {
 	 */
 	public void insertRecipe(RecipeVO recipeVO) {
 		// 호출할 SQL 문장
-		String runSP = "{ CALL recipes_pack.recipes_insert(?, ?, ?, ?, ?, ?, ?)}";
+		String runSP = "{ CALL recipe_pack.recipe_insert(?, ?, ?, ?, ?, ?, ?)}";
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
 			// CallableStatement로 저장 프로시저 호출
 			cstmt = conn.prepareCall(runSP);
+			
+			// 이미지 경로를 불러와서 File 및 FileInputStream 객체 생성
+			File file = new File("images/recipe/main_img.jpg");
+			FileInputStream fis = new FileInputStream(file);
+			
 			// 저장프로시저 파라미터 입력
 			cstmt.setString(1, recipeVO.getTitle());
 			cstmt.setString(2, recipeVO.getIntro());
 			cstmt.setString(3, recipeVO.getCategory());
 			cstmt.setString(4, recipeVO.getIngredients());
 			cstmt.setString(5, recipeVO.getDetails());
-			cstmt.setString(6, recipeVO.getImage());
+			//cstmt.setString(6, recipeVO.getImage());
+			cstmt.setBinaryStream(6, fis, (int) file.length()); // 경로에 있는 이미지를 불러와서 DB에 업로드
 			cstmt.setInt(7, recipeVO.getUser_id());
 			System.out.println(runSP);
+			
 			//실행
 			cstmt.executeUpdate();
 			System.out.println("레시피 생성 완료");
@@ -69,12 +79,17 @@ public class RecipeDAO {
 	 */
 	public void updateRecipe(RecipeVO recipeVO) {
 		// 호출할 저장 프로시저
-		String runSP = "{ CALL recipes_pack.recipes_update(?, ?, ?, ?, ?, ?, ?)}";
+		String runSP = "{ CALL recipe_pack.recipe_update(?, ?, ?, ?, ?, ?, ?)}";
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
 			// CallableStatement로 저장 프로시저 호출
 			cstmt = conn.prepareCall(runSP);
+			
+			// 이미지 경로를 불러와서 File 및 FileInputStream 객체 생성
+			File file = new File("images/recipe/main_img.jpg");
+			FileInputStream fis = new FileInputStream(file);
+			
 			// 저장프로시저 파라미터 입력
 			cstmt.setInt(1, recipeVO.getId());
 			cstmt.setString(2, recipeVO.getTitle());
@@ -82,8 +97,10 @@ public class RecipeDAO {
 			cstmt.setString(4, recipeVO.getCategory());
 			cstmt.setString(5, recipeVO.getIngredients());
 			cstmt.setString(6, recipeVO.getDetails());
-			cstmt.setString(7, recipeVO.getImage());
+			//cstmt.setString(7, recipeVO.getImage());
+			cstmt.setBinaryStream(7, fis, (int) file.length()); // 경로에 있는 이미지를 불러와서 DB에 업로드
 			System.out.println(runSP);
+			
 			//실행
 			cstmt.executeUpdate();
 			System.out.println(recipeVO.getId()+"번  "+"레시피 수정 완료");
@@ -102,7 +119,7 @@ public class RecipeDAO {
 	 */
 	public void deleteRecipe(int id) {
 		// 호출할 저장 프로시저
-		String runSP = "{ CALL recipes_pack.recipes_delete(?)}";
+		String runSP = "{ CALL recipe_pack.recipe_delete(?)}";
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -129,7 +146,7 @@ public class RecipeDAO {
 	 */
 	public RecipeVO selectRecipeById(int id) {
 		// 호출할 저장 프로시저
-		String runSP = "{ CALL recipes_pack.recipes_select_by_id(?, ?)}";
+		String runSP = "{ CALL recipe_pack.recipe_select_by_id(?, ?)}";
 		RecipeVO recipeVO = new RecipeVO();
 		try {
 			// DB연결
@@ -146,17 +163,17 @@ public class RecipeDAO {
 			rs = (ResultSet)cstmt.getObject(2);
 			while(rs.next()) {
 				recipeVO.setId(rs.getInt("id"));
-				recipeVO.setImage(rs.getString("image"));
 				recipeVO.setTitle(rs.getString("title"));
 				recipeVO.setIntro(rs.getString("intro"));
+				recipeVO.setGrade(rs.getInt("grade"));
 				recipeVO.setCategory(rs.getString("category"));
 				recipeVO.setIngredients(rs.getString("ingredients"));
 				recipeVO.setDetails(rs.getString("details"));
+				recipeVO.setImage(rs.getString("image"));
 				recipeVO.setCreatedAt(rs.getDate("createdAt"));
 				recipeVO.setUpdatedAt(rs.getDate("updatedAt"));
 				recipeVO.setViewcount(rs.getInt("viewCount"));
 				recipeVO.setUser_id(rs.getInt("user_id"));
-				recipeVO.setGrade(rs.getInt("grade"));
 				recipeVO.setUsername(rs.getString("username"));
 			}
 		} catch (Exception e){
@@ -184,7 +201,7 @@ public class RecipeDAO {
 		// 레시피 리스트 생성
 		List<RecipeVO> recipeList= new ArrayList<>();
 		// 호출할 저장 프로시저
-		String runSP = "{ CALL recipes_pack.recipes_select_list(?, ?, ?)}";
+		String runSP = "{ CALL recipe_pack.recipe_select_list(?, ?, ?)}";
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -203,11 +220,10 @@ public class RecipeDAO {
 				RecipeVO recipeVO = new RecipeVO();
 				recipeVO.setId(rs.getInt("id"));
 				recipeVO.setTitle(rs.getString("title"));
+				recipeVO.setGrade(rs.getInt("grade"));
 				recipeVO.setImage(rs.getString("image"));
 				recipeVO.setViewcount(rs.getInt("viewcount"));
 				recipeVO.setUsername(rs.getString("username"));
-				recipeVO.setGrade(rs.getInt("grade"));
-
 				recipeList.add(recipeVO);
 			}
 		} catch (Exception e){
@@ -215,7 +231,6 @@ public class RecipeDAO {
 		} finally {
 			DBManager.close(conn, cstmt, rs);
 		}
-
 		return recipeList;
 	}//end selectRecipeList
 	/**
@@ -229,7 +244,7 @@ public class RecipeDAO {
 		// 레시피 리스트 생성
 		List<RecipeVO> recipeList= new ArrayList<>();
 		// 호출할 저장 프로시저
-		String runSP = "{ CALL recipes_pack.recipes_select_list_by_user_id(?, ?)}";
+		String runSP = "{ CALL recipe_pack.recipe_select_list_by_user_id(?, ?)}";
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -247,11 +262,10 @@ public class RecipeDAO {
 				RecipeVO recipeVO = new RecipeVO();
 				recipeVO.setId(rs.getInt("id"));
 				recipeVO.setTitle(rs.getString("title"));
+				recipeVO.setGrade(rs.getInt("grade"));
 				recipeVO.setImage(rs.getString("image"));
 				recipeVO.setViewcount(rs.getInt("viewcount"));
-				recipeVO.setUsername(rs.getString("username"));
-				recipeVO.setGrade(rs.getInt("grade"));
-				
+				recipeVO.setUsername(rs.getString("username"));				
 				recipeList.add(recipeVO);
 			}
 		} catch (Exception e){
