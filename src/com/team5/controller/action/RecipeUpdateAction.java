@@ -32,27 +32,25 @@ public class RecipeUpdateAction implements Action {
 		HttpSession session = request.getSession();
 		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
-        RecipeVO recipeVO = new RecipeVO();
-        
-        recipeVO.setTitle(request.getParameter("title"));
-        recipeVO.setIntro(request.getParameter("intro"));
-        recipeVO.setCategory(request.getParameter("category"));
-        recipeVO.setIngredients(request.getParameter("ingredients"));
-        recipeVO.setDetails(request.getParameter("details"));
-        recipeVO.setImage(request.getParameter("image"));
 		
 		
         if (loginUser == null) {
 			url = "app?command=login_form";
 		}
 		else {
-			url += "&recipeId="+recipeId;
+			RecipeVO recipeVO = new RecipeVO();
+	        recipeVO.setTitle(request.getParameter("title"));
+	        recipeVO.setIntro(request.getParameter("intro"));
+	        recipeVO.setCategory(request.getParameter("category"));
+	        recipeVO.setIngredients(request.getParameter("ingredients"));
+	        recipeVO.setDetails(request.getParameter("details"));
+	        recipeVO.setImage(request.getParameter("image"));
+	        
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
-			recipeDAO.updateRecipe(recipeId,recipeVO);
-
-			System.out.println("RecipeUpdateAction");
+			recipeDAO.updateRecipe(recipeId,recipeVO); //레시피 업데이트
+			
+			url += "&recipeId="+recipeId; //수정한 레시피로 이동하기 위한 url 설정.
 		}
-		
         response.sendRedirect(url);
 	}
 }
