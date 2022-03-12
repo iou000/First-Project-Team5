@@ -1,18 +1,14 @@
 package com.team5.controller.action;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 
 import com.team5.dao.RecipeDAO;
 import com.team5.vo.RecipeVO;
-import com.team5.vo.UserVO;
+
 
 /**
  * @author    : seop
@@ -23,7 +19,7 @@ import com.team5.vo.UserVO;
 public class RecipeInsertAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "main.jsp";
+		String url = "app?command=mainpage";
 		//HttpSession session = request.getSession();
 		//UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 

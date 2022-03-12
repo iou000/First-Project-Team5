@@ -37,6 +37,8 @@ public class ActionFactory {
           action = new RecipeViewAction();
         } else if(command.equals("recipe_insert")) {
           action = new RecipeInsertAction();
+        } else if(command.equals("recipe_insert_form")) {
+        	action = new RecipeInsertFormAction();
         } else if(command.equals("recipe_delete")) {
             action = new RecipeDeleteAction();
         } else if(command.equals("recipe_update")) {
