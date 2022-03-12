@@ -1,4 +1,4 @@
-<!-- author seop -->
+<!-- 레시피 생성 폼 seop -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
@@ -32,16 +32,19 @@
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 소개
-	 				<textarea class="recipeInput" type="text" name="intro" value="" placeholder="레시피 소개 입력하세요"></textarea>
+	 				<textarea class="recipeInput" name="intro" placeholder="레시피 소개 입력하세요"></textarea>
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 분류
-	 				 <select class="bikeStyle" name="category">
+	 				 <select class="recipeCategory" name="category">
                         <option>-- 레시피 분류 선택 --</option>
                         <option value="한식">한식</option>
-                        <option value="중식">중식</option>
+                        <option value="중식">양식</option>
                         <option value="일식">일식</option>
-                        <option value="양식">양식</option>
+                        <option value="양식">중식</option>
+                        <option value="양식">분식</option>
+                        <option value="양식">간식</option>
+                        <option value="양식">디저트</option>
                     </select>
 	 			</label>
 	 			
@@ -73,8 +76,10 @@
 			return false;
 		}
 		else{
-			alert('레시피 생성 완료 제목 : '+title);
-			return true;
+			if(confirm('레시피 생성 할게요?')){
+				return true;
+			}
+			return false
 		}
 	}
 
