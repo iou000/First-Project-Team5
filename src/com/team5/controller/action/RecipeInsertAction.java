@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -16,6 +17,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.team5.dao.RecipeDAO;
 import com.team5.vo.RecipeVO;
+import com.team5.vo.UserVO;
 
 /**
  * @author    : seop
@@ -28,8 +30,8 @@ public class RecipeInsertAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "app?command=mainpage";
-		//HttpSession session = request.getSession();
-		//UserVO loginUser = (UserVO) session.getAttribute("loginUser");
+		HttpSession session = request.getSession();
+		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 		
 		Map<String, String> map = upload(request, response);
 		
@@ -49,7 +51,7 @@ public class RecipeInsertAction implements Action {
 		recipeVO.setIngredients(request.getParameter("ingredients"));
 		recipeVO.setDetails(request.getParameter("details").replace("\r\n","<br>"));
 		recipeVO.setImage(request.getParameter("image"));
-		recipeVO.setUser_id(1);
+		recipeVO.setUser_id(loginUser.getId());
 		
 		System.out.println(recipeVO.getImage());
 		

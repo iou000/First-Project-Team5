@@ -1,4 +1,4 @@
-<!-- author seop -->
+<!-- 레시피 생성 폼 seop -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
@@ -126,9 +126,11 @@
 			$('input[name=title]').focus();
 			return false;
 		}
-		else {
-			alert("'" + title + "' 레시피가 생성되었습니다!!!");
-			return true;
+		else{
+			if(confirm('레시피를 생성할까요?')){
+				return true;
+			}
+			return false
 		}
 	}
 	

@@ -72,7 +72,7 @@ public class RecipeDAO {
 	 * @return  : void
 	 * @Comment : 레시피 수정
 	 */
-	public void updateRecipe(RecipeVO recipeVO) {
+	public void updateRecipe(int id, RecipeVO recipeVO) {
 		// 호출할 저장 프로시저
 		String runSP = "{ CALL recipe_pack.recipe_update(?, ?, ?, ?, ?, ?, ?)}";
 		try {
@@ -86,7 +86,7 @@ public class RecipeDAO {
 			//FileInputStream fis = new FileInputStream(file);
 			
 			// 저장프로시저 파라미터 입력
-			cstmt.setInt(1, recipeVO.getId());
+			cstmt.setInt(1, id);
 			cstmt.setString(2, recipeVO.getTitle());
 			cstmt.setString(3, recipeVO.getIntro());
 			cstmt.setString(4, recipeVO.getCategory());
