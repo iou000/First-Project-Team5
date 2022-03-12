@@ -27,24 +27,33 @@ import com.team5.vo.UserVO;
 public class RecipeUpdateAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "main.jsp";
+		String url = "app?command=recipe_view";
 		
 		HttpSession session = request.getSession();
 		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+        RecipeVO recipeVO = new RecipeVO();
         
+        recipeVO.setTitle(request.getParameter("title"));
+        recipeVO.setIntro(request.getParameter("intro"));
+        recipeVO.setCategory(request.getParameter("category"));
+        recipeVO.setIngredients(request.getParameter("ingredients"));
+        recipeVO.setDetails(request.getParameter("details"));
+        recipeVO.setImage(request.getParameter("image"));
+		
+		
         if (loginUser == null) {
 			url = "app?command=login_form";
 		}
 		else {
-			
+			url += "&recipeId="+recipeId;
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
-			recipeDAO.deleteRecipe(recipeId);
+			recipeDAO.updateRecipe(recipeId,recipeVO);
 
 			System.out.println("RecipeUpdateAction");
 		}
 		
-        request.getRequestDispatcher(url).forward(request, response);
+        response.sendRedirect(url);
 	}
 }
 
