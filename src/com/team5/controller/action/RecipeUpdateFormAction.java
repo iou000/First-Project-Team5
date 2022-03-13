@@ -25,16 +25,17 @@ public class RecipeUpdateFormAction implements Action {
 		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
 		
-		RecipeDAO recipeDAO = RecipeDAO.getInstance();
-		RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
-		
-		
 		if(loginUser == null) {
 			url = "app?command=login_form";
 		} else {
-			request.setAttribute("recipeVO", recipeVO);
+			RecipeDAO recipeDAO = RecipeDAO.getInstance();
+			RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId); //DB에서 해당 레시피 정보를 받아옴
+			recipeVO.setIntro(recipeVO.getIntro().replace("<br>","\r\n")); // DB에서 가져온 문자열의 <br>을 줄바꿈 문자로 변경.
+			recipeVO.setDetails(recipeVO.getDetails().replace("<br>","\r\n")); // DB에서 가져온 문자열의 <br>을 줄바꿈 문자로 변경.
+			
+			request.setAttribute("recipeVO", recipeVO); //DB에서 받아온 레시피 정보를 request객체에 바인딩.
 		}
 		
-		request.getRequestDispatcher(url).forward(request, response);
+		request.getRequestDispatcher(url).forward(request, response); //레시피 수정폼 페이지로 이동
 	}
 }

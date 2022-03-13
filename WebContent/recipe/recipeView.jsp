@@ -1,4 +1,4 @@
-<!-- @author 김지혜 + 김경섭 -->
+<!-- @author 김지혜 + seop -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
@@ -11,24 +11,19 @@
 </head>
 <body>
 	<div class="container">
-		<!-- 레시피 상세 뷰 seop //-->
+		<!-- 레시피 상세 뷰 @author seop //-->
 		<div class="content">
-			<!-- 레시피 이미지 영역 //-->
+			<!-- 레시피 이미지 영역 @author SJH //-->
 			<div class="imageArea">
-				<img src="images/don.jpg" alt="">
+				<img src="./image/recipe/${recipeVO.image}" alt="이미지가 존재하지 않습니다!!!">
 			</div>
 			<!-- // 레시피 이미지 영억 -->
-			
-			<!-- ??? 영역 //-->
-			<div class="grade">
-				<span>grade?</span>
-			</div>
-			<!-- // ??? 영역 -->
 			
 			<!-- 레시피 상세 내용 영역 //-->
 			<div class="recipeInfo">
 				<div class="title">
 					<h1>${recipeVO.title}</h1>
+					<span>(평점 : ${recipeVO.grade})</span>
 					<span> by. ${recipeVO.username}</span>
 					<c:choose>
 						<c:when test="${recipeVO.user_id eq sessionScope.loginUser.id}">
@@ -61,7 +56,7 @@
 			<!-- // 레시피 상세 내용 영역 -->
 		</div>
 		<!-- // 레시피 상세 뷰 -->
-		<!-- 댓글 뷰 김지혜 // -->
+		<!-- 댓글 뷰 @author 김지혜 // -->
 		<div>
 			<h1>댓글 작성 form</h1>
 			<form method="post" action="app?command=comment_insert">
@@ -94,14 +89,13 @@
 
 </div>
 <script>
-	
-	/* 레시피 삭제 seop */
+	/* 레시피 삭제 submit @author */
 	function fnDeleteRecipe(){
 		if(confirm("삭제하시겠습니까?")){
 			$('form[name=udform]').attr({action:"app?command=recipe_delete", method:'post'}).submit();
 		}
 	}
-	/* 레시피 수정 seop */
+	/* 레시피 수정 submit @author */
 	function fnUpdateRecipe(){
 		if(confirm("수정하시겠습니까?")){
 			$('form[name=udform]').attr({action:"app?command=recipe_update_form", method:'post'}).submit();

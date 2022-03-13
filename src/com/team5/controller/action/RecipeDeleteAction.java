@@ -37,11 +37,8 @@ public class RecipeDeleteAction implements Action {
 			url = "app?command=login_form";
 		}
 		else {
-			
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
-			recipeDAO.deleteRecipe(recipeId);
-
-			System.out.println("RecipeDeleteAction");
+			recipeDAO.deleteRecipe(recipeId); // 해당 레시피 삭제
 		}
 		
         response.sendRedirect(url);
