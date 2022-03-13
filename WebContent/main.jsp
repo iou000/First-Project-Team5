@@ -14,8 +14,7 @@
 	<div id="recipes" align="center">
 		<c:forEach var="recipeVO" items="${recipeList}">
 			<a href="app?command=recipe_view&recipeId=${recipeVO.id}">
-				<!-- <img src="recipe/${recipeVO.image}"/> -->
-				<img src="images/recipe/dup.jpg"/>
+				<img src="./image/recipe/${recipeVO.image}" alt="이미지가 존재하지 않습니다!!!">
 				${recipeVO.title}
 				${recipeVO.grade}
 				${recipeVO.username}

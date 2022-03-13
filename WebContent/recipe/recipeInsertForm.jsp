@@ -1,4 +1,4 @@
-<!-- 레시피 생성 폼 @author seop -->
+<!-- 레시피 생성 폼 seop, 이미지 파일 업로드 SJH -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
@@ -69,7 +69,7 @@
 	 	<form name="form" method="post" action="app?command=recipe_insert" enctype="multipart/form-data" onsubmit="return recipeInsertSubmit()">
 	 		<div class="recipeInsertForm">
 	 			<label class="recipeInsertLabel"> 레시피 제목
-	 				<input type="text" class="recipeInput" name="title" placeholder="레시피의 제목을 입력해주세요." />
+	 				<input type="text" class="recipeInput" name="title" value="${recipeVO.title}" placeholder="레시피의 제목을 입력해주세요." />
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 소개
@@ -94,7 +94,7 @@
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 설명
-	 				<textarea class="recipeInput" name="details" placeholder="조리법을 설명해주세요."></textarea>
+	 				<textarea class="recipeInput" name="details" placeholder="이 레시피의 조리법을 알려주세요."></textarea>
 	 			</label>
 
 	 			<div class="filebox bs3-primary">대표 이미지 삽입<br>

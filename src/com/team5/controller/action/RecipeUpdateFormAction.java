@@ -25,7 +25,6 @@ public class RecipeUpdateFormAction implements Action {
 		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
 		
-		
 		if(loginUser == null) {
 			url = "app?command=login_form";
 		} else {
