@@ -14,26 +14,29 @@
     	<p> 안녕하세요 ${loginUser.username} 님!!  </p>
 		<a href="app?command=recipe_insert_form">레시피 만들기</a>
 		<div id="front">
-			<h2> 내가 올린 레시피 </h2>
-			<div id="myrecipe">
-	        	<c:forEach items="${recipeVOS }"  var="recipeVO">
+			<div id="myRecipe">
+				<h2> 내가 만든 레시피 </h2>
+	        	<c:forEach items="${recipeList}" var="recipeVO">
 		        	<div id="item">
 			            <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
-			              <img src="images/don.jpg" />
-			              <p>${recipeVO.title} ${recipeVO.image} ${recipeVO.viewcount} ${recipeVO.username}</p>
+			            	<img src="./image/recipe/${recipeVO.image}" alt="이미지가 존재하지 않습니다!!!">
+			            	${recipeVO.title}
+			            	${recipeVO.image}
+			            	${recipeVO.viewcount}
 			            </a>
 		            </div>
 	        	</c:forEach>
 	       	</div>
-	       	<hr>
-	       	
-	       	<h2> 나의 댓글 </h2>
-	       	<div id="bestProduct">
-	       		<c:forEach items="${recipeVOS }"  var="recipeVO">
+			<hr>
+			<!-- author SJH -->
+	       	<div id="myComment">
+	       		<h2> 내가 작성한 댓글 </h2>
+	       		<c:forEach items="${commentList}" var="commentVO">
 	       			<div id="item">
-	       				<a href="app?command=recipe_view">
-	       					<img src="images/don.jpg" />
-	       					<p>${recipeVO.title} ${recipeVO.image} ${recipeVO.viewcount} ${recipeVO.username} </p>
+	       				<!-- 댓글을 작성한 레시피의 주소로 이동해야 함 -->
+	       				<a href="app?command=recipe_view&recipeId=${commentVO.recipe_id}">
+	       					평점 : ${commentVO.grade}, 내용 : ${commentVO.contents} (수정일자 : ${commentVO.updatedAt})
+	       					<br>
 	      				</a>
 	     			</div>
 	    		</c:forEach>
@@ -42,36 +45,3 @@
     </article>
 </body>
 </html>
-    
-<%--    <form name="form" method="post">--%>
-
-<%--      <table id="cartList">--%>
-<%--      <tr>--%>
-<%--        <th>id</th>  <th>name</th>  <th>password</th>--%>
-<%--      </tr>--%>
-<%--        <div>--%>
-<%--          ${user.id}, ${user.username}, ${user.password}--%>
-<%--        </div>--%>
-
-<%--&lt;%&ndash;      <c:forEach items="${userList}"  var="UserVO">&ndash;%&gt;--%>
-<%--&lt;%&ndash;      <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <td> ${UserVO.id}</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <td> ${UserVO.username} </td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <td> ${userVO.password} </td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;&lt;%&ndash;         <td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        	<a href="NonageServlet?command=order_detail&oseq=${orderVO.oseq}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;        	  조회 </a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;         </td> &ndash;%&gt;&ndash;%&gt;--%>
-<%--&lt;%&ndash;      </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;      </c:forEach>&ndash;%&gt;--%>
-<%--      </table>--%>
-
-<%--      <div class="clear"></div>--%>
-<%--      <div id="buttons" style="float: right">--%>
-<%--       <input type="button"    value="쇼핑 계속하기"--%>
-<%--        class="cancel"  onclick="location.href='NonageServlet?command=index'">--%>
-<%--      </div>--%>
-<%--    </form>--%>
-
-
-<%-- <%@ include file="../footer.jsp" %> --%>

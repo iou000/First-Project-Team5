@@ -1,17 +1,18 @@
 package com.team5.controller.action;
 
-import com.team5.dao.CommentDAO;
-import com.team5.dao.RecipeDAO;
-import com.team5.vo.CommentVO;
-import com.team5.vo.RecipeVO;
-import com.team5.vo.UserVO;
+import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.util.ArrayList;
+
+import com.team5.dao.CommentDAO;
+import com.team5.dao.RecipeDAO;
+import com.team5.vo.CommentVO;
+import com.team5.vo.RecipeVO;
+import com.team5.vo.UserVO;
 
 /**
  * @author SJH
@@ -29,7 +30,7 @@ public class RecipeViewAction implements Action {
         RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
 
         CommentDAO commentDAO = CommentDAO.getInstance();
-        ArrayList<CommentVO> commentList = commentDAO.getCommentsById(recipeId);
+        List<CommentVO> commentList = commentDAO.getCommentsByRecipeId(recipeId);
 
         request.setAttribute("loginUser", loginUser);
         request.setAttribute("recipeVO", recipeVO);

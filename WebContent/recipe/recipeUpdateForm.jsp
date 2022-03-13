@@ -66,7 +66,7 @@
 </head>
 <body>
 	 <div>
-	 	<form name="form" method="post" action="app?command=recipe_update" onsubmit="return recipeUpdateSubmit()">
+	 	<form name="form" method="post" action="app?command=recipe_update" enctype="multipart/form-data" onsubmit="return recipeUpdateSubmit()">
 	 		<input type="hidden" name="recipeId" value="${recipeVO.id}">
 	 		<div class="recipeUpdateForm">
 	 			<label class="recipeUpdateLabel"> 레시피 제목
