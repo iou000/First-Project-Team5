@@ -73,7 +73,7 @@
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 소개
-	 				<input type="text" class="recipeInput" name="intro" placeholder="레시피에 대해서 소개해주세요."/>
+	 				<textarea class="recipeInput" name="intro" placeholder="레시피 소개 입력하세요"></textarea>
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 분류
@@ -108,7 +108,10 @@
 	 			</label>
 	 			-->
 	 		</div>
-	 		<button type="submit">등록</button>
+	 		<div>
+	 			<button type="submit">레시피 등록하기</button>
+	 		</div>
+
 	 	</form>
 	 </div>
 </body>
@@ -118,19 +121,53 @@
 
 <!-- Javascript -->
 <script>
-	<!-- submit 유효성 검사 -->
-	function recipeInsertSubmit() {
+
+	/* submit 유효성 검사 @author seop */
+	function recipeInsertSubmit(e) {
 		var title = $('input[name=title]').val();
+		var intro = $('textarea[name=intro]').val();
+		var category = $('select[name=category]').val();
+		var ingredients = $('input[name=ingredients]').val();
+		var details = $('textarea[name=details]').val();
+		var image = $('input[name=image]').val();
+		
 		if(title == null || title == "") {
-			alert('레시피 제목을 입력해주세요!!!');
+			alert('레시피 제목을 입력해주세요.');
 			$('input[name=title]').focus();
+			return false;
+		}
+		else if(intro == null || intro == ""){
+			alert('레시피 소개를 입력해주세요.');
+			$('input[name=intro]').focus();
+			return false;
+		}
+		else if(category == null || category == ""){
+			alert('레시피 분류 골라주세요.');
+			$('input[name=category]').focus();
+			return false;
+		}
+		else if(ingredients == null || ingredients == ""){
+			alert('레시피 재료를 입력해주세요.');
+			$('input[name=ingredients]').focus();
+			return false;
+		}
+		else if(details == null || details == ""){
+			alert('레시피 설명을 입력해주세요.');
+			$('input[name=details]').focus();
+			return false;
+		}
+		else if(image == null || image == ""){
+			if(confirm('이미지 없이 레시피를 생성할까요?')){
+				return true;
+			}
+			$('input[name=image]').focus();
 			return false;
 		}
 		else{
 			if(confirm('레시피를 생성할까요?')){
 				return true;
 			}
-			return false
+			return false;
 		}
 	}
 	

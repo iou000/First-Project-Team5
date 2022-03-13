@@ -43,10 +43,10 @@ public class RecipeUpdateAction implements Action {
 		} else {
 			Map<String, String> map = upload(request, response);
 			String title = map.get("title");
-			String intro = map.get("intro");
+			String intro = map.get("intro").replace("\r\n","<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
 			String category = map.get("category");
 			String ingredients = map.get("ingredients");
-			String details = map.get("details");
+			String details = map.get("details").replace("\r\n","<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
 			String image = map.get("image");
 			
 	        RecipeVO recipeVO = new RecipeVO();
@@ -59,8 +59,8 @@ public class RecipeUpdateAction implements Action {
 			recipeVO.setUser_id(loginUser.getId());
 	        
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
-			recipeDAO.updateRecipe(recipeId, recipeVO);
-			url += "&recipeId=" + recipeId;
+			recipeDAO.updateRecipe(recipeId, recipeVO); // 레시피 업데이트
+			url += "&recipeId=" + recipeId; // 수정한 레시피 상세보기 페이지로 이동하기 위한 url 설정
 		}
         response.sendRedirect(url);
 	}
