@@ -199,7 +199,7 @@ public class RecipeDAO {
 	 * @return  : List<RecipeVO>
 	 * @Comment : 레시피 리스트 조회(카테고리,검색어, 평점순)
 	 */
-	public List<RecipeVO> selectRecipeList(String category, String search_text) {
+	public List<RecipeVO> selectRecipeList(String category, String search_text, int pageNo, int pageSize) {
 		// 레시피 리스트 생성
 		List<RecipeVO> recipeList= new ArrayList<>();
 		// 호출할 저장 프로시저
@@ -212,8 +212,8 @@ public class RecipeDAO {
 			// 입력 파라미터
 			cstmt.setString(1, category);
 			cstmt.setString(2, search_text);
-			cstmt.setInt(3, 1);
-			cstmt.setInt(4, 5);
+			cstmt.setInt(3, pageNo);
+			cstmt.setInt(4, pageSize);
 			// 출력 파라미터
 			cstmt.registerOutParameter(5, oracle.jdbc.OracleTypes.CURSOR);
 			//실행 (리턴값: ResultSet)
