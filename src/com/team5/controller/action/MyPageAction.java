@@ -1,8 +1,6 @@
 package com.team5.controller.action;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,8 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.team5.dao.CommentDAO;
 import com.team5.dao.RecipeDAO;
-import com.team5.dao.UserDAO;
+import com.team5.vo.CommentVO;
 import com.team5.vo.RecipeVO;
 import com.team5.vo.UserVO;
 
@@ -21,6 +20,10 @@ import com.team5.vo.UserVO;
 *작성자 : 김지혜
 *작성일 : 3/8/22
 *
+*클래스 : MyPageAction
+*작성자 : 송진호
+*작성일 : 3/13/22
+*내용 : 마이페이지에서 내가 작성한 댓글 보여주는 기능
 **/
 public class MyPageAction implements Action {
 	@Override
@@ -32,19 +35,17 @@ public class MyPageAction implements Action {
 
 		if (loginUser == null) {
 			url = "app?command=login_form";
-		}
-		else {
-			UserDAO userDAO = UserDAO.getInstance();
+		} else {
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
+			List<RecipeVO> recipeList = recipeDAO.selectRecipeListByUserId(loginUser.getId());
+			
+			CommentDAO commentDAO = CommentDAO.getInstance();
+			List<CommentVO> commentList = commentDAO.getCommentsByUserId(loginUser.getId());
 
-			List<RecipeVO> recipeVOS = recipeDAO.selectRecipeListByUserId(loginUser.getId());
-
-			System.out.println("MyPageAction");
 			request.setAttribute("loginUser", loginUser);
-			request.setAttribute("recipeVOS", recipeVOS);
+			request.setAttribute("recipeList", recipeList);
+			request.setAttribute("commentList", commentList);
 		}
-
-	
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }

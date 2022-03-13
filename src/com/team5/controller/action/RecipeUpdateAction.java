@@ -36,7 +36,7 @@ public class RecipeUpdateAction implements Action {
 		String url = "app?command=recipe_view";
 		HttpSession session = request.getSession();
 		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
-		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+		
 		
         if (loginUser == null) {
 			url = "app?command=login_form";
@@ -59,6 +59,8 @@ public class RecipeUpdateAction implements Action {
 			recipeVO.setUser_id(loginUser.getId());
 	        
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
+			int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+			System.out.println(recipeId);
 			recipeDAO.updateRecipe(recipeId, recipeVO); // 레시피 업데이트
 			url += "&recipeId=" + recipeId; // 수정한 레시피 상세보기 페이지로 이동하기 위한 url 설정
 		}
