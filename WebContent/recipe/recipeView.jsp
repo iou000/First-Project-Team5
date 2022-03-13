@@ -1,4 +1,4 @@
-<!-- @author 김지혜 + 김경섭 -->
+<!-- @author 김지혜 + 김경섭 + 송진호 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
@@ -15,20 +15,15 @@
 		<div class="content">
 			<!-- 레시피 이미지 영역 //-->
 			<div class="imageArea">
-				<img src="images/don.jpg" alt="">
+				<img src="./image/recipe/${recipeVO.image}" alt="이미지가 존재하지 않습니다!!!">
 			</div>
 			<!-- // 레시피 이미지 영억 -->
-			
-			<!-- ??? 영역 //-->
-			<div class="grade">
-				<span>grade?</span>
-			</div>
-			<!-- // ??? 영역 -->
 			
 			<!-- 레시피 상세 내용 영역 //-->
 			<div class="recipeInfo">
 				<div class="title">
 					<h1>${recipeVO.title}</h1>
+					<span>(평점 : ${recipeVO.grade})</span>
 					<span> by. ${recipeVO.username}</span>
 					<c:choose>
 						<c:when test="${recipeVO.user_id eq sessionScope.loginUser.id}">
@@ -94,7 +89,6 @@
 
 </div>
 <script>
-	
 	/* 레시피 삭제 seop */
 	function fnDeleteRecipe(){
 		if(confirm("삭제하시겠습니까?")){

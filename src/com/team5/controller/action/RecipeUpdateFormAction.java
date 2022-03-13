@@ -28,7 +28,6 @@ public class RecipeUpdateFormAction implements Action {
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
 		RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
 		
-		
 		if(loginUser == null) {
 			url = "app?command=login_form";
 		} else {
