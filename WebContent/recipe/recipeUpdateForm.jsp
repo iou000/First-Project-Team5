@@ -67,14 +67,14 @@
 <body>
 	 <div>
 	 	<form name="form" method="post" action="app?command=recipe_update" enctype="multipart/form-data" onsubmit="return recipeUpdateSubmit()">
-	 		<input type="hidden" name="recipeId" value="${recipeVO.id}">
+	 		<input type="hidden" name="recipeId" value="${recipeVO.id}" />
 	 		<div class="recipeUpdateForm">
 	 			<label class="recipeUpdateLabel"> 레시피 제목
 	 				<input type="text" class="recipeInput" name="title" value="${recipeVO.title}" placeholder="레시피의 제목을 입력해주세요." />
 	 			</label>
 	 			
 	 			<label class="recipeUpdateLabel"> 레시피 소개
-	 				<input type="text" name="intro" value="${recipeVO.intro}" placeholder="레시피에 대해서 소개해주세요." />
+	 				<textarea name="intro" placeholder="레시피에 대해서 소개해주세요."><c:out value="${recipeVO.intro}"></c:out></textarea>
 	 			</label>
 	 			
 	 			<label class="recipeUpdateLabel"> 레시피 분류
@@ -120,7 +120,7 @@
 <!-- Javascript -->
 <script>
 	/* submit 유효성 검사 @author seop */
-	function recipeInsertSubmit(e) {
+	function recipeUpdateSubmit() {
 		var title = $('input[name=title]').val();
 		var intro = $('textarea[name=intro]').val();
 		var category = $('select[name=category]').val();
