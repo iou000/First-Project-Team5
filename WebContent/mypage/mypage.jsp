@@ -9,7 +9,10 @@
 	<title>레시피 상세 페이지</title>
 	<link href="css/mypage.css" rel="stylesheet">
 </head>
-<body class="mypage">
+<body>
+    <div id="wrap" class="mypage mypage main">
+
+    </div>
     <div class="side">
         <h2>My Page</h2>
     </div>

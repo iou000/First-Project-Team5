@@ -36,7 +36,6 @@ public class MyPageAction implements Action {
 		else {
 			UserDAO userDAO = UserDAO.getInstance();
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
-
 			List<RecipeVO> recipeVOS = recipeDAO.selectRecipeListByUserId(loginUser.getId());
 
 			System.out.println("MyPageAction");
