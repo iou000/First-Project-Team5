@@ -10,6 +10,9 @@
 	<title>Main Page</title>
 </head>
 <body>
+	<input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
+	<input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
+	
 	<!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
 	<div id="list-area" id="list_section" align="center" style="min-height:800px">
 		<ul class="recipe-list">
@@ -37,12 +40,17 @@ var pageSize = 5; // 불러올 데이터 갯수.
 
 /* AJAX로 데이터 요청 @seop */
 function next_recipes_load()
-{
+{	
+	var keywordAjax = $("input[name=keywordAjax]").val();
+	var categoryAjax = $("input[name=categoryAjax]").val();
+	
 	$.ajax({
 			type:"POST",
 			url:"app?command=recipe_paging_ajax",
 			dataType: "json", //json형식으로 데이터를 보냄
 			data: {
+					'keywordAjax' : keywordAjax,
+					'categoryAjax' : categoryAjax,
 					'pageNO': pageNO,
 					'pageSize' : pageSize
 			},
@@ -61,13 +69,13 @@ function next_recipes_load()
 					$('.recipe-list').append(node);
 				}
 				
-				console.log(pageNO);
-				console.log(data);
+				console.log(pageNO, data);
 				pageNO++; //페이지 증가
 				
 				
                 loading = false;    //실행 가능 상태로 변경
                 
+                //받아올 데이터가 없으면 ajax 닫음
                 if (data.length == 0) {
                 	loading = true;
                 }
