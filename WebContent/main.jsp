@@ -61,8 +61,17 @@ function next_recipes_load()
 					$('.recipe-list').append(node);
 				}
 				
+				console.log(pageNO);
+				console.log(data);
 				pageNO++; //페이지 증가
+				
+				
                 loading = false;    //실행 가능 상태로 변경
+                
+                if (data.length == 0) {
+                	loading = true;
+                }
+                
 			}
 			,error: function(request, status, error) 
             {

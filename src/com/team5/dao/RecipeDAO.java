@@ -204,7 +204,7 @@ public class RecipeDAO {
 		// 레시피 리스트 생성
 		List<RecipeVO> recipeList= new ArrayList<>();
 		// 호출할 저장 프로시저
-		String runSP = "{ CALL recipe_select_list1(?, ?, ?, ?, ?)}";
+		String runSP = "{ CALL recipe_pack.recipe_select_list(?, ?, ?, ?, ?)}";
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
