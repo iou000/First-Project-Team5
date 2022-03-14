@@ -10,7 +10,7 @@
 </head>
 <body>
 <!--헤더파일 들어가는 곳 시작 -->
-<header>
+<header id="header">
     <!-- 검색어(키워드)를 통해서 레시미 목록 조회 -->
     <div id="keywordSearch" align="center">
         <form name="searchForm" method="POST" action="app?command=mainpage" onsubmit="return checkSearchForm()">
