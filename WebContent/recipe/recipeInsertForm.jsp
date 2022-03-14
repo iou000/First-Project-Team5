@@ -69,7 +69,7 @@
 	 	<form name="form" method="post" action="app?command=recipe_insert" enctype="multipart/form-data" onsubmit="return recipeInsertSubmit()">
 	 		<div class="recipeInsertForm">
 	 			<label class="recipeInsertLabel"> 레시피 제목
-	 				<input type="text" class="recipeInput" name="title" value="${recipeVO.title}" placeholder="레시피의 제목을 입력해주세요." />
+	 				<input type="text" class="recipeInput" name="title" placeholder="레시피의 제목을 입력해주세요." />
 	 			</label>
 	 			
 	 			<label class="recipeInsertLabel"> 레시피 소개

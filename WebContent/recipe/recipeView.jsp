@@ -1,4 +1,4 @@
-<!-- @author 김지혜 + seop -->
+<!-- @author 김지혜 + 김경섭 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
@@ -11,9 +11,9 @@
 </head>
 <body>
 	<div class="container">
-		<!-- 레시피 상세 뷰 @author seop //-->
+		<!-- 레시피 상세 뷰 seop //-->
 		<div class="content">
-			<!-- 레시피 이미지 영역 @author SJH //-->
+			<!-- 레시피 이미지 영역 //-->
 			<div class="imageArea">
 				<img src="./image/recipe/${recipeVO.image}" alt="이미지가 존재하지 않습니다!!!">
 			</div>
@@ -56,7 +56,7 @@
 			<!-- // 레시피 상세 내용 영역 -->
 		</div>
 		<!-- // 레시피 상세 뷰 -->
-		<!-- 댓글 뷰 @author 김지혜 // -->
+		<!-- 댓글 뷰 김지혜 // -->
 		<div>
 			<h1>댓글 작성 form</h1>
 			<form method="post" action="app?command=comment_insert">
@@ -71,15 +71,14 @@
 				</fieldset>
 				<div class="clear"></div>
 				<div id="buttons">
-					<input type="submit" value="댓긇작성" class="submit">
+					<input type="submit" value="댓글 작성" class="submit">
 				</div>
 			</form>
-			<c:forEach items="${commentList}"  var="commentVO">
+			<c:forEach items="${commentList}" var="commentVO">
 				<tr>
+					<td> ${commentVO.author} </td>
 					<td> ${commentVO.grade}</td>
 					<td> ${commentVO.contents} </td>
-					<td> ${commentVO.author} </td>
-					<td> ${commentVO.createdAt} </td>
 					<td> ${commentVO.updatedAt} </td>
 				</tr>
 				<br>
@@ -89,13 +88,13 @@
 
 </div>
 <script>
-	/* 레시피 삭제 submit @author */
+	/* 레시피 삭제 seop */
 	function fnDeleteRecipe(){
 		if(confirm("삭제하시겠습니까?")){
 			$('form[name=udform]').attr({action:"app?command=recipe_delete", method:'post'}).submit();
 		}
 	}
-	/* 레시피 수정 submit @author */
+	/* 레시피 수정 seop */
 	function fnUpdateRecipe(){
 		if(confirm("수정하시겠습니까?")){
 			$('form[name=udform]').attr({action:"app?command=recipe_update_form", method:'post'}).submit();

@@ -26,6 +26,15 @@
             <input type="hidden" name="category" value=""/>
         </form>
     </div>
+    <script>
+        $(document).ready(function(){
+            // 장바구니 수량 조회
+            basketInf.getBasketTotalCnt('01', function(cnt) {
+                if (isEmpty(cnt)) { cnt = 0 }
+                $('#basketCnt').text(gfn_appendComma(cnt));
+            });
+        });
+    </script>
 
     <!-- 카테고리를 접근하기 위한 버튼 목록 -->
     <div id="buttonGroup" align="center">

@@ -30,7 +30,7 @@ import com.team5.vo.UserVO;
  * @Comment    : 이미지 파일 업로드 기능
  */
 public class RecipeInsertAction implements Action {
-	private static final String RECIPE_IMAGE_REPO = "C:\\Users\\SJH\\eclipse-workspace\\RecipeApplication\\WebContent\\image\\recipe";
+	private static final String RECIPE_IMAGE_REPO = "C:\\\\Users\\\\SJH\\\\eclipse-workspace\\\\RecipeApplication\\\\WebContent\\\\image\\\\recipe";
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "app?command=recipe_view";
@@ -58,8 +58,8 @@ public class RecipeInsertAction implements Action {
 			recipeVO.setUser_id(loginUser.getId());
 
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
-			recipeDAO.insertRecipe(recipeVO);
-			//url += "recipeId=" + recipeId;
+			int recipeId = recipeDAO.insertRecipe(recipeVO);
+			url += "&recipeId=" + recipeId;
 		}
 	    response.sendRedirect(url);
 	}

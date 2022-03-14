@@ -21,14 +21,14 @@
 
 <%--            let data = google.visualization.arrayToDataTable(--%>
 <%--                [--%>
-<%--                    ['Category', 'view', 'grade'],--%>
-<%--                    [${categoryList[0].category}, ${categoryList[0].view}, ${categoryList[0].grade}],--%>
-<%--                    [${categoryList[1].category}, ${categoryList[1].view}, ${categoryList[1].grade}],--%>
-<%--                    [${categoryList[2].category}, ${categoryList[2].view}, ${categoryList[2].grade}],--%>
-<%--                    [${categoryList[3].category}, ${categoryList[3].view}, ${categoryList[3].grade}],--%>
-<%--                    [${categoryList[4].category}, ${categoryList[4].view}, ${categoryList[4].grade}],--%>
-<%--                    [${categoryList[5].category}, ${categoryList[5].view}, ${categoryList[5].grade}],--%>
-<%--                    [${categoryList[6].category}, ${categoryList[6].view}, ${categoryList[6].grade}],--%>
+<%--                    ['Category', 'view_average', 'grade_average'],--%>
+<%--                    [${categoryList[0].category}, ${categoryList[0].view_average}, ${categoryList[0].grade_average}],--%>
+<%--                    [${categoryList[1].category}, ${categoryList[1].view_average}, ${categoryList[1].grade_average}],--%>
+<%--                    [${categoryList[2].category}, ${categoryList[2].view_average}, ${categoryList[2].grade_average}],--%>
+<%--                    [${categoryList[3].category}, ${categoryList[3].view_average}, ${categoryList[3].grade_average}],--%>
+<%--                    [${categoryList[4].category}, ${categoryList[4].view_average}, ${categoryList[4].grade_average}],--%>
+<%--                    [${categoryList[5].category}, ${categoryList[5].view_average}, ${categoryList[5].grade_average}],--%>
+<%--                    [${categoryList[6].category}, ${categoryList[6].view_average}, ${categoryList[6].grade_average}],--%>
 <%--                ]--%>
 <%--            );--%>
 
@@ -54,8 +54,8 @@
 <%--                },--%>
 <%--                axes  : {--%>
 <%--                    y: {--%>
-<%--                        view  : {label: '조회수'}, // Left y-axis.--%>
-<%--                        grade: {side: 'right', label: 'apparent magnitude'} // Right y-axis.--%>
+<%--                        view_average  : {label: '조회수'}, // Left y-axis.--%>
+<%--                        grade_average: {side: 'right', label: 'apparent magnitude'} // Right y-axis.--%>
 <%--                    }--%>
 <%--                }--%>
 <%--            };--%>
@@ -66,11 +66,11 @@
 <%--                    0: {targetAxisIndex: 0},--%>
 <%--                    1: {targetAxisIndex: 1}--%>
 <%--                },--%>
-<%--                title : 'Nearby galaxies - view on the left, grade on the right',--%>
+<%--                title : 'Nearby galaxies - view_average on the left, grade_average on the right',--%>
 <%--                vAxes : {--%>
 <%--                    // Adds titles to each axis.--%>
-<%--                    0: {title: 'view'},--%>
-<%--                    1: {title: 'grade'}--%>
+<%--                    0: {title: 'view_average'},--%>
+<%--                    1: {title: 'grade_average'}--%>
 <%--                }--%>
 <%--            };--%>
 
@@ -110,23 +110,29 @@
 
         function drawStuff() {
 
-            var button = document.getElementById('change-chart');
-            var chartDiv = document.getElementById('chart_div');
+            let button = document.getElementById('change-chart');
+            let chartDiv = document.getElementById('chart_div');
+            let categoryStr = '${categoryStr}';
+            console.log(categoryStr);
+            let categoryJSON = JSON.parse(categoryStr)
+            console.log(categoryJSON)
 
-            var data = google.visualization.arrayToDataTable([
-                ['Galaxy', 'Distance', 'Brightness'],
-                ['Canis Major Dwarf', 8000, 23.3],
-                ['Sagittarius Dwarf', 24000, 4.5],
-                ['Ursa Major II Dwarf', 30000, 14.3],
-                ['Lg. Magellanic Cloud', 50000, 0.9],
-                ['Bootes I', 60000, 13.1]
+            let data = google.visualization.arrayToDataTable([
+                ['음식 분류', '조회수', '평점수'],
+                [categoryJSON[0].category, categoryJSON[0].view_average, categoryJSON[0].grade_average],
+                [categoryJSON[1].category, categoryJSON[1].view_average, categoryJSON[1].grade_average],
+                [categoryJSON[2].category, categoryJSON[2].view_average, categoryJSON[2].grade_average],
+                [categoryJSON[3].category, categoryJSON[3].view_average, categoryJSON[3].grade_average],
+                [categoryJSON[4].category, categoryJSON[4].view_average, categoryJSON[4].grade_average],
+                [categoryJSON[5].category, categoryJSON[5].view_average, categoryJSON[5].grade_average],
+                [categoryJSON[6].category, categoryJSON[6].view_average, categoryJSON[6].grade_average]
             ]);
 
-            var materialOptions = {
+            let materialOptions = {
                 width: 900,
                 chart: {
-                    title: 'Nearby galaxies',
-                    subtitle: 'distance on the left, brightness on the right'
+                    title: '음식 분류별 조회수 & 평점수',
+                    subtitle: '미리 분류한 한식 .. 양식 별 사용자의 조회수와 평점수이 평균을 column chart 를 통해 나타내었습니다.'
                 },
                 series: {
                     0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
@@ -134,35 +140,35 @@
                 },
                 axes: {
                     y: {
-                        distance: {label: 'parsecs'}, // Left y-axis.
-                        brightness: {side: 'right', label: 'apparent magnitude'} // Right y-axis.
+                        distance: {label: '조회수'}, // Left y-axis.
+                        brightness: {side: 'right', label: '평점수'} // Right y-axis.
                     }
                 }
             };
 
-            var classicOptions = {
+            let classicOptions = {
                 width: 900,
                 series: {
                     0: {targetAxisIndex: 0},
                     1: {targetAxisIndex: 1}
                 },
-                title: 'Nearby galaxies - distance on the left, brightness on the right',
+                title: '음식 분류별 조회수 & 평점수',
                 vAxes: {
                     // Adds titles to each axis.
-                    0: {title: 'parsecs'},
-                    1: {title: 'apparent magnitude'}
+                    0: {title: '조회수'},
+                    1: {title: '평점수'}
                 }
             };
 
             function drawMaterialChart() {
-                var materialChart = new google.charts.Bar(chartDiv);
+                let materialChart = new google.charts.Bar(chartDiv);
                 materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
                 button.innerText = 'Change to Classic';
                 button.onclick = drawClassicChart;
             }
 
             function drawClassicChart() {
-                var classicChart = new google.visualization.ColumnChart(chartDiv);
+                let classicChart = new google.visualization.ColumnChart(chartDiv);
                 classicChart.draw(data, classicOptions);
                 button.innerText = 'Change to Material';
                 button.onclick = drawMaterialChart;
