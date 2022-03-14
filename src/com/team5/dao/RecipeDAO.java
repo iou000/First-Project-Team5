@@ -22,6 +22,7 @@ public class RecipeDAO {
     Connection conn = null;
     CallableStatement cstmt = null;
     ResultSet rs = null;
+
     private RecipeDAO() {
     } //싱글턴 처리
 
@@ -187,13 +188,7 @@ public class RecipeDAO {
         }
         return recipeVO;
     }//end selectRecipeById
-    /**
-     * @Author  : seop
-     * @Date    : 2022. 3. 9.
-     * @Method  : selectRecipeList
-     * @return  : List<RecipeVO>
-     * @Comment : 레시피 리스트 조회(카테고리,검색어, 평점순)
-     */
+
     /**
      * @return : List<RecipeVO>
      * @Author : seop
@@ -319,6 +314,11 @@ public class RecipeDAO {
         return categoryVOList;
     }//end selectRecipeViewGradeByCategory
 
+    /**
+     * 클래스 : RecipeDAO
+     * 작성자 : 김지혜
+     * 작성일 : 3/14/22
+     **/
     public List<RecipeVO> selectRecipeByComment(int user_id) {
         // 레시피 리스트 생성
         List<RecipeVO> recipeVOList = new ArrayList<>();
