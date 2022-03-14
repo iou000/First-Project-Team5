@@ -4,68 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/common.css">
-<link rel="stylesheet" type="text/css" href="css/library.css">
-
-<!-- Style -->
 <head>
-    <style>
-        #header .gnbarea .btn-category {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            padding-left: 30px;
-            padding-bottom: 23px;
-            line-height: 1;
-            color: #767572;
-        }
-
-        #header .gnbarea .btn-category:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: inline-block;
-            width: 18px;
-            height: 16px;
-            background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -100px -450px;
-        }
-
-        #header .gnbarea .searcharea .form-entry .btn-search:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -300px -300px;
-        }
-
-        body {
-            position: relative;
-            font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
-            font-weight: 200;
-            font-size: 15px;
-            line-height: 1.6;
-            color: #767572;
-            letter-spacing: -0.025em;
-            word-break: keep-all;
-            word-wrap: break-word;
-        }
-
-        button {
-            font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
-            cursor: pointer;
-            padding: 0;
-            border: none;
-            letter-spacing: -0.025em;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/library.css">
 </head>
 
 <header id="header">
@@ -213,27 +155,22 @@
             $('.btn-category')
                 .hover(
                     function () {
-                        // console.log(this);
-                        // $(this).parents('ul.lnb')
-                        //     .addClass('on');
                         var d = document.getElementById("p_popCategory");
-                        d.className += "active";
+                        d.classList.add("active");
                     },
                     function () {
                         var d = document.getElementById("p_popCategory");
-                        d.className -= "active";
+                        d.classList.remove("active")
                     });
 
-            $('.exhibition-wrap, .brand-ct').hover(
+            $('#p_popCategory').hover(
                 function () {
-                    console.log(this);
-                    console.log("아래")
-                    $(this).parents('ul.lnb').addClass(
-                        'on2');
+                    var d = document.getElementById("p_popCategory");
+                    d.classList.add("active");
                 },
                 function () {
-                    $(this).parents('ul.lnb')
-                        .removeClass('on2');
+                    var d = document.getElementById("p_popCategory");
+                    d.classList.remove("active")
                 });
         });
 </script>
