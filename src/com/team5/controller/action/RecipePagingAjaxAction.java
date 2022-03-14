@@ -21,7 +21,7 @@ import com.team5.vo.RecipeVO;
  * @ClassName : RecipePagingAction
  * @Comment   : 레시피 페이징 AJAX
  */
-public class RecipePagingAction implements Action {
+public class RecipePagingAjaxAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -34,13 +34,15 @@ public class RecipePagingAction implements Action {
 		int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 		
 
+		/* 키워드, 카테고리, 페이지번호, 페이지 크기로 recipe정보 조회 */
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
-		// 카테고리 또는 검색어를 통해서 레시피 조회
 		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(keyword, category, pageNO, pageSize);
 		
+		/* json 형식으로 데이터를 보냄 */
 		response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 		
+        // recipeList를 json객체로 바꿔줌.
         String gson = new Gson().toJson(recipeList);
         
         response.getWriter().write(gson);

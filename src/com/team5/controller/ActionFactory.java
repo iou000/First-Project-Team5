@@ -47,8 +47,8 @@ public class ActionFactory {
             action = new RecipeUpdateFormAction();
         } else if(command.equals("comment_insert")) {
             action = new CommentInsertAction();
-        } else if(command.equals("recipe_paging")) {
-            action = new RecipePagingAction();
+        } else if(command.equals("recipe_paging_ajax")) {
+            action = new RecipePagingAjaxAction();
         }
         return action;
     }
