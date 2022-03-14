@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.team5.vo.CategoryVO;
 import com.team5.vo.RecipeVO;
 
 import util.DBManager;
@@ -199,11 +200,11 @@ public class RecipeDAO {
 	 * @return  : List<RecipeVO>
 	 * @Comment : 레시피 리스트 조회(카테고리,검색어, 평점순)
 	 */
-	public List<RecipeVO> selectRecipeList(String category, String search_text) {
+	public List<RecipeVO> selectRecipeList(String category, String search_text, int pageNo, int pageSize) {
 		// 레시피 리스트 생성
 		List<RecipeVO> recipeList= new ArrayList<>();
 		// 호출할 저장 프로시저
-		String runSP = "{ CALL recipe_pack.recipe_select_list(?, ?, ?)}";
+		String runSP = "{ CALL recipe_pack.recipe_select_list(?, ?, ?, ?, ?)}";
 		try {
 			// DB연결
 			conn = DBManager.getConnection();
@@ -212,12 +213,14 @@ public class RecipeDAO {
 			// 입력 파라미터
 			cstmt.setString(1, category);
 			cstmt.setString(2, search_text);
+			cstmt.setInt(3, pageNo);
+			cstmt.setInt(4, pageSize);
 			// 출력 파라미터
-			cstmt.registerOutParameter(3, oracle.jdbc.OracleTypes.CURSOR);
+			cstmt.registerOutParameter(5, oracle.jdbc.OracleTypes.CURSOR);
 			//실행 (리턴값: ResultSet)
 			cstmt.execute();
 			//레시피 상세 조회 결과 받아오기
-			rs = (ResultSet)cstmt.getObject(3);
+			rs = (ResultSet)cstmt.getObject(5);
 			while(rs.next()) {
 				RecipeVO recipeVO = new RecipeVO();
 				recipeVO.setId(rs.getInt("id"));
@@ -277,4 +280,42 @@ public class RecipeDAO {
 		}
 		return recipeList;
 	}//end selectRecipeListByUserId
+
+	/**
+	*
+	*클래스 : RecipeDAO
+	*작성자 : 김지혜
+	*작성일 : 3/14/22
+	*
+	**/
+	public List<CategoryVO> selectRecipeViewGradeByCategory() {
+		// 레시피 리스트 생성
+		List<CategoryVO> categoryVOList= new ArrayList<>();
+		// 호출할 저장 프로시저
+		String runSP = "{ CALL recipe_pack.recipe_avg_view_grade_select_by_category(?)}";
+		try {
+			// DB연결
+			conn = DBManager.getConnection();
+			// CallableStatement로 저장 프로시저 호출
+			cstmt = conn.prepareCall(runSP);
+			// 출력 파라미터
+			cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+			//실행 (리턴값: ResultSet)
+			cstmt.execute();
+			//레시피 상세 조회 결과 받아오기
+			rs = (ResultSet)cstmt.getObject(1);
+			while(rs.next()) {
+				CategoryVO categoryVO = new CategoryVO();
+				categoryVO.setCategory(rs.getString("category"));
+				categoryVO.setView_average(rs.getDouble("view_average"));
+				categoryVO.setGrade_average(rs.getDouble("grade_average"));
+				categoryVOList.add(categoryVO);
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, cstmt, rs);
+		}
+		return categoryVOList;
+	}//end selectRecipeViewGradeByCategory
 }

@@ -22,7 +22,7 @@ public class JoinAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String url = "user/login.jsp";
+        String url = "auth/login.jsp";
         HttpSession session = request.getSession();
         UserVO userVO = new UserVO();
         userVO.setUsername(request.getParameter("username"));
