@@ -12,7 +12,7 @@
 	<article>
     	<h2>My Page</h2>
     	<p> 안녕하세요 ${loginUser.username} 님!!  </p>
-		<a href="app?command=recipe_insert_form">레시피 만들기</a>
+		
 		<div id="front">
 			<div id="myRecipe">
 				<h2> 내가 만든 레시피 </h2>
