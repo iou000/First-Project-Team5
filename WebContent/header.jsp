@@ -8,68 +8,9 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <link rel="stylesheet" type="text/css" href="css/library.css">
-
-<!-- Style -->
-<head>
-	<style>
-		#header .gnbarea .btn-category {
-		    position: absolute;
-		    left: 0;
-		    bottom: 0;
-		    padding-left: 30px;
-		    padding-bottom: 23px;
-		    line-height: 1;
-		    color: #767572;
-		}
-		#header .gnbarea .btn-category:before {
-		    content: "";
-		    position: absolute;
-		    left: 0;
-		    top: 0;
-		    display: inline-block;
-		    width: 18px;
-		    height: 16px;
-		    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -100px -450px;
-		}
-		#header .gnbarea .searcharea .form-entry .btn-search:after {
-		    content: "";
-		    position: absolute;
-		    top: 50%;
-		    left: 50%;
-		    transform: translate(-50%, -50%);
-		    display: inline-block;
-		    width: 20px;
-		    height: 20px;
-		    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -300px -300px;
-		}
-		body {
-		    position: relative;
-		    font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
-		    font-weight: 200;
-		    font-size: 15px;
-		    line-height: 1.6;
-		    color: #767572;
-		    letter-spacing: -0.025em;
-		    word-break: keep-all;
-		    word-wrap: break-word;
-		}
-		button {
-		    font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
-		    cursor: pointer;
-		    padding: 0;
-		    border: none;
-		    letter-spacing: -0.025em;
-		}
-	</style>
-</head>
+<link rel="stylesheet" type="text/css" href="css/product.css">
 
 <header id="header">
-	<noscript>
-		이 사이트를 이용하기 위해서 자바스크립트를 활성화 시킬 필요가 있습니다. <a
-			href="http://www.enable-javascript.com/ko/" target="_blank">브라우저에서
-			자바스크립트를 활성화하는 방법</a>을 참고 하세요.
-	</noscript>
-
 	<!-- 복지관(이지웰) 배너 노출 //-->
 	<div id="ezwelHeader"></div>
 	<!-- // 복지관(이지웰) 배너 노출 -->
@@ -97,46 +38,14 @@
 
 			<!-- util : 로그인 후// -->
 
-
 			<!-- //util : 로그인 후 -->
 		</div>
 		<!-- //toparea -->
 
 		<!-- gnbarea// -->
 		<nav class="gnbarea">
-			<!-- 팝업 : category -->
+			<!-- 팝업 : category// -->
 			<div id="popCategory">
-				<script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
-					src="//local.adguard.org?ts=1647207397334&amp;type=content-script&amp;dmn=tohome.thehyundai.com&amp;pth=%2Ffront%2Fdp%2Fdpa%2FpopCategory.Ajax&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;uag="></script>
-				<script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
-					src="//local.adguard.org?ts=1647207397334&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script>
-				<script type="text/javascript">
-					$(document).ready(
-							function() {
-								// 퍼블 정상 동작을 위해 $(document).ready에 추가 
-								$('.depth1.brand-wrap .depth2 button, .depth3')
-										.hover(
-												function() {
-													$(this).parents('ul.lnb')
-															.addClass('on');
-												},
-												function() {
-													$(this).parents('ul.lnb')
-															.removeClass('on');
-												});
-
-								$('.exhibition-wrap, .brand-ct').hover(
-										function() {
-											$(this).parents('ul.lnb').addClass(
-													'on2');
-										},
-										function() {
-											$(this).parents('ul.lnb')
-													.removeClass('on2');
-										});
-							});
-				</script>
-
 				<!-- category -->
 				<button type="button" class="btn-category">음식 카테고리</button>
 
@@ -242,5 +151,135 @@
 	function notReady() {
 		event.preventDefault();
 		alert('준비중입니다!!!');
+	}
+</script>
+
+<!-- Imported Javscript -->
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/product.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
+	src="//local.adguard.org?ts=1647207397334&amp;type=content-script&amp;dmn=tohome.thehyundai.com&amp;pth=%2Ffront%2Fdp%2Fdpa%2FpopCategory.Ajax&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;uag="></script>
+<script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
+	src="//local.adguard.org?ts=1647207397334&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// 퍼블 정상 동작을 위해 $(document).ready에 추가 
+		$('.btn-category').hover(
+			function() {
+				$('.popcategory').addClass('active');
+			},
+			function() {
+				$('.popcategory').removeClass('active');
+			}
+		);
+	});
+</script>
+<script type="text/javascript">
+	var isLogin = $.cookie('isLogin'); 
+		$(document).ready(function(){
+			var memNmText = $.cookie('memNm');  
+			var isCookieLogin = $.cookie('isLogin'); 
+			if (isCookieLogin == "Y") {
+				$('#memNmText').text( memNmText +'님! 반갑습니다.');
+				$("#dawnLoginY").show();
+				$("#dawnLoginN").remove();
+			} else {
+				$("#dawnLoginN").show();
+				$("#dawnLoginY").remove();
+			}
+			
+			var gubun ='mobileHome';
+			if (gubun == null || gubun == 'mobileHome'){   
+				fnTopBanner();   //탑배너
+			}
+			fnPcHeader();
+			fnPopCategory();
+			fnHomeGnbList();    	
+			fnPDSearchInit(); // 검색
+		});
+	
+	//PC메인상단 배너
+	function fnTopBanner() {
+		$.ajax({
+			type : 'GET',
+			url : '/front/dp/dpa/topBannerPc.json',
+			data : "",
+			dataType : 'json',
+			success : function(data, status, xhr) {
+				if(data != null){
+					var addBannerHtml = '';
+					addBannerHtml += '<div class="topbanner">';
+					addBannerHtml += '<button type="butoon" class="btn-close" onclick="$(\'.topbanner\').slideUp();">닫기</button>';
+					addBannerHtml += '<a href="/front'+data.connUrl+'"><img src="https://tohomeimage.thehyundai.com/'+data.bnnrImgPath+'" alt=""></a>';
+					addBannerHtml += '</div">';        
+					$("#topBanner").html(addBannerHtml);
+				}
+			}
+		});
+	} 
+   
+	//헤더
+	function fnPcHeader() {
+		$.ajax({
+			type : 'GET',
+			url : '/front/dp/dpa/pcHeader.Ajax?UseCache=N',
+			dataType : 'html',
+			success : function(data, status, xhr) {
+				if(data != null){
+					$("#popProd").html(data);
+				}
+			}
+		});
+	} 
+   
+	//팝업 카테고리
+	function fnPopCategory() {
+		$.ajax({
+			type : 'GET',
+			url : '/front/dp/dpa/popCategory.Ajax',
+			dataType : 'html',
+			success : function(data, status, xhr) {
+				if(data != null){
+					$("#popCategory").html(data);
+				}
+			}
+		});
+	} 
+	
+	function fnHomeGnbList(){
+		$.ajax({
+			type : 'GET',
+			url : '/front/dp/dpa/homeGnbList.json',
+			data : "",
+			dataType : 'json',
+			success : function(data, status, xhr) {
+				if(data != null){
+					var addHtml = '';
+					var addHomeHtml = '';
+					var gubun = 'mobileHome';
+					
+					for(var i=0; i<data.length; i++) {
+						if(data[i].dispPrty == '1' ){  //PC 홈메인은 GNB 영역에서 제외
+							addHomeHtml += '<a href="/front'+data[i].connUrl+'">';
+							addHomeHtml += '<img src="/UIUX/w/pjtCom/images/temp/header_logo_freex34.png" alt="현대식품관">';
+							addHomeHtml += '</a>';
+						} else {                   		  
+							if(gubun == data[i].dispTrtyCd){
+								addHtml += '<li class="active">';                                 
+							} else{
+								addHtml += '<li>';
+							}
+							addHtml += '<a href="/front'+data[i].connUrl+'" onclick="GA_Event(\'PC_공통\',\'GNB\', \''+data[i].dispTrtyNm+'\');">'+data[i].dispTrtyNm+'</a>';
+							addHtml += '</li>';
+						}
+					}
+					$("#homeGnbList").html(addHtml);
+					$("#homeMain").html(addHomeHtml);
+				}
+			}
+		});
 	}
 </script>

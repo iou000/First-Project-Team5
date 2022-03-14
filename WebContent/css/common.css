@@ -8020,7 +8020,7 @@ body.fixed {
     display: inline-block;
     width: 18px;
     height: 16px;
-    background: url("../images/common/btn.png") no-repeat -100px -450px;
+    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -100px -450px;
 }
 
 #header .gnbarea .popcategory {
@@ -8440,7 +8440,6 @@ body.fixed {
     right: 55px;
     bottom: 14px;
     height: 36px;
-    background-color: #ffc9c9;
 }
 
 #header .gnbarea .searcharea .form-entry {
@@ -8492,7 +8491,7 @@ body.fixed {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background: url("../images/common/btn.png") no-repeat -300px -300px;
+    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -300px -300px;
 }
 
 #header .gnbarea .searcharea.active .form-entry .btn-search:after {
