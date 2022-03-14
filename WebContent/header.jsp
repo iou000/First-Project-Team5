@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/common.css">
@@ -111,37 +112,6 @@
         <nav class="gnbarea">
             <!-- 팝업 : category -->
             <div id="popCategory">
-                <script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
-                        src="//local.adguard.org?ts=1647207397334&amp;type=content-script&amp;dmn=tohome.thehyundai.com&amp;pth=%2Ffront%2Fdp%2Fdpa%2FpopCategory.Ajax&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;uag="></script>
-                <script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
-                        src="//local.adguard.org?ts=1647207397334&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script>
-                <script type="text/javascript">
-                    $(document).ready(
-                        function () {
-                            // 퍼블 정상 동작을 위해 $(document).ready에 추가
-                            $('.depth1.brand-wrap .depth2 button, .depth3')
-                                .hover(
-                                    function () {
-                                        $(this).parents('ul.lnb')
-                                            .addClass('on');
-                                    },
-                                    function () {
-                                        $(this).parents('ul.lnb')
-                                            .removeClass('on');
-                                    });
-
-                            $('.exhibition-wrap, .brand-ct').hover(
-                                function () {
-                                    $(this).parents('ul.lnb').addClass(
-                                        'on2');
-                                },
-                                function () {
-                                    $(this).parents('ul.lnb')
-                                        .removeClass('on2');
-                                });
-                        });
-                </script>
-
                 <!-- category -->
                 <button type="button" class="btn-category">음식 카테고리</button>
 
@@ -232,6 +202,41 @@
 
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
+        src="//local.adguard.org?ts=1647207397334&amp;type=content-script&amp;dmn=tohome.thehyundai.com&amp;pth=%2Ffront%2Fdp%2Fdpa%2FpopCategory.Ajax&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;uag="></script>
+<script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
+        src="//local.adguard.org?ts=1647207397334&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script>
+<script type="text/javascript">
+    $(document).ready(
+        function () {
+            // 퍼블 정상 동작을 위해 $(document).ready에 추가
+            $('.btn-category')
+                .hover(
+                    function () {
+                        // console.log(this);
+                        // $(this).parents('ul.lnb')
+                        //     .addClass('on');
+                        var d = document.getElementById("p_popCategory");
+                        d.className += "active";
+                    },
+                    function () {
+                        var d = document.getElementById("p_popCategory");
+                        d.className -= "active";
+                    });
+
+            $('.exhibition-wrap, .brand-ct').hover(
+                function () {
+                    console.log(this);
+                    console.log("아래")
+                    $(this).parents('ul.lnb').addClass(
+                        'on2');
+                },
+                function () {
+                    $(this).parents('ul.lnb')
+                        .removeClass('on2');
+                });
+        });
+</script>
 
 <!-- Javascript -->
 <script type="text/javascript">

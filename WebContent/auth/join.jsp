@@ -6,6 +6,7 @@
 <%--<%@ include file="sub_img.html"%> --%>
 <%--<%@ include file="sub_menu.html" %>   --%>
 
+
 <article>
     <h2>Join Us</h2>
     <form id="join" action="app?command=join" method="post" name="join_form">
