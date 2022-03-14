@@ -3,9 +3,9 @@ package com.team5.vo;
 public class CategoryVO {
     private String category;
 
-    private int view;
+    private double view_average;
 
-    private int grade;
+    private double grade_average;
 
     public String getCategory() {
         return category;
@@ -15,19 +15,19 @@ public class CategoryVO {
         this.category = category;
     }
 
-    public int getView() {
-        return view;
+    public double getView_average() {
+        return view_average;
     }
 
-    public void setView(int view) {
-        this.view = view;
+    public void setView_average(double view_average) {
+        this.view_average = view_average;
     }
 
-    public int getGrade() {
-        return grade;
+    public double getGrade_average() {
+        return grade_average;
     }
 
-    public void setGrade(int grade) {
-        this.grade = grade;
+    public void setGrade_average(double grade_average) {
+        this.grade_average = grade_average;
     }
 }

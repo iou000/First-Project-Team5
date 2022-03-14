@@ -1,15 +1,16 @@
 <!-- @author 김지혜 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>My Page</title>
+	<title>레시피 상세 페이지</title>
+	<link href="css/mypage.css" rel="stylesheet">
 </head>
 <body>
-	<article>
+	<div class="wr">
     	<h2>My Page</h2>
     	<p> 안녕하세요 ${loginUser.username} 님!!  </p>
 		<a href="app?command=recipe_insert_form">레시피 만들기</a>
@@ -42,6 +43,6 @@
 	    		</c:forEach>
 	    	</div>
 	    </div>
-    </article>
+    </div>
 </body>
 </html>

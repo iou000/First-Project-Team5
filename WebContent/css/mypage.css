@@ -1,0 +1,15 @@
+.mypage h2 {
+    color: aqua;
+}
+
+.mypage .side {
+    width: 300px;
+    background-color: beige;
+    float: left;
+}
+
+.mypage .contents {
+    width: 900px;
+    background-color: aqua;
+    float: left;
+}
