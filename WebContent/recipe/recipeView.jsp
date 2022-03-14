@@ -85,8 +85,13 @@
 			</c:forEach>
 		</div>
 		<!-- // 댓글 뷰 -->
+	</div>
+</body>
 
-</div>
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<!-- Javascript -->
 <script>
 	/* 레시피 삭제 seop */
 	function fnDeleteRecipe(){
@@ -101,3 +106,4 @@
 		}
 	}
 </script>
+</html>
