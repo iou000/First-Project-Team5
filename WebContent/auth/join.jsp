@@ -26,6 +26,7 @@
         </div>
     </form>
 </article>
+<script type="text/javascript" src="js/join.js"></script>
 
 <%--<%@ include file="../footer.jsp" %>--%>
   
