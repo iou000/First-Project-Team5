@@ -3,8 +3,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <link rel="stylesheet" type="text/css" href="css/library.css">
+
+<!-- Style -->
 <head>
 	<style>
 		#header .gnbarea .btn-category {
@@ -57,6 +62,7 @@
 		}
 	</style>
 </head>
+
 <header id="header">
 	<noscript>
 		이 사이트를 이용하기 위해서 자바스크립트를 활성화 시킬 필요가 있습니다. <a
@@ -98,7 +104,7 @@
 
 		<!-- gnbarea// -->
 		<nav class="gnbarea">
-			<!-- 팝업 : category// -->
+			<!-- 팝업 : category -->
 			<div id="popCategory">
 				<script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
 					src="//local.adguard.org?ts=1647207397334&amp;type=content-script&amp;dmn=tohome.thehyundai.com&amp;pth=%2Ffront%2Fdp%2Fdpa%2FpopCategory.Ajax&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;uag="></script>
@@ -134,37 +140,42 @@
 				<!-- category -->
 				<button type="button" class="btn-category">음식 카테고리</button>
 
-				<!-- 팝업 : category// -->
+				<!-- 팝업 : category -->
 				<div id="p_popCategory" class="popcategory">
 					<nav class="lnb-list">
 						<ul class="lnb">
 							<li class="depth1">
-								<button type="button" id="korean" onclick="searchWithCategory(this.id)">한식</button>
+								<button type="button" id="korean" value="한식" onclick="searchWithCategory(this.id)">한식</button>
 							</li>
 							<li class="depth1">
-								<button type="button" id="western" onclick="searchWithCategory(this.id)">양식</button>
+								<button type="button" id="western" value="양식" onclick="searchWithCategory(this.id)">양식</button>
 							</li>
 							<li class="depth1">
-								<button type="button" id="japanese" onclick="searchWithCategory(this.id)">일식</button>
+								<button type="button" id="japanese" value="일식" onclick="searchWithCategory(this.id)">일식</button>
 							</li>
 							<li class="depth1">
-								<button type="button" id="chinese" onclick="searchWithCategory(this.id)">중식</button>
+								<button type="button" id="chinese" value="중식" onclick="searchWithCategory(this.id)">중식</button>
 							</li>
 							<li class="depth1">
-								<button type="button" id="flour-based" onclick="searchWithCategory(this.id)">분식</button>
+								<button type="button" id="flour-based" value="분식" onclick="searchWithCategory(this.id)">분식</button>
 							</li>
 							<li class="depth1">
-								<button type="button" id="snack" onclick="searchWithCategory(this.id)">간식</button>
+								<button type="button" id="snack" value="간식" onclick="searchWithCategory(this.id)">간식</button>
 							</li>
 							<li class="depth1">
-								<button type="button" id="dessert" onclick="searchWithCategory(this.id)">디저트</button>
+								<button type="button" id="dessert" value="디저트" onclick="searchWithCategory(this.id)">디저트</button>
 							</li>
 						</ul>
 					</nav>
 				</div>
-				<!-- //팝업 : category -->
+				
+				<!-- 카테고리를 통해서 레시미 목록 조회 -->
+				<div id="categorySearch">
+			        <form id="categoryForm" method="POST" action="app?command=mainpage">
+			            <input type="hidden" name="category" value=""/>
+			        </form>
+			    </div>
 			</div>
-			<!-- //팝업 : category -->
 
 			<!-- gnb// -->
 			<ul class="gnb-list" id="homeGnbList">
@@ -192,11 +203,8 @@
 					<fieldset>
 						<legend class="hide">검색어 입력</legend>
 						<div class="form-entry exist search">
-							<input type="text" name="keyWord" value="" placeholder="키워드를 입력해주세요!"/>
-								<!-- onfocus="fn.addClass('.searcharea');$('.defaultsearch').fadeIn();"
-								oninput="handleOnInput(this, 20);" autocomplete="off"
-								onkeyup="fnPDSearchAutoSelect(this, event);"> -->
-							<button type="submit" class="btn-search" onclick="searchWithKeyword()">검색</button>
+							<input type="text" name="keyword" value="" placeholder="키워드를 입력해주세요!"/>
+							<button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
 						</div>
 					</fieldset>
 				</form>
@@ -217,11 +225,15 @@
 		$("#categoryForm").submit();
 	}
 
+	function searchWithKeyword() {
+		$("#pdPcSearchForm").submit();
+	}
+	
 	function checkSearchForm() {
 		// 키워드가 입력되지 않은 상태에서 검색 버튼을 누르면 알림창 띄우기
-		if (pdPcSearchForm.keyword.value == "") {
-			alert('키워드를 먼저 입력해주세요!!!');
+		if(pdPcSearchForm.keyword.value == "") {
 			pdPcSearchForm.keyword.focus();
+			alert('키워드를 먼저 입력해주세요!!!');
 			return false;
 		} else
 			return true;
