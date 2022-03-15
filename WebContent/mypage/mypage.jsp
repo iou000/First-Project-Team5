@@ -11,7 +11,7 @@
     <link href="css/product.css" rel="stylesheet">
 </head>
 <body>
-<div id="wrap" class="mypage mypage main">
+<div id="wrap" class="mypage mypage main" style="height: fit-content !important;">
     <jsp:include page='<%="../header.jsp" %>'/>
     <div id="contents">
         <div class="innercon">
@@ -396,6 +396,8 @@
         </div>
     </div>
 </div>
+<%@ include file="../footer.jsp" %>
 <script type="text/javascript" src="js/mypage.js"></script>
+</script>
 </body>
 </html>

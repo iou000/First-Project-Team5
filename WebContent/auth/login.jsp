@@ -243,8 +243,7 @@
     </div>
     <!-- //팝업 : 비밀번호 변경 -->
 
-    <!-- footer// -->
-    <footer id="footer"></footer>
+    <jsp:include page='<%="../footer.jsp" %>'/>
 </div>
 <script>
     $(document).ready(function () {
