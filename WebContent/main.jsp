@@ -11,8 +11,6 @@
     <title>Main Page</title>
 </head>
 <body>
-<input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
-<input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
 
 <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
 <div id="list-area" id="list_section" align="center" style="min-height:800px">
@@ -24,6 +22,7 @@
                         ${recipeVO.title}
                         ${recipeVO.grade}
                         ${recipeVO.username}
+                        ${recipeVO.viewcount}
                 </a>
             </li>
         </c:forEach>
@@ -40,16 +39,16 @@
 
     /* AJAX로 데이터 요청 @seop */
     function next_recipes_load() {
-        var keywordAjax = $("input[name=keywordAjax]").val();
-        var categoryAjax = $("input[name=categoryAjax]").val();
+        var keyword = $("input[name=keyword]").val();
+        var category = $("input[name=category]").val();
 
         $.ajax({
             type    : "POST",
             url     : "app?command=recipe_paging_ajax",
             dataType: "json", //json형식으로 데이터를 보냄
             data    : {
-                'keywordAjax' : keywordAjax,
-                'categoryAjax': categoryAjax,
+                'keyword' : keyword,
+                'category': category,
                 'pageNO'      : pageNO,
                 'pageSize'    : pageSize
             },
@@ -60,8 +59,8 @@
                     var node = "";
                     node += "<li style='height: 200px'>";
                     node += "	<a href='app?command=recipe_view&recipeId=" + data[i].id + "'>";
-                    node += "       <img src='./image/recipe/" + data[i].image + "' alt='이미지 없음' style='width:50px; height: 50px'>"
-                    node += data[i].title + data[i].grade + data[i].username;
+                    node += "       <img src='./images/recipe/" + data[i].image + "' alt='이미지 없음' style='width:50px; height: 50px'>"
+                    node += data[i].title + data[i].grade + data[i].username + data[i].viewcount;
                     node += "	</a>";
                     node += "</li>";
 

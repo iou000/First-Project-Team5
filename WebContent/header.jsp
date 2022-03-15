@@ -74,7 +74,7 @@
 				<!-- 카테고리를 통해서 레시미 목록 조회 -->
 				<div id="categorySearch">
 			        <form id="categoryForm" method="POST" action="app?command=mainpage">
-			            <input type="hidden" name="category" value=""/>
+			            <input type="hidden" name="category" value="${category}"/>
 			        </form>
 			    </div>
 			</div>
