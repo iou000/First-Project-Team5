@@ -1424,7 +1424,7 @@ input[type="radio"].sort:checked + span:before {
     display: inline-block;
     text-align: left;
     text-indent: -9999px;
-    background: url("../images/common/icon.png") no-repeat 0 0;
+    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/icon.png") no-repeat 0 0;
 }
 
 .icon.question {

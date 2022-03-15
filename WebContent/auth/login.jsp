@@ -2,15 +2,20 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ include file="../header.jsp" %>
-<%--<%@ include file="sub_img.html"%> --%>
-<%--<%@ include file="sub_menu.html" %>--%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 페이지</title>
+    <link href="css/mypage.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/product.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/member.css">
+</head>
+<body>
 <div id="wrap" class="member login">
     <!-- header// -->
-
-
-    <!-- header// -->
-    <!--begin:ca-exclude-->
     <header id="header" class="short">
         <noscript>이 사이트를 이용하기 위해서 자바스크립트를 활성화 시킬 필요가 있습니다.
             <a href="http://www.enable-javascript.com/ko/" target="_blank">브라우저에서 자바스크립트를 활성화하는 방법</a>을 참고 하세요.
@@ -23,7 +28,7 @@
         <div class="inner">
             <!-- toparea// -->
             <div class="toparea">
-                <h1><a href="/front/dp/dpa/dawnHome.do"><img src="/UIUX/w/pjtCom/images/temp/header_logo_freex34.png"
+                <h1><a href="/front/dp/dpa/dawnHome.do"><img src="images/common/header_logo_freex34.png"
                                                              alt="현대식품관"></a></h1>
 
                 <div class="util">
@@ -43,9 +48,7 @@
             <!-- //toparea -->
         </div>
     </header>
-    <!--end:ca-exclude-->
-    <!-- //header -->
-    <!-- //header -->
+    <!-- header// -->
 
     <!-- contents// -->
     <div id="contents">
@@ -397,11 +400,11 @@
             function fnDawnBizpCrstList(dptsBrnCd) {
 
                 $.ajax({
-                    type: 'get',
-                    data: {'dptsBrnCd': dptsBrnCd},
-                    url: '/front/dp/dpa/bizpCrstList.do',
+                    type    : 'get',
+                    data    : {'dptsBrnCd': dptsBrnCd},
+                    url     : '/front/dp/dpa/bizpCrstList.do',
                     dataType: 'json',
-                    success: function (data, status, xhr) {
+                    success : function (data, status, xhr) {
                         if (data != null) {
                             var tHtml = '';
                             tHtml += "<strong>" + data.bizpNm + "</strong><br>";
@@ -531,26 +534,9 @@
     <!-- //footer -->
 
 </div>
-<article>
-    <h1>Login</h1>
-    <form method="post" action="app?command=login">
-        <fieldset>
-            <legend></legend>
-            <label>User ID</label>
-            <input name="username" type="text" value="${username}"><br>
-            <label>Password</label>
-            <input name="password" type="password"><br>
-        </fieldset>
-        <div class="clear"></div>
-        <div id="buttons">
-            <input type="submit" value="로그인" class="submit">
-            <input type="button" value="회원가입" class="cancel"
-                   onclick="location='app?command=join_form'">
+<script type="text/javascript" src="js/mypage.js"></script>
+</body>
+</html>
 
-            <input type="button" value="아이디 비밀번호 찾기" class="submit"
-                   onclick="location='app?command=find_id_form'">
-        </div>
-    </form>
-</article>
 
 <%--<%@ include file="../footer.jsp" %>--%>
