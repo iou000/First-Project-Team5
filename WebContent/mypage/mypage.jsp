@@ -1,4 +1,9 @@
-<!-- @author 김지혜 -->
+<%--
+  작성자: 김지혜
+  작성일자: 3/12/22
+  내용: 메인 페이지 jsp 구현
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -376,23 +381,6 @@
                     </div>
                 </section>
             </section>
-        </div>
-    </div>
-    <a href="app?command=recipe_insert_form">레시피 만들기</a>
-    <div id="front">
-        <hr>
-        <!-- author SJH -->
-        <div id="myComment">
-            <h2> 내가 작성한 댓글 </h2>
-            <c:forEach items="${commentList}" var="commentVO">
-                <div id="item">
-                    <!-- 댓글을 작성한 레시피의 주소로 이동해야 함 -->
-                    <a href="app?command=recipe_view&recipeId=${commentVO.recipe_id}">
-                        평점 : ${commentVO.grade}, 내용 : ${commentVO.contents} (수정일자 : ${commentVO.updatedAt})
-                        <br>
-                    </a>
-                </div>
-            </c:forEach>
         </div>
     </div>
 </div>

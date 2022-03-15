@@ -1,7 +1,7 @@
 <%--
   작성자: 김지혜
   작성일자: 3/15/22
-  Time: 10:14 AM
+  내용: 회원가입 확인 jsp 구현
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

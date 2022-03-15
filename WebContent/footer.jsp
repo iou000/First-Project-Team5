@@ -1,3 +1,8 @@
+<%--
+  작성자: 김지혜
+  작성일자: 3/12/22
+  내용: footer jsp 구현
+--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <script>
