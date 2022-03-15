@@ -74,8 +74,8 @@
 				
 				<!-- 카테고리를 통해서 레시미 목록 조회 -->
 				<div id="categorySearch">
-			        <form id="categoryForm" method="POST" action="app?command=mainpage">
-			            <input type="hidden" name="category" value="${category}"/>
+			        <form id="categoryForm" method="POST" action="app?command=recipe_ctgr_list">
+			            <input type="hidden" name="category" value=""/>
 			        </form>
 			    </div>
 			</div>
@@ -102,11 +102,12 @@
 
 			<!-- search// -->
 			<div class="searcharea">
-				<form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="app?command=mainpage" onsubmit="return checkSearchForm()">
+				<form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="app?command=recipe_ctgr_list" onsubmit="return checkSearchForm()">
 					<fieldset>
 						<legend class="hide">검색어 입력</legend>
 						<div class="form-entry exist search">
-							<input type="text" name="keyword" title="검색어 입력" onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')" autocomplete="off">
+
+							<input type="text" name="keyword" title="검색어 입력" value="${keywordAjax}"onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')" autocomplete="off">
 							<button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
 						</div>
 					</fieldset>

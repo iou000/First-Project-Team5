@@ -185,6 +185,7 @@ public class RecipeDAO {
         }
         return recipeVO;
     }//end selectRecipeById
+
     /**
      * @return : List<RecipeVO>
      * @Author : seop
@@ -277,7 +278,7 @@ public class RecipeDAO {
     }//end selectRecipeListByUserId
 
     /**
-     * 클래스 : RecipeDAO
+     * 메서드 : selectRecipeViewGradeByCategory
      * 작성자 : 김지혜
      * 작성일 : 3/14/22
      **/
@@ -312,8 +313,9 @@ public class RecipeDAO {
         }
         return categoryVOList;
     }//end selectRecipeViewGradeByCategory
+
     /**
-     * 클래스 : RecipeDAO
+     * 메서드 : selectRecipeByComment
      * 작성자 : 김지혜
      * 작성일 : 3/14/22
      **/
@@ -351,12 +353,12 @@ public class RecipeDAO {
         }
         return recipeVOList;
     }//end selectRecipeViewGradeByCategory
-    
+
     /**
-     * @Author  : seop
-     * @Date    : 2022. 3. 14.
-     * @Method  : updateViewCount
-     * @return  : void
+     * @return : void
+     * @Author : seop
+     * @Date : 2022. 3. 14.
+     * @Method : updateViewCount
      * @Comment : 조회수 +1 증가
      */
     public void updateViewCount(int id) {
