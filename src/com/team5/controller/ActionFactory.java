@@ -53,6 +53,8 @@ public class ActionFactory {
             action = new RecipePagingAjaxAction();
         } else if (command.equals("recipe_ctgr_list")) {
             action = new RecipeCtgrListAction();
+        } else if (command.equals("recipe_search_list")) {
+            action = new RecipeSearchListAction();
         }
         return action;
     }

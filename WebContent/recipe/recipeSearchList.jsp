@@ -10,23 +10,50 @@
     <title>Main Page</title>
 </head>
 <body>
-<div id="wrap" class="main">
+<div id="wrap" class="product category">
     <!-- header// -->
     <jsp:include page='<%="../header.jsp" %>'/>
     <!-- header// -->
+    <link rel="stylesheet" type="text/css" href="css/product.css">
     <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
     <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
-
+    <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
+	
     <!-- //contents -->
     <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
     <div id="contents">
-        <div class="innercon">
+        <div class="innercon" id="reset_section">
+
+        	<section class="categorylist">
+        		<strong class="txt-total">
+        			<span class="word" id="titleName">'${keywordAjax}'</span>
+        			검색결과
+        			<em id="titleCnt">322</em>
+        			건
+        		</strong>
+        	</section>
+        	
+        	<section class="list-filter">
+        		<strong class="txt-total"></strong>
+        		<div class="filter-wrapper">
+        			<div class="form-filter">
+	                    <ul class="btn-group" id="sortType">
+	                        <li>
+	                            <button id="sort_grade" type="button" class="active" onclick="fnSortType(this.id)">평점순</button>
+	                        </li>
+	                        <li><button id="sort_viewcount" type="button" onclick="fnSortType(this.id)">조회순</button></li>
+	                        <li><button id="sort_createdat" type="button" onclick="fnSortType(this.id)">최신순</button></li>
+	                    </ul>
+	                </div>
+        		</div>
+        	</section>
+        	
             <ul class="product-list" id="ulItemList">
                 <c:forEach var="recipeVO" items="${recipeList}">
                     <li>
                         <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                         <span class="thumb">
-                            <img src="./images/recipe/home.jpg" alt="이미지 없음">
+                            <img src="./images/recipe/${recipeVO.image}" alt="이미지 없음">
                         </span>
                             <strong class="txt-ti ellipsis">
                                     ${recipeVO.title}
@@ -143,6 +170,7 @@
     function next_recipes_load() {
         var keywordAjax = $("input[name=keywordAjax]").val();
         var categoryAjax = $("input[name=categoryAjax]").val();
+        var sortTypeAjax = $("input[name=sortTypeAjax]").val();
 
         $.ajax({
             type    : "POST",
@@ -151,6 +179,7 @@
             data    : {
                 'keywordAjax' : keywordAjax,
                 'categoryAjax': categoryAjax,
+                'sortTypeAjax': sortTypeAjax,
                 'pageNO'      : pageNO,
                 'pageSize'    : pageSize
             },
@@ -222,6 +251,50 @@
             }
         }
     });
+    
+    
+
+    /* 정렬 */
+    function fnSortType(sort_type) {
+		console.log(sort_type);
+		if(sort_type == 'sort_grade') {
+			$("input[name=sortTypeAjax]").val(sort_type);
+			
+			$("#sort_grade").addClass("active");
+			$("#sort_viewcount").removeClass("active");
+			$("#sort_createdat").removeClass("active");
+			
+			//1페이지부터 다시불러와야함
+			pageNO = 1;
+			//현재 있는 레시피 리스트 모두 삭제
+			$('#ulItemList').empty();
+			//조건에 맞는 레시피 리스트를 불러옴
+			next_recipes_load();
+			
+		
+		} else if(sort_type == 'sort_viewcount') {
+			$("input[name=sortTypeAjax]").val(sort_type);
+			
+			$("#sort_grade").removeClass("active");
+			$("#sort_viewcount").addClass("active")
+			$("#sort_createdat").removeClass("active");
+			
+			
+			
+		} else if(sort_type == 'sort_createdat') {
+			$("input[name=sortTypeAjax]").val(sort_type);
+			
+			$("#sort_grade").removeClass("active");
+			$("#sort_viewcount").removeClass("active");
+			$("#sort_createdat").addClass("active");
+			
+			
+			
+		}
+	}
+    
+    
+    
 
 </script>
 
