@@ -7798,7 +7798,7 @@ body.fixed {
     position: absolute;
     top: 28px;
     right: 0;
-    font-size: 0;
+    font-size: 13px;
 }
 
 #header .toparea .util a {
@@ -8450,7 +8450,7 @@ body.fixed {
 
 #header .gnbarea .searcharea .form-entry input {
     padding: 0 66px 0 16px;
-    width: 120px;
+    width: 150px;
     height: 36px;
     line-height: 34px;
     text-align: left;
@@ -8461,7 +8461,7 @@ body.fixed {
 }
 
 #header .gnbarea .searcharea.active .form-entry input {
-    width: 180px;
+    width: 200px;
     border-color: #454545;
     background-color: #fff;
 }
@@ -8474,7 +8474,7 @@ body.fixed {
 #header .gnbarea .searcharea .form-entry .btn-search {
     position: absolute;
     top: 0;
-    right: 12px;
+    right: 10px;
     display: inline-block;
     width: 20px;
     height: 36px;

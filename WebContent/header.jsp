@@ -16,7 +16,7 @@
 					<img src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png" alt="현대식품관">
 				</a>
 			</h1>
-
+			
 			<c:choose>
 				<c:when test="${empty loginUser.username}">
 					<div class="util" id="dawnLoginN" style="display: hidden">
@@ -26,12 +26,13 @@
 				</c:when>
 				<c:otherwise>
 					<div class="util" id="dawnLoginY" style="display: hidden">
-						<p>${loginUser.username}님! 반갑습니다.</p>
+						${loginUser.username}님! 반갑습니다.
 						<a href="app?command=logout">로그아웃</a>
 						<a href="app?command=mypage">마이페이지</a>
 					</div>
 				</c:otherwise>
 			</c:choose>
+			
 		</div>
 		<!-- //toparea -->
     
@@ -106,7 +107,7 @@
 						<legend class="hide">검색어 입력</legend>
 						<div class="form-entry exist search">
 							<!-- <input type="text" name="keyword" value=""/> -->
-							<input type="text" name="keyWord" title="검색어 입력" onfocus="fn.addClass('.searcharea')" autocomplete="off">
+							<input type="text" name="keyWord" title="검색어 입력" onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')" autocomplete="off">
 							<button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
 						</div>
 					</fieldset>
