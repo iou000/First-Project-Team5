@@ -81,7 +81,7 @@
 				<!-- 카테고리를 통해서 레시미 목록 조회 -->
 				<div id="categorySearch">
 			        <form id="categoryForm" method="POST" action="app?command=mainpage">
-			            <input type="hidden" name="category" value=""/>
+			            <input type="hidden" name="category" value="${category}"/>
 			        </form>
 			    </div>
 			</div>
@@ -112,7 +112,7 @@
 					<fieldset>
 						<legend class="hide">검색어 입력</legend>
 						<div class="form-entry exist search">
-							<input type="text" name="keyword" value="" placeholder="키워드를 입력해주세요!"/>
+							<input type="text" name="keyword" value="${keyword}" placeholder="키워드를 입력해주세요!"/>
 							<button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
 						</div>
 					</fieldset>
