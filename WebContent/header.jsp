@@ -106,6 +106,7 @@
 					<fieldset>
 						<legend class="hide">검색어 입력</legend>
 						<div class="form-entry exist search">
+
 							<input type="text" name="keyword" title="검색어 입력" value="${keywordAjax}"onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')" autocomplete="off">
 							<button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
 						</div>

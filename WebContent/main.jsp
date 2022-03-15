@@ -8,6 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css?ver=9">
+    <link rel="stylesheet" type="text/css" href="css/library.css?ver=9">
 </head>
 <body>
 <div id="wrap" class="main">
