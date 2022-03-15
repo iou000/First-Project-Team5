@@ -22,6 +22,7 @@ public class RecipeDAO {
     Connection conn = null;
     CallableStatement cstmt = null;
     ResultSet rs = null;
+
     private RecipeDAO() {
     } //싱글턴 처리
 
@@ -184,7 +185,6 @@ public class RecipeDAO {
         }
         return recipeVO;
     }//end selectRecipeById
-    
     /**
      * @return : List<RecipeVO>
      * @Author : seop
@@ -312,7 +312,6 @@ public class RecipeDAO {
         }
         return categoryVOList;
     }//end selectRecipeViewGradeByCategory
-    
     /**
      * 클래스 : RecipeDAO
      * 작성자 : 김지혜
