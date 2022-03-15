@@ -22,13 +22,15 @@
 	        	<div class="title-area">
 	             	<div class="title">
 	                    <div class="inner">
+	                    	<!-- 레시피 제목 및 조회수 표시// -->
 	                        <h2>${recipeVO.title}</h2>
 	                        <p align="right">조회수 : ${recipeVO.viewcount}</p>
+	                        <!-- //레시피 제목 및 조회수 표시 -->
 	                    </div>
 	                </div>
 	            </div>
 	            
-	            <!-- 레시피 정보// -->
+	            <!-- 레시피 정보 표시// -->
 	            <div class="recipe-info">
 	                <dl class="author">
 	                    <dt>작성자</dt>
@@ -43,34 +45,35 @@
 	                    <dd>${recipeVO.grade}</dd>
 	                </dl>
 	            </div>
-
-	            <!-- //레시피 정보 -->
+	            <!-- //레시피 정보 표시 -->
 	            
+	            <!-- 레시피 대표 이미지 표시// -->
 	            <div class="recipe-view">
-                    <!-- 이미지인 경우//-->
                     <img src="./images/recipe/${recipeVO.image}" alt="이미지없음">
-                    <!-- //이미지인 경우 -->
 		        </div>
+		        <!-- //레시피 대표 이미지 표시 -->
 		        
+		        <!-- 레시피 소개 표시// -->
 		        <div class="recipe-info">
 		        	<h2>레시피 소개</h2><br>
 		        	${recipeVO.intro}
 		        </div>
+		        <!-- //레시피 소개 표시 -->
 		        
 	            <!-- 관리자 등록 영역// -->
 	            <div class="edit-recipe">
 	            	<div class="magazinedetail m12"> 
 	            		<div class="mbox tab"> 
 	            			<ul class="menu">
-								<li class="">
-									<a href="#"><em>재료</em></a>
-								</li> 
 								<li class="active">
-									<a href="#"><em>조리법</em></a>
+									<a href="#" id="ingredients" onclick="return false;"><em>재료</em></a>
+								</li> 
+								<li class="">
+									<a href="#" id="details" onclick="return false;"><em>조리법</em></a>
 								</li>
 							</ul> 
 							<ul class="cont">
-								<li class=""><strong class="titbig">2인분</strong> 
+								<li class="active">
 									<ul class="list"> 
 										<li>사과 ½개</li> 
 										<li>계절 과일</li>
@@ -84,7 +87,7 @@
 										<li>식용 꽃 약간</li>
 									</ul>
 								</li>
-								<li class="active">
+								<li class="">
 									<ol class="step">
 										<li>
 											<strong>STEP 1</strong>
@@ -134,7 +137,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <!-- Javascript -->
-<script>
+<script type="text/javascript">
     /* 레시피 삭제 seop */
     function fnDeleteRecipe() {
         if (confirm("삭제하시겠습니까?")) {
@@ -148,5 +151,25 @@
             $('form[name=udform]').attr({action: "app?command=recipe_update_form", method: 'post'}).submit();
         }
     }
+    
+    /* 재료 & 조리법 전환 SJH */
+    $(document).ready(function () {
+    	$('#ingredients').on("click", function() {
+    		if($(this).parent().hasClass('active') == false) {
+    			$(this).parent().addClass('active');
+    			$('.list').parent().addClass('active');
+       			$('#details').parent().removeClass('active');
+       			$('.step').parent().removeClass('active');	
+    		}
+    	});
+    	$('#details').on("click", function() {
+       		if($(this).parent().hasClass('active') == false) {
+       			$(this).parent().addClass('active');
+       			$('.step').parent().addClass('active');
+       			$('#ingredients').parent().removeClass('active');
+       			$('.list').parent().removeClass('active');
+       		}
+    	});
+    });
 </script>
 </html>
