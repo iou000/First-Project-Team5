@@ -124,7 +124,6 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
-<script type="text/javascript" src="js/product.js"></script>
 <script type="text/javascript" src="js/function.js"></script>
 <script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
         src="//local.adguard.org?ts=1647207397334&amp;type=content-script&amp;dmn=tohome.thehyundai.com&amp;pth=%2Ffront%2Fdp%2Fdpa%2FpopCategory.Ajax&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;uag="></script>
