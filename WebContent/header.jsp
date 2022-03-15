@@ -4,8 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="css/common.css?ver=9">
-<link rel="stylesheet" type="text/css" href="css/library.cssver=9">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/library.css">
 
 <header id="header">
 	<div class="inner">
@@ -106,8 +106,7 @@
 					<fieldset>
 						<legend class="hide">검색어 입력</legend>
 						<div class="form-entry exist search">
-							<!-- <input type="text" name="keyword" value=""/> -->
-							<input type="text" name="keyWord" title="검색어 입력" onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')" autocomplete="off">
+							<input type="text" name="keyword" title="검색어 입력" onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')" autocomplete="off">
 							<button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
 						</div>
 					</fieldset>
@@ -120,34 +119,6 @@
 
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<!-- Javascript -->
-<script type="text/javascript">
-	function searchWithCategory(id) {
-		var foodCategory = document.getElementById(id).value;
-		$("input[name=category]").attr("value", foodCategory);
-		$("#categoryForm").submit();
-	}
-
-	function searchWithKeyword() {
-		$("#pdPcSearchForm").submit();
-	}
-	
-	function checkSearchForm() {
-		// 키워드가 입력되지 않은 상태에서 검색 버튼을 누르면 알림창 띄우기
-		if(pdPcSearchForm.keyword.value == "") {
-			pdPcSearchForm.keyword.focus();
-			alert('키워드를 먼저 입력해주세요!!!');
-			return false;
-		} else
-			return true;
-	}
-	
-	function notReady() {
-		event.preventDefault();
-		alert('준비중입니다!!!');
-	}
-</script>
 
 <!-- Imported Javscript -->
 <script type="text/javascript" src="js/main.js"></script>
@@ -182,4 +153,32 @@
 		        d.classList.remove("active")
 		    });
 	});
+</script>
+
+<!-- Javascript -->
+<script type="text/javascript">
+	function searchWithCategory(id) {
+		var foodCategory = document.getElementById(id).value;
+		$("input[name=category]").attr("value", foodCategory);
+		$("#categoryForm").submit();
+	}
+
+	function searchWithKeyword() {
+		$("#pdPcSearchForm").submit();
+	}
+	
+	function checkSearchForm() {
+		// 키워드가 입력되지 않은 상태에서 검색 버튼을 누르면 알림창 띄우기
+		if(pdPcSearchForm.keyword.value == "") {
+			pdPcSearchForm.keyword.focus();
+			alert('키워드를 먼저 입력해주세요!!!');
+			return false;
+		} else
+			return true;
+	}
+	
+	function notReady() {
+		event.preventDefault();
+		alert('준비중입니다!!!');
+	}
 </script>
