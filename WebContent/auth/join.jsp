@@ -19,31 +19,22 @@
     <!-- header// -->
     <!--begin:ca-exclude-->
     <header id="header" class="short">
-        <noscript>이 사이트를 이용하기 위해서 자바스크립트를 활성화 시킬 필요가 있습니다.
-            <a href="http://www.enable-javascript.com/ko/" target="_blank">브라우저에서 자바스크립트를 활성화하는 방법</a>을 참고 하세요.
-        </noscript>
-
-        <div class="skip">
-            <a href="#contents">본문으로 건너뛰기</a>
-        </div>
-
         <div class="inner">
             <!-- toparea// -->
             <div class="toparea">
-                <h1><a href="/front/dp/dpa/dawnHome.do"><img src="/UIUX/w/pjtCom/images/temp/header_logo_freex34.png"
-                                                             alt="현대식품관"></a></h1>
+                <h1><a href="app?command=mainpage"><img
+                        src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png"
+                        alt="현대식품관"></a></h1>
 
                 <div class="util">
 
 
                     <!-- util : 로그인 전// -->
-                    <a href="/front/cua/login.do">로그인</a>
-                    <a href="/front/cua/front/joinStep1.do?publicYn=Y">회원가입</a>
+                    <a href="app?command=login_form">로그인</a>
+                    <a href="app?command=join_form">회원가입</a>
                     <!-- //util : 로그인 전 -->
 
-
-                    <a href="/front/mp/mpa/selectMyPageMain.do">마이페이지</a>
-                    <a href="/front/dp/dpf/customerCenterMain.do">고객센터</a>
+                    <a>고객센터</a>
                 </div>
 
             </div>
