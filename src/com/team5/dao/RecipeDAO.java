@@ -89,10 +89,6 @@ public class RecipeDAO {
             // CallableStatement로 저장 프로시저 호출
             cstmt = conn.prepareCall(runSP);
 
-            // 이미지 경로를 불러와서 File 및 FileInputStream 객체 생성
-            //File file = new File("images/recipe/main_img.jpg");
-            //FileInputStream fis = new FileInputStream(file);
-
             // 저장프로시저 파라미터 입력
             cstmt.setInt(1, id);
             cstmt.setString(2, recipeVO.getTitle());
@@ -101,7 +97,7 @@ public class RecipeDAO {
             cstmt.setString(5, recipeVO.getIngredients());
             cstmt.setString(6, recipeVO.getDetails());
             cstmt.setString(7, recipeVO.getImage());
-            //cstmt.setBinaryStream(7, fis, (int) file.length()); // 경로에 있는 이미지를 불러와서 DB에 업로드
+
             System.out.println(runSP);
 
             //실행
@@ -181,6 +177,7 @@ public class RecipeDAO {
                 recipeVO.setUser_id(rs.getInt("user_id"));
                 recipeVO.setUsername(rs.getString("username"));
             }
+            System.out.println(runSP);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -188,7 +185,6 @@ public class RecipeDAO {
         }
         return recipeVO;
     }//end selectRecipeById
-
     /**
      * @return : List<RecipeVO>
      * @Author : seop
@@ -227,6 +223,7 @@ public class RecipeDAO {
                 recipeVO.setUsername(rs.getString("username"));
                 recipeList.add(recipeVO);
             }
+            System.out.println(runSP);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -270,6 +267,7 @@ public class RecipeDAO {
                 recipeVO.setUsername(rs.getString("username"));
                 recipeList.add(recipeVO);
             }
+            System.out.println(runSP);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -306,6 +304,7 @@ public class RecipeDAO {
                 categoryVO.setGrade_average(rs.getDouble("grade_average"));
                 categoryVOList.add(categoryVO);
             }
+            System.out.println(runSP);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -313,7 +312,6 @@ public class RecipeDAO {
         }
         return categoryVOList;
     }//end selectRecipeViewGradeByCategory
-
     /**
      * 클래스 : RecipeDAO
      * 작성자 : 김지혜
@@ -345,6 +343,7 @@ public class RecipeDAO {
                 recipeVO.setId(rs.getInt("id"));
                 recipeVOList.add(recipeVO);
             }
+            System.out.println(runSP);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -352,4 +351,31 @@ public class RecipeDAO {
         }
         return recipeVOList;
     }//end selectRecipeViewGradeByCategory
+    
+    /**
+     * @Author  : seop
+     * @Date    : 2022. 3. 14.
+     * @Method  : updateViewCount
+     * @return  : void
+     * @Comment : 조회수 +1 증가
+     */
+    public void updateViewCount(int id) {
+        // 호출할 저장 프로시저
+        String runSP = "{ CALL recipe_pack.recipe_update_viewcount(?)}";
+        try {
+            // DB연결
+            conn = DBManager.getConnection();
+            // CallableStatement로 저장 프로시저 호출
+            cstmt = conn.prepareCall(runSP);
+            // 저장프로시저 파라미터 입력
+            cstmt.setInt(1, id);
+            //실행
+            cstmt.executeUpdate();
+            System.out.println(runSP);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(conn, cstmt);
+        }
+    }//end updateRecipe
 }
