@@ -12,7 +12,7 @@
 <body>
 <div id="wrap" class="main">
     <!-- header// -->
-    <jsp:include page='<%="./header.jsp" %>'/>
+    <jsp:include page='<%="../header.jsp" %>'/>
     <!-- header// -->
     <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
     <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
@@ -137,7 +137,7 @@
 <script>
     var loading = false; // 중복 확인용
     var pageNO = 2; // 1페이지는 처음에 불러왔으니 2부터 시작.
-    var pageSize = 12; // 불러올 데이터 갯수.
+    var pageSize = 8 // 불러올 데이터 갯수.
 
     /* AJAX로 데이터 요청 @seop */
     function next_recipes_load() {
@@ -197,6 +197,8 @@
                 if (data.length == 0) {
                     loading = true;
                 }
+                console.log("키워드",keywordAjax);
+                console.log("카테고리",categoryAjax)
 
             }
             , error : function (request, status, error) {
