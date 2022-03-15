@@ -35,8 +35,8 @@
 
 
                     <!-- util : 로그인 전// -->
-                    <a href="/front/cua/login.do">로그인</a>
-                    <a href="/front/cua/front/joinStep1.do?publicYn=Y">회원가입</a>
+                    <a href="app?command=login_form">로그인</a>
+                    <a href="app?command=join_form">회원가입</a>
                     <!-- //util : 로그인 전 -->
 
 
@@ -267,7 +267,7 @@
                     tHtml += "이메일 : " + data.repEmailAdr + " (제휴 문의, 02-6904-0761) <br>";
                     tHtml += "사업자 등록번호 : " + data.rgno1 + "-" + data.rgno2 + "-" + data.rgno3 + "<a href='#' onclick=\"javascript:fnAppLoad('" + data.bscmInfIdnfNm + "');return false;\">사업자등록확인</a><br>";
                     tHtml += "통신판매업자 신고번호 : " + data.tlmkMngNo + "<br>";
-                    tHtml += "<p class='essential-info'><em>현대식품관 투홈의 개별 판매자가 등록한 상품(브랜드직송) 상품에 대한 광고, 상품주문, 배송, 환불의 의무와 책임은 각 판매자가 부담하고,<br>";
+                    tHtml += "<p class='essential-info'><em>식품관 투홈의 개별 판매자가 등록한 상품(브랜드직송) 상품에 대한 광고, 상품주문, 배송, 환불의 의무와 책임은 각 판매자가 부담하고,<br>";
                     tHtml += "현대식품관 투홈은 통신판매 중개자로서의 의무와 책임을 다합니다.</em><br>";
                     tHtml += "고객님의 안전거래를 위해 현금결제 시 KG이니시스 구매안전 서비스를 이용하실 수 있습니다.";
                     tHtml += "<button type='button' class='confirm-btn' onclick=fn.popupOpen('#guaranteePopup') ;>서비스 가입사실 확인</button></p>";

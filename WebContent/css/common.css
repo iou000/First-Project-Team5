@@ -368,7 +368,7 @@ input[type="checkbox"] + span:before {
     display: inline-block;
     width: 22px;
     height: 22px;
-    background-image: url("../images/common/form.png");
+    background-image: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/form.png");
 }
 
 input[type="radio"].big + span:before,
@@ -562,7 +562,7 @@ input[type="radio"].sort:checked + span:before {
     width: 13px;
     height: 8px;
     transform: origin(50% 20%);
-    background: url("../images/common/form.png") no-repeat 0 -200px;
+    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/form.png") no-repeat 0 -200px;
     transition: all 0.125s ease-in-out;
     pointer-events: none;
 }
@@ -6824,7 +6824,7 @@ fieldset.form-field + .btns {
     right: 32px;
     width: 25px;
     height: 26px;
-    background: url("../images/common/form.png") no-repeat -200px -150px;
+    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/form.png") no-repeat -200px -150px;
 }
 
 .hpay-list .btn {
