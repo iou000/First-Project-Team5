@@ -41,13 +41,34 @@
 								<dt>레시피 분류 <span class="need">*<span class="hide">필수</span></span></dt>
 								<dd>
 									<div class="col-input">
-										<label><input type="radio" name="category" checked=""><span>한식</span></label>
-										<label><input type="radio" name="category"><span>양식</span></label>
-										<label><input type="radio" name="category"><span>일식</span></label>
-										<label><input type="radio" name="category"><span>중식</span></label>
-										<label><input type="radio" name="category"><span>분식</span></label>
-										<label><input type="radio" name="category"><span>간식</span></label>
-										<label><input type="radio" name="category"><span>디저트</span></label>
+										<label>
+											<input type="radio" name="category" value="한식" checked="">
+											<span>한식</span>
+										</label>
+										<label>
+											<input type="radio" name="category" value="양식">
+											<span>양식</span>
+										</label>
+										<label>
+											<input type="radio" name="category" value="일식">
+											<span>일식</span>
+										</label>
+										<label>
+											<input type="radio" name="category" value="중식">
+											<span>중식</span>
+										</label>
+										<label>
+											<input type="radio" name="category" value="분식">
+											<span>분식</span>
+										</label>
+										<label>
+											<input type="radio" name="category" value="간식">
+											<span>간식</span>
+										</label>
+										<label>
+											<input type="radio" name="category" value="한식">
+											<span>디저트</span>
+										</label>
 									</div>
 								</dd>
 							</dl>
@@ -78,12 +99,13 @@
 					            <dd>
 					            	<div class="form-file">
 					            		<div class="upload-doc">
-					            			<div class="upload-display"><span>파일을 첨부해주세요.</span></div>
+					            			<div class="upload-display">
+					            				<span>파일을 첨부해주세요.</span>
+					            			</div>
 					            			<label>
 					            				<input type="file" accept="image/jpeg, image/png" class="upload-hidden" name="image" id="atfl" title="이미지파일첨부">
 					            				<span class="btn fill gray">파일첨부</span>
 					            			</label>
-					            			<input type="hidden" name="fileNm">
 					            		</div>
 					            	</div>
 					            </dd>
@@ -106,6 +128,12 @@
 
 <!-- Javascript -->
 <script type="text/javascript">
+	$(document).ready(function() {
+		$('.upload-hidden').on('change', function() {
+			var filename = $(this)[0].files[0].name;
+			$('.upload-display span').text(filename);
+		});
+	});
 	function recipeSubmit() {
 		$('#frmMassOrdInqrInf').submit();
 	}

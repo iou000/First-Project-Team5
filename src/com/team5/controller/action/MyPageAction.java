@@ -42,12 +42,15 @@ public class MyPageAction implements Action {
             List<RecipeVO> commentRecipeList = recipeDAO.selectRecipeByComment(loginUser.getId());
             List<RecipeDesVO> recipeDesVOS = recipeDAO.selectRecipeDescriptionByUserId(loginUser.getId());
             List<CommentVO> commentList = commentDAO.getCommentsByUserId(loginUser.getId());
+            List<CommentVO> pagingCommentsByUserId = commentDAO.getPagingCommentsByUserId(loginUser.getId(), 1, 5);
+
 
             request.setAttribute("loginUser", loginUser);
             request.setAttribute("myRecipeList", myRecipeList);
             request.setAttribute("commentRecipeList", commentRecipeList);
             request.setAttribute("commentList", commentList);
             request.setAttribute("recipeDesVOS", recipeDesVOS);
+            request.setAttribute("pagingCommentsByUserId", pagingCommentsByUserId);
         }
         request.getRequestDispatcher(url).forward(request, response);
     }
