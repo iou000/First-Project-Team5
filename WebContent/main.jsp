@@ -1,8 +1,8 @@
 <!-- author SJH -->
 <%--
   작성자: 김지혜
-  작성일자: 3/15/22
-  내용: main jsp 구현
+  작성일자: 3/14/22
+  내용: 메인 페이지
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>

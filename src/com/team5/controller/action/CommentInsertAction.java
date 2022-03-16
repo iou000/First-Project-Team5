@@ -9,16 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
-*
-*클래스 : CommentAction
-*작성자 : 김지혜
-*작성일 : 3/11/22
-*
-**/
+ * 클래스 : CommentAction
+ * 작성자 : 김지혜
+ * 작성일 : 3/11/22
+ **/
 public class CommentInsertAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "app?command=recipe_view";
+
+        System.out.println(request.getParameter("contents"));
+        System.out.println(request.getParameter("grade"));
+        System.out.println(request.getParameter("user_id"));
+        System.out.println(request.getParameter("recipe_id"));
 
         // comment 생성
         String contents = request.getParameter("contents");
@@ -28,7 +31,7 @@ public class CommentInsertAction implements Action {
 
         // commentDAO insertComments
         CommentDAO commentDAO = CommentDAO.getInstance();
-        commentDAO.insertComments(grade, contents, userId, recipeId);
+        commentDAO.insertComment(grade, contents, userId, recipeId);
 
         url = url + "&recipeId=" + recipeId;
 

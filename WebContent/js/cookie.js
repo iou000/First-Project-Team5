@@ -63,7 +63,6 @@
 				var days = options.expires, t = options.expires = new Date();
 				t.setTime(+t + days * 864e+5);
 			}
-
 			return (document.javascript:fnReviewA = [
 				encode(key), '=', stringifyCookieValue(value),
 				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE

@@ -1,20 +1,30 @@
 <!-- @author 송진호 -->
+<%--
+  작성자: 김지혜
+  작성일자: 3/15/22
+  내용: 댓글 작성 & 조회
+--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-<%
-    pageContext.setAttribute("LF", "\r\n");
-%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Recipe View Page</title>
-    <link rel="stylesheet" type="text/css" href="./css/common.css?ver=17">
-    <link rel="stylesheet" type="text/css" href="./css/library.css?ver=17">
-    <link rel="stylesheet" type="text/css" href="./css/magazine.css?ver=1517">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/product.css" rel="stylesheet">
+    <link href="css/library.css" rel="stylesheet">
+    <link href="css/magazine.css" rel="stylesheet">
+    <style>
+        #contents .lnbarea + .conarea > h3 {
+            padding: 3px 0 23px;
+            color: #101010;
+            font-size: 24px;
+            font-weight: 200 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -117,33 +127,217 @@
                 </div>
             </div>
         </div>
-        <article>
-            <h1>댓글 작성 form</h1>
-            <form method="post" action="app?command=insert_comment">
-                <fieldset>
-                    <legend></legend>
-                    <label>Content</label>
-                    <input name="contents" type="text"><br>
-                    <label>Grade</label>
-                    <input name="grade" type="number"><br>
-                    <input type='hidden' name='user_id' id='userid' value='${loginUser.id}'/>
-                    <input type='hidden' name='recipe_id' id='recipeid' value=${recipeVO.id}/>
+        <c:choose>
+            <%--        로그인 했다면 댓글 작성하는 화면 노출--%>
+        <c:when test="${empty loginUser.username}">
+        </c:when>
+        <c:otherwise>
+        <section class="conarea" style="
+        float: left;
+        width: 100%;
+        padding: 20px 280px;
+        font-size: 1.5rem;">
+            <h3 class="tit" style="    font-weight: bold;
+    font-size: 2rem;
+    color: black;
+    padding-bottom: 20px;">댓글 작성</h3>
+
+            <div class="infotxt big">
+                <ul>
+                    <li style="font-size: 1.2rem;">레시피에 대한 댓글과 1 ~ 5 점 사이의 평점을 남겨주세요</li>
+                </ul>
+            </div>
+
+            <form name="comment_insert_form" method="post" action="app?command=insert_comment">
+                <input type='hidden' name='user_id' id='userid' value='${loginUser.id}'/>
+                <input type='hidden' name='recipe_id' id='recipeid' value='${recipeVO.id}'/>
+                <fieldset class="qna-write">
+                    <legend class="hide">댓글 작성</legend>
+
+                    <div class="default-write">
+                        <label class="form-default">
+                            <span class="counter">평점</span>
+                            <input name="grade" type="number"><br>
+                        </label>
+                        <label class="form-default">
+                            <span class="counter">내용</span>
+                            <textarea name="contents" title="리뷰 입력" placeholder="레시피에 대한 의견을 남겨주세요"
+                                      maxlength="500"></textarea>
+                        </label>
+                        <div class="btns">
+                            <button type="button" class="btn fill black btn-confirm" id="btn-confirm"
+                                    onclick="insert_comment()" style="width: 100px;">확인
+                            </button>
+                        </div>
+                    </div>
                 </fieldset>
-                <div class="clear"></div>
-                <div id="buttons">
-                    <input type="submit" value="댓긇작성" class="submit">
-                </div>
             </form>
-            <c:forEach items="${commentList}" var="commentVO">
-            <tr>
-                <td> ${commentVO.grade}</td>
-                <td> ${commentVO.contents} </td>
-                <td> ${commentVO.author} </td>
-                <td> ${commentVO.createdAt} </td>
-                <td> ${commentVO.updatedAt} </td>
-            </tr>
-            <br>
-            </c:forEach>
+        </section>
+        </c:otherwise>
+        </c:choose>
+        <section id="p_proReview" class="tab-contents proreview active" style="idth: 100%;
+    padding: 20px 280px;">
+            <header class="header">
+                <h4><span style="font-weight: bold;
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 40px;">레시피 댓글</span></h4>
+            </header>
+
+            <div class="list-top" style="padding-top: 15px;
+    font-size: 1.2rem;">
+                <p>
+                    레시피의 댓글들을 확인해보세요!<br>의
+                    로그인을 하면 댓글을 작성할 수 있습니다.
+                </p>
+            </div>
+            <!-- 리뷰 리스트 동적 구현 -->
+            <div class="review-list">
+                <ul>
+
+                    <a href="app?command=recipe_view&amp;recipeId=18">
+                        <li>
+                            <div class="star">
+                                <div class="grade-star"><span><span style="width:100%;">3</span></span></div>
+                            </div>
+                            <div class="recont">
+                                <div class="ti">
+                                    <span class="txt-review">댓글작성 form 테스트를 해봅시다2222</span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <span class="txt-date">2022-03-10</span>
+                            </div>
+                        </li>
+                    </a>
+
+                    <a href="app?command=recipe_view&amp;recipeId=18">
+                        <li>
+                            <div class="star">
+                                <div class="grade-star"><span><span style="width:100%;">5</span></span></div>
+                            </div>
+                            <div class="recont">
+                                <div class="ti">
+                                    <span class="txt-review">333</span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <span class="txt-date">2022-03-10</span>
+                            </div>
+                        </li>
+                    </a>
+
+                    <a href="app?command=recipe_view&amp;recipeId=17">
+                        <li>
+                            <div class="star">
+                                <div class="grade-star"><span><span style="width:100%;">5</span></span></div>
+                            </div>
+                            <div class="recont">
+                                <div class="ti">
+                                    <span class="txt-review">444</span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <span class="txt-date">2022-03-11</span>
+                            </div>
+                        </li>
+                    </a>
+
+                    <a href="app?command=recipe_view&amp;recipeId=17">
+                        <li>
+                            <div class="star">
+                                <div class="grade-star"><span><span style="width:100%;">5</span></span></div>
+                            </div>
+                            <div class="recont">
+                                <div class="ti">
+                                    <span class="txt-review">444</span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <span class="txt-date">2022-03-11</span>
+                            </div>
+                        </li>
+                    </a>
+
+                    <a href="app?command=recipe_view&amp;recipeId=17">
+                        <li>
+                            <div class="star">
+                                <div class="grade-star"><span><span style="width:100%;">5</span></span></div>
+                            </div>
+                            <div class="recont">
+                                <div class="ti">
+                                    <span class="txt-review">444</span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <span class="txt-date">2022-03-11</span>
+                            </div>
+                        </li>
+                    </a>
+
+                    <a href="app?command=recipe_view&amp;recipeId=17">
+                        <li>
+                            <div class="star">
+                                <div class="grade-star"><span><span style="width:100%;">2</span></span></div>
+                            </div>
+                            <div class="recont">
+                                <div class="ti">
+                                    <span class="txt-review">recipeId 17 22</span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <span class="txt-date">2022-03-11</span>
+                            </div>
+                        </li>
+                    </a>
+
+                    <a href="app?command=recipe_view&amp;recipeId=17">
+                        <li>
+                            <div class="star">
+                                <div class="grade-star"><span><span style="width:100%;">3</span></span></div>
+                            </div>
+                            <div class="recont">
+                                <div class="ti">
+                                    <span class="txt-review">fdfdfd</span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <span class="txt-date">2022-03-16</span>
+                            </div>
+                        </li>
+                    </a>
+
+                    <a href="app?command=recipe_view&amp;recipeId=17">
+                        <li>
+                            <div class="star">
+                                <div class="grade-star"><span><span style="width:100%;">3</span></span></div>
+                            </div>
+                            <div class="recont">
+                                <div class="ti">
+                                    <span class="txt-review">fdfdfd</span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <span class="txt-date">2022-03-16</span>
+                            </div>
+                        </li>
+                    </a>
+
+                </ul>
+                <!-- pagination// -->
+                <div class="pagination">
+                            <span class="num">
+                                <a href="javascript:fnReviewAjaxPcList(1, 28);" class="active">1</a>
+                                <a href="javascript:fnReviewAjaxPcList(2, 28);">2</a>
+                                <a href="javascript:fnReviewAjaxPcList(3, 28);">3</a>
+                                <a href="javascript:fnReviewAjaxPcList(4, 28);">4</a>
+                                <a href="javascript:fnReviewAjaxPcList(5, 28);">5</a>
+                                <a href="javascript:fnReviewAjaxPcList(6, 28);">6</a>
+                            </span>
+                </div>
+                <!-- //pagination -->
+            </div>
+        </section>
 </body>
 </html>
 </article>
@@ -190,5 +384,9 @@
             }
         });
     });
+
+    function insert_comment() {
+        document.comment_insert_form.submit();
+    }
 </script>
 </html>

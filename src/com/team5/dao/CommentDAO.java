@@ -12,6 +12,12 @@ import java.util.List;
 /**
  * @author SJH
  */
+
+/**
+ * 클래스 : CommentDAO
+ * 작성자 : 김지혜
+ * 작성일 : 3/15/22
+ **/
 public class CommentDAO {
     private static CommentDAO instance = new CommentDAO();
     Connection conn = null;
@@ -67,6 +73,11 @@ public class CommentDAO {
         return commentList;
     }
 
+    /**
+     * 메소드 : getCommentsByUserId
+     * 작성자 : 김지혜
+     * 작성일 : 3/15/22
+     **/
     // 특정 사용자ID에 해당하는 평가 목록을 불러오는 메소드
     public List<CommentVO> getCommentsByUserId(int user_id) {
         List<CommentVO> commentList = new ArrayList<>();
@@ -102,7 +113,12 @@ public class CommentDAO {
         return commentList;
     }
 
-    //
+
+    /**
+     * 메소드 : getPagingCommentsByUserId
+     * 작성자 : 김지혜
+     * 작성일 : 3/15/22
+     **/
     public List<CommentVO> getPagingCommentsByUserId(int user_id, int pageNumber, int pageSize) {
         List<CommentVO> commentList = new ArrayList<>();
         try {
@@ -140,27 +156,30 @@ public class CommentDAO {
         return commentList;
     }
 
-    // 새로운 평가를 추가하는 메소드
-    public void insertComments(int grade, String contents, int user_id, int recipe_id) {
-        Connection conn = null;
-        CallableStatement cstmt = null;
-
+    /**
+     * 메소드 : insertComments
+     * 작성자 : 김지혜
+     * 작성일 : 3/15/22
+     **/
+    public void insertComment(int grade, String contents, int user_id, int recipe_id) {
+        String runSP = "{call comment_pack.comment_insert(?, ?, ?, ?)}";
         try {
             // 연결 설정
             conn = DBManager.getConnection();
             // CallableStatement를 통해서 저장프로시저 호출
-            cstmt = conn.prepareCall("{call comment_pack.comment_insert(?, ?, ?, ?)}");
+            cstmt = conn.prepareCall(runSP);
             // 저장프로시저에 포함된 매개변수 설정
             cstmt.setInt(1, grade);
             cstmt.setString(2, contents);
             cstmt.setInt(3, user_id);
             cstmt.setInt(4, recipe_id);
             // 저장프로시저 실행
-            cstmt.execute();
-            // 사용한 conn, cstmt, rs 종료
-            DBManager.close(conn, cstmt);
+            cstmt.executeUpdate();
+
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            DBManager.close(conn, cstmt);
         }
     }
 

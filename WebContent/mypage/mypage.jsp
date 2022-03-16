@@ -1,7 +1,7 @@
 <%--
   작성자: 김지혜
   작성일자: 3/12/22
-  내용: 메인 페이지 jsp 구현
+  내용: 마이 페이지
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
