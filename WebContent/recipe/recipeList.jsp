@@ -7,68 +7,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-        <link rel="stylesheet" type="text/css" href="css/product.css">
+    <link rel="stylesheet" type="text/css" href="css/product.css">
 </head>
 <body>
 <div id="wrap" class="product category">
     <!-- header// -->
     <jsp:include page='<%="../header.jsp" %>'/>
     <!-- header// -->
-	
+
     <!-- //contents -->
     <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
     <div id="contents">
-    <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
-    <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
-    <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
+        <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
+        <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
+        <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
         <div class="innercon" id="reset_section">
-			<c:choose>
-				<c:when test="${not empty keywordAjax}">
-					<section class="categorylist">
-        				<strong class="txt-total">
-        					<span class="word" id="titleName">'${keywordAjax}'</span>
-        					레시피
-        					<em id="titleCnt">380</em>
-        					건
-        				</strong>
-        			</section>
-				</c:when>
-				<c:when test="${not empty categoryAjax}">
-					<section class="categorylist">
-        				<strong class="txt-total">
-        					<span class="word" id="titleName">'${categoryAjax}'</span>
-        					레시피
-        					<em id="titleCnt">380</em>
-        					건
-        				</strong>
-        			</section>
-				</c:when>
-				<c:when test="${not empty sortTypeAjax}">
-					<section class="categorylist">
-        				<strong class="txt-total">
-        					<span class="word" id="titleName">'전체'</span>
-        					레시피
-        					<em id="titleCnt">380</em>
-        					건
-        				</strong>
-        			</section>
-				</c:when>
-			</c:choose>
-        	
-        	<section class="list-filter">
-        		<strong class="txt-total"></strong>
-        		<div class="filter-wrapper">
-        			<div class="form-filter">
-	                    <ul class="btn-group" id="sortType">
-	                        <li>
-	                            <button id="sort_grade" type="button" class="active" onclick="fnSortType(this.id)">평점순</button>
-	                        </li>
-	                        <li><button id="sort_viewcount" type="button" onclick="fnSortType(this.id)">조회순</button></li>
-	                    </ul>
-	                </div>
-        		</div>
-        	</section>
-        	
+            <c:choose>
+                <c:when test="${not empty keywordAjax}">
+                    <section class="categorylist">
+                        <strong class="txt-total">
+                            <span class="word" id="titleName">'${keywordAjax}'</span>
+                            레시피
+                            <em id="titleCnt">${recipeList.size()}</em>
+                            건
+                        </strong>
+                    </section>
+                </c:when>
+                <c:when test="${not empty categoryAjax}">
+                    <section class="categorylist">
+                        <strong class="txt-total">
+                            <span class="word" id="titleName">'${categoryAjax}'</span>
+                            레시피
+                            <em id="titleCnt">380</em>
+                            건
+                        </strong>
+                    </section>
+                </c:when>
+                <c:when test="${not empty sortTypeAjax}">
+                    <section class="categorylist">
+                        <strong class="txt-total">
+                            <span class="word" id="titleName">'전체'</span>
+                            레시피
+                            <em id="titleCnt">380</em>
+                            건
+                        </strong>
+                    </section>
+                </c:when>
+            </c:choose>
+
+            <section class="list-filter">
+                <strong class="txt-total"></strong>
+                <div class="filter-wrapper">
+                    <div class="form-filter">
+                        <ul class="btn-group" id="sortType">
+                            <li>
+                                <button id="sort_grade" type="button" class="active" onclick="fnSortType(this.id)">평점순
+                                </button>
+                            </li>
+                            <li>
+                                <button id="sort_viewcount" type="button" onclick="fnSortType(this.id)">조회순</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <ul class="product-list" id="ulItemList">
                 <c:forEach var="recipeVO" items="${recipeList}">
                     <li>
@@ -194,10 +197,10 @@
         var sortTypeAjax = $("input[name=sortTypeAjax]").val();
 
 
-        console.log("키워드 :",keywordAjax);
-        console.log("카테고리 :",categoryAjax);
-        console.log("정렬 :",sortTypeAjax);
-        
+        console.log("키워드 :", keywordAjax);
+        console.log("카테고리 :", categoryAjax);
+        console.log("정렬 :", sortTypeAjax);
+
         $.ajax({
             type    : "POST",
             url     : "app?command=recipe_paging_ajax",
@@ -210,7 +213,7 @@
                 'pageSize'    : pageSize
             },
             success : function (data, textStatus) {
-            
+
                 //서버로부터 받아온 데이터(레시피들)을 추가
                 for (var i = 0; i < data.length; i++) {
                     var node = "";
@@ -219,25 +222,26 @@
                     node += "      <span class='thumb'>";
                     node += "          <img src='./images/recipe/" + data[i].image + "' alt='이미지 없음'>";
                     node += "      </span>";
-                    node +=   "      <strong class='txt-ti ellipsis'>";
-                    node +=   "         "+data[i].title;+"";
-                    node +=   "      </strong>";
-                    node +=   "      <span id='user_by'>";
-                    node +=   "         by. "+data[i].username;
-                    node +=   "      </span>";
+                    node += "      <strong class='txt-ti ellipsis'>";
+                    node += "         " + data[i].title;
+                    +"";
+                    node += "      </strong>";
+                    node += "      <span id='user_by'>";
+                    node += "         by. " + data[i].username;
+                    node += "      </span>";
                     node += "   </a>";
-                    node +=   "   <span class='info'>";
-                    node +=   "      <span class='product_caption'>";
-                    node +=   "         <span class='caption_star'>";
-                    node +=   "            <img src='./images/common/star.png'>";
-                    node +=   "         </span>";
-                    node +=   "         <span>("+data[i].grade+")</span>";
-                    node +=   "         <span>(총 댓글수)</span>";
-                    node +=   "         <span>조회수 "+data[i].viewcount+"</span>";
-                    node +=   "      </span>"
-                    node +=   "   </span>";
+                    node += "   <span class='info'>";
+                    node += "      <span class='product_caption'>";
+                    node += "         <span class='caption_star'>";
+                    node += "            <img src='./images/common/star.png'>";
+                    node += "         </span>";
+                    node += "         <span>(" + data[i].grade + ")</span>";
+                    node += "         <span>(총 댓글수)</span>";
+                    node += "         <span>조회수 " + data[i].viewcount + "</span>";
+                    node += "      </span>"
+                    node += "   </span>";
                     node += "</li>";
-                    
+
 
                     $('#ulItemList').append(node);
                 }
@@ -275,58 +279,55 @@
             }
         }
     });
-    
-    
+
 
     /* 정렬 */
     function fnSortType(sort_type) {
-		console.log(sort_type);
-		if(sort_type == 'sort_grade') {
-			$("input[name=sortTypeAjax]").val('grade');
-			
-			$("#sort_grade").addClass("active");
-			$("#sort_viewcount").removeClass("active");
-			
-			//1페이지부터 다시불러와야함
-			pageNO = 1;
-			//현재 있는 레시피 리스트 모두 삭제
-			$('#ulItemList').empty();
-			//조건에 맞는 레시피 리스트를 불러옴
-			next_recipes_load();
-			
-		
-		} else if(sort_type == 'sort_viewcount') {
-			$("input[name=sortTypeAjax]").val('viewcount');
-			
-			$("#sort_grade").removeClass("active");
-			$("#sort_viewcount").addClass("active");
-			
-			//1페이지부터 다시불러와야함
-			pageNO = 1;
-			//현재 있는 레시피 리스트 모두 삭제
-			$('#ulItemList').empty();
-			//조건에 맞는 레시피 리스트를 불러옴
-			next_recipes_load();
-			
-		}
-		
-	}
-    
+        console.log(sort_type);
+        if (sort_type == 'sort_grade') {
+            $("input[name=sortTypeAjax]").val('grade');
+
+            $("#sort_grade").addClass("active");
+            $("#sort_viewcount").removeClass("active");
+
+            //1페이지부터 다시불러와야함
+            pageNO = 1;
+            //현재 있는 레시피 리스트 모두 삭제
+            $('#ulItemList').empty();
+            //조건에 맞는 레시피 리스트를 불러옴
+            next_recipes_load();
+
+
+        } else if (sort_type == 'sort_viewcount') {
+            $("input[name=sortTypeAjax]").val('viewcount');
+
+            $("#sort_grade").removeClass("active");
+            $("#sort_viewcount").addClass("active");
+
+            //1페이지부터 다시불러와야함
+            pageNO = 1;
+            //현재 있는 레시피 리스트 모두 삭제
+            $('#ulItemList').empty();
+            //조건에 맞는 레시피 리스트를 불러옴
+            next_recipes_load();
+
+        }
+
+    }
+
     /* 평점순 or 조회순으로 들어왔을 경우 */
-     $(window).ready(function(){
-    	if($("input[name=sortTypeAjax]").val() == 'grade') {
-    		console.log('평점순');
-    		$("#sort_grade").addClass("active");
-			$("#sort_viewcount").removeClass("active");
-    	} else if($("input[name=sortTypeAjax]").val() == 'viewcount'){
-    		console.log('조회순');
-    		$("#sort_grade").removeClass("active");
-			$("#sort_viewcount").addClass("active");
-    	}}); 
-    
-    
-    
-    
+    $(window).ready(function () {
+        if ($("input[name=sortTypeAjax]").val() == 'grade') {
+            console.log('평점순');
+            $("#sort_grade").addClass("active");
+            $("#sort_viewcount").removeClass("active");
+        } else if ($("input[name=sortTypeAjax]").val() == 'viewcount') {
+            console.log('조회순');
+            $("#sort_grade").removeClass("active");
+            $("#sort_viewcount").addClass("active");
+        }
+    });
+
 
 </script>
 
