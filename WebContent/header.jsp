@@ -46,6 +46,9 @@
 					<nav class="lnb-list">
 						<ul class="lnb">
 							<li class="depth1">
+								<button type="button" id="all" value="" onclick="searchWithCategory(this.id)">전체</button>
+							</li>
+							<li class="depth1">
 								<button type="button" id="korean" value="한식" onclick="searchWithCategory(this.id)">한식</button>
 							</li>
 							<li class="depth1">
