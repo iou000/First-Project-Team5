@@ -28,22 +28,21 @@ import java.util.Map;
  * @Comment : 이미지 파일 업로드 기능
  */
 public class RecipeInsertAction implements Action {
-    private static final String RECIPE_IMAGE_REPO = "images/recipe";
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "app?command=recipe_view";
         HttpSession session = request.getSession();
         UserVO loginUser = (UserVO) session.getAttribute("loginUser");
-
+        String path = session.getServletContext().getRealPath("/") + "\\images\\recipe";
+        
         if (loginUser == null) {
             url = "app?command=login_form";
         } else {
-            Map<String, String> map = upload(request, response);
+            Map<String, String> map = upload(request, response, path);
             String title = map.get("title");
-            String intro = map.get("intro").replace("\r\n", "<br>"); //개행문자를 <br>로 변경 후 DB에 저장
+            String intro = map.get("intro");
             String category = map.get("category");
-            String ingredients = map.get("ingredients");
+            String ingredients = map.get("ingredients").replace("\r\n", "<br>"); //개행문자를 <br>로 변경 후 DB에 저장
             String details = map.get("details").replace("\r\n", "<br>"); //개행문자를 <br>로 변경 후 DB에 저장
             String image = map.get("image");
 
@@ -63,9 +62,9 @@ public class RecipeInsertAction implements Action {
         response.sendRedirect(url);
     }
 
-    private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
         Map<String, String> insertFormMap = new HashMap<>();
-        File currentDirPath = new File(RECIPE_IMAGE_REPO);
+        File currentDirPath = new File(path);
         DiskFileItemFactory factory = new DiskFileItemFactory();
         factory.setRepository(currentDirPath); // 파일이 저장되는 경로를 설정
         factory.setSizeThreshold(1024 * 1024); // 파일의 최대 크기를 설정
@@ -80,6 +79,7 @@ public class RecipeInsertAction implements Action {
                     if (item.getSize() > 0) {
                         int idx = item.getName().lastIndexOf("\\");
                         String fileName = item.getName().substring(idx + 1);
+                        System.out.println("업로드 파일명 : " + fileName);
                         insertFormMap.put(item.getFieldName(), fileName);
                         File uploadFile = new File(currentDirPath + "\\" + fileName);
                         item.write(uploadFile);
