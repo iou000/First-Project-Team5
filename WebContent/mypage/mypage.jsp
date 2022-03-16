@@ -101,7 +101,7 @@
                             <ul class="product-list small">
                                 <c:forEach items="${myRecipeList}" var="recipeVO">
                                     <li>
-                                        <a href="fnProductDetailMove('S02006002119', '', '100411', '01');">
+                                        <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                                         <span class="thumb">
                                             <img src="https://tohomeimage.thehyundai.com/PD/PDImages/S/0/0/9/8809152871900_00.jpg?RS=232x278"
                                                  alt="[현대쌀집][백미] 프리미엄 쌀 4kg"
@@ -133,7 +133,7 @@
                             <ul class="product-list small">
                                 <c:forEach items="${commentRecipeList}" var="recipeVO">
                                     <li>
-                                        <a href="fnProductDetailMove('S02006002119', '', '100411', '01');">
+                                        <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                                         <span class="thumb">
                                             <img src="https://tohomeimage.thehyundai.com/PD/PDImages/S/0/0/9/8809152871900_00.jpg?RS=232x278"
                                                  alt="[현대쌀집][백미] 프리미엄 쌀 4kg"
