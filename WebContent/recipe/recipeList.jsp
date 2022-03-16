@@ -18,60 +18,60 @@
     <!-- //contents -->
     <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
     <div id="contents">
-        <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
-        <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
-        <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
+    <!-- 페이징 ajax용 @seop-->
+    <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
+    <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
+    <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
         <div class="innercon" id="reset_section">
-            <c:choose>
-                <c:when test="${not empty keywordAjax}">
-                    <section class="categorylist">
-                        <strong class="txt-total">
-                            <span class="word" id="titleName">'${keywordAjax}'</span>
-                            레시피
-                            <em id="titleCnt">${recipeList.size()}</em>
-                            건
-                        </strong>
-                    </section>
-                </c:when>
-                <c:when test="${not empty categoryAjax}">
-                    <section class="categorylist">
-                        <strong class="txt-total">
-                            <span class="word" id="titleName">'${categoryAjax}'</span>
-                            레시피
-                            <em id="titleCnt">380</em>
-                            건
-                        </strong>
-                    </section>
-                </c:when>
-                <c:when test="${not empty sortTypeAjax}">
-                    <section class="categorylist">
-                        <strong class="txt-total">
-                            <span class="word" id="titleName">'전체'</span>
-                            레시피
-                            <em id="titleCnt">380</em>
-                            건
-                        </strong>
-                    </section>
-                </c:when>
-            </c:choose>
-
-            <section class="list-filter">
-                <strong class="txt-total"></strong>
-                <div class="filter-wrapper">
-                    <div class="form-filter">
-                        <ul class="btn-group" id="sortType">
-                            <li>
-                                <button id="sort_grade" type="button" class="active" onclick="fnSortType(this.id)">평점순
-                                </button>
-                            </li>
-                            <li>
-                                <button id="sort_viewcount" type="button" onclick="fnSortType(this.id)">조회순</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
+			<c:choose>
+				<c:when test="${not empty keywordAjax}">
+					<section class="categorylist">
+        				<strong class="txt-total">
+        					<span class="word" id="titleName">'${keywordAjax}'</span>
+        					레시피
+        					<em id="titleCnt">380</em>
+        					건
+        				</strong>
+        			</section>
+				</c:when>
+				<c:when test="${not empty categoryAjax}">
+					<section class="categorylist">
+        				<strong class="txt-total">
+        					<span class="word" id="titleName">'${categoryAjax}'</span>
+        					레시피
+        					<em id="titleCnt">380</em>
+        					건
+        				</strong>
+        			</section>
+				</c:when>
+				<c:when test="${not empty sortTypeAjax}">
+					<section class="categorylist">
+        				<strong class="txt-total">
+        					<span class="word" id="titleName">'전체'</span>
+        					레시피
+        					<em id="titleCnt">380</em>
+        					건
+        				</strong>
+        			</section>
+				</c:when>
+			</c:choose>
+        	
+        	<!-- 정렬조건 선택 -->
+        	<section class="list-filter">
+        		<strong class="txt-total"></strong>
+        		<div class="filter-wrapper">
+        			<div class="form-filter">
+	                    <ul class="btn-group" id="sortType">
+	                        <li>
+	                            <button id="sort_grade" type="button" class="active" onclick="fnSortType(this.id)">평점순</button>
+	                        </li>
+	                        <li><button id="sort_viewcount" type="button" onclick="fnSortType(this.id)">조회순</button></li>
+	                    </ul>
+	                </div>
+        		</div>
+        	</section>
+        	
+        	<!-- 레시피 리스트 받을 공간 -->
             <ul class="product-list" id="ulItemList">
                 <c:forEach var="recipeVO" items="${recipeList}">
                     <li>
@@ -186,7 +186,7 @@
 
 </div>
 <script>
-    var loading = false; // 중복 확인용
+    var loading = false; // ajax 중복 요청 방지용
     var pageNO = 2; // 1페이지는 처음에 불러왔으니 2부터 시작.
     var pageSize = 8 // 불러올 데이터 갯수.
 
@@ -261,10 +261,6 @@
             , error : function (request, status, error) {
                 console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
             }
-            , error : function (request, status, error) {
-                console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-            }
-
 
         });
     }
@@ -281,53 +277,49 @@
     });
 
 
-    /* 정렬 */
+    /* 정렬조건 선택시 레시피 정보를 다시 받아옴 @seop */
     function fnSortType(sort_type) {
-        console.log(sort_type);
-        if (sort_type == 'sort_grade') {
-            $("input[name=sortTypeAjax]").val('grade');
-
-            $("#sort_grade").addClass("active");
-            $("#sort_viewcount").removeClass("active");
-
-            //1페이지부터 다시불러와야함
-            pageNO = 1;
-            //현재 있는 레시피 리스트 모두 삭제
-            $('#ulItemList').empty();
-            //조건에 맞는 레시피 리스트를 불러옴
-            next_recipes_load();
-
-
-        } else if (sort_type == 'sort_viewcount') {
-            $("input[name=sortTypeAjax]").val('viewcount');
-
-            $("#sort_grade").removeClass("active");
-            $("#sort_viewcount").addClass("active");
-
-            //1페이지부터 다시불러와야함
-            pageNO = 1;
-            //현재 있는 레시피 리스트 모두 삭제
-            $('#ulItemList').empty();
-            //조건에 맞는 레시피 리스트를 불러옴
-            next_recipes_load();
-
-        }
-
-    }
-
-    /* 평점순 or 조회순으로 들어왔을 경우 */
-    $(window).ready(function () {
-        if ($("input[name=sortTypeAjax]").val() == 'grade') {
-            console.log('평점순');
-            $("#sort_grade").addClass("active");
-            $("#sort_viewcount").removeClass("active");
-        } else if ($("input[name=sortTypeAjax]").val() == 'viewcount') {
-            console.log('조회순');
-            $("#sort_grade").removeClass("active");
-            $("#sort_viewcount").addClass("active");
-        }
-    });
-
+		//평점순 선택시
+		if(sort_type == 'sort_grade') {
+			$("input[name=sortTypeAjax]").val('grade');
+			
+			$("#sort_grade").addClass("active");
+			$("#sort_viewcount").removeClass("active");
+			
+			//1페이지부터 다시불러와야함
+			pageNO = 1;
+			//현재 있는 레시피 리스트 모두 삭제
+			$('#ulItemList').empty();
+			//조건에 맞는 레시피 리스트를 불러옴
+			next_recipes_load();
+			
+		//조회순 선택시
+		} else if(sort_type == 'sort_viewcount') {
+			$("input[name=sortTypeAjax]").val('viewcount');
+			
+			$("#sort_grade").removeClass("active");
+			$("#sort_viewcount").addClass("active");
+			
+			//1페이지부터 다시불러와야함
+			pageNO = 1;
+			//현재 있는 레시피 리스트 모두 삭제
+			$('#ulItemList').empty();
+			//조건에 맞는 레시피 리스트를 불러옴
+			next_recipes_load();
+		}
+	}
+    
+    /* 메인페이지에서 평점순 or 조회순으로 들어왔을 경우 */
+     $(window).ready(function(){
+    	if($("input[name=sortTypeAjax]").val() == 'grade') {
+    		console.log('평점순');
+    		$("#sort_grade").addClass("active");
+			$("#sort_viewcount").removeClass("active");
+    	} else if($("input[name=sortTypeAjax]").val() == 'viewcount'){
+    		console.log('조회순');
+    		$("#sort_grade").removeClass("active");
+			$("#sort_viewcount").addClass("active");
+    	}}); 
 
 </script>
 
