@@ -221,13 +221,10 @@
                                     class="thumb"><img
                                     src="https://tohomeimage.thehyundai.com/PD/PDImages/S/7/6/2/S02102033267_00.jpg?RS=720x864"
                                     alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'"><span
-                                    class="badge"><strong>38%</strong></span></span><strong class="txt-ti ellipsis">[수블수블]
-                                바바리아 논알콜 맥주 330ml, 4종</strong><span class="txt-price"><strong><em>1,420</em>원</strong><del>2,300</del></span>
+                                    class="badge"><strong></strong></span></span><strong
+                                    class="txt-ti ellipsis"></strong><span
+                                    class="txt-price"><strong><em></em></strong><del></del></span>
                             </a>
-                                <button type="button" class="btn-cart"
-                                        onclick="javascript:GA_Event('PC_새벽투홈_메인','타임세일','장바구니_[수블수블] 바바리아 논알콜 맥주 330ml, 4종');fnProductBasketAdd('01','S02102033267','','100411');return false;">
-                                    장바구니 담기
-                                </button>
                             </div>
                             <div class="swiper-slide swiper-slide-next" data-time-start="2022/03/15 15:09:37"
                                  data-time-end="2022/03/31 22:59:59" data-swiper-slide-index="1" style="width: 603px;">
@@ -591,36 +588,24 @@
             </ul>
         </section>
 
-        <section class="innercon exhibition aos-init aos-animate" data-aos="fade-up">
-            <ul class="exhibition-ban">
-                <li>
-                    <a href="https://tohome.thehyundai.com/front/dp/dpd/mgzDetail.do?mgzNo=210729100385001&amp;ga_param=dwMainSq"
-                       onclick="GA_Event('PC_새벽투홈_메인', '직각배너','배송안내');"><img
-                            src="https://tohomeimage.thehyundai.com/DP/DP034/2021/08/04/153234/wscni.png?RS=1204x160"
-                            alt=""></a></li>
-            </ul>
-        </section>
-
         <section class="innercon bottominfo aos-init aos-animate" data-aos="fade-up">
             <div class="service">
                 <h3>현대백화점 서비스</h3>
 
                 <ul>
-                    <li><a href="#"
-                           onclick="GA_Event('PC_새벽투홈_메인', '서비스안내', '멤버십'); fn.popupOpen('#p_popGradeBenefit');"><img
-                            src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/sub/homebanner9_2.jpg"
+                    <li><a><img
+                            src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/sub/homebanner9.jpg"
                             alt="회원혜택"></a></li>
-                    <li><a href="/front/cub/mypage/paidService.do"
-                           onclick="GA_Event('PC_새벽투홈_메인', '서비스안내', '투홈패스');"><img
+                    <li><a><img
                             src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/sub/homebanner9_2.jpg"
                             alt="투홈패스"></a></li>
-                    <li><a href="/front/dp/dpi/prmsBoxList.do" onclick="GA_Event('PC_새벽투홈_메인', '서비스안내', '투홈구독');"><img
+                    <li><a><img
                             src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/sub/homebanner9_3.jpg"
                             alt="투홈구독"></a></li>
-                    <li><a href="/front/dp/dpg/prsnMain.do" onclick="GA_Event('PC_새벽투홈_메인', '서비스안내', '선물하기');"><img
-                            src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/sub/homebanner9_5.jpg"
+                    <li><a><img
+                            src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/sub/homebanner9_4.jpg"
                             alt="선물하기"></a></li>
-                    <li><a href="#" onclick="GA_Event('PC_새벽투홈_메인', '서비스안내', '출석체크');"><img
+                    <li><a><img
                             src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/sub/homebanner9_5.jpg"
                             alt="출석체크"></a></li>
                 </ul>
@@ -630,10 +615,10 @@
                 <h3>고객센터</h3>
 
                 <div>
-                    <strong>1800.9549</strong>
-                    <small>오전 7시 ~ 오후 9시 / 1:1문의 24시간 접수 가능</small>
-                    <a href="/front/mp/mpc/mtmInqrList.do" onclick="GA_Event('PC_새벽투홈_메인', '서비스안내', '선물하기');"
-                       class="btn big gray btn-qna">1:1 문의</a>
+                    <strong>Made by</strong>
+                    <small>김지혜, 김경섭, 송진호</small>
+                    <a
+                            class="btn big gray btn-qna">1:1 문의</a>
                 </div>
             </div>
 
@@ -646,7 +631,7 @@
 
 
                     <li><a href="/front/dp/dpf/notice.do?tabIndex=2&amp;ancmId=98"
-                           onclick="GA_Event('PC_새벽투홈_메인', '공지사항', '새벽투홈 배송 안내 ');">새벽투홈 배송 안내 </a></li>
+                           onclick="GA_Event('PC_새벽투홈_메인', '공지사항', '새벽투홈 배송 안내 ');">레시피를 부탁해 안내</a></li>
 
 
                 </ul>
