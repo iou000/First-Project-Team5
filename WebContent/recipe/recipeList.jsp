@@ -48,12 +48,22 @@
 					<section class="categorylist">
         				<strong class="txt-total">
         					<span class="word" id="titleName">'전체'</span>
-        					레시피
+        					검색결과
         					<em id="titleCnt">380</em>
         					건
         				</strong>
         			</section>
 				</c:when>
+				<c:otherwise>
+					<section class="categorylist">
+        				<strong class="txt-total">
+        					<span class="word" id="titleName">'전체'</span>
+        					레시피
+        					<em id="titleCnt">380</em>
+        					건
+        				</strong>
+        			</section>
+				</c:otherwise>
 			</c:choose>
         	
         	<!-- 정렬조건 선택 -->
