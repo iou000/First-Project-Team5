@@ -1,21 +1,20 @@
 package com.team5.controller.action;
 
-import java.io.IOException;
-import java.util.List;
+import com.team5.dao.RecipeDAO;
+import com.team5.vo.RecipeVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.team5.dao.RecipeDAO;
-import com.team5.vo.RecipeVO;
+import java.io.IOException;
+import java.util.List;
 
 
 /**
- * @author    : seop
- * @Date      : 2022. 3. 15.
+ * @author : seop
+ * @Date : 2022. 3. 15.
  * @ClassName : RecipeListAction
- * @Comment   : 레시피 리스트 조회
+ * @Comment : 레시피 리스트 조회
  */
 public class RecipeListAction implements Action {
 	@Override

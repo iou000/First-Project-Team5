@@ -526,7 +526,7 @@
                     href="app?command=recipe_list&sortType=viewcount"
                     onclick="GA_Event('PC_새벽투홈_메인','신상품','전체보기');" class="btn all">전체보기</a></h2>
             <ul class="product-list">
-                <c:forEach var="recipeVO" items="${grade_high_recipeList}">
+                <c:forEach var="recipeVO" items="${view_high_recipeList}">
                     <li>
                         <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                         <span class="thumb">

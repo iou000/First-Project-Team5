@@ -158,7 +158,7 @@
         });
 
         var cdnRequestYn = "null";
-        var vServerPath = '/front';
+        var vServerPath = '/app';
 
         var contextPath = "/front";
         var addrSearchServer = "https://tohome.thehyundai.com/front/cob/selectRoadNameAddressList.do";
