@@ -31,11 +31,14 @@ public class RecipeListAction implements Action {
 		/* 카테고리, 검색어, 정렬조건(조회수 or 평점)을 통해서 레시피 조회 @seop */
 		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(category, keyword, sortType, 1, 8); // 처음엔 1페이지, 8개를 기본으로 가져옴
 		
+		int totRecipeListCnt = recipeDAO.selectRecipeListTot(category, keyword);
+		System.out.println(totRecipeListCnt);
 		
 		request.setAttribute("keywordAjax", keyword);
 		request.setAttribute("categoryAjax",category);
 		request.setAttribute("sortTypeAjax",sortType);
 		request.setAttribute("recipeList", recipeList);
+		request.setAttribute("totRecipeListCnt", totRecipeListCnt);
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}

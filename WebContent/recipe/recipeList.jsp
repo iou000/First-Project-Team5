@@ -29,7 +29,7 @@
         				<strong class="txt-total">
         					<span class="word" id="titleName">'${keywordAjax}'</span>
         					레시피
-        					<em id="titleCnt">380</em>
+        					<em id="titleCnt">${totRecipeListCnt}</em>
         					건
         				</strong>
         			</section>
@@ -39,7 +39,7 @@
         				<strong class="txt-total">
         					<span class="word" id="titleName">'${categoryAjax}'</span>
         					레시피
-        					<em id="titleCnt">380</em>
+        					<em id="titleCnt">${totRecipeListCnt}</em>
         					건
         				</strong>
         			</section>
@@ -49,7 +49,7 @@
         				<strong class="txt-total">
         					<span class="word" id="titleName">'전체'</span>
         					검색결과
-        					<em id="titleCnt">380</em>
+        					<em id="titleCnt">${totRecipeListCnt}</em>
         					건
         				</strong>
         			</section>
@@ -59,7 +59,7 @@
         				<strong class="txt-total">
         					<span class="word" id="titleName">'전체'</span>
         					레시피
-        					<em id="titleCnt">380</em>
+        					<em id="titleCnt">${totRecipeListCnt}</em>
         					건
         				</strong>
         			</section>
@@ -199,13 +199,12 @@
     var loading = false; // ajax 중복 요청 방지용
     var pageNO = 2; // 1페이지는 처음에 불러왔으니 2부터 시작.
     var pageSize = 8 // 불러올 데이터 갯수.
-
+    
     /* AJAX로 데이터 요청 @seop */
     function next_recipes_load() {
         var keywordAjax = $("input[name=keywordAjax]").val();
         var categoryAjax = $("input[name=categoryAjax]").val();
         var sortTypeAjax = $("input[name=sortTypeAjax]").val();
-
 
         console.log("키워드 :",keywordAjax);
         console.log("카테고리 :",categoryAjax);
