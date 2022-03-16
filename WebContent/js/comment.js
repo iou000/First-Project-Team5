@@ -12,18 +12,6 @@ function fnReviewAjaxPcList(type, vCurrentPage){
         vSlitmCd = slitmCd
         vOptItemCd = "";
     }
-
-    //포토만 보기여부(Y:포토있는것만 보기 N:모두 보기)
-    var vImgYn = $('input[name="pic"]:checked').val();
-    if(vImgYn) vImgYn = 'Y'
-    else vImgYn = 'N'
-
-    //정렬순서(1:베스트, 2:최신순)
-    var vSort = $('#reviewImgYn input[name="sort"]:checked').val();
-    // 베스트 1, 최신순 2
-    if(vSort == '1') vSort = "RCMM_CNT";
-    else vSort = "CHG_DTM";
-
     var vReviewPage = 0;
 
     // 페이지 순번 증가

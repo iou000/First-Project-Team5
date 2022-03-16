@@ -196,17 +196,17 @@
                         <!-- pagination// -->
                         <div class="pagination">
                             <span class="num">
-                                 <a href="fnReviewAjaxPcList('B', '1');" class="active">1</a>
+                                 <a href="javascript:fnReviewAjaxPcList('B', '1');" class="active">1</a>
                                 <!-- 현재페이지 class="active" -->
-                                <a href="fnReviewAjaxPcList('B', '2');">2</a>
-                                <a href="fnReviewAjaxPcList('B', '3');">3</a>
-                                <a href="fnReviewAjaxPcList('B', '4');">4</a>
-                                <a href="fnReviewAjaxPcList('B', '5');">5</a>
-                                <a href="fnReviewAjaxPcList('B', '6');">6</a>
-                                <a href="fnReviewAjaxPcList('B', '7');">7</a>
-                                <a href="fnReviewAjaxPcList('B', '8');">8</a>
-                                <a href="fnReviewAjaxPcList('B', '9');">9</a>
-                                <a href="fnReviewAjaxPcList('B', '10');">10</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '2');">2</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '3');">3</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '4');">4</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '5');">5</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '6');">6</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '7');">7</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '8');">8</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '9');">9</a>
+                                <a href="javascript:fnReviewAjaxPcList('B', '10');">10</a>
                                 </span>
                             <a href="fnBlockCnt('A', 'B');" class="next">다음</a>
                         </div>
