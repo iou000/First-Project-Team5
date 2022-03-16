@@ -523,7 +523,7 @@
                     style="border-bottom:4px solid "></i></span><strong
                     style="font-weight:bold">조회수</strong><small
                     style="font-weight:normal">가장 많은 조회수를 기록하는 레시피들을 확인하세요!!</small><a
-                    href="https://tohome.thehyundai.com/front/dp/dpa/newProd.do"
+                    href="app?command=recipe_list&sortType=viewcount"
                     onclick="GA_Event('PC_새벽투홈_메인','신상품','전체보기');" class="btn all">전체보기</a></h2>
             <ul class="product-list">
                 <c:forEach var="recipeVO" items="${view_high_recipeList}">
@@ -560,7 +560,7 @@
                     style="border-bottom:4px solid "></i></span><strong
                     style="font-weight:bold">평점순</strong><small
                     style="font-weight:normal">가장 높은 평점을 가진 레시피들을 확인하세요!!</small><a
-                    href="https://tohome.thehyundai.com/front/dp/dpa/newProd.do"
+                    href="app?command=recipe_list&sortType=grade"
                     onclick="GA_Event('PC_새벽투홈_메인','신상품','전체보기');" class="btn all">전체보기</a></h2>
             <ul class="product-list">
                 <c:forEach var="recipeVO" items="${grade_high_recipeList}">
