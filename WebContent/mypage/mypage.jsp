@@ -167,7 +167,7 @@
                     <!-- 리뷰 리스트 동적 구현 -->
                     <div class="review-list">
                         <ul>
-                            <c:forEach items="${commentList}" var="commentVO">
+                            <c:forEach items="${pagingCommentsByUserId}" var="commentVO">
                                 <a href="app?command=recipe_view&recipeId=${commentVO.recipe_id}">
                                     <li>
                                         <div class="star">
@@ -189,12 +189,19 @@
                         <!-- pagination// -->
                         <div class="pagination">
                             <span class="num">
-                                <c:forEach var="i" begin="0" end="${commentList.size() / 5}">
-                                    <a href="javascript:fnReviewAjaxPcList('B', '1', ${commentList.size()});"><c:out
-                                            value="${i}"/></a>
+                                <c:forEach var="i" begin="1" end="${commentList.size() / 5 + 1}">
+                                    <c:choose>
+                                        <c:when test="${i eq 1}">
+                                            <a href="javascript:fnReviewAjaxPcList(${i}, ${commentList.size()});"
+                                               class="active"><c:out value="${i}"/></a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="javascript:fnReviewAjaxPcList(${i}, ${commentList.size()});"><c:out
+                                                    value="${i}"/></a>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </c:forEach>
                             </span>
-                            <a href="fnBlockCnt('A', 'B');" class="next">다음</a>
                         </div>
                         <!-- //pagination -->
                     </div>
@@ -206,6 +213,5 @@
 <%@ include file="../footer.jsp" %>
 <script type="text/javascript" src="js/mypage.js"></script>
 <script type="text/javascript" src="js/comment.js"></script>
-</script>
 </body>
 </html>
