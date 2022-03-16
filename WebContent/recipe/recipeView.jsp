@@ -1,6 +1,11 @@
-<!-- @author 김지혜 + 김경섭 + 송진호 -->
+<!-- @author 송진호 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%
+	pageContext.setAttribute("LF", "\r\n");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -63,7 +68,7 @@
 	            <!-- 관리자 등록 영역// -->
 	            <div class="edit-recipe">
 	            	<div class="magazinedetail m12"> 
-	            		<div class="mbox tab"> 
+	            		<div class="mbox tab">
 	            			<ul class="menu">
 								<li class="active">
 									<a href="#" id="ingredients" onclick="return false;"><em>재료</em></a>
@@ -71,52 +76,32 @@
 								<li class="">
 									<a href="#" id="details" onclick="return false;"><em>조리법</em></a>
 								</li>
-							</ul> 
+							</ul>
 							<ul class="cont">
 								<li class="active">
-									<ul class="list"> 
-										<li>사과 ½개</li> 
-										<li>계절 과일</li>
-										<li>물 270g</li>
-										<li>자스민차 7g</li>
-										<li>레몬즙 60g</li>
-										<li>설탕 50g</li>
-										<li>고수 4장</li> 
-										<li>라임 ½개</li>
-										<li>민트잎 약간</li>
-										<li>식용 꽃 약간</li>
+									<!-- 문자열에 포함된 '\r\n'을 모두 '<br/>으로 변환 -->
+									<c:set var='convertedIngredients' value='${fn:replace(recipeVO.ingredients, LF, "<br>")}' />
+									<!-- 문자열에 포함된 쉼표(',')를 모두 '<br/>으로 변환 -->
+									<c:set var='replacedIngredients' value='${fn:replace(convertedIngredients, ",", "<br>")}' />
+									<!-- '<br/>'을 기준으로 문자열을 구분해서 각각 배열에 삽입 -->
+									<ul class="list">
+										<c:forEach var='item' items='${fn:split(replacedIngredients, "<br>")}'>
+											<li>${item}</li>
+										</c:forEach>
 									</ul>
 								</li>
 								<li class="">
+									<!-- 문자열에 포함된 '\r\n'을 모두 '<br>으로 변환 -->
+									<c:set var='convertedDetails' value='${fn:replace(recipeVO.details, LF, "<br>")}' />
+									<!-- 문자열에 포함된 쉼표(',')를 모두 '<br>으로 변환 -->
+									<c:set var='replacedDetails' value='${fn:replace(convertedDetails, ",", "<br>")}' />
 									<ol class="step">
-										<li>
-											<strong>STEP 1</strong>
-											<p>자스민차를 3분 우린 후 차가 식기 전에 설탕을 넣어 녹이고 레몬즙을 섞습니다.</p>
-											<div class="tip">
-												<em>tip</em>
-												<p>홍차 또는 가향차 종류를 추천합니다.</p>
-											</div>
-										</li>
-										<li>
-											<strong>STEP 2</strong> 
-											<p>사과와 과일을 한 입 사이즈로 손질하고 고수는 잘게 채를 썹니다. 라임은 깨끗이 세척 후 제스터로 껍질을 긁어주세요.</p> 
-											<div class="tip">
-												<em>tip</em>
-												<p>과일은 무화과, 키위, 망고 등 취향껏 골라주세요.</p>
-											</div>
-										</li>
-										<li>
-											<strong>STEP 3</strong>
-											<p>수프 그릇에 과일과 고수를 넣고 자스민차 시럽을 붓습니다.</p>
-										</li> 
-										<li>
-											<strong>STEP 4</strong>
-											<p>라임 제스트를 넣어 밀봉 후 냉장고에서 하룻밤 차갑게 식혀주세요.</p>
-										</li> 
-										<li>
-											<strong>STEP 5</strong> 
-											<p>다음날, 민트잎과 식용 꽃으로 장식하면 완성입니다. 과일과 시럽을 함께 떠서 한입에 즐겨주세요.</p>
-										</li>
+										<c:forEach var='item' items='${fn:split(replacedDetails, "<br>")}' varStatus="status">
+											<li>
+												<strong>STEP <c:out value='${status.count}' /></strong>
+												<p>${item}</p>
+											</li>
+										</c:forEach>
 									</ol>
 								</li>
 							</ul>
