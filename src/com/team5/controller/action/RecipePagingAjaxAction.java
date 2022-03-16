@@ -23,7 +23,7 @@ public class RecipePagingAjaxAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/* 키워드 or 검색어 받아오기 */
+		/* 키워드, 검색어, 정렬조건(조회수 or 평점) 받아오기 */
 		String categoryAjax = request.getParameter("categoryAjax");
 		String keywordAjax = request.getParameter("keywordAjax");
 		String sortTypeAjax = request.getParameter("sortTypeAjax");
@@ -32,7 +32,7 @@ public class RecipePagingAjaxAction implements Action {
 		int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 		
 
-		/* 키워드, 카테고리, 페이지번호, 페이지 크기로 recipe정보 조회 */
+		/* 키워드, 카테고리, 정렬조건(조회수 or 평점) 페이지번호, 페이지 크기로 recipe정보 조회 */
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
 		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(categoryAjax, keywordAjax, sortTypeAjax, pageNO, pageSize);
 		
