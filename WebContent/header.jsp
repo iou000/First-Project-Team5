@@ -72,7 +72,7 @@
 				
 				<!-- 카테고리를 통해서 레시미 목록 조회 -->
 				<div id="categorySearch">
-			        <form id="categoryForm" method="POST" action="app?command=recipe_ctgr_list">
+			        <form id="categoryForm" method="POST" action="app?command=recipe_list">
 			            <input type="hidden" name="category" value=""/>
 			        </form>
 			    </div>
@@ -100,7 +100,7 @@
 
 			<!-- search// -->
 			<div class="searcharea">
-				<form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="app?command=recipe_search_list" onsubmit="return checkSearchForm()">
+				<form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="app?command=recipe_list" onsubmit="return checkSearchForm()">
 					<fieldset>
 						<legend class="hide">검색어 입력</legend>
 						<div class="form-entry exist search">

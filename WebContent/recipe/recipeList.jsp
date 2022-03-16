@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,19 +18,42 @@
     <!-- //contents -->
     <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
     <div id="contents">
-    <input type="text" name="keywordAjax" value="${keywordAjax}"/>
-    <input type="text" name="categoryAjax" value="${categoryAjax}"/>
-    <input type="text" name="sortTypeAjax" value="${sortTypeAjax}"/>
+    <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
+    <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
+    <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
         <div class="innercon" id="reset_section">
-
-        	<section class="categorylist">
-        		<strong class="txt-total">
-        			<span class="word" id="titleName">'${keywordAjax}'</span>
-        			검색결과
-        			<em id="titleCnt">322</em>
-        			건
-        		</strong>
-        	</section>
+			<c:choose>
+				<c:when test="${not empty keywordAjax}">
+					<section class="categorylist">
+        				<strong class="txt-total">
+        					<span class="word" id="titleName">'${keywordAjax}'</span>
+        					레시피
+        					<em id="titleCnt">380</em>
+        					건
+        				</strong>
+        			</section>
+				</c:when>
+				<c:when test="${not empty categoryAjax}">
+					<section class="categorylist">
+        				<strong class="txt-total">
+        					<span class="word" id="titleName">'${categoryAjax}'</span>
+        					레시피
+        					<em id="titleCnt">380</em>
+        					건
+        				</strong>
+        			</section>
+				</c:when>
+				<c:when test="${not empty sortTypeAjax}">
+					<section class="categorylist">
+        				<strong class="txt-total">
+        					<span class="word" id="titleName">'전체'</span>
+        					레시피
+        					<em id="titleCnt">380</em>
+        					건
+        				</strong>
+        			</section>
+				</c:when>
+			</c:choose>
         	
         	<section class="list-filter">
         		<strong class="txt-total"></strong>
@@ -264,14 +286,12 @@
 			
 			$("#sort_grade").addClass("active");
 			$("#sort_viewcount").removeClass("active");
-			$("#sort_createdat").removeClass("active");
 			
 			//1페이지부터 다시불러와야함
 			pageNO = 1;
 			//현재 있는 레시피 리스트 모두 삭제
 			$('#ulItemList').empty();
 			//조건에 맞는 레시피 리스트를 불러옴
-			
 			next_recipes_load();
 			
 		
@@ -279,8 +299,7 @@
 			$("input[name=sortTypeAjax]").val('viewcount');
 			
 			$("#sort_grade").removeClass("active");
-			$("#sort_viewcount").addClass("active")
-			$("#sort_createdat").removeClass("active");
+			$("#sort_viewcount").addClass("active");
 			
 			//1페이지부터 다시불러와야함
 			pageNO = 1;
@@ -292,6 +311,19 @@
 		}
 		
 	}
+    
+    /* 평점순 or 조회순으로 들어왔을 경우 */
+     $(window).ready(function(){
+    	if($("input[name=sortTypeAjax]").val() == 'grade') {
+    		console.log('평점순');
+    		$("#sort_grade").addClass("active");
+			$("#sort_viewcount").removeClass("active");
+    	} else if($("input[name=sortTypeAjax]").val() == 'viewcount'){
+    		console.log('조회순');
+    		$("#sort_grade").removeClass("active");
+			$("#sort_viewcount").addClass("active");
+    	}}); 
+    
     
     
     
