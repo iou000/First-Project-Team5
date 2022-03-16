@@ -194,11 +194,11 @@ public class RecipeDAO {
      * @Method : selectRecipeList
      * @Comment : 레시피 리스트 조회(카테고리,검색어, 평점순)
      */
-    public List<RecipeVO> selectRecipeList(String category, String search_text, int pageNo, int pageSize) {
+    public List<RecipeVO> selectRecipeList(String category, String search_text, String sortType, int pageNo, int pageSize) {
         // 레시피 리스트 생성
         List<RecipeVO> recipeList = new ArrayList<>();
         // 호출할 저장 프로시저
-        String runSP = "{ CALL recipe_pack.recipe_select_list(?, ?, ?, ?, ?)}";
+        String runSP = "{ CALL recipe_pack.recipe_select_list(?, ?, ?, ?, ?, ?)}";
         try {
             // DB연결
             conn = DBManager.getConnection();
@@ -207,14 +207,15 @@ public class RecipeDAO {
             // 입력 파라미터
             cstmt.setString(1, category);
             cstmt.setString(2, search_text);
-            cstmt.setInt(3, pageNo);
-            cstmt.setInt(4, pageSize);
+            cstmt.setString(3, sortType);
+            cstmt.setInt(4, pageNo);
+            cstmt.setInt(5, pageSize);
             // 출력 파라미터
-            cstmt.registerOutParameter(5, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt.registerOutParameter(6, oracle.jdbc.OracleTypes.CURSOR);
             //실행 (리턴값: ResultSet)
             cstmt.execute();
             //레시피 상세 조회 결과 받아오기
-            rs = (ResultSet) cstmt.getObject(5);
+            rs = (ResultSet) cstmt.getObject(6);
             while (rs.next()) {
                 RecipeVO recipeVO = new RecipeVO();
                 recipeVO.setId(rs.getInt("id"));

@@ -54,80 +54,39 @@
     top: 10px;
 }
 
-.product.category .categorylist {
-    display: table;
-    width: 100%;
+.product.category .categorylist{
+    margin-bottom: 15px;
+    padding-bottom: 31px;
     border-bottom: 2px solid #454545;
 }
 
-.product.category .categorylist.brand,
-.product.category .categorylist.sellermarket {
-    display: block;
+.product.category .categorylist .txt-total{
+    font-size:32px;
 }
 
-.product.category .categorylist .depth {
-    position: relative;
-    display: table-cell;
-    padding-right: 20px;
-    padding-bottom: 32px;
-    width: 306px;
-}
-
-.product.category .categorylist.brand .depth,
-.product.category .categorylist.sellermarket .depth {
-    display: block;
-    width: 100%;
-    padding-bottom: 26px;
-}
-
-.product.category .categorylist .depth h2 {
-    line-height: 1.22;
-}
-
-.product.category .categorylist .depth .path {
-    margin-top: 13px;
-    width: 286px;
-    line-height: 1;
-    color: #aea7a2;
-    font-size: 13px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.product.category .categorylist .depth .path img {
-    margin: 2px 7px 0;
-    vertical-align: top;
-}
-
-.product.category .categorylist .depth-sub {
-    display: table-cell;
-    width: 898px;
-    padding-bottom: 29px;
-    vertical-align: top;
-}
-
-.product.category .categorylist .depth-sub ul {
-    margin-top: -4px;
-    font-size: 0;
-}
-
-.product.category .categorylist .depth-sub ul li {
+.categorylist .txt-total {
     display: inline-block;
-    min-width: 20%;
-    line-height: 31px;
-    font-size: 15px;
-    vertical-align: top;
+    line-height: 32px;
+    color: #101010;
+    font-size: 24px;
+    font-weight: 200;
 }
 
-.product.category .categorylist .depth-sub ul li a {
-    color: #767572;
-}
-
-.product.category .categorylist .depth-sub ul li.active a {
-    color: #ff6913;
+.product.category .categorylist .txt-total .word {
     font-weight: 600;
 }
+
+.product.category .categorylist .txt-total em {
+    margin-left: 8px;
+}
+
+.categorylist .txt-total em {
+    color: #ff6913;
+    font-weight: 700;
+    font-family: "Roboto";
+    vertical-align: baseline;
+}
+
 
 .product.category .list-filter {
     margin: 38px 0 21px;
