@@ -3,6 +3,7 @@ package com.team5.controller.action;
 import com.team5.dao.CommentDAO;
 import com.team5.dao.RecipeDAO;
 import com.team5.vo.CommentVO;
+import com.team5.vo.RecipeDesVO;
 import com.team5.vo.RecipeVO;
 import com.team5.vo.UserVO;
 
@@ -35,16 +36,18 @@ public class MyPageAction implements Action {
             url = "app?command=login_form";
         } else {
             RecipeDAO recipeDAO = RecipeDAO.getInstance();
+            CommentDAO commentDAO = CommentDAO.getInstance();
+
             List<RecipeVO> myRecipeList = recipeDAO.selectRecipeListByUserId(loginUser.getId());
             List<RecipeVO> commentRecipeList = recipeDAO.selectRecipeByComment(loginUser.getId());
-
-            CommentDAO commentDAO = CommentDAO.getInstance();
+            List<RecipeDesVO> recipeDesVOS = recipeDAO.selectRecipeDescriptionByUserId(loginUser.getId());
             List<CommentVO> commentList = commentDAO.getCommentsByUserId(loginUser.getId());
 
             request.setAttribute("loginUser", loginUser);
             request.setAttribute("myRecipeList", myRecipeList);
             request.setAttribute("commentRecipeList", commentRecipeList);
             request.setAttribute("commentList", commentList);
+            request.setAttribute("recipeDesVOS", recipeDesVOS);
         }
         request.getRequestDispatcher(url).forward(request, response);
     }

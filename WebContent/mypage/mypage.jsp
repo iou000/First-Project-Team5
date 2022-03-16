@@ -47,28 +47,33 @@
                             <li>
                                 <a href="/front/mp/mpb/couponList.do">
                                     <div class="inner">
-                                        <strong><span id="cupnCnt">0</span>개</strong> 내가 올린 레시피 수
+                                        <strong><span id="cupnCnt">${recipeDesVOS[0].recipe_count}</span>개</strong> 내가
+                                        올린 레시피 수
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="/front/mp/mpb/hBonus.do">
                                     <div class="inner">
-                                        <strong><span id="curHBonus">0</span>개</strong> 내가 올린 댓글 수
+                                        <strong><span id="curHBonus">${commentList.size()}</span>개</strong> 내가 올린 댓글 수
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="/front/mp/mpb/hPoint.do">
                                     <div class="inner">
-                                        <strong><span id="upointCurAmt">0</span>P</strong> 나의 레시피 조회수
+                                        <strong><span
+                                                id="upointCurAmt">${recipeDesVOS[0].recipe_view_count}</span>개</strong>
+                                        나의 레시피 조회수
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="/front/cua/mypage/cdpst.do">
                                     <div class="inner">
-                                        <strong><span id="curAmt">0</span>원</strong> 나의 레시피 전체 평점
+                                        <strong><span
+                                                id="curAmt">${recipeDesVOS[0].recipe_grade_average}</span>개</strong> 나의
+                                        레시피 전체 평점
                                     </div>
                                 </a>
                             </li>
@@ -84,7 +89,7 @@
 
                 <section class="like-section">
                     <header class="header">
-                        <h4><span>내가 만든 레시피 </span><strong>0</strong></h4>
+                        <h4><span>내가 만든 레시피 </span><strong>${recipeDesVOS[0].recipe_count}</strong></h4>
                     </header>
 
                     <%--                    데이터 있는지 없는지 if else --%>
@@ -118,7 +123,7 @@
 
                 <section class="view-section">
                     <header class="header">
-                        <h4><span>댓글 단 레시피 </span><strong>1</strong></h4>
+                        <h4><span>댓글 단 레시피 </span><strong>${commentRecipeList.size()}</strong></h4>
                     </header>
                     <c:choose>
                         <c:when test="${empty commentRecipeList}">
@@ -150,7 +155,7 @@
 
                 <section id="p_proReview" class="tab-contents proreview active">
                     <header class="header">
-                        <h4><span>나의 댓글</span><strong>1</strong></h4>
+                        <h4><span>나의 댓글</span><strong>${commentList.size()}</strong></h4>
                     </header>
 
                     <div class="list-top">
@@ -159,20 +164,6 @@
                             정성이 담긴 리뷰는 레세피 공유 활성화에 도움이 됩니다 ^^
                         </p>
                     </div>
-
-                    <%--                    onClick Method 일단 보류--%>
-                    <div class="list-sort">
-                        <div class="form-sort" id="reviewImgYn">
-                            <label><input type="radio" name="sort" value="1"
-                                          onclick="fnReviewAjaxPcList('A', 1);"><span>베스트순</span></label>
-                            <label><input type="radio" name="sort" value="2" checked=""
-                                          onclick="fnReviewAjaxPcList('A', 1);"><span>최신순</span></label>
-                        </div>
-
-                        <!-- 패키지 여부가 Y일 경우 -->
-
-                    </div>
-
                     <!-- 리뷰 리스트 동적 구현 -->
                     <div class="review-list">
                         <ul>
