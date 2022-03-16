@@ -6,19 +6,19 @@ import java.sql.Date;
  * @author seop
  */
 public class RecipeVO {
-    private int id;
-    private String title;
-    private String intro;
-    private int grade;
-    private String category;
-    private String ingredients;
-    private String details;
-    private String image;
-    private Date createdAt;
-    private Date updatedAt;
-    private int viewcount;
-    private int user_id;
-    private String username;
+    private int id; //레시피 id
+    private String title; // 레시피 제목
+    private String intro; //레시피 소개
+    private int grade; //레시피 평점
+    private String category; //레시피 카테고리
+    private String ingredients; //레시피 재료
+    private String details; // 레시피 설명
+    private String image; //레시피 이미지
+    private Date createdAt; // 레시피 생성시간
+    private Date updatedAt; //레시피 수정 시간
+    private int viewcount; // 레시피 조회수
+    private int user_id; //레시피 만든 유저 id
+    private String username; //레시피 만든 유저 name;
     
 	public int getId() {
 		return id;

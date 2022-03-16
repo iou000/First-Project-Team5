@@ -279,6 +279,73 @@ public class RecipeDAO {
         return recipeList;
     }//end selectRecipeListByUserId
 
+
+    /**
+     * @return : void
+     * @Author : seop
+     * @Date : 2022. 3. 14.
+     * @Method : updateViewCount
+     * @Comment : 조회수 +1 증가
+     */
+    public void updateViewCount(int id) {
+        // 호출할 저장 프로시저
+        String runSP = "{ CALL recipe_pack.recipe_update_viewcount(?)}";
+        try {
+            // DB연결
+            conn = DBManager.getConnection();
+            // CallableStatement로 저장 프로시저 호출
+            cstmt = conn.prepareCall(runSP);
+            // 저장프로시저 파라미터 입력
+            cstmt.setInt(1, id);
+            //실행
+            cstmt.executeUpdate();
+            System.out.println(runSP);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(conn, cstmt);
+        }
+    }//end updateRecipe
+    
+    
+    
+    /**
+     * @Author  : seop
+     * @Date    : 2022. 3. 16.
+     * @Method  : selectRecipeListTot
+     * @return  : int
+     * @Comment : 카테고리, 검색어별 레시피 총 개수 조회
+     */
+    public int selectRecipeListTot(String category, String search_text) {
+        
+    	int totcnt = 0;
+    	
+        // 호출할 저장 프로시저
+        String runSP = "{ ? = call recipe_pack.recipe_select_list_tot(?, ?)}";
+        try {
+            // DB연결
+            conn = DBManager.getConnection();
+            // CallableStatement로 저장 프로시저 호출
+            cstmt = conn.prepareCall(runSP);
+            // 입력 파라미터
+            cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.NUMBER);
+            cstmt.setString(2, category);
+            cstmt.setString(3, search_text);
+            
+            
+            //실행
+            cstmt.executeUpdate();
+            totcnt = cstmt.getInt(1);
+            
+            System.out.println(runSP +"검색된 레시피"+ totcnt + "개");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(conn, cstmt, rs);
+        }
+        return totcnt;
+    }//end selectRecipeListTot
+    
     /**
      * 메서드 : selectRecipeViewGradeByCategory
      * 작성자 : 김지혜
@@ -394,31 +461,5 @@ public class RecipeDAO {
         }
         return recipeVOList;
     }//end selectRecipeDescriptionByUserId
-
-    /**
-     * @return : void
-     * @Author : seop
-     * @Date : 2022. 3. 14.
-     * @Method : updateViewCount
-     * @Comment : 조회수 +1 증가
-     */
-    public void updateViewCount(int id) {
-        // 호출할 저장 프로시저
-        String runSP = "{ CALL recipe_pack.recipe_update_viewcount(?)}";
-        try {
-            // DB연결
-            conn = DBManager.getConnection();
-            // CallableStatement로 저장 프로시저 호출
-            cstmt = conn.prepareCall(runSP);
-            // 저장프로시저 파라미터 입력
-            cstmt.setInt(1, id);
-            //실행
-            cstmt.executeUpdate();
-            System.out.println(runSP);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DBManager.close(conn, cstmt);
-        }
-    }//end updateRecipe
+    
 }
