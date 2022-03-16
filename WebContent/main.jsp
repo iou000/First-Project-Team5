@@ -516,43 +516,6 @@
         </div>
 
         <%--        레시피 4개씩 보여주기--%>
-        <%--        최신순--%>
-        <section class="innercon aos-init aos-animate" data-aos="fade-up">
-            <h2><span class="bl"
-                      style="border-top:4px solid "><i
-                    style="border-bottom:4px solid "></i></span><strong
-                    style="font-weight:bold">최신순</strong><small
-                    style="font-weight:normal">유저들의 최근 레시피를 제일 먼저 확인하세요!!</small><a
-                    href="https://tohome.thehyundai.com/front/dp/dpa/newProd.do"
-                    onclick="GA_Event('PC_새벽투홈_메인','신상품','전체보기');" class="btn all">전체보기</a></h2>
-            <ul class="product-list">
-                <c:forEach var="recipeVO" items="${view_high_recipeList}">
-                    <li>
-                        <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
-                        <span class="thumb">
-                            <img src="./images/recipe/home.jpg" alt="이미지 없음">
-                        </span>
-                            <strong class="txt-ti ellipsis">
-                                    ${recipeVO.title}
-                            </strong>
-                            <span>
-                           by. ${recipeVO.username}
-                        </span>
-                        </a>
-                        <span class="info">
-                       <span class="product_caption">
-                          <span class="caption_star">
-                             <img src="./images/common/star.png">
-                          </span>
-                          <span>${recipeVO.grade}</span>
-                          <span>(총 댓글수)</span>
-                          <span>조회수 ${recipeVO.viewcount}</span>
-                       </span>
-                    </span>
-                    </li>
-                </c:forEach>
-            </ul>
-        </section>
         <%--        조회순--%>
         <section class="innercon aos-init aos-animate" data-aos="fade-up">
             <h2><span class="bl"
@@ -563,7 +526,7 @@
                     href="https://tohome.thehyundai.com/front/dp/dpa/newProd.do"
                     onclick="GA_Event('PC_새벽투홈_메인','신상품','전체보기');" class="btn all">전체보기</a></h2>
             <ul class="product-list">
-                <c:forEach var="recipeVO" items="${grade_high_recipeList}">
+                <c:forEach var="recipeVO" items="${view_high_recipeList}">
                     <li>
                         <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                         <span class="thumb">

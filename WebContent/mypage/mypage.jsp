@@ -169,8 +169,7 @@
                         <ul>
                             <c:forEach items="${commentList}" var="commentVO">
                                 <a href="app?command=recipe_view&recipeId=${commentVO.recipe_id}">
-                                    <li data-wrt-id="${loginUser.username}" data-ord-no="${commentVO.updatedAt}"
-                                        data-contents="${commentVO.contents}" data-scrg="${commentVO.grade}">
+                                    <li>
                                         <div class="star">
                                             <div class="grade-star"><span><span
                                                     style="width:100%;">${commentVO.grade}</span></span></div>
@@ -179,12 +178,6 @@
                                             <div class="ti">
                                                 <span class="txt-review">${commentVO.contents}</span>
                                             </div>
-                                                <%--                                            <div class="ui-icon-search">--%>
-                                                <%--                                                <button type="button" class="btn smaller gray btn-reviewlike"--%>
-                                                <%--                                                        onclick="go_recipe_view(${commentVO.recipe_id});">--%>
-                                                <%--                                                </button>--%>
-                                                <%--                                                해당 레시피로 이동하기--%>
-                                                <%--                                            </div>--%>
                                         </div>
                                         <div class="info">
                                             <span class="txt-date">${commentVO.updatedAt}</span>
@@ -196,18 +189,11 @@
                         <!-- pagination// -->
                         <div class="pagination">
                             <span class="num">
-                                 <a href="javascript:fnReviewAjaxPcList('B', '1');" class="active">1</a>
-                                <!-- 현재페이지 class="active" -->
-                                <a href="javascript:fnReviewAjaxPcList('B', '2');">2</a>
-                                <a href="javascript:fnReviewAjaxPcList('B', '3');">3</a>
-                                <a href="javascript:fnReviewAjaxPcList('B', '4');">4</a>
-                                <a href="javascript:fnReviewAjaxPcList('B', '5');">5</a>
-                                <a href="javascript:fnReviewAjaxPcList('B', '6');">6</a>
-                                <a href="javascript:fnReviewAjaxPcList('B', '7');">7</a>
-                                <a href="javascript:fnReviewAjaxPcList('B', '8');">8</a>
-                                <a href="javascript:fnReviewAjaxPcList('B', '9');">9</a>
-                                <a href="javascript:fnReviewAjaxPcList('B', '10');">10</a>
-                                </span>
+                                <c:forEach var="i" begin="0" end="${commentList.size() / 5}">
+                                    <a href="javascript:fnReviewAjaxPcList('B', '1', ${commentList.size()});"><c:out
+                                            value="${i}"/></a>
+                                </c:forEach>
+                            </span>
                             <a href="fnBlockCnt('A', 'B');" class="next">다음</a>
                         </div>
                         <!-- //pagination -->
