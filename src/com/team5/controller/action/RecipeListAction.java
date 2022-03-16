@@ -22,14 +22,14 @@ public class RecipeListAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String url = "recipe/recipeList.jsp";
 		
-		/* 키워드 or 검색어 받아오기 */
+		/* 키워드, 검색어, 정렬조건(조회수 or 평점) 받아오기 */
 		String keyword = request.getParameter("keyword");
 		String category = request.getParameter("category");
 		String sortType = request.getParameter("sortType");
 		
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
-		/* 카테고리 또는 검색어를 통해서 레시피 조회 @seop */
-		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(category, keyword, sortType, 1, 8); // 처음엔 1페이지를 기본으로 가져옴
+		/* 카테고리, 검색어, 정렬조건(조회수 or 평점)을 통해서 레시피 조회 @seop */
+		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(category, keyword, sortType, 1, 8); // 처음엔 1페이지, 8개를 기본으로 가져옴
 		
 		
 		request.setAttribute("keywordAjax", keyword);

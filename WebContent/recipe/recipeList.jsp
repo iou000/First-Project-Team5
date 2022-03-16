@@ -18,6 +18,7 @@
     <!-- //contents -->
     <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
     <div id="contents">
+    <!-- 페이징 ajax용 @seop-->
     <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
     <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
     <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
@@ -55,6 +56,7 @@
 				</c:when>
 			</c:choose>
         	
+        	<!-- 정렬조건 선택 -->
         	<section class="list-filter">
         		<strong class="txt-total"></strong>
         		<div class="filter-wrapper">
@@ -69,6 +71,7 @@
         		</div>
         	</section>
         	
+        	<!-- 레시피 리스트 받을 공간 -->
             <ul class="product-list" id="ulItemList">
                 <c:forEach var="recipeVO" items="${recipeList}">
                     <li>
@@ -183,7 +186,7 @@
 
 </div>
 <script>
-    var loading = false; // 중복 확인용
+    var loading = false; // ajax 중복 요청 방지용
     var pageNO = 2; // 1페이지는 처음에 불러왔으니 2부터 시작.
     var pageSize = 8 // 불러올 데이터 갯수.
 
@@ -257,10 +260,6 @@
             , error : function (request, status, error) {
                 console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
             }
-            , error : function (request, status, error) {
-                console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-            }
-
 
         });
     }
@@ -278,9 +277,9 @@
     
     
 
-    /* 정렬 */
+    /* 정렬조건 선택시 레시피 정보를 다시 받아옴 @seop */
     function fnSortType(sort_type) {
-		console.log(sort_type);
+		//평점순 선택시
 		if(sort_type == 'sort_grade') {
 			$("input[name=sortTypeAjax]").val('grade');
 			
@@ -294,7 +293,7 @@
 			//조건에 맞는 레시피 리스트를 불러옴
 			next_recipes_load();
 			
-		
+		//조회순 선택시
 		} else if(sort_type == 'sort_viewcount') {
 			$("input[name=sortTypeAjax]").val('viewcount');
 			
@@ -307,12 +306,10 @@
 			$('#ulItemList').empty();
 			//조건에 맞는 레시피 리스트를 불러옴
 			next_recipes_load();
-			
 		}
-		
 	}
     
-    /* 평점순 or 조회순으로 들어왔을 경우 */
+    /* 메인페이지에서 평점순 or 조회순으로 들어왔을 경우 */
      $(window).ready(function(){
     	if($("input[name=sortTypeAjax]").val() == 'grade') {
     		console.log('평점순');
