@@ -1751,15 +1751,15 @@ input[type="radio"].sort:checked + span:before {
     position: relative;
     display: inline-block;
     width: 115px;
-    height: 20px;
-    background: url("../images/common/icon.png") no-repeat -200px -100px;
+    height: 27px;
+    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/icon.png") no-repeat -200px -100px;
     text-align: left;
     vertical-align: middle;
 }
 
 .grade-star span span {
     display: inline-block;
-    height: 20px;
+    /*height: 20px;*/
     background-position: -200px -150px;
     text-indent: -9999px;
     text-align: left;
@@ -1812,7 +1812,7 @@ input[type="radio"].sort:checked + span:before {
     display: inline-block;
     width: 18px;
     height: 17px;
-    background: url("../images/common/icon.png") no-repeat -200px -100px;
+    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/icon.png") no-repeat -200px -100px;
     text-indent: -9999px;
     text-align: left;
     cursor: pointer;
@@ -1827,7 +1827,7 @@ input[type="radio"].sort:checked + span:before {
     display: inline-block;
     width: 38px;
     height: 30px;
-    background: url("../images/common/icon.png") no-repeat 0 -100px;
+    background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/icon.png") no-repeat 0 -100px;
     text-indent: -9999px;
     text-align: left;
 }
