@@ -527,12 +527,12 @@
                     <li>
                         <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                         <span class="thumb">
-                            <img src="./images/recipe/home.jpg" alt="이미지 없음">
+                            <img src="./images/recipe/${recipeVO.image}" alt="이미지 없음">
                         </span>
                             <strong class="txt-ti ellipsis">
                                     ${recipeVO.title}
                             </strong>
-                            <span>
+                            <span id="user_by">
                            by. ${recipeVO.username}
                         </span>
                         </a>
@@ -542,8 +542,7 @@
                              <img src="./images/common/star.png">
                           </span>
                           <span>${recipeVO.grade}</span>
-                          <span>(총 댓글수)</span>
-                          <span>조회수 ${recipeVO.viewcount}</span>
+                          <span>&nbsp;&nbsp;&nbsp;조회수 ${recipeVO.viewcount}</span>
                        </span>
                     </span>
                     </li>
@@ -564,12 +563,12 @@
                     <li>
                         <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                         <span class="thumb">
-                            <img src="./images/recipe/home.jpg" alt="이미지 없음">
+                            <img src="./images/recipe/${recipeVO.image}" alt="이미지 없음">
                         </span>
                             <strong class="txt-ti ellipsis">
                                     ${recipeVO.title}
                             </strong>
-                            <span>
+                            <span id="user_by">
                            by. ${recipeVO.username}
                         </span>
                         </a>
@@ -579,8 +578,7 @@
                              <img src="./images/common/star.png">
                           </span>
                           <span>${recipeVO.grade}</span>
-                          <span>(총 댓글수)</span>
-                          <span>조회수 ${recipeVO.viewcount}</span>
+                          <span>&nbsp;&nbsp;&nbsp;조회수 ${recipeVO.viewcount}</span>
                        </span>
                     </span>
                     </li>

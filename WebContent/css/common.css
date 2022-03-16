@@ -4313,6 +4313,7 @@ label.error input {
 
 .list-filter .filter-wrapper .form-filter .btn-group li button {
     line-height: 32px;
+    font-size: 18px;
 }
 
 .list-filter .filter-wrapper .form-filter .btn-filter {
@@ -4339,7 +4340,8 @@ label.error input {
 }
 
 .list-filter .form-filter .btn-group li button.active {
-    color: #101010;
+    color: #FF6913;
+    font-weight: 600;
 }
 
 .list-filter .form-filter .btn-group .recominfo {
@@ -5633,7 +5635,8 @@ fieldset.form-field + .btns {
 
 .product-list .thumb img {
     width: 100%;
-    height: 343px;
+    height: 290px;
+    border-radius: 4px;
 }
 
 .product-list .thumb img + .badge {
@@ -5745,24 +5748,41 @@ fieldset.form-field + .btns {
 }
 
 .product-list .txt-ti {
-    display: block;
-    margin-top: 15px;
-    padding-right: 60px;
-    height: 50px;
-    color: #454545;
+    margin-top: 8px;
+    padding: 0 2px;
+    color: #000;
     font-size: 15px;
-    font-weight: 200;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    white-space: normal;
+    line-height: 1.5;
 }
 
 .product-list a:hover .txt-ti {
     text-decoration: underline;
+    color: #ff6913;
 }
 
 .product-list .info {
     position: relative;
     display: block;
-    padding-right: 50px;
+    padding: 10px 2px;
     min-height: 38px;
+}
+
+.product-list .info .caption_star img {
+	width: 20px;
+	height: 20px;
+}
+#user_by {
+	color: #888888;
+	font-style: italic;
+	padding-left:4px;
 }
 
 .product-list .txt-price {
