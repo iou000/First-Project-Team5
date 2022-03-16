@@ -102,8 +102,7 @@
                              <img src="./images/common/star.png">
                           </span>
                           <span>${recipeVO.grade}</span>
-                          <span>(총 댓글수)</span>
-                          <span>조회수 ${recipeVO.viewcount}</span>
+                          <span>&nbsp;&nbsp;&nbsp;조회수 ${recipeVO.viewcount}</span>
                        </span>
                     </span>
                     </li>
@@ -245,13 +244,11 @@
                     node += "         <span class='caption_star'>";
                     node += "            <img src='./images/common/star.png'>";
                     node += "         </span>";
-                    node += "         <span>(" + data[i].grade + ")</span>";
-                    node += "         <span>(총 댓글수)</span>";
-                    node += "         <span>조회수 " + data[i].viewcount + "</span>";
+                    node += "         <span>" + data[i].grade + "</span>";
+                    node += "         <span>&nbsp;&nbsp;&nbsp;조회수 " + data[i].viewcount + "</span>";
                     node += "      </span>"
                     node += "   </span>";
                     node += "</li>";
-
 
                     $('#ulItemList').append(node);
                 }
@@ -277,7 +274,7 @@
 
     /* 무한 스크롤 @seop */
     $(window).scroll(() => {
-        if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + 100 >= $(document).height() - $(window).height()) {
             if (!loading)    //실행 가능 상태라면?
             {
                 next_recipes_load();

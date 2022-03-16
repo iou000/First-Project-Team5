@@ -9,7 +9,7 @@ public class RecipeVO {
     private int id; //레시피 id
     private String title; // 레시피 제목
     private String intro; //레시피 소개
-    private int grade; //레시피 평점
+    private double grade; //레시피 평점
     private String category; //레시피 카테고리
     private String ingredients; //레시피 재료
     private String details; // 레시피 설명
@@ -38,10 +38,10 @@ public class RecipeVO {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-	public int getGrade() {
+	public double getGrade() {
 		return grade;
 	}
-	public void setGrade(int grade) {
+	public void setGrade(double grade) {
 		this.grade = grade;
 	}
 	public String getCategory() {

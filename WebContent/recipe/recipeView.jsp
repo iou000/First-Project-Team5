@@ -351,6 +351,35 @@
 
 <!-- Javascript -->
 <script type="text/javascript">
+	/* 재료 & 조리법 전환 SJH */
+	$(document).ready(function () {
+		$('#ingredients').on("click", function() {
+			if($(this).parent().hasClass('active') == false) {
+				$(this).parent().addClass('active');
+				$('.list').parent().addClass('active');
+	   			$('#details').parent().removeClass('active');
+	   			$('.step').parent().removeClass('active');	
+			}
+		});
+		$('#details').on("click", function() {
+	   		if($(this).parent().hasClass('active') == false) {
+	   			$(this).parent().addClass('active');
+	   			$('.step').parent().addClass('active');
+	   			$('#ingredients').parent().removeClass('active');
+	   			$('.list').parent().removeClass('active');
+	   		}
+		});
+	});
+	
+	/* 레시피의 평점에 따라 Width의 퍼센트 값을 받아서 별 출력 SJH  */
+	window.onload = function() {
+		var spanId = document.getElementById("star-span");
+	    var grade = $('#star-span').text();
+	    console.log(grade);
+	    var percent = 20 * grade + "%";
+	    spanId.style.width = percent;
+	}
+	
     /* 레시피 삭제 seop */
     function fnDeleteRecipe() {
         if (confirm("삭제하시겠습니까?")) {

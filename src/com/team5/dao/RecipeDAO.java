@@ -167,7 +167,7 @@ public class RecipeDAO {
                 recipeVO.setId(rs.getInt("id"));
                 recipeVO.setTitle(rs.getString("title"));
                 recipeVO.setIntro(rs.getString("intro"));
-                recipeVO.setGrade(rs.getInt("grade"));
+                recipeVO.setGrade(rs.getDouble("grade"));
                 recipeVO.setCategory(rs.getString("category"));
                 recipeVO.setIngredients(rs.getString("ingredients"));
                 recipeVO.setDetails(rs.getString("details"));
@@ -220,7 +220,7 @@ public class RecipeDAO {
                 RecipeVO recipeVO = new RecipeVO();
                 recipeVO.setId(rs.getInt("id"));
                 recipeVO.setTitle(rs.getString("title"));
-                recipeVO.setGrade(rs.getInt("grade"));
+                recipeVO.setGrade(rs.getDouble("grade"));
                 recipeVO.setImage(rs.getString("image"));
                 recipeVO.setViewcount(rs.getInt("viewcount"));
                 recipeVO.setUsername(rs.getString("username"));
@@ -264,7 +264,7 @@ public class RecipeDAO {
                 RecipeVO recipeVO = new RecipeVO();
                 recipeVO.setId(rs.getInt("id"));
                 recipeVO.setTitle(rs.getString("title"));
-                recipeVO.setGrade(rs.getInt("grade"));
+                recipeVO.setGrade(rs.getDouble("grade"));
                 recipeVO.setImage(rs.getString("image"));
                 recipeVO.setViewcount(rs.getInt("viewcount"));
                 recipeVO.setUsername(rs.getString("username"));
@@ -337,7 +337,7 @@ public class RecipeDAO {
             cstmt.executeUpdate();
             totcnt = cstmt.getInt(1);
             
-            System.out.println(runSP +"검색된 레시피"+ totcnt + "개");
+            System.out.println(runSP +"검색된 레시피: "+ totcnt + "개");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

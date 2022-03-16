@@ -31,7 +31,6 @@ public class RecipeListAction implements Action {
 		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(category, keyword, sortType, 1, 8); // 처음엔 1페이지, 8개를 기본으로 가져옴
 		
 		int totRecipeListCnt = recipeDAO.selectRecipeListTot(category, keyword);
-		System.out.println(totRecipeListCnt);
 		
 		request.setAttribute("keywordAjax", keyword);
 		request.setAttribute("categoryAjax",category);
