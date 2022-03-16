@@ -28,7 +28,7 @@ public class RecipeCtgrListAction implements Action {
 		
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
 		/* 카테고리 또는 검색어를 통해서 레시피 조회 @seop */
-		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(category, keyword, 1, 8); // 처음엔 1페이지를 기본으로 가져옴
+		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(category, keyword, "grade", 1, 8); // 처음엔 1페이지를 기본으로 가져옴
 		
 		request.setAttribute("keywordAjax", keyword);
 		request.setAttribute("categoryAjax",category);

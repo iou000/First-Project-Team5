@@ -8,20 +8,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
+        <link rel="stylesheet" type="text/css" href="css/product.css">
 </head>
 <body>
 <div id="wrap" class="product category">
     <!-- header// -->
     <jsp:include page='<%="../header.jsp" %>'/>
     <!-- header// -->
-    <link rel="stylesheet" type="text/css" href="css/product.css">
-    <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
-    <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
-    <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
 	
     <!-- //contents -->
     <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
     <div id="contents">
+    <input type="text" name="keywordAjax" value="${keywordAjax}"/>
+    <input type="text" name="categoryAjax" value="${categoryAjax}"/>
+    <input type="text" name="sortTypeAjax" value="${sortTypeAjax}"/>
         <div class="innercon" id="reset_section">
 
         	<section class="categorylist">
@@ -42,7 +42,6 @@
 	                            <button id="sort_grade" type="button" class="active" onclick="fnSortType(this.id)">평점순</button>
 	                        </li>
 	                        <li><button id="sort_viewcount" type="button" onclick="fnSortType(this.id)">조회순</button></li>
-	                        <li><button id="sort_createdat" type="button" onclick="fnSortType(this.id)">최신순</button></li>
 	                    </ul>
 	                </div>
         		</div>
@@ -172,6 +171,11 @@
         var categoryAjax = $("input[name=categoryAjax]").val();
         var sortTypeAjax = $("input[name=sortTypeAjax]").val();
 
+
+        console.log("키워드 :",keywordAjax);
+        console.log("카테고리 :",categoryAjax);
+        console.log("정렬 :",sortTypeAjax);
+        
         $.ajax({
             type    : "POST",
             url     : "app?command=recipe_paging_ajax",
@@ -226,8 +230,6 @@
                 if (data.length == 0) {
                     loading = true;
                 }
-                console.log("키워드",keywordAjax);
-                console.log("카테고리",categoryAjax)
 
             }
             , error : function (request, status, error) {
@@ -258,7 +260,7 @@
     function fnSortType(sort_type) {
 		console.log(sort_type);
 		if(sort_type == 'sort_grade') {
-			$("input[name=sortTypeAjax]").val(sort_type);
+			$("input[name=sortTypeAjax]").val('grade');
 			
 			$("#sort_grade").addClass("active");
 			$("#sort_viewcount").removeClass("active");
@@ -269,28 +271,26 @@
 			//현재 있는 레시피 리스트 모두 삭제
 			$('#ulItemList').empty();
 			//조건에 맞는 레시피 리스트를 불러옴
+			
 			next_recipes_load();
 			
 		
 		} else if(sort_type == 'sort_viewcount') {
-			$("input[name=sortTypeAjax]").val(sort_type);
+			$("input[name=sortTypeAjax]").val('viewcount');
 			
 			$("#sort_grade").removeClass("active");
 			$("#sort_viewcount").addClass("active")
 			$("#sort_createdat").removeClass("active");
 			
-			
-			
-		} else if(sort_type == 'sort_createdat') {
-			$("input[name=sortTypeAjax]").val(sort_type);
-			
-			$("#sort_grade").removeClass("active");
-			$("#sort_viewcount").removeClass("active");
-			$("#sort_createdat").addClass("active");
-			
-			
+			//1페이지부터 다시불러와야함
+			pageNO = 1;
+			//현재 있는 레시피 리스트 모두 삭제
+			$('#ulItemList').empty();
+			//조건에 맞는 레시피 리스트를 불러옴
+			next_recipes_load();
 			
 		}
+		
 	}
     
     
