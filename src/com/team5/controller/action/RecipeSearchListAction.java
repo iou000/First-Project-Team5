@@ -14,13 +14,13 @@ import com.team5.vo.RecipeVO;
 /**
  * @author    : seop
  * @Date      : 2022. 3. 15.
- * @ClassName : RecipeCtgrListAction
- * @Comment   : 카테고리별 레시피 조회 조회
+ * @ClassName : RecipeSearchListAction
+ * @Comment   : 검색어로 레시피 조회
  */
-public class RecipeCtgrListAction implements Action {
+public class RecipeSearchListAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String url = "recipe/recipeCtgrList.jsp";
+		 String url = "recipe/recipeSearchList.jsp";
 		
 		/* 키워드 or 검색어 받아오기 */
 		String keyword = request.getParameter("keyword");

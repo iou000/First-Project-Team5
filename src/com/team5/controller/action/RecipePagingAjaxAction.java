@@ -26,7 +26,7 @@ public class RecipePagingAjaxAction implements Action {
 		/* 키워드 or 검색어 받아오기 */
 		String categoryAjax = request.getParameter("categoryAjax");
 		String keywordAjax = request.getParameter("keywordAjax");
-		
+		String sortTypeAjax = request.getParameter("sortTypeAjax");
 		/* 페이징 정보 받아오기  */
 		int pageNO = Integer.parseInt(request.getParameter("pageNO"));
 		int pageSize = Integer.parseInt(request.getParameter("pageSize"));
@@ -34,7 +34,7 @@ public class RecipePagingAjaxAction implements Action {
 
 		/* 키워드, 카테고리, 페이지번호, 페이지 크기로 recipe정보 조회 */
 		RecipeDAO recipeDAO = RecipeDAO.getInstance();
-		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(categoryAjax, keywordAjax, pageNO, pageSize);
+		List<RecipeVO> recipeList = recipeDAO.selectRecipeList(categoryAjax, keywordAjax, sortTypeAjax, pageNO, pageSize);
 		
 		
 		/* json 형식으로 데이터를 보냄 */

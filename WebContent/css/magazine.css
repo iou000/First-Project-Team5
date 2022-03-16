@@ -1,0 +1,421 @@
+@charset "utf-8";
+
+/**
+ * --------------------------------
+ * magazine CSS
+ * --------------------------------
+*/
+
+/* magazine 공통 */
+#wrap.magazine .lnbarea {float: none;position: relative;padding-bottom: 15px;width: auto;border-bottom: 2px solid #454545;}
+#wrap.magazine .lnbarea:after {content: "";display: block;clear: both;}
+#wrap.magazine .lnbarea h2 {float: left;margin-bottom: 0;}
+#wrap.magazine .lnbarea .btn-bookmark {position: absolute;right: 0;bottom: 12px;padding:6px 11px 6px 18px;color: #454545;font-size: 15px;}
+#wrap.magazine .lnbarea .btn-bookmark:before {content: "";position: absolute;top: 12px;left: 0;margin-right: 6px;width: 11px;height: 14px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat 0 -300px;}
+#wrap.magazine .lnbarea .btn-bookmark span {color: #101010;font-family: "Roboto";font-weight: 600;}
+.magazine .lnbarea .lnb {float: right;position: relative;margin-top: 23px;margin-right: 117px;padding-right: 33px;max-width: 900px;text-align: right;}
+.magazine .lnbarea .lnb:after {content: "";position: absolute;bottom: 5px;right: 0;width: 1px;height: 14px;background: #aea7a2;}
+.magazine .lnbarea .lnb li {display: inline-block;margin-left: 60px;}
+.magazine .lnbarea .lnb li:first-child {margin-left: 0;}
+.magazine .lnbarea .lnb li.active a {color: #101010;font-weight: 600;}
+.magazine .lnbarea .lnb li a {color: #767572;font-size: 16px;}
+
+.magazine .btn-area .btn-bookmark {position: relative;margin-left: 16px;width: 18px;height: 23px;text-align: left;text-indent:-9999px;}
+.magazine .btn-area .btn-bookmark:after {content: "";position: absolute;top: 0;left: 0;width: 18px;height: 22px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -50px -300px;}
+.magazine .btn-area .btn-bookmark.active {animation: bookmarkMotion .4s ease-in-out both;}
+.magazine .btn-area .btn-bookmark.active:after {background-position:-100px -300px;}
+.magazine .btn-area .btn-share {position: relative;width: 21px;height: 24px;text-align: left;text-indent:-9999px;}
+.magazine .btn-area .btn-share:after {content: "";position: absolute;top: 0;left: 0;width: 21px;height: 24px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -100px -150px;}
+.magazine .btn-area .btn-like {position: relative;width: 24px;height: 24px;text-align: left;text-indent:-9999px;}
+.magazine .btn-area .btn-like:after {content: "";position: absolute;top: 0;left: 0;width: 24px;height: 24px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat 0 -50px;}
+.magazine .btn-area .btn-like.active:after {background-position: -50px -50px;animation: wishMotion .4s ease-in-out both;}
+
+.magazine .title-area {position: relative;margin-top: 48px;}
+.magazine .title-area .title {position: static;display: block;}
+.magazine .title-area .title .inner {display: block;}
+.magazine .title-area .title p {margin-bottom: 7px;color: #454545;line-height: 1;}
+.magazine .title-area .title h3 {color: #101010;font-size: 28px;font-weight: 600;line-height: 40px;}
+
+.magazine .title-area.type2 .crop {position: relative;display: block;height: 300px;overflow:hidden;}
+.magazine .title-area.type2 .crop img {position: absolute;top: 50%;left:50%;width: 100%;transform: translate(-50%, -50%);}
+.magazine .title-area.type2 .title {position: absolute;top: 0;left: 0;display: table;width: 100%;height: 100%;}
+.magazine .title-area.type2 .title:before {content: "";display: table-cell;width: 1px;height: 100%;vertical-align: middle;}
+.magazine .title-area.type2 .title:after {content: "";display: block;position: absolute;top: 0;left: 0;width: 100%;height: 100%;background:rgba(0,0,0,.5);}
+.magazine .title-area.type2 .title .inner {display: table-cell;position: relative;margin-left:-3px;padding: 0 330px;width: calC(100% - 1px);height: 300px;text-align: center;vertical-align: middle;z-index: 1;}
+.magazine .title-area.type2 .title p {color: #fff;font-size: 20px;}
+.magazine .title-area.type2 .title h3 {color: #fff;font-size: 26px;font-weight: 600;}
+.magazine .title-area.type2 + .editor-info {padding:20px 0 0;}
+.magazine .title-area.type2 + .editor-info .editor {margin-top: -3px;}
+
+.magazine .editor-info {padding: 5px 0 30px;}
+.magazine .editor-info:after {content: "";display: block;clear: both;}
+.magazine .editor-info .editor {float: left;margin-top: -1px;color: #aea7a2;font-size: 15px;}
+.magazine .editor-info .btn-area {float: right;margin-right:3px;}
+
+.magazine .cont-info {padding: 4px 0 51px;text-align: right;}
+.magazine .cont-info span + span:before {content: "";display: inline-block;margin: 0 9px 0 7px;width: 1px;height: 10px;background: #dbd9d6;}
+.magazine .cont-info .date {color: #aea7a2;font-size: 14px;}
+.magazine .cont-info .view {color: #aea7a2;font-size: 14px;}
+
+.magazine .hashtag {padding-top: 19px;}
+.magazine .hashtag + .list-area {margin-top: 56px;}
+.magazine .list-area {margin-top: 44px;position: relative;}
+.magazine .list-area h3 {position: relative;padding-bottom: 30px;color: #101010;font-size: 24px;line-height: 28px;}
+.magazine .list-area h3 em {display: inline-block;margin-left: 8px;color: #ff6913;font-weight: 600;font-family: "Roboto";}
+.magazine .list-area h3 .depth-2 {position: relative;display: inline-block;margin-left: 14px;padding-left: 21px;color: #101010;font-family:"NotoSansKR"; font-size: 20px;font-weight: 200;}
+.magazine .list-area h3 .depth-2:after {content: "";position: absolute;top: 50%;left: 0;margin-top: -9px;width: 10px;height: 18px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -200px -250px;}
+.magazine .list-area .nodata {padding-top: 150px;padding-bottom: 150px;}
+.magazine .list-area .btn-cartall {position: absolute;position: absolute;right: 0;top: 0;padding: 0 10px;height: 40px;line-height: 38px;border: 2px #ff6914 solid;color: #ff6914;}
+
+.magazine .list-area .plan-tabs {margin: 1px 0 0 1px;font-size: 0;}
+.magazine .list-area .plan-tabs a {margin-top: -1px;margin-left: -1px;padding: 0 12px;display: inline-block;width: calc(50% + 1px);line-height: 46px;color: #767572;font-size: 15px;text-align: center;border:1px solid #dbd9d6;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.magazine .list-area .plan-list {margin-top: 16px; padding-bottom: 16px;}
+.magazine .list-area .plan-list .sti {position: relative;z-index: 1;}
+.magazine .list-area .plan-list .sti h3 {line-height: 86px;color: #101010;font-size: 24px;padding-bottom: 0;}
+
+.magazine .list-filter {margin: 44px 0 18px;}
+.magazine .list-filter > h3 {float: left;margin-top: 3px;padding: 0;font-size: 20px;font-weight: 200;}
+.magazine .list-filter .form-filter {top: 8px;}
+.magazine .list-filter .form-filter .select.type2 {float: right;margin-top: -12px;min-width: 150px;}
+
+.magazine .select.type2 .dropdown:after {background-position: -150px -200px}
+.magazine .select.type2 .dropdown .list {max-height: 260px;}
+
+.magazine .banner-txt {position: relative;margin-top: 48px;}
+.magazine .banner-txt .title {position: absolute;top: 0;left: 0;display: table;width: 100%;height: 100%;}
+.magazine .banner-txt .title:before {content: "";display: table-cell;width: 1px;height: 100%;vertical-align: middle;}
+.magazine .banner-txt .title:after {content: "";display: block;position: absolute;top: 0;left: 0;width: 100%;height: 100%;background:rgba(0,0,0,.5);}
+.magazine .banner-txt .title .inner {display: table-cell;position: relative;margin-left:-3px;padding: 0 330px;width: calC(100% - 1px);height: 300px;text-align: center;vertical-align: middle;z-index: 1;}
+.magazine .banner-txt .title strong {color: #101010;color: #fff;font-size: 26px;font-weight: 600;line-height: 40px;}
+.magazine .banner-txt .crop {position: relative;display: block;height: 300px;overflow:hidden;}
+.magazine .banner-txt .crop img {position: absolute;top: 50%;left:50%;width: 100%;transform: translate(-50%, -50%);}
+
+.magazine .banneer-recipe a {display: block;position: relative;height: 160px;overflow: hidden;}
+.magazine .banneer-recipe a img {position: absolute;top: 50%;left: 0;width: 100%;transform: translateY(-50%);}
+
+.magazine .recipe-list > li {position: relative;display: inline-block;padding-top: 40px;width: 590px;vertical-align: top;}
+.magazine .recipe-list > li:nth-child(-n + 2) {padding-top: 0;}
+.magazine .recipe-list > li:nth-of-type(2n) {margin-left: 20px;}
+.magazine .recipe-list .thumb {position: relative;display: inline-block;margin-right: 17px;width: 240px;height: 240px;vertical-align: top;overflow: hidden;}
+.magazine .recipe-list .thumb img {position: absolute;top: 50%;left: 50%;width: 100%;transform: translate(-50%, -50%);}
+.magazine .recipe-list .thumb.vertical img {width: auto;height:100%;}
+.magazine .recipe-list .contr {display: inline-block;padding-top: 20px;width: calc(100% - 261px);vertical-align: top;}
+.magazine .recipe-list .contr a {display: block;}
+.magazine .recipe-list .txt-cate {display: block;margin-bottom: 6px;color: #454545;font-weight: 600;}
+.magazine .recipe-list .txt-ti {display: block;margin-top: -3px;font-size: 18px;font-weight: 200;line-height: 24px;}
+.magazine .recipe-list .txt-id {display: block;margin-top: 36px;color: #aea7a2;font-size: 14px;line-height: 16px;}
+.magazine .recipe-list .bottom {margin-top: 9px;}
+.magazine .recipe-list .bottom .btn-like {position: relative;display: inline-block;min-width: 60px;text-align: left;}
+.magazine .recipe-list .bottom .btn-like:before {content: "";display: inline-block;margin-right: 3px;width: 18px;height: 18px;font-size: 12px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/magazine.png") no-repeat -300px 0;vertical-align: middle;}
+.magazine .recipe-list .bottom .btn-like.active:before {background-position: -350px 0;}
+.magazine .recipe-list .bottom .btn-like .val {color: #767572;font-size: 13px;}
+.magazine .recipe-list .bottom .view {display: inline-block;margin-left: 10px;color: #767572;font-size: 13px;}
+.magazine .recipe-list .bottom .view:before {content: "";display: inline-block;margin-right: 3px;width: 20px;height: 17px;font-size: 12px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/magazine.png") no-repeat -400px 0;vertical-align: middle;}
+.magazine .recipe-list .etc {position: absolute;bottom: 0;left:0;width: 100%;padding: 9px 0 14px;border-top: 1px solid #e7e7e7;}
+.magazine .recipe-list .etc:after {content: "";display: block;clear: both;}
+.magazine .recipe-list .etc .date {float: left;color: #767572;font-size: 13px;}
+.magazine .recipe-list .etc .btn-area {float: right;margin-top: -2px;}
+.magazine .recipe-list .etc .btn-area .btn-remove,
+.magazine .recipe-list .etc .btn-area .btn-modify {position: relative;color: #767572;font-size: 13px;}
+.magazine .recipe-list .etc .btn-area .btn-modify {margin-left: 10px;padding-left: 10px;}
+.magazine .recipe-list .etc .btn-area .btn-remove + .btn-modify:before {content: "";position: absolute;top: 5px;left: 0;display: inline-block;width: 1px;height: 10px;background-color: #dbd9d6;}
+
+/* main */
+.magazine.main .banner-img {margin-top: 48px;}
+.magazine.main .banneer-recipe {margin-top: 48px;}
+
+.magazine.main .hashtag {margin-top: 60px;border-top: 2px solid #454545;}
+
+.magazine.main .banner-txt + .recipe-setting {margin-top: 60px;border-top: 2px solid #454545;}
+.magazine.main .recipe-setting {text-align: center;}
+.magazine.main .recipe-setting > ul {padding: 20px 0;border-bottom: 1px solid #e7e7e7;}
+.magazine.main .recipe-setting > ul > li {position: relative;display: inline-block;margin-left: 60px;}
+.magazine.main .recipe-setting > ul > li:first-child {margin-left: 0;}
+.magazine.main .recipe-setting .tit {display: inline-block;margin-right: 10px;min-width: 85px;color: #454545;font-size: 15px;}
+.magazine.main .recipe-setting .icon {margin-right: 8px;width: 24px;height: 24px;background-image: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/magazine.png");background-repeat: no-repeat;vertical-align:middle;}
+.magazine.main .recipe-setting .icon.level {background-position: -150px -50px;}
+.magazine.main .recipe-setting .icon.time {background-position: -200px -50px;}
+.magazine.main .recipe-setting .icon.food {background-position: -250px -50px;}
+.magazine.main .recipe-setting .select {display: inline-block;width: 200px;vertical-align: middle;}
+.magazine.main .recipe-setting .select .dropdown .current {color: #aea7a2;}
+.magazine.main .recipe-setting .select .dropdown.active .current {color: #101010;}
+.magazine.main .recipe-setting .btns {margin: 0 auto;padding-top: 20px;width: 408px;}
+
+.magazine.main .magazine-list {margin: 0;}
+.magazine.main .magazine-list > li {position: relative;margin-bottom: 20px;width: 388px;}
+/* .magazine.main .magazine-list li:nth-child(-n + 3) {margin-top: 0;} */
+.magazine.main .magazine-list li.grid-sizer {margin: 0;padding: 0;width: 388px;overflow: hidden;}
+.magazine.main .magazine-list a {display: block;margin: 0 !important;width: 100%;}
+.magazine.main .magazine-list a img {width: 100%;}
+.magazine.main .magazine-list .cate {position: relative;margin-top: -16px;width: 100%;text-align: center;}
+.magazine.main .magazine-list .cate.type2 {position: absolute;top: 32px;margin-top: 0;}
+.magazine.main .magazine-list .cate em {padding: 4px 10px;font-size: 13px;font-weight: 600;}
+.magazine.main .magazine-list .cate em.white {color: #101010;background: #fff;}
+.magazine.main .magazine-list .cate em.black {color: #fff;background: #000;}
+.magazine.main .magazine-list .bg-box span {padding: 24px 0 47px;text-align: center;}
+.magazine.main .magazine-list .bg-box small {display: block;margin-bottom: 6px;font-size: 13px;font-weight: 200;}
+.magazine.main .magazine-list .bg-box strong {margin-top: 0;padding: 0 40px;line-height: 26px;font-size: 18px;font-weight: 600;}
+.magazine.main .magazine-list .bottom {position: absolute;bottom: 0;left: 0;padding: 0 40px 52px;width: 100%;text-align: center;}
+.magazine.main .magazine-list .bottom small {font-weight: 200;}
+.magazine.main .magazine-list .bottom strong {margin-top: 5px;font-weight: 600;line-height: 26px;}
+.magazine.main .magazine-list .video-area {position: relative;}
+.magazine.main .magazine-list .video-area .video-js {position: relative;height: auto !important;}
+.magazine.main .magazine-list .video-area .video-js.vjs-paused:after {content: "";position: absolute;top: 0;left: 0;width: 100%;height: 100%;background:rgba(0,0,0,.5);}
+.magazine.main .magazine-list .video-area .video-js video {position: relative;height: auto;}
+
+.magazine.main.community .list-filter .form-filter {top: 12px;}
+.magazine.main.community .nodata {padding-bottom: 0;}
+.magazine.main.community .nodata + .btn-area.recipe {margin-top: 16px;}
+.magazine.main.community .btn-area.recipe {margin-top: 48px;text-align: center;}
+.magazine.main.community .btn-area.recipe .btn-recipe {width: 276px;}
+
+/* magazine - main banner */
+.magazine.main .banner {position: relative;margin-top: 48px;}
+.magazine.main .banner .swiper-slide {margin: 0 auto;width: auto;}
+.magazine.main .banner .swiper-slide img {width: 720px;height: 450px;}
+.magazine.main .banner .btn-area {display: none;}
+.magazine.main .banner .btn-area:before {content: "";position: absolute;top: 0;left: 0;width: 222px;height: 100%;background-color: rgba(255, 255, 255, .8);z-index: 1;}
+.magazine.main .banner .btn-area:after {content: "";position: absolute;top: 0;right: 0;width: 222px;height: 100%;background-color: rgba(255, 255, 255, .8);z-index: 1;}
+.magazine.main .banner .swiper-button-prev-banner {position: absolute;top: 50%;left: 242px;transform: translateY(-50%);width: 40px;height: 40px;background-color: rgba(16, 16, 16, .3);cursor: pointer;z-index: 1;}
+.magazine.main .banner .swiper-button-prev-banner:after {content: "";position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);display: inline-block;width: 14px;height: 25px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat 0 -200px;}
+.magazine.main .banner .swiper-button-next-banner {position: absolute;top: 50%;right: 242px;transform: translateY(-50%);width: 40px;height: 40px;background-color: rgba(16, 16, 16, .3);cursor: pointer;z-index: 1;}
+.magazine.main .banner .swiper-button-next-banner:after {content: "";position: absolute;top: 50%;left: 12px;transform: translateY(-50%);display: inline-block;width: 14px;height: 25px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -50px -200px;}
+.magazine.main .banner .swiper-pagination-tot {position: absolute;bottom: 57px;left: 302px;font-size: 14px;z-index: 1;}
+.magazine.main .banner .swiper-pagination-tot strong {margin-right: 1px;color: #101010;}
+.magazine.main .banner .swiper-pagination-tot em {margin-left: 1px;color: #101010;opacity: .5;}
+.magazine.main .banner.active .btn-area {display: block;}
+.magazine.main .banner-txt .btn-area {display: none;}
+.magazine.main .banner-txt .swiper-pagination-tot {position: absolute;bottom: 37px;left: 50px;font-size: 14px;z-index: 1;}
+.magazine.main .banner-txt .swiper-pagination-tot strong {margin-right: 1px;color: #fff;}
+.magazine.main .banner-txt .swiper-pagination-tot em {margin-left: 1px;color: #fff;opacity: .5;}
+.magazine.main .banner-txt .swiper-button-prev-banner {position: absolute;top: 50%;left: 0;transform: translateY(-50%);width: 40px;height: 40px;background-color: rgba(16, 16, 16, .3);cursor: pointer;z-index: 1;}
+.magazine.main .banner-txt .swiper-button-prev-banner:after {content: "";position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);display: inline-block;width: 14px;height: 25px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat 0 -200px;}
+.magazine.main .banner-txt .swiper-button-next-banner {position: absolute;top: 50%;right: 0;transform: translateY(-50%);width: 40px;height: 40px;background-color: rgba(16, 16, 16, .3);cursor: pointer;z-index: 1;}
+.magazine.main .banner-txt .swiper-button-next-banner:after {content: "";position: absolute;top: 50%;left: 12px;transform: translateY(-50%);display: inline-block;width: 14px;height: 25px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -50px -200px;}
+.magazine.main .banner-txt.active .btn-area {display: block;}
+.magazine.main .banner-community {position: relative;margin-top: 48px;}
+.magazine.main .banner-community a {display: block;position: relative;height: 300px;overflow: hidden;}
+.magazine.main .banner-community a img {position: absolute;top: 50%;left: 0;width: 100%;transform: translateY(-50%);}
+.magazine.main .banner-community .btn-area {display: none;}
+.magazine.main .banner-community .swiper-pagination-tot {position: absolute;bottom: 37px;left: 50px;font-size: 14px;z-index: 1;}
+.magazine.main .banner-community .swiper-pagination-tot strong {margin-right: 1px;color: #101010;}
+.magazine.main .banner-community .swiper-pagination-tot em {margin-left: 1px;color: #101010;opacity: .5;}
+.magazine.main .banner-community .swiper-button-prev-banner {position: absolute;top: 50%;left: 0;transform: translateY(-50%);width: 40px;height: 40px;background-color: rgba(16, 16, 16, .3);cursor: pointer;z-index: 1;}
+.magazine.main .banner-community .swiper-button-prev-banner:after {content: "";position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);display: inline-block;width: 14px;height: 25px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat 0 -200px;}
+.magazine.main .banner-community .swiper-button-next-banner {position: absolute;top: 50%;right: 0;transform: translateY(-50%);width: 40px;height: 40px;background-color: rgba(16, 16, 16, .3);cursor: pointer;z-index: 1;}
+.magazine.main .banner-community .swiper-button-next-banner:after {content: "";position: absolute;top: 50%;left: 12px;transform: translateY(-50%);display: inline-block;width: 14px;height: 25px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/btn.png") no-repeat -50px -200px;}
+.magazine.main .banner-community.active .btn-area {display: block;}
+
+/* detail */
+.magazine.detail .list-area {padding:0 0 56px 0;}
+.magazine.detail .list-area:last-child {padding-bottom: 0;}
+.magazine.detail .list-filter {margin-top: 0;}
+.magazine.detail .list-filter > h3 {font-size: 24px;}
+.magazine.detail .detailarea {border-bottom: 2px solid #454545;}
+.magazine.detail .recipe-info {padding: 32px 0;text-align: center;border-top: 1px solid #e7e7e7;}
+.magazine.detail .recipe-info dl {display: inline-block;position: relative;margin-left: 55px;padding-left: 32px;text-align: left;line-height: 24px;}
+.magazine.detail .recipe-info dl:first-child {margin-left: 0;}
+.magazine.detail .recipe-info dl:before {content: "";position: absolute;top: 0;left: 0;width: 24px;height: 24px;background-image: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/magazine.png");background-repeat:no-repeat;}
+.magazine.detail .recipe-info dl.author:before {background-position: -150px -50px;}
+.magazine.detail .recipe-info dl.category:before {background-position: -250px -50px;}
+.magazine.detail .recipe-info dl.grade:before {background-position: 0px -50px;}
+.magazine.detail .recipe-info dt {display: inline-block;color: #454545;font-size: 15px;}
+.magazine.detail .recipe-info dd {display: inline-block;margin-left: 6px;color: #454545;font-size: 15px;font-weight: 600;}
+
+.magazine.detail .recipe-detail h3 {color: #000;font-size: 18px;font-weight: 600;}
+.magazine.detail .recipe-detail .cont + h3 {padding-top: 12px;}
+.magazine.detail .recipe-detail .cont {padding: 12px 0 20px;line-height: 20px;}
+
+.magazine.detail .recipe-btns {margin-top: -44px;padding-bottom: 70px;text-align: right;}
+.magazine.detail .recipe-btns .btn-remove,
+.magazine.detail .recipe-btns .btn-modify {position: relative;color: #767572;font-size: 13px;}
+.magazine.detail .recipe-btns .btn-modify {margin-left: 10px;padding-left: 10px;}
+.magazine.detail .recipe-btns .btn-remove + .btn-modify:before {content: "";position: absolute;top: 5px;left: 0;display: inline-block;width: 1px;height: 10px;background-color: #dbd9d6;}
+
+.magazine.detail .recipe-view {text-align: center;}
+.magazine.detail .recipe-view img {max-width: 100%;}
+.magazine.detail .video-area {position: relative;}
+.magazine.detail .video-area .video-js {position: relative;height: auto !important;}
+.magazine.detail .video-area .video-js.vjs-paused:after {content: "";position: absolute;top: 0;left: 0;width: 100%;height: 100%;background:rgba(0,0,0,.5);}
+.magazine.detail .video-area .video-js video {position: relative;height: auto;}
+
+.magazine.detail .communityinfo {position: relative;margin-top: 48px;margin-bottom: 56px;min-height: 400px;}
+.magazine.detail .communityinfo:after {content: "";display: block;clear: both;}
+.magazine.detail .communityinfo > .inner {float: right;padding-left: 40px;width: 484px;}
+.magazine.detail .communityinfo .title-area {margin-top: 0;}
+.magazine.detail .communityinfo .editor-info {padding: 20px 0 48px;}
+.magazine.detail .communityinfo .recipe-info {padding: 32px 0 19px;}
+.magazine.detail .communityinfo .recipe-info dl {padding-left: 40px;line-height: 1.2;}
+.magazine.detail .communityinfo .recipe-info dd {margin-top: 3px;}
+.magazine.detail .communityinfo .recipe-info dl:before {width: 30px;height: 30px;}
+.magazine.detail .communityinfo .recipe-info dt {display: block;margin-top: -2px;color: #767572;font-size: 13px;}
+.magazine.detail .communityinfo .recipe-info dd {margin-left: 0;font-size: 14px;}
+.magazine.detail .communityinfo .recipe-info dl.author:before {background-position: 0 0;}
+.magazine.detail .communityinfo .recipe-info dl.category:before {background-position: -50px 0;}
+.magazine.detail .communityinfo .recipe-info dl.grade:before {background-position: -100px 0;}
+.magazine.detail .communityinfo .recipe-info dl.viewcount:before {background-position: -150px 0;}
+.magazine.detail .communityinfo .recont {padding-top: 20px;border-top: 1px solid #e7e7e7;}
+.magazine.detail .communityinfo .recont .pic:after {content: '';display: block;clear: both;}
+.magazine.detail .communityinfo .recont .pic button {float: left;position: relative;margin-right: 10px;width: 96px;height: 96px;overflow: hidden;z-index: 0;}
+.magazine.detail .communityinfo .recont .pic button.big {position: absolute;top: 0;left: 0;width: 720px;height: 400px;}
+.magazine.detail .communityinfo .recont .pic button img {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width:100%;}
+.magazine.detail .communityinfo .recont .pic .picnum {display: none;}
+
+.magazine.detail .commentlist legend {padding: 39px 0 9px;color: #101010;font-size: 24px;}
+.magazine.detail .commentlist .input-ar {margin-bottom: 33px;}
+.magazine.detail .commentlist .input-ar .form-counter {display: inline-block;width: calC(100% - 155px);height: 90px;}
+.magazine.detail .commentlist .input-ar .form-counter textarea {height: 56px;}
+.magazine.detail .commentlist .input-ar .form-counter textarea::placeholder {font-size: 14px;}
+.magazine.detail .commentlist .input-ar .btn-comment {display: inline-block;margin-left: 7px;width: 140px;height: 90px;color: #fff;font-size: 16px;background: #101010;vertical-align: top;}
+.magazine.detail .commentlist .input-ar .infotxt li {margin-top: 2px;font-size: 15px;line-height: 16px;}
+.magazine.detail .commentlist .cont-ar {border-top: 1px solid #454545;}
+.magazine.detail .commentlist .cont-ar > ul > li {position: relative;padding: 20px 0 22px;border-bottom: 1px solid #e7e7e7;}
+.magazine.detail .commentlist .cont-ar .btn-area {position: absolute;top: 23px;right: 15px;}
+.magazine.detail .commentlist .cont-ar .btn-area button {position: relative;color: #767572;font-size: 13px;}
+.magazine.detail .commentlist .cont-ar .btn-area .btn-modify {margin-left: 10px;padding-left: 12px;}
+.magazine.detail .commentlist .cont-ar .btn-area .btn-modify:before {content: "";position: absolute;top: 3px;left: 0;display: inline-block;width: 1px;height: 10px;background-color: #e7e7e7;}
+.magazine.detail .commentlist .cont-ar .info span {display: inline-block;position: relative;color: #aea7a2;vertical-align: middle;}
+.magazine.detail .commentlist .cont-ar .info .txt-date {margin-left: 6px;padding-left: 6px;}
+.magazine.detail .commentlist .cont-ar .info .txt-date:before {content: "";position: absolute;top: 6px;left: 0;display: inline-block;width: 1px;height: 12px;background-color: #e7e7e7;}
+.magazine.detail .commentlist .cont-ar .text {margin-top: 12px;}
+.magazine.detail .commentlist .cont-ar .text p {color: #101010;font-size: 15px;word-break: break-word;}
+.magazine.detail .commentlist .pagination {margin-top: 24px;}
+
+/* magazine - detail - edit */
+.magazine.detail .edit-cont {margin: 0 auto;padding-top: 44px;padding-bottom: 70px;width: 840px;}
+.magazine.detail .edit-cont .edit-center{text-align: center;}
+.magazine.detail .edit-recipe {margin: 0 auto;padding-top: 44px;padding-bottom: 70px;width: 840px;}
+
+/*magazine cow*/
+.magazine.detail .edit-cow .swiper-pagination-bullet {background: #aaa;}
+.magazine.detail .edit-cow .swiper-pagination-bullet-active {background: #000;}
+.magazine.detail .edit-cow .mbanner.box {margin: 0;}
+.magazine.detail .edit-cow .swiper-slide {padding-bottom: 10px;}
+.magazine.detail .edit-cow .swiper-slide img {width: 100%;}
+.magazine.detail .edit-cow .txt-box02 {padding: 0px 50px 60px; text-align: left;}
+
+/*hello hyundai*/
+.hello-hyundai {text-align: center;}
+.hello-hyundai section {position: relative; margin-bottom: 140px;}
+.hello-hyundai section.no-mb {margin-bottom: 0;}
+.hello-hyundai section .buy-btn {position: absolute; bottom: 124px; left: 0; right: 0; margin: 0 auto;width: 68%;height: 128px;}
+.hello-hyundai02 section .buy-btn {bottom: 148px;}
+
+/*crab store*/
+.event-crab-store {text-align: center; width: 720px; margin: 0 auto;}
+.event-crab-store .prd-section {background-color: #fbf6ec;}
+.event-crab-store .prd-section02 .mbanner.img {background-color: transparent;}
+.event-crab-store .mbanner.img {background-color:#fbf6ec; padding-bottom: 50px;}
+.event-crab-store .crab-swiper-wrap .items {display: flex;}
+.event-crab-store .crab-swiper-wrap .items .item {flex-shrink: 0; width: 45%;}
+.event-crab-store .crab-swiper-wrap .items .item .txt p {text-align: center;font-size: 24px; color: #101010; margin: 24px 0;}
+.event-crab-store .crab-swiper-wrap .items .item .txt .buy-btn {width: 160px; height: 60px;display: block; margin: 0 auto;}
+.event-crab-store .mbanner.img .swiper-pagination-bullet {background:#eee9e0;}
+.event-crab-store .mbanner.img .swiper-pagination-bullet-active {background: #000;}
+.event-crab-store .brand-btn {width: 246px; height: 92px; margin: 0 auto; display: block;}
+.event-crab-store .mbanner.prdswiper {padding: 0 30px; padding-bottom: 0;}
+.event-crab-store .buy-btn02 {width: 358px; height: 104px; margin: 0 auto; display: block;}
+.event-crab-store .swiper-slide {width: 100% !important;}
+
+.event-crab-store.event-mongtan .crab-swiper-wrap {padding: 0 15px;}
+.event-crab-store.event-mongtan .crab-swiper-wrap .items .item {flex:1;}
+.event-crab-store.event-mongtan .crab-swiper-wrap .items .item:first-child {margin-right: 15px;}
+
+.event-crab-store.event-bread01 .mbanner.img {background-color:#f6efe5;}
+.brand-directwrap {background-color: #7c6756;}
+.event-crab-store .brand-directwrap a.brand-btn {width:330px; height: 86px;}
+.event-crab-store.event-bread01 .mbanner.bread-sw {padding-bottom: 130px; position: relative;background-color: #7c6756;}
+.event-crab-store.event-bread01 .mbanner.bread-sw .swiper-pagination-banner {position: absolute;bottom: 172px;left: 0;right: 0;margin: 0 auto;z-index: 99;}
+.event-bread01 .mbanner.img .swiper-pagination-bullet {background:#e9e2d8;}
+.event-bread01 .mbanner.bread-sw .swiper-pagination-bullet {background:#f2f2f2;}
+.event-bread01 .mbanner.img .swiper-pagination-bullet-active {background: #000;}
+/*cheeze*/
+.event-cheeze01 .crab-swiper-wrap .items .item .txt p {color: #fff; font-weight: normal;}
+.event-cheeze01 .mbanner.prdswiper {background: none; padding-bottom: 30px;}
+.event-crab-store .buytype-btn {width: auto; height: 100%; display: inline-block;}
+
+/* storage */
+.magazine.storage .tab-menu {height: 70px;}
+.magazine.storage .tab-menu a {margin-left: 0;width: 50%;}
+.magazine.storage .tab-menu a.active {font-weight: 200;border-bottom: none;}
+.magazine.storage .tab-menu a span {display: inline-block;line-height: 65px;border-bottom: none;}
+.magazine.storage .tab-menu a.active span {line-height: 67px;border-bottom: 3px solid #ff6913;}
+
+.magazine.storage .list-area {margin-top: 0;}
+.magazine.storage .list-filter {margin-top: 40px;}
+.magazine.storage .list-filter .form-filter {top: 12px;}
+.magazine.storage .list-filter .form-filter .select.type2 {float: none;display: inline-block;margin-left: 5px;min-width: auto;}
+.magazine.storage .list-filter .form-filter .select.type2 .dropdown .list {left: auto;min-width:  150px;}
+
+.magazine.storage .storage-list > li {position: relative;display: inline-block;margin-top: 35px;width: 590px;vertical-align: top;}
+.magazine.storage .storage-list > li:nth-child(-n + 2) {margin-top: 0;}
+.magazine.storage .storage-list > li:nth-of-type(2n) {margin-left: 20px;}
+.magazine.storage .storage-list .thumb {position: relative;display: block;width: 100%;height: 286px;overflow: hidden;}
+.magazine.storage .storage-list .thumb img {position: absolute;top: 50%;left: 50%;width: 100%;transform: translate(-50%, -50%);}
+.magazine.storage .storage-list .thumb.vertical img {width: auto;height:100%;}
+.magazine.storage .storage-list .thumb.video .badge {position: absolute;top: 0;left: 0;padding: 4px 9px 4px 23px;color: #fff;font-size: 13px;font-weight: 600;background: #101010;z-index: 1;}
+.magazine.storage .storage-list .thumb.video .badge:before {content: "";position: absolute;top: 7px;left: 7px;width: 14px;height: 14px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/magazine.png") no-repeat -450px 0;}
+.magazine.storage .storage-list .contr {position: relative;display: block;padding: 17px 12px 22px;}
+.magazine.storage .storage-list .contr a {display: block;}
+.magazine.storage .storage-list .txt-cate {display: block;margin-bottom: 7px;color: #454545;font-weight: 600;}
+.magazine.storage .storage-list .txt-ti {display: block;font-size: 18px;font-weight: 200;line-height: 21px;}
+.magazine.storage .storage-list .bottom {position: absolute;bottom: 16px;right: 15px;margin-top: 17px;}
+.magazine.storage .storage-list .bottom .btn-like {position: relative;display: inline-block;min-width: 60px;text-align: left;}
+.magazine.storage .storage-list .bottom .btn-like:before {content: "";display: inline-block;margin-right: 3px;width: 18px;height: 18px;font-size: 12px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/magazine.png") no-repeat -300px 0;vertical-align: middle;}
+.magazine.storage .storage-list .bottom .btn-like.active:before {background-position: -350px 0;}
+.magazine.storage .storage-list .bottom .btn-like .val {color: #767572;font-size: 14px;}
+.magazine.storage .storage-list .bottom .view {display: inline-block;margin-left: 9px;font-size: 14px;}
+.magazine.storage .storage-list .bottom .view:before {content: "";display: inline-block;margin-right: 4px;width: 20px;height: 17px;font-size: 12px;background: url("https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/magazine.png") no-repeat -400px 0;vertical-align: middle;}
+.magazine.storage .storage-list .etc {position: relative;margin: 0 12px;padding: 8px 0;border-top: 1px solid #e7e7e7;}
+.magazine.storage .storage-list .etc:after {content: "";display: block;clear: both;}
+.magazine.storage .storage-list .etc .date {float: left;font-size: 13px;}
+.magazine.storage .storage-list .etc .btn-area {float: right;margin-top: -2px;}
+.magazine.storage .storage-list .etc .btn-area .btn-remove,
+.magazine.storage .storage-list .etc .btn-area .btn-modify {position: relative;color: #767572;font-size: 13px;}
+.magazine.storage .storage-list .etc .btn-area .btn-modify {margin-left: 10px;padding-left: 10px;}
+.magazine.storage .storage-list .etc .btn-area .btn-remove + .btn-modify:before {content: "";position: absolute;top: 5px;left: 0;display: inline-block;width: 1px;height: 10px;background-color: #dbd9d6;}
+
+.magazine.storage .storage-list li.vertical:first-child {padding-top: 0;}
+.magazine.storage .storage-list li.vertical .thumb {position: relative;display: inline-block;margin-right: 18px;width: 240px;height: 240px;overflow: hidden;}
+.magazine.storage .storage-list li.vertical .thumb img {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+.magazine.storage .storage-list li.vertical .thumb.vertical img {width: auto;height:100%;}
+.magazine.storage .storage-list li.vertical .contr {display: inline-block;padding: 16px 0 0;width: calc(100% - 261px);vertical-align: top;}
+.magazine.storage .storage-list li.vertical .contr a {display: block;}
+.magazine.storage .storage-list li.vertical .txt-ti {font-size: 18px;line-height: 23px;}
+.magazine.storage .storage-list li.vertical .txt-id {display: block;margin-top: 24px;color: #aea7a2;font-size: 14px;line-height: 16px;}
+.magazine.storage .storage-list li.vertical .bottom {position: static;margin-top: 15px;}
+.magazine.storage .storage-list li.vertical .etc {margin: 18px 12px 0;}
+
+.magazine.storage .recipe-list .contr {position: relative;height: 240px;}
+
+/* magazine - recipe */
+.magazine.recipe .memberinfo {padding-bottom: 19px;border-bottom: 1px solid #f3f3f3;}
+.magazine.recipe .recipeinfo {padding-bottom: 32px;border-bottom: 1px solid #e7e7e7;}
+
+.magazine.recipe .form-field {margin: 0 auto;width: 930px;}
+.magazine.recipe .form-field .tit {padding-top: 40px;padding-bottom: 0;font-size: 24px;font-weight: 200;border-bottom: none;}
+.magazine.recipe .form-field .tit + .form-default {margin-top: 10px;}
+.magazine.recipe .form-default.horizon {margin-top: 24px;padding-left: 200px;width: 760px;line-height: 1;}
+.magazine.recipe .form-default.horizon ~ .infotxt {margin-left: 200px;margin-bottom: -1px;}
+.magazine.recipe .form-default.horizon ~ .inputmsg {margin-left: 211px;}
+.magazine.recipe .form-default.selectbox .select {display: inline-block;margin-right: 7px;width: 180px;}
+.magazine.recipe .form-default.selectbox .select:last-child {margin-right: 0;}
+.magazine.recipe .form-default.form-file {width: auto;}
+.magazine.recipe .form-default.form-file.big .upload-file {float: none;display: inline-block;width: 360px;height: 200px;}
+.magazine.recipe .form-default.form-file.big .upload-file label {width: 360px;height: 200px;}
+.magazine.recipe .form-default.form-file.big .upload-file .upload-display {width: 360px;height: 200px;}
+.magazine.recipe .form-default.form-file.big .infotxt {display: inline-block;}
+.magazine.recipe .form-default.form-file.small .upload-file {margin-right: 8px;}
+
+.magazine.recipe .memberinfo .form-default {margin-top: 11px;}
+.magazine.recipe .form-default textarea {height: 100px;}
+.magazine.recipe .form-default strong .need {color: #ff1e13;}
+.magazine.recipe .form-default .form-counter textarea {height: 64px;}
+.magazine.recipe .form-default .txt-name {height: 42px;line-height: 42px;color: #101010;font-size: 15px;}
+.magazine.recipe .form-default .infotxt li {color: #aea7a2;}
+
+.magazine.recipe .guide-info {margin-bottom: 12px;padding-bottom: 25px;border-bottom: 1px solid #e7e7e7;}
+.magazine.recipe .guide-info .guide-tit {display: block;padding-top: 25px;padding-bottom: 15px;color: #101010;font-size: 18px;font-weight: 200;}
+.magazine.recipe .guide-info .infotx li {font-size: 15px;}
+
+.magazine.recipe .btns .btn {margin-top: 37px;width: 276px;}
