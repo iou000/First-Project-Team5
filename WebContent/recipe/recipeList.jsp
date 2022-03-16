@@ -7,17 +7,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-        <link rel="stylesheet" type="text/css" href="css/product.css">
+    <link rel="stylesheet" type="text/css" href="css/product.css">
 </head>
 <body>
 <div id="wrap" class="product category">
     <!-- header// -->
     <jsp:include page='<%="../header.jsp" %>'/>
     <!-- header// -->
-	
+
     <!-- //contents -->
     <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
     <div id="contents">
+    <!-- 페이징 ajax용 @seop-->
     <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
     <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
     <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
@@ -55,6 +56,7 @@
 				</c:when>
 			</c:choose>
         	
+        	<!-- 정렬조건 선택 -->
         	<section class="list-filter">
         		<strong class="txt-total"></strong>
         		<div class="filter-wrapper">
@@ -69,6 +71,7 @@
         		</div>
         	</section>
         	
+        	<!-- 레시피 리스트 받을 공간 -->
             <ul class="product-list" id="ulItemList">
                 <c:forEach var="recipeVO" items="${recipeList}">
                     <li>
@@ -183,7 +186,7 @@
 
 </div>
 <script>
-    var loading = false; // 중복 확인용
+    var loading = false; // ajax 중복 요청 방지용
     var pageNO = 2; // 1페이지는 처음에 불러왔으니 2부터 시작.
     var pageSize = 8 // 불러올 데이터 갯수.
 
@@ -194,10 +197,10 @@
         var sortTypeAjax = $("input[name=sortTypeAjax]").val();
 
 
-        console.log("키워드 :",keywordAjax);
-        console.log("카테고리 :",categoryAjax);
-        console.log("정렬 :",sortTypeAjax);
-        
+        console.log("키워드 :", keywordAjax);
+        console.log("카테고리 :", categoryAjax);
+        console.log("정렬 :", sortTypeAjax);
+
         $.ajax({
             type    : "POST",
             url     : "app?command=recipe_paging_ajax",
@@ -210,7 +213,7 @@
                 'pageSize'    : pageSize
             },
             success : function (data, textStatus) {
-            
+
                 //서버로부터 받아온 데이터(레시피들)을 추가
                 for (var i = 0; i < data.length; i++) {
                     var node = "";
@@ -219,25 +222,26 @@
                     node += "      <span class='thumb'>";
                     node += "          <img src='./images/recipe/" + data[i].image + "' alt='이미지 없음'>";
                     node += "      </span>";
-                    node +=   "      <strong class='txt-ti ellipsis'>";
-                    node +=   "         "+data[i].title;+"";
-                    node +=   "      </strong>";
-                    node +=   "      <span id='user_by'>";
-                    node +=   "         by. "+data[i].username;
-                    node +=   "      </span>";
+                    node += "      <strong class='txt-ti ellipsis'>";
+                    node += "         " + data[i].title;
+                    +"";
+                    node += "      </strong>";
+                    node += "      <span id='user_by'>";
+                    node += "         by. " + data[i].username;
+                    node += "      </span>";
                     node += "   </a>";
-                    node +=   "   <span class='info'>";
-                    node +=   "      <span class='product_caption'>";
-                    node +=   "         <span class='caption_star'>";
-                    node +=   "            <img src='./images/common/star.png'>";
-                    node +=   "         </span>";
-                    node +=   "         <span>("+data[i].grade+")</span>";
-                    node +=   "         <span>(총 댓글수)</span>";
-                    node +=   "         <span>조회수 "+data[i].viewcount+"</span>";
-                    node +=   "      </span>"
-                    node +=   "   </span>";
+                    node += "   <span class='info'>";
+                    node += "      <span class='product_caption'>";
+                    node += "         <span class='caption_star'>";
+                    node += "            <img src='./images/common/star.png'>";
+                    node += "         </span>";
+                    node += "         <span>(" + data[i].grade + ")</span>";
+                    node += "         <span>(총 댓글수)</span>";
+                    node += "         <span>조회수 " + data[i].viewcount + "</span>";
+                    node += "      </span>"
+                    node += "   </span>";
                     node += "</li>";
-                    
+
 
                     $('#ulItemList').append(node);
                 }
@@ -257,10 +261,6 @@
             , error : function (request, status, error) {
                 console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
             }
-            , error : function (request, status, error) {
-                console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-            }
-
 
         });
     }
@@ -275,12 +275,11 @@
             }
         }
     });
-    
-    
 
-    /* 정렬 */
+
+    /* 정렬조건 선택시 레시피 정보를 다시 받아옴 @seop */
     function fnSortType(sort_type) {
-		console.log(sort_type);
+		//평점순 선택시
 		if(sort_type == 'sort_grade') {
 			$("input[name=sortTypeAjax]").val('grade');
 			
@@ -294,7 +293,7 @@
 			//조건에 맞는 레시피 리스트를 불러옴
 			next_recipes_load();
 			
-		
+		//조회순 선택시
 		} else if(sort_type == 'sort_viewcount') {
 			$("input[name=sortTypeAjax]").val('viewcount');
 			
@@ -307,12 +306,10 @@
 			$('#ulItemList').empty();
 			//조건에 맞는 레시피 리스트를 불러옴
 			next_recipes_load();
-			
 		}
-		
 	}
     
-    /* 평점순 or 조회순으로 들어왔을 경우 */
+    /* 메인페이지에서 평점순 or 조회순으로 들어왔을 경우 */
      $(window).ready(function(){
     	if($("input[name=sortTypeAjax]").val() == 'grade') {
     		console.log('평점순');
@@ -323,10 +320,6 @@
     		$("#sort_grade").removeClass("active");
 			$("#sort_viewcount").addClass("active");
     	}}); 
-    
-    
-    
-    
 
 </script>
 

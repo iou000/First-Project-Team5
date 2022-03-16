@@ -47,11 +47,13 @@ public class ActionFactory {
             action = new RecipeUpdateAction();
         } else if (command.equals("recipe_update_form")) {
             action = new RecipeUpdateFormAction();
-        } else if (command.equals("comment_insert")) {
+        } else if (command.equals("insert_comment")) {
             action = new CommentInsertAction();
+        } else if (command.equals("comment_list")) {
+            action = new CommentListAction();
         } else if (command.equals("recipe_paging_ajax")) {
             action = new RecipePagingAjaxAction();
-        }  else if (command.equals("recipe_list")) {
+        } else if (command.equals("recipe_list")) {
             action = new RecipeListAction();
         }
         return action;
