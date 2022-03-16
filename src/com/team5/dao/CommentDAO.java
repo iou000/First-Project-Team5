@@ -17,6 +17,7 @@ public class CommentDAO {
     Connection conn = null;
     CallableStatement cstmt = null;
     ResultSet rs = null;
+
     public CommentDAO() {
     }
 
@@ -102,7 +103,7 @@ public class CommentDAO {
     }
 
     //
-    public List<CommentVO> getCommentByUserId(int user_id, int pageNumber, int pageSize) {
+    public List<CommentVO> getPagingCommentsByUserId(int user_id, int pageNumber, int pageSize) {
         List<CommentVO> commentList = new ArrayList<>();
         try {
             // DB 연결
@@ -127,6 +128,7 @@ public class CommentDAO {
                 commentVO.setGrade(rs.getInt("grade"));
                 commentVO.setContents(rs.getString("contents"));
                 commentVO.setUpdatedAt(rs.getDate("updatedAt"));
+                // total_comments
                 // 생성한 각각의 CommentVO 객체를 리스트에 추가
                 commentList.add(commentVO);
             }

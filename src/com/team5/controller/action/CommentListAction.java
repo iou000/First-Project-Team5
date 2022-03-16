@@ -18,7 +18,7 @@ public class CommentListAction implements Action {
         int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 
         CommentDAO commentDAO = new CommentDAO();
-        List<CommentVO> commentsByUserId = commentDAO.getCommentByUserId(userId, pageNumber, 5);
+        List<CommentVO> commentsByUserId = commentDAO.getPagingCommentsByUserId(userId, pageNumber, 5);
 
         ObjectMapper mapper = new ObjectMapper();
         String commentsByUserIdStr = mapper.writeValueAsString(commentsByUserId);
