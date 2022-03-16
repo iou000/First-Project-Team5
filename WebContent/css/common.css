@@ -8826,7 +8826,7 @@ body.fixed {
     z-index: 1;
 }
 
-/* contents */
+
 #contents {
     position: relative;
     padding: 44px 0 120px;
@@ -8859,6 +8859,11 @@ body.fixed {
 #contents .lnbarea + .conarea {
     float: left;
     width: 960px;
+}
+
+#adadad {
+    float: left;
+    width: 960px !important;
 }
 
 #contents .lnbarea + .conarea > h3.tit {

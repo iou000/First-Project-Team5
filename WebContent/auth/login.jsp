@@ -45,7 +45,7 @@
     <div id="contents">
         <div class="innercon">
             <h2>로그인</h2>
-            <p class="txt">레시피를 구해워 전용회원은 아이디를 입력해 주세요.</p>
+            <p class="txt">레시피를 부탁해 전용회원은 아이디를 입력해 주세요.</p>
 
             <form method="post" action="app?command=login">
                 <input type="hidden" name="redirectUrl" value="https://tohome.thehyundai.com/front?UseCache=N">

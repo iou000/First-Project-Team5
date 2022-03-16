@@ -42,7 +42,7 @@ public class MyPageAction implements Action {
             List<RecipeVO> commentRecipeList = recipeDAO.selectRecipeByComment(loginUser.getId());
             List<RecipeDesVO> recipeDesVOS = recipeDAO.selectRecipeDescriptionByUserId(loginUser.getId());
             List<CommentVO> commentList = commentDAO.getCommentsByUserId(loginUser.getId());
-            List<CommentVO> pagingCommentsByUserId = commentDAO.getPagingCommentsByUserId(loginUser.getId(), 1, 5);
+            List<CommentVO> pagingCommentsByUserId = commentDAO.getPagingCommentsByUserId(loginUser.getId(), 1, 8);
 
 
             request.setAttribute("loginUser", loginUser);

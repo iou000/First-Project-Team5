@@ -9,7 +9,7 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments){
     // 전체 댓글 수
     let totalComments = vTotalComments;
     // 한 페이지 당 댓글 수 (페이지 당 5개씩 보여주는 것으로 고정)
-    let commentPerBlock = 5;
+    let commentPerBlock = 8;
     // 전체 블럭 수
     let commentBlock = Math.ceil(totalComments / commentPerBlock);
 

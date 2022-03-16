@@ -27,8 +27,6 @@
                 <h2>차트페이지</h2>
             </section>
             <section class="conarea">
-                <h2>Hello ${loginUser.username}</h2>
-                <h2>${categoryList[0].category}</h2>
                 <br><br>
                 <div id="chart_div" style="width: 800px; height: 500px;"></div>
             </section>
