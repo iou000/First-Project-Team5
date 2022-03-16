@@ -12,9 +12,7 @@
 		<!-- toparea// -->
 		<div class="toparea">
 			<h1>
-				<a href="app?command=mainpage">
-					<img src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png" alt="현대식품관">
-				</a>
+				<a href="app?command=mainpage"><img src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png" alt="현대식품관"></a>
 			</h1>
 			
 			<c:choose>
@@ -106,7 +104,6 @@
 					<fieldset>
 						<legend class="hide">검색어 입력</legend>
 						<div class="form-entry exist search">
-
 							<input type="text" name="keyword" title="검색어 입력" value="${keywordAjax}"onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')" autocomplete="off">
 							<button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
 						</div>
@@ -122,19 +119,22 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <!-- Imported Javscript -->
+
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/product.js"></script>
 <script type="text/javascript" src="js/function.js"></script>
 <script type="text/javascript" src="js/product.search.js"></script>
+
 <script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
         src="//local.adguard.org?ts=1647207397334&amp;type=content-script&amp;dmn=tohome.thehyundai.com&amp;pth=%2Ffront%2Fdp%2Fdpa%2FpopCategory.Ajax&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;uag="></script>
 <script type="text/javascript" nonce="3539e0288dd047b9a275bfaef58"
         src="//local.adguard.org?ts=1647207397334&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script>
+
+<!-- Javascript -->
 <script type="text/javascript">
-    $(document).ready(function () {
-		// 퍼블 정상 동작을 위해 $(document).ready에 추가
+	$(document).ready(function () {
 		$('.btn-category').hover(
 			function () {
 	            var d = document.getElementById("p_popCategory");
@@ -155,10 +155,6 @@
 		        d.classList.remove("active")
 		    });
 	});
-</script>
-
-<!-- Javascript -->
-<script type="text/javascript">
 	function searchWithCategory(id) {
 		var foodCategory = document.getElementById(id).value;
 		$("input[name=category]").attr("value", foodCategory);

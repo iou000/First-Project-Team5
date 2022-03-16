@@ -1,6 +1,7 @@
 package com.team5.dao;
 
 import com.team5.vo.CategoryVO;
+import com.team5.vo.RecipeDesVO;
 import com.team5.vo.RecipeVO;
 import util.DBManager;
 
@@ -185,6 +186,7 @@ public class RecipeDAO {
         }
         return recipeVO;
     }//end selectRecipeById
+
     /**
      * @return : List<RecipeVO>
      * @Author : seop
@@ -278,7 +280,7 @@ public class RecipeDAO {
     }//end selectRecipeListByUserId
 
     /**
-     * 클래스 : RecipeDAO
+     * 메서드 : selectRecipeViewGradeByCategory
      * 작성자 : 김지혜
      * 작성일 : 3/14/22
      **/
@@ -313,8 +315,9 @@ public class RecipeDAO {
         }
         return categoryVOList;
     }//end selectRecipeViewGradeByCategory
+
     /**
-     * 클래스 : RecipeDAO
+     * 메서드 : selectRecipeByComment
      * 작성자 : 김지혜
      * 작성일 : 3/14/22
      **/
@@ -352,12 +355,51 @@ public class RecipeDAO {
         }
         return recipeVOList;
     }//end selectRecipeViewGradeByCategory
-    
+
     /**
-     * @Author  : seop
-     * @Date    : 2022. 3. 14.
-     * @Method  : updateViewCount
-     * @return  : void
+     * 메서드 : selectRecipeDescriptionByUserId
+     * 작성자 : 김지혜
+     * 작성일 : 3/15/22
+     **/
+    public List<RecipeDesVO> selectRecipeDescriptionByUserId(int user_id) {
+        // 레시피 리스트 생성
+        List<RecipeDesVO> recipeVOList = new ArrayList<>();
+        // 호출할 저장 프로시저
+        String runSP = "{ CALL recipe_pack.recipe_view_grade_count_select_by_userId(?, ?)}";
+        try {
+            // DB연결
+            conn = DBManager.getConnection();
+            // CallableStatement로 저장 프로시저 호출
+            cstmt = conn.prepareCall(runSP);
+            // 입력 파라미터
+            cstmt.setInt(1, user_id);
+            // 출력 파라미터
+            cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+            //실행 (리턴값: ResultSet)
+            cstmt.execute();
+            //레시피 상세 조회 결과 받아오기
+            rs = (ResultSet) cstmt.getObject(2);
+            while (rs.next()) {
+                RecipeDesVO recipeDesVO = new RecipeDesVO();
+                recipeDesVO.setRecipe_count(rs.getInt("recipe_count"));
+                recipeDesVO.setRecipe_view_count(rs.getInt("recipe_view_count"));
+                recipeDesVO.setRecipe_grade_average(rs.getInt("recipe_grade_average"));
+                recipeVOList.add(recipeDesVO);
+            }
+            System.out.println(runSP);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(conn, cstmt, rs);
+        }
+        return recipeVOList;
+    }//end selectRecipeDescriptionByUserId
+
+    /**
+     * @return : void
+     * @Author : seop
+     * @Date : 2022. 3. 14.
+     * @Method : updateViewCount
      * @Comment : 조회수 +1 증가
      */
     public void updateViewCount(int id) {
