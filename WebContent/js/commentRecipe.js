@@ -37,7 +37,7 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments, recipe_id){
                     tmpStr += '   <li>';
                     tmpStr += '       <div class="star">';
                     tmpStr += '           <div class="grade-star"><span><span'
-                    tmpStr += '                   id=\"star-span\" style=\"width:20%\">' + data[index].grade + '</span></span></div>';
+                    tmpStr += '                   id=\"star-span\" style=\"width:' + data[index].grade * 20 + '%\">' + data[index].grade + '</span></span></div>';
                     tmpStr += '       </div>';
                     tmpStr += '       <div class="recont">';
                     tmpStr += '           <div class="ti">';

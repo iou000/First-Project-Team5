@@ -60,7 +60,8 @@
                             <div class="star">
                                 <div class="grade-star">
 	                    			<span>
-	                    				<span id="star-span" style="width:20%">${recipeVO.grade}</span>
+	                    				<span id="star-span"
+                                              style="width:${recipeVO.grade * 20}%">${recipeVO.grade}</span>
 	                    			</span>
                                 </div>
                             </div>
@@ -71,7 +72,7 @@
 
                 <!-- 레시피 대표 이미지 표시// -->
                 <div class="recipe-view">
-                    <img src="./images/recipe/${recipeVO.image}" alt="이미지없음">
+                    <img src="./images/recipe/${recipeVO.image}" alt="이미지 없음">
                 </div>
                 <!-- //레시피 대표 이미지 표시 -->
 
@@ -217,7 +218,9 @@
                                 <div class="star">
                                     <div class="grade-star">
                                                     <span>
-                                                        <span id="star-span" style="width:20%">${commentVO.grade}</span>
+                                                        <span id="star-span"
+                                                              style="width:${commentVO.grade * 20}%">${commentVO.grade}
+                                                        </span>
                                                     </span>
                                     </div>
                                 </div>
@@ -284,15 +287,6 @@
             }
         });
     });
-
-    /* 레시피의 평점에 따라 Width의 퍼센트 값을 받아서 별 출력 SJH  */
-    window.onload = function () {
-        var spanId = document.getElementById("star-span");
-        var grade = $('#star-span').text();
-        console.log(grade);
-        var percent = 20 * grade + "%";
-        spanId.style.width = percent;
-    }
 
     /* 레시피 삭제 seop */
     function fnDeleteRecipe() {

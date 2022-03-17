@@ -8,59 +8,56 @@
 
 /* fonts */
 @font-face {
-    font-family: "NotoSansKR";
+    font-family: 'Cafe24Oneprettynight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
-    font-weight: 200;
-    src: url("../fonts/NotoSansKR-DemiLight.eot");
-    src: url("../fonts/NotoSansKR-DemiLight.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/NotoSansKR-DemiLight.woff2") format("woff2"),
-    url("../fonts/NotoSansKR-DemiLight.woff") format("woff");
 }
 
-@font-face {
-    font-family: "NotoSansKR";
-    font-style: normal;
-    font-weight: 500;
-    src: url("../fonts/NotoSansKR-Medium.eot");
-    src: url("../fonts/NotoSansKR-Medium.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/NotoSansKR-Medium.woff2") format("woff2"),
-    url("../fonts/NotoSansKR-Medium.woff") format("woff");
-}
+/*@font-face {*/
+/*    font-family: "NotoSansKR";*/
+/*    font-style: normal;*/
+/*    font-weight: 500;*/
+/*    src: url("../fonts/NotoSansKR-Medium.eot");*/
+/*    src: url("../fonts/NotoSansKR-Medium.eot?#iefix") format("embedded-opentype"),*/
+/*    url("../fonts/NotoSansKR-Medium.woff2") format("woff2"),*/
+/*    url("../fonts/NotoSansKR-Medium.woff") format("woff");*/
+/*}*/
 
-@font-face {
-    font-family: "NotoSansKR";
-    font-style: normal;
-    font-weight: 600;
-    src: url("../fonts/NotoSansKR-Bold.eot");
-    src: url("../fonts/NotoSansKR-Bold.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/NotoSansKR-Bold.woff2") format("woff2"),
-    url("../fonts/NotoSansKR-Bold.woff") format("woff");
-}
+/*@font-face {*/
+/*    font-family: "NotoSansKR";*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    src: url("../fonts/NotoSansKR-Bold.eot");*/
+/*    src: url("../fonts/NotoSansKR-Bold.eot?#iefix") format("embedded-opentype"),*/
+/*    url("../fonts/NotoSansKR-Bold.woff2") format("woff2"),*/
+/*    url("../fonts/NotoSansKR-Bold.woff") format("woff");*/
+/*}*/
 
-@font-face {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 700;
-    src: url("../fonts/roboto-v18-latin-700.eot");
-    src: url("../fonts/roboto-v18-latin-700.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/roboto-v18-latin-700.woff2") format("woff2"),
-    url("../fonts/roboto-v18-latin-700.woff") format("woff");
-}
+/*@font-face {*/
+/*    font-family: "Roboto";*/
+/*    font-style: normal;*/
+/*    font-weight: 700;*/
+/*    src: url("../fonts/roboto-v18-latin-700.eot");*/
+/*    src: url("../fonts/roboto-v18-latin-700.eot?#iefix") format("embedded-opentype"),*/
+/*    url("../fonts/roboto-v18-latin-700.woff2") format("woff2"),*/
+/*    url("../fonts/roboto-v18-latin-700.woff") format("woff");*/
+/*}*/
 
-@font-face {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 300;
-    src: url("../fonts/roboto-v18-latin-300.eot");
-    src: url("../fonts/roboto-v18-latin-300.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/roboto-v18-latin-300.woff2") format("woff2"),
-    url("../fonts/roboto-v18-latin-300.woff") format("woff");
-}
+/*@font-face {*/
+/*    font-family: "Roboto";*/
+/*    font-style: normal;*/
+/*    font-weight: 300;*/
+/*    src: url("../fonts/roboto-v18-latin-300.eot");*/
+/*    src: url("../fonts/roboto-v18-latin-300.eot?#iefix") format("embedded-opentype"),*/
+/*    url("../fonts/roboto-v18-latin-300.woff2") format("woff2"),*/
+/*    url("../fonts/roboto-v18-latin-300.woff") format("woff");*/
+/*}*/
 
 /* base */
 body {
     position: relative;
-    font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
+    font-family: 'Cafe24Oneprettynight';
     font-weight: 200;
     font-size: 15px;
     line-height: 1.6;
@@ -93,14 +90,14 @@ textarea {
     padding: 7px 20px;
     line-height: 20px;
     color: #454545;
-    font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
+    font-family: 'Cafe24Oneprettynight';
     font-size: 14px;
     border: 1px solid #ccc;
     -webkit-border-radius: 0;
 }
 
 button {
-    font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
+    font-family: 'Cafe24Oneprettynight';
     cursor: pointer;
     padding: 0;
     border: none;
@@ -175,8 +172,8 @@ address {
     font-style: normal;
 }
 
-input, textarea, select, tt, code, kbd, samp, pre {
-    font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
+textarea, select, tt, code, kbd, samp, pre {
+    font-family: 'Cafe24Oneprettynight';
 }
 
 button {
@@ -725,7 +722,7 @@ input[type="radio"].sort:checked + span:before {
 .select .dropdown .option .txt-optprice em {
     margin-right: 2px;
     font-size: 18px;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     font-weight: 700;
 }
 
@@ -867,7 +864,7 @@ input[type="radio"].sort:checked + span:before {
     color: #101010;
     font-size: 28px;
     font-weight: 600;
-    font-family: "NotoSansKR";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .ui-datepicker table {
@@ -884,7 +881,7 @@ input[type="radio"].sort:checked + span:before {
     color: #454545;
     font-size: 18px;
     font-weight: 200;
-    font-family: "NotoSansKR";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .ui-datepicker th.ui-datepicker-week-end {
@@ -900,7 +897,7 @@ input[type="radio"].sort:checked + span:before {
     padding: 0;
     height: 40px;
     font-size: 18px;
-    font-family: "NotoSansKR";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .ui-datepicker td.ui-state-disabled {
@@ -1494,7 +1491,7 @@ input[type="radio"].sort:checked + span:before {
     margin-left: 8px;
     color: #dbd9d6;
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .tab-menu a.active {
@@ -1690,7 +1687,7 @@ input[type="radio"].sort:checked + span:before {
     line-height: 30px;
     font-size: 15px;
     font-weight: 300;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     text-align: center;
     vertical-align: top;
     border: none;
@@ -1795,7 +1792,7 @@ input[type="radio"].sort:checked + span:before {
     color: #dbd9d6;
     font-size: 32px;
     font-weight: 600;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .grade-star.big strong em {
@@ -1851,7 +1848,7 @@ input[type="radio"].sort:checked + span:before {
     color: #dbd9d6;
     font-weight: 600;
     font-size: 32px;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     vertical-align: middle;
 }
 
@@ -2975,9 +2972,9 @@ label.error input {
 .popup.popcouponfree dl dd em {
     line-height: 46px;
     font-size: 21px;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     vertical-align: top;
 }
 
@@ -2990,7 +2987,7 @@ label.error input {
 .popup.popshippinglist header em {
     color: #aea7a2;
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .popup.popshippinglist .contents {
@@ -3711,14 +3708,14 @@ label.error input {
     margin-right: 1px;
     color: #fff;
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .popup.popreviewpic .reviewpicswiper .swiper-pagination-reviewpic .swiper-pagination-total {
     margin-left: 1px;
     color: #fff;
     font-weight: 300;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 /* popup : 사용자 사진첨부 상세 (교환/반품 신청, 상세, 매거진 커뮤니티 상세, 1:1 문의내역) */
@@ -3829,14 +3826,14 @@ label.error input {
     margin-right: 1px;
     color: #fff;
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .popup.popprdpic .prdpicswiper .swiper-pagination-prdpic .swiper-pagination-total {
     margin-left: 1px;
     color: #fff;
     font-weight: 300;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 /* popup : 무이자할부안내 */
@@ -4132,7 +4129,7 @@ label.error input {
     width: 87px;
     height: 87px;
     line-height: 85px;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     font-size: 18px;
     text-align: center;
     vertical-align: middle;
@@ -4261,7 +4258,7 @@ label.error input {
 .list-filter .txt-total em {
     color: #ff6913;
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     vertical-align: baseline;
 }
 
@@ -4436,7 +4433,7 @@ label.error input {
 .list-filter .filternav .scrollbox > div .con label span em {
     margin-left: 7px;
     color: #aea7a2;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     font-weight: 300;
 }
 
@@ -4487,7 +4484,7 @@ label.error input {
     margin-left: 6px;
     color: #aea7a2;
     font-weight: 300;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .list-filter .filternav .category .con ul li.active button {
@@ -5671,7 +5668,7 @@ fieldset.form-field + .btns {
 
 .product-list .thumb .badge strong em {
     font-size: 20px;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     vertical-align: top;
 }
 
@@ -5776,13 +5773,14 @@ fieldset.form-field + .btns {
 }
 
 .product-list .info .caption_star img {
-	width: 20px;
-	height: 20px;
+    width: 20px;
+    height: 20px;
 }
+
 #user_by {
-	color: #888888;
-	font-style: italic;
-	padding-left:4px;
+    color: #888888;
+    font-style: italic;
+    padding-left: 4px;
 }
 
 .product-list .txt-price {
@@ -5795,7 +5793,7 @@ fieldset.form-field + .btns {
 .product-list .txt-price em {
     font-size: 16px;
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .product-list .txt-price strong {
@@ -5809,7 +5807,7 @@ fieldset.form-field + .btns {
     color: #a2a09e;
     font-size: 14px;
     font-weight: 300;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 .product-list .btn-cart {
@@ -6342,7 +6340,7 @@ fieldset.form-field + .btns {
     color: #fff;
     font-size: 13px;
     font-weight: 600;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     background-color: #ff1e13;
     text-align: center;
 }
@@ -6918,14 +6916,14 @@ fieldset.form-field + .btns {
 }
 
 .coupon-list .tit-area .tit em {
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     font-size: 60px;
     vertical-align: top;
     margin-top: 2px;
 }
 
 .coupon-list .tit-area .flag .d-day {
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     font-weight: 600;
     line-height: 20px;
     color: #fff;
@@ -8820,7 +8818,7 @@ body.fixed {
     text-align: center;
     text-indent: 0;
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     background-color: #ff6913;
     border-radius: 24px;
     z-index: 1;
@@ -8984,7 +8982,7 @@ body.fixed {
     font-size: 16px;
     text-align: right;
     font-weight: 200;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
 }
 
 #footer .util .familysite .btn-site:after {
@@ -9127,7 +9125,7 @@ body.fixed {
     color: #fff;
     font-size: 14px;
     font-weight: 700;
-    font-family: "Roboto";
+    font-family: 'Cafe24Oneprettynight';
     text-align: center;
     background-color: #454545;
     z-index: 1;

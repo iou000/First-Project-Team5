@@ -1,121 +1,140 @@
 <!-- author SJH -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <link rel="stylesheet" type="text/css" href="css/library.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
 <header id="header">
-	<div class="inner">
-		<!-- toparea// -->
-		<div class="toparea">
-			<h1>
-				<a href="app?command=mainpage"><img src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png" alt="현대식품관"></a>
-			</h1>
-			
-			<c:choose>
-				<c:when test="${empty loginUser.username}">
-					<div class="util" id="dawnLoginN" style="display: hidden">
-						<a href="app?command=login_form">로그인</a>
-						<a href="app?command=join_form">회원가입</a>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="util" id="dawnLoginY" style="display: hidden">
-						${loginUser.username}님! 반갑습니다.
-						<a href="app?command=logout">로그아웃</a>
-						<a href="app?command=mypage">마이페이지</a>
-					</div>
-				</c:otherwise>
-			</c:choose>
-			
-		</div>
-		<!-- //toparea -->
-    
-		<!-- gnbarea// -->
-		<nav class="gnbarea">
-			<!-- 팝업 : category// -->
-			<div id="popCategory">
-				<!-- category -->
-				<button type="button" class="btn-category">음식 카테고리</button>
+    <div class="inner">
+        <!-- toparea// -->
+        <div class="toparea">
+            <h1>
+                <a href="app?command=mainpage"><img
+                        src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png"
+                        alt="현대식품관"></a>
+            </h1>
 
-				<!-- 팝업 : category -->
-				<div id="p_popCategory" class="popcategory">
-					<nav class="lnb-list">
-						<ul class="lnb">
-							<li class="depth1">
-								<button type="button" id="all" value="" onclick="searchWithCategory(this.id)">전체</button>
-							</li>
-							<li class="depth1">
-								<button type="button" id="korean" value="한식" onclick="searchWithCategory(this.id)">한식</button>
-							</li>
-							<li class="depth1">
-								<button type="button" id="western" value="양식" onclick="searchWithCategory(this.id)">양식</button>
-							</li>
-							<li class="depth1">
-								<button type="button" id="japanese" value="일식" onclick="searchWithCategory(this.id)">일식</button>
-							</li>
-							<li class="depth1">
-								<button type="button" id="chinese" value="중식" onclick="searchWithCategory(this.id)">중식</button>
-							</li>
-							<li class="depth1">
-								<button type="button" id="flour-based" value="분식" onclick="searchWithCategory(this.id)">분식</button>
-							</li>
-							<li class="depth1">
-								<button type="button" id="snack" value="간식" onclick="searchWithCategory(this.id)">간식</button>
-							</li>
-							<li class="depth1">
-								<button type="button" id="dessert" value="디저트" onclick="searchWithCategory(this.id)">디저트</button>
-							</li>
-						</ul>
-					</nav>
-				</div>
-				
-				<!-- 카테고리를 통해서 레시미 목록 조회 -->
-				<div id="categorySearch">
-			        <form id="categoryForm" method="POST" action="app?command=recipe_list">
-			            <input type="hidden" name="category" value=""/>
-			        </form>
-			    </div>
-			</div>
+            <c:choose>
+                <c:when test="${empty loginUser.username}">
+                    <div class="util" id="dawnLoginN" style="display: hidden">
+                        <a href="app?command=login_form">로그인</a>
+                        <a href="app?command=join_form">회원가입</a>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="util" id="dawnLoginY" style="display: hidden">
+                            ${loginUser.username}님! &nbsp; 반갑습니다.
+                        <a href="app?command=logout">로그아웃</a>
+                        <a href="app?command=mypage">마이페이지</a>
+                    </div>
+                </c:otherwise>
+            </c:choose>
 
-			<!-- gnb// -->
-			<ul class="gnb-list" id="homeGnbList">
-				<li>
-					<a href="app?command=recipe_insert_form">레시피 만들기</a>
-				</li>
-				<li>
-					<a href="app?command=recipe_list&selectRecipe=best">베스트 레시피</a>
-				</li>
-				<li>
-					<a href="app?command=chartpage">인기 카테고리</a>
-				</li>
-				<li>
-					<a href="" onclick="notReady()">즐겨찾기</a>
-				</li>
-				<li>
-					<a href="" onclick="notReady()">커뮤니티</a>
-				</li>
-			</ul>
-			<!-- //gnb -->
+        </div>
+        <!-- //toparea -->
 
-			<!-- search// -->
-			<div class="searcharea">
-				<form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="app?command=recipe_list" onsubmit="return checkSearchForm()">
-					<fieldset>
-						<legend class="hide">검색어 입력</legend>
-						<div class="form-entry exist search">
-							<input type="text" name="keyword" title="검색어 입력" value="${keywordAjax}"onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')" autocomplete="off">
-							<button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</nav>
-		<!-- //gnbarea -->
-	</div>
+        <!-- gnbarea// -->
+        <nav class="gnbarea">
+            <!-- 팝업 : category// -->
+            <div id="popCategory">
+                <!-- category -->
+                <button type="button" class="btn-category">음식 카테고리</button>
+
+                <!-- 팝업 : category -->
+                <div id="p_popCategory" class="popcategory">
+                    <nav class="lnb-list">
+                        <ul class="lnb">
+                            <li class="depth1">
+                                <button type="button" id="all" value="" onclick="searchWithCategory(this.id)">전체
+                                </button>
+                            </li>
+                            <li class="depth1">
+                                <button type="button" id="korean" value="한식" onclick="searchWithCategory(this.id)">한식
+                                </button>
+                            </li>
+                            <li class="depth1">
+                                <button type="button" id="western" value="양식" onclick="searchWithCategory(this.id)">양식
+                                </button>
+                            </li>
+                            <li class="depth1">
+                                <button type="button" id="japanese" value="일식" onclick="searchWithCategory(this.id)">
+                                    일식
+                                </button>
+                            </li>
+                            <li class="depth1">
+                                <button type="button" id="chinese" value="중식" onclick="searchWithCategory(this.id)">중식
+                                </button>
+                            </li>
+                            <li class="depth1">
+                                <button type="button" id="flour-based" value="분식" onclick="searchWithCategory(this.id)">
+                                    분식
+                                </button>
+                            </li>
+                            <li class="depth1">
+                                <button type="button" id="snack" value="간식" onclick="searchWithCategory(this.id)">간식
+                                </button>
+                            </li>
+                            <li class="depth1">
+                                <button type="button" id="dessert" value="디저트" onclick="searchWithCategory(this.id)">
+                                    디저트
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- 카테고리를 통해서 레시미 목록 조회 -->
+                <div id="categorySearch">
+                    <form id="categoryForm" method="POST" action="app?command=recipe_list">
+                        <input type="hidden" name="category" value=""/>
+                    </form>
+                </div>
+            </div>
+
+            <!-- gnb// -->
+            <ul class="gnb-list" id="homeGnbList">
+                <li>
+                    <a href="app?command=recipe_insert_form">레시피 만들기</a>
+                </li>
+                <li>
+                    <a href="app?command=recipe_list&selectRecipe=best">베스트 레시피</a>
+                </li>
+                <li>
+                    <a href="app?command=chartpage">인기 카테고리</a>
+                </li>
+                <li>
+                    <a href="" onclick="notReady()">즐겨찾기</a>
+                </li>
+                <li>
+                    <a href="" onclick="notReady()">커뮤니티</a>
+                </li>
+            </ul>
+            <!-- //gnb -->
+
+            <!-- search// -->
+            <div class="searcharea">
+                <form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="app?command=recipe_list"
+                      onsubmit="return checkSearchForm()">
+                    <fieldset>
+                        <legend class="hide">검색어 입력</legend>
+                        <div class="form-entry exist search">
+                            <input type="text" name="keyword" title="검색어 입력" value="${keywordAjax}"
+                                   onfocus="fn.addClass('.searcharea')" onblur="fn.removeClass('.searcharea')"
+                                   autocomplete="off">
+                            <button type="button" class="btn-search" onclick="searchWithKeyword()">검색</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </nav>
+        <!-- //gnbarea -->
+    </div>
 </header>
 
 <!-- jQuery -->
@@ -137,49 +156,50 @@
 
 <!-- Javascript -->
 <script type="text/javascript">
-	$(document).ready(function () {
-		$('.btn-category').hover(
-			function () {
-	            var d = document.getElementById("p_popCategory");
-	            d.classList.add("active");
-	        },
-	        function () {
-	            var d = document.getElementById("p_popCategory");
-	            d.classList.remove("active")
-	        });
-		
-		$('#p_popCategory').hover(
-		    function () {
-		        var d = document.getElementById("p_popCategory");
-		        d.classList.add("active");
-		    },
-		    function () {
-		        var d = document.getElementById("p_popCategory");
-		        d.classList.remove("active")
-		    });
-	});
-	function searchWithCategory(id) {
-		var foodCategory = document.getElementById(id).value;
-		$("input[name=category]").attr("value", foodCategory);
-		$("#categoryForm").submit();
-	}
+    $(document).ready(function () {
+        $('.btn-category').hover(
+            function () {
+                var d = document.getElementById("p_popCategory");
+                d.classList.add("active");
+            },
+            function () {
+                var d = document.getElementById("p_popCategory");
+                d.classList.remove("active")
+            });
 
-	function searchWithKeyword() {
-		$("#pdPcSearchForm").submit();
-	}
-	
-	function checkSearchForm() {
-		// 키워드가 입력되지 않은 상태에서 검색 버튼을 누르면 알림창 띄우기
-		if(pdPcSearchForm.keyword.value == "") {
-			pdPcSearchForm.keyword.focus();
-			alert('키워드를 먼저 입력해주세요!!!');
-			return false;
-		} else
-			return true;
-	}
-	
-	function notReady() {
-		event.preventDefault();
-		alert('준비중입니다!!!');
-	}
+        $('#p_popCategory').hover(
+            function () {
+                var d = document.getElementById("p_popCategory");
+                d.classList.add("active");
+            },
+            function () {
+                var d = document.getElementById("p_popCategory");
+                d.classList.remove("active")
+            });
+    });
+
+    function searchWithCategory(id) {
+        var foodCategory = document.getElementById(id).value;
+        $("input[name=category]").attr("value", foodCategory);
+        $("#categoryForm").submit();
+    }
+
+    function searchWithKeyword() {
+        $("#pdPcSearchForm").submit();
+    }
+
+    function checkSearchForm() {
+        // 키워드가 입력되지 않은 상태에서 검색 버튼을 누르면 알림창 띄우기
+        if (pdPcSearchForm.keyword.value == "") {
+            pdPcSearchForm.keyword.focus();
+            alert('키워드를 먼저 입력해주세요!!!');
+            return false;
+        } else
+            return true;
+    }
+
+    function notReady() {
+        event.preventDefault();
+        alert('준비중입니다!!!');
+    }
 </script>

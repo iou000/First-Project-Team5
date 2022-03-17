@@ -46,7 +46,7 @@
                     <div class="point">
                         <ul>
                             <li>
-                                <a href="/front/mp/mpb/couponList.do">
+                                <a>
                                     <div class="inner">
                                         <strong><span id="cupnCnt">${recipeDesVOS[0].recipe_count}</span>개</strong> 내가
                                         올린 레시피 수
@@ -54,14 +54,14 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/front/mp/mpb/hBonus.do">
+                                <a 리>
                                     <div class="inner">
                                         <strong><span id="curHBonus">${commentList.size()}</span>개</strong> 내가 올린 댓글 수
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="/front/mp/mpb/hPoint.do">
+                                <a>
                                     <div class="inner">
                                         <strong><span
                                                 id="upointCurAmt">${recipeDesVOS[0].recipe_view_count}</span>개</strong>
@@ -70,7 +70,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/front/cua/mypage/cdpst.do">
+                                <a>
                                     <div class="inner">
                                         <strong><span
                                                 id="curAmt">${recipeDesVOS[0].recipe_grade_average}</span>개</strong> 나의
@@ -104,9 +104,7 @@
                                     <li>
                                         <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                                         <span class="thumb">
-                                            <img src="https://tohomeimage.thehyundai.com/PD/PDImages/S/0/0/9/8809152871900_00.jpg?RS=232x278"
-                                                 alt="[현대쌀집][백미] 프리미엄 쌀 4kg"
-                                                 onerror="this.src='/UIUX/w/pjtCom/images/common/noimage_232x278.jpg'">
+                                            <img src="./images/recipe/${recipeVO.image}" alt="이미지 없음">
                                         </span>
                                             <strong class="txt-ti ellipsis">${recipeVO.title}</strong>
                                         </a>
@@ -136,9 +134,7 @@
                                     <li>
                                         <a href="app?command=recipe_view&recipeId=${recipeVO.id}">
                                         <span class="thumb">
-                                            <img src="https://tohomeimage.thehyundai.com/PD/PDImages/S/0/0/9/8809152871900_00.jpg?RS=232x278"
-                                                 alt="[현대쌀집][백미] 프리미엄 쌀 4kg"
-                                                 onerror="this.src='/UIUX/w/pjtCom/images/common/noimage_232x278.jpg'">
+                                            <img src="./images/recipe/${recipeVO.image}" alt="이미지 없음">
                                         </span>
                                             <strong class="txt-ti ellipsis">${recipeVO.title}</strong>
                                         </a>
@@ -174,7 +170,8 @@
                                         <div class="star">
                                             <div class="grade-star">
                                                     <span>
-                                                        <span id="star-span" style="width:20%">${commentVO.grade}</span>
+                                                        <span id="star-span"
+                                                              style="width:${commentVO.grade * 20}%">${commentVO.grade}</span>
                                                     </span>
                                             </div>
                                         </div>
@@ -217,14 +214,5 @@
 <%@ include file="../footer.jsp" %>
 <script type="text/javascript" src="js/mypage.js"></script>
 <script type="text/javascript" src="js/commentUser.js"></script>
-<script>
-    $(document).ready(function () {
-        var spanId = document.getElementById("star-span");
-        var grade = $('#star-span').text();
-        console.log(grade);
-        var percent = 20 * grade + "%";
-        spanId.style.width = percent;
-    })
-</script>
 </body>
 </html>

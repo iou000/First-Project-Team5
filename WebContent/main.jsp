@@ -195,8 +195,8 @@
         <div id="cdnTimeSale">
             <section class="timesale" id="timeSale">
                 <div class="innercon"><h2><span class="bl" style="border-top:4px solid "><i
-                        style="border-bottom:4px solid "></i></span><strong style="font-weight:bold">알뜰
-                    장보기</strong><small style="font-weight:normal">지금 이 순간 만날 수 있는 특가</small></h2>
+                        style="border-bottom:4px solid "></i></span><strong style="font-weight:bold">레시피를
+                    부탁해</strong><small style="font-weight:normal">맛있는 음식이 주는 즐거운 경험</small></h2>
                     <div class="swiper-container timesaleswiper swiper-container-horizontal">
                         <div class="swiper-wrapper"
                              style="transform: translate3d(-603px, 0px, 0px); transition-duration: 0ms;">
@@ -221,7 +221,7 @@
                                     class="thumb"><img
                                     src="https://tohomeimage.thehyundai.com/PD/PDImages/S/7/6/2/S02102033267_00.jpg?RS=720x864"
                                     alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'"><span
-                                    class="badge"><strong></strong></span></span><strong
+                                    class="badge" style="display: none;"><strong></strong></span></span><strong
                                     class="txt-ti ellipsis"></strong><span
                                     class="txt-price"><strong><em></em></strong><del></del></span>
                             </a>
