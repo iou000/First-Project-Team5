@@ -394,7 +394,6 @@
 	window.onload = function() {
 		var spanId = document.getElementById("star-span");
 	    var grade = $('#star-span').text();
-	    console.log(grade);
 	    var percent = 20 * grade + "%";
 	    spanId.style.width = percent;
 	}
