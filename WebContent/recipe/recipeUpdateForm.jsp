@@ -103,9 +103,10 @@
 					            				<span>${recipeVO.image}</span>
 					            			</div>
 					            			<label>
-					            				<input type="file" accept="image/jpeg, image/png" class="upload-hidden" name="image" id="atfl" title="이미지파일첨부">
+					            				<input type="file" id="atfl" name="image" accept="image/jpeg, image/png" class="upload-hidden">
 					            				<span class="btn fill gray">파일첨부</span>
 					            			</label>
+					            			<input type="hidden" name="fileNm">
 					            		</div>
 					            	</div>
 					            </dd>
@@ -131,7 +132,8 @@
 	$(document).ready(function() {
 		$('.upload-hidden').on('change', function() {
 			var filename = $(this)[0].files[0].name;
-			$('.upload-display span').text(filename);
+			var newFile = $('.upload-display span').text(filename);
+			$('input[name=image]').attr();
 		});
 	});
 	function recipeSubmit() {

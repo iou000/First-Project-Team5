@@ -28,6 +28,7 @@ import java.util.Map;
  * @Comment : 이미지 파일 업로드 기능
  */
 public class RecipeInsertAction implements Action {
+	private static final String RECIPE_IMAGE_REPO = "C:\\Users\\SJH\\eclipse-workspace\\RecipeApplication\\WebContent\\images\\recipe";
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "app?command=recipe_view";
