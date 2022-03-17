@@ -26,7 +26,6 @@
         }
     </style>
 </head>
-
 <body>
 <div id="wrap" class="magazine detail">
     <jsp:include page='<%="../header.jsp" %>'/>
@@ -57,7 +56,15 @@
                     </dl>
                     <dl class="grade">
                         <dt>평점</dt>
-                        <dd>${recipeVO.grade}</dd>
+                        <dd>
+							<div class="star">
+	                    		<div class="grade-star">
+	                    			<span>
+	                    				<span id="star-span" style="width:20%">${recipeVO.grade}</span>
+	                    			</span>
+	                    		</div>
+	                    	</div>
+						</dd>
                     </dl>
                 </div>
                 <!-- //레시피 정보 표시 -->
@@ -336,14 +343,12 @@
                             </span>
                 </div>
                 <!-- //pagination -->
-            </div>
-        </section>
-</body>
-</html>
-</article>
-</div>
-<jsp:include page='<%="../footer.jsp" %>'/>
-</div>
+            			</div>
+        			</section>
+				</article>
+			</div>
+		<jsp:include page='<%="../footer.jsp" %>'/>
+	</div>
 </body>
 
 <!-- jQuery -->
