@@ -377,7 +377,7 @@
 				$(this).parent().addClass('active');
 				$('.list').parent().addClass('active');
 	   			$('#details').parent().removeClass('active');
-	   			$('.step').parent().removeClass('active');	
+	   			$('.step').parent().removeClass('active');
 			}
 		});
 		$('#details').on("click", function() {
@@ -389,7 +389,7 @@
 	   		}
 		});
 	});
-	
+
 	/* 레시피의 평점에 따라 Width의 퍼센트 값을 받아서 별 출력 SJH  */
 	window.onload = function() {
 		var spanId = document.getElementById("star-span");
@@ -397,7 +397,7 @@
 	    var percent = 20 * grade + "%";
 	    spanId.style.width = percent;
 	}
-	
+
     /* 레시피 삭제 seop */
     function fnDeleteRecipe() {
         if (confirm("삭제하시겠습니까?")) {
