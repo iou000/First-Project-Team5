@@ -87,7 +87,7 @@
 					<a href="app?command=recipe_insert_form">레시피 만들기</a>
 				</li>
 				<li>
-					<a href="" onclick="notReady()">베스트 레시피</a>
+					<a href="app?command=recipe_list&selectRecipe=best">베스트 레시피</a>
 				</li>
 				<li>
 					<a href="app?command=chartpage">인기 카테고리</a>

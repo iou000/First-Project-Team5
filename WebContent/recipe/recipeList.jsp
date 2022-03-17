@@ -28,7 +28,7 @@
 					<section class="categorylist">
         				<strong class="txt-total">
         					<span class="word" id="titleName">'${keywordAjax}'</span>
-        					레시피
+        					레시피 검색결과
         					<em id="titleCnt">${totRecipeListCnt}</em>
         					건
         				</strong>
@@ -47,8 +47,7 @@
 				<c:when test="${not empty sortTypeAjax}">
 					<section class="categorylist">
         				<strong class="txt-total">
-        					<span class="word" id="titleName">'전체'</span>
-        					검색결과
+        					<span>레시피 검색결과 </span>
         					<em id="titleCnt">${totRecipeListCnt}</em>
         					건
         				</strong>
