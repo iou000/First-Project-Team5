@@ -77,7 +77,21 @@
 
                 <!-- 레시피 소개 표시// -->
                 <div class="recipe-info">
-                    <h2>레시피 소개</h2><br>
+                    <h2>레시피 소개</h2>
+                    <!-- 생성할 때 사용된 레시피ID와 현재 접속한 세션의 레시피ID가 일치하는 경우에 -->
+                   	<c:if test="${recipeVO.user_id eq sessionScope.loginUser.id}">
+						<div class="updateAndDelete" align="right">
+							<form name="udform" method='post' action="app?command=recipe_update_form">
+								<input type="hidden" name="recipeId" value="${recipeVO.id}" />
+								(
+								<button type="button" onclick="fnUpdateRecipe(); return false;">수정 </button>
+								|
+								<button type="button" onclick="fnDeleteRecipe(); return false;"> 삭제</button>
+								)
+							</form>
+						</div>
+					</c:if>
+                    <br>
                     ${recipeVO.intro}
                 </div>
                 <!-- //레시피 소개 표시 -->

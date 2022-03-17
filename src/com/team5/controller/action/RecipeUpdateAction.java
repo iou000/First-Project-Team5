@@ -42,9 +42,9 @@ public class RecipeUpdateAction implements Action {
         } else {
             Map<String, String> map = upload(request, response);
             String title = map.get("title");
-            String intro = map.get("intro").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
+            String intro = map.get("intro");
             String category = map.get("category");
-            String ingredients = map.get("ingredients");
+            String ingredients = map.get("ingredients").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
             String details = map.get("details").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
             String image = map.get("image");
             int recipeId = Integer.parseInt(map.get("recipeId"));
