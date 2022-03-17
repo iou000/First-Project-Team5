@@ -1,4 +1,4 @@
-function fnReviewAjaxPcList(vCurrentPage, vTotalComments){
+function fnReviewAjaxPcList(vCurrentPage, vTotalComments, user_id){
     location.href = '#p_proReview';
 
 
@@ -9,13 +9,13 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments){
     // 전체 댓글 수
     let totalComments = vTotalComments;
     // 한 페이지 당 댓글 수 (페이지 당 5개씩 보여주는 것으로 고정)
-    let commentPerBlock = 8;
+    let commentPerBlock = 5;
     // 전체 블럭 수
     let commentBlock = Math.ceil(totalComments / commentPerBlock);
 
     $.ajax({
         type : 'get',
-        url : 'app?command=comment_list&userId=4&pageNumber=' + currentPage,
+        url : 'app?command=comment_list&userId=' + user_id + '&pageNumber=' + currentPage + '&pageSize=' + commentPerBlock,
         dataType : 'json',
         cache : false,
         success : function(data) {
@@ -33,13 +33,14 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments){
                 tmpStr += '   </div>\n';
 
             } else {
+                console.log(data[1].updatedAt)
                 tmpStr += '<ul>\n';
                 $(data).each(function (index) {
                     tmpStr += '<a href=\"app?command=recipe_view&recipeId=' + data[index].recipe_id + '\">';
                     tmpStr += '   <li>';
                     tmpStr += '       <div class="star">';
                     tmpStr += '           <div class="grade-star"><span><span'
-                    tmpStr += '                   style=\\"width:100%;\\">' + data[index].grade + '</span></span></div>';
+                    tmpStr += '                   id=\"star-span\" style=\"width:20%\">' + data[index].grade + '</span></span></div>';
                     tmpStr += '       </div>';
                     tmpStr += '       <div class="recont">';
                     tmpStr += '           <div class="ti">';
@@ -51,6 +52,7 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments){
                     tmpStr += '       </div>';
                     tmpStr += '   </li>';
                     tmpStr += '</a>';
+
                     console.log(tmpStr)
                 });	 // <li>반복 끝
 
@@ -66,9 +68,9 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments){
                 for(let i = 1; i <= commentBlock; i++){
                     // 현재 페이지는 active class 추가
                     if(i === currentPage){
-                        tmpStr += '<a href="javascript:fnReviewAjaxPcList(' + i + ',' + totalComments + ');" class="active">' + i + '</a><!-- 현재페이지 class="active" -->\n';
+                        tmpStr += '<a href="javascript:fnReviewAjaxPcList(' + i + ',' + totalComments + ',' + user_id + ');" class="active">' + i + '</a><!-- 현재페이지 class="active" -->\n';
                     }else{
-                        tmpStr += '<a href="javascript:fnReviewAjaxPcList(' + i + ',' + totalComments + ');">' + i + '</a>\n';
+                        tmpStr += '<a href="javascript:fnReviewAjaxPcList(' + i + ',' + totalComments + ',' + user_id + ');">' + i + '</a>\n';
                     }
                 }
                 tmpStr += '   </span>\n';
@@ -78,6 +80,15 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments){
 
             // 리뷰 리스트 출력
             $('#p_proReview').find('.review-list').html(tmpStr);
+
+            // 별점
+            $(document).ready(function () {
+                var spanId = document.getElementById("star-span");
+                var grade = $('#star-span').text();
+                console.log(grade);
+                var percent = 20 * grade + "%";
+                spanId.style.width = percent;
+            })
         }
 
     })

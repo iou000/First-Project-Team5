@@ -35,6 +35,8 @@ public class RecipeViewAction implements Action {
 
         CommentDAO commentDAO = CommentDAO.getInstance();
         List<CommentVO> commentList = commentDAO.getCommentsByRecipeId(recipeId);
+        List<CommentVO> pagingCommentsByRecipeId = commentDAO.getPagingCommentsByRecipeId(recipeId, 1, 5);
+        List<CommentVO> commentsByRecipeId = commentDAO.getCommentsByRecipeId(recipeId);
 
 
         /* 조회수 증가 로직(쿠키 사용) @author seop */
@@ -64,7 +66,8 @@ public class RecipeViewAction implements Action {
 
         request.setAttribute("loginUser", loginUser);
         request.setAttribute("recipeVO", recipeVO);
-        request.setAttribute("commentList", commentList);
+        request.setAttribute("pagingCommentsByRecipeId", pagingCommentsByRecipeId);
+        request.setAttribute("commentsByRecipeId", commentsByRecipeId);
 
         request.getRequestDispatcher(url).forward(request, response);
     }

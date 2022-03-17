@@ -57,14 +57,14 @@
                     <dl class="grade">
                         <dt>평점</dt>
                         <dd>
-							<div class="star">
-	                    		<div class="grade-star">
+                            <div class="star">
+                                <div class="grade-star">
 	                    			<span>
 	                    				<span id="star-span" style="width:20%">${recipeVO.grade}</span>
 	                    			</span>
-	                    		</div>
-	                    	</div>
-						</dd>
+                                </div>
+                            </div>
+                        </dd>
                     </dl>
                 </div>
                 <!-- //레시피 정보 표시 -->
@@ -79,18 +79,18 @@
                 <div class="recipe-info">
                     <h2>레시피 소개</h2>
                     <!-- 생성할 때 사용된 레시피ID와 현재 접속한 세션의 레시피ID가 일치하는 경우에 -->
-                   	<c:if test="${recipeVO.user_id eq sessionScope.loginUser.id}">
-						<div class="updateAndDelete" align="right">
-							<form name="udform" method='post' action="app?command=recipe_update_form">
-								<input type="hidden" name="recipeId" value="${recipeVO.id}" />
-								(
-								<button type="button" onclick="fnUpdateRecipe(); return false;">수정 </button>
-								|
-								<button type="button" onclick="fnDeleteRecipe(); return false;"> 삭제</button>
-								)
-							</form>
-						</div>
-					</c:if>
+                    <c:if test="${recipeVO.user_id eq sessionScope.loginUser.id}">
+                        <div class="updateAndDelete" align="right">
+                            <form name="udform" method='post' action="app?command=recipe_update_form">
+                                <input type="hidden" name="recipeId" value="${recipeVO.id}"/>
+                                (
+                                <button type="button" onclick="fnUpdateRecipe(); return false;">수정</button>
+                                |
+                                <button type="button" onclick="fnDeleteRecipe(); return false;"> 삭제</button>
+                                )
+                            </form>
+                        </div>
+                    </c:if>
                     <br>
                     ${recipeVO.intro}
                 </div>
@@ -150,253 +150,149 @@
         </div>
         <c:choose>
             <%--        로그인 했다면 댓글 작성하는 화면 노출--%>
-        <c:when test="${empty loginUser.username}">
-        </c:when>
-        <c:otherwise>
-        <section class="conarea" style="
+            <c:when test="${empty loginUser.username}">
+            </c:when>
+            <c:otherwise>
+                <section class="conarea" style="
         float: left;
         width: 100%;
         padding: 20px 280px;
         font-size: 1.5rem;">
-            <h3 class="tit" style="    font-weight: bold;
+                    <h3 class="tit" style="    font-weight: bold;
     font-size: 2rem;
     color: black;
     padding-bottom: 20px;">댓글 작성</h3>
 
-            <div class="infotxt big">
-                <ul>
-                    <li style="font-size: 1.2rem;">레시피에 대한 댓글과 1 ~ 5 점 사이의 평점을 남겨주세요</li>
-                </ul>
-            </div>
-
-            <form name="comment_insert_form" method="post" action="app?command=insert_comment">
-                <input type='hidden' name='user_id' id='userid' value='${loginUser.id}'/>
-                <input type='hidden' name='recipe_id' id='recipeid' value='${recipeVO.id}'/>
-                <fieldset class="qna-write">
-                    <legend class="hide">댓글 작성</legend>
-
-                    <div class="default-write">
-                        <label class="form-default">
-                            <span class="counter">평점</span>
-                            <input name="grade" type="number"><br>
-                        </label>
-                        <label class="form-default">
-                            <span class="counter">내용</span>
-                            <textarea name="contents" title="리뷰 입력" placeholder="레시피에 대한 의견을 남겨주세요"
-                                      maxlength="500"></textarea>
-                        </label>
-                        <div class="btns">
-                            <button type="button" class="btn fill black btn-confirm" id="btn-confirm"
-                                    onclick="insert_comment()" style="width: 100px;">확인
-                            </button>
-                        </div>
+                    <div class="infotxt big">
+                        <ul>
+                            <li style="font-size: 1.2rem;">레시피에 대한 댓글과 1 ~ 5 점 사이의 평점을 남겨주세요</li>
+                        </ul>
                     </div>
-                </fieldset>
-            </form>
-        </section>
-        </c:otherwise>
+
+                    <form name="comment_insert_form" method="post" action="app?command=insert_comment">
+                        <input type='hidden' name='user_id' id='userid' value='${loginUser.id}'/>
+                        <input type='hidden' name='recipe_id' id='recipeid' value='${recipeVO.id}'/>
+                        <fieldset class="qna-write">
+                            <legend class="hide">댓글 작성</legend>
+
+                            <div class="default-write">
+                                <label class="form-default">
+                                    <span class="counter">평점</span>
+                                    <input name="grade" type="number"><br>
+                                </label>
+                                <label class="form-default">
+                                    <span class="counter">내용</span>
+                                    <textarea name="contents" title="리뷰 입력" placeholder="레시피에 대한 의견을 남겨주세요"
+                                              maxlength="500"></textarea>
+                                </label>
+                                <div class="btns">
+                                    <button type="button" class="btn fill black btn-confirm" id="btn-confirm"
+                                            onclick="insert_comment()" style="width: 100px;">확인
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </section>
+            </c:otherwise>
         </c:choose>
-        <section id="p_proReview" class="tab-contents proreview active" style="idth: 100%;
-    padding: 20px 280px;">
+        <section id="p_proReview" class="tab-contents proreview active" style="idth: 100%; padding: 20px 280px;">
             <header class="header">
-                <h4><span style="font-weight: bold;
-    font-size: 2rem;
-    color: black;
-    margin-bottom: 40px;">레시피 댓글</span></h4>
+                <h4><span style="font-weight: bold; font-size: 2rem; color: black; margin-bottom: 40px;">레시피 댓글</span>
+                </h4>
             </header>
 
-            <div class="list-top" style="padding-top: 15px;
-    font-size: 1.2rem;">
+            <div class="list-top">
                 <p>
-                    레시피의 댓글들을 확인해보세요!<br>의
-                    로그인을 하면 댓글을 작성할 수 있습니다.
+                    ${recipeVO.title}의 댓글들을 확인해보세요!<br>
+                    정성이 담긴 리뷰는 레세피 공유 활성화에 도움이 됩니다 ^^
                 </p>
             </div>
             <!-- 리뷰 리스트 동적 구현 -->
             <div class="review-list">
                 <ul>
-
-                    <a href="app?command=recipe_view&amp;recipeId=18">
-                        <li>
-                            <div class="star">
-                                <div class="grade-star"><span><span style="width:100%;">3</span></span></div>
-                            </div>
-                            <div class="recont">
-                                <div class="ti">
-                                    <span class="txt-review">댓글작성 form 테스트를 해봅시다2222</span>
+                    <c:forEach items="${pagingCommentsByRecipeId}" var="commentVO">
+                        <a href="app?command=recipe_view&recipeId=${commentVO.recipe_id}">
+                            <li>
+                                <div class="star">
+                                    <div class="grade-star">
+                                                    <span>
+                                                        <span id="star-span" style="width:20%">${commentVO.grade}</span>
+                                                    </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="info">
-                                <span class="txt-date">2022-03-10</span>
-                            </div>
-                        </li>
-                    </a>
-
-                    <a href="app?command=recipe_view&amp;recipeId=18">
-                        <li>
-                            <div class="star">
-                                <div class="grade-star"><span><span style="width:100%;">5</span></span></div>
-                            </div>
-                            <div class="recont">
-                                <div class="ti">
-                                    <span class="txt-review">333</span>
+                                <div class="recont">
+                                    <div class="ti">
+                                        <span class="txt-review">${commentVO.contents}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="info">
-                                <span class="txt-date">2022-03-10</span>
-                            </div>
-                        </li>
-                    </a>
-
-                    <a href="app?command=recipe_view&amp;recipeId=17">
-                        <li>
-                            <div class="star">
-                                <div class="grade-star"><span><span style="width:100%;">5</span></span></div>
-                            </div>
-                            <div class="recont">
-                                <div class="ti">
-                                    <span class="txt-review">444</span>
+                                <div class="info">
+                                    <span class="txt-date">${commentVO.createdAt}
+                                    <br>.by ${commentVO.author}
+                                    </span>
+                                    <br>
                                 </div>
-                            </div>
-                            <div class="info">
-                                <span class="txt-date">2022-03-11</span>
-                            </div>
-                        </li>
-                    </a>
-
-                    <a href="app?command=recipe_view&amp;recipeId=17">
-                        <li>
-                            <div class="star">
-                                <div class="grade-star"><span><span style="width:100%;">5</span></span></div>
-                            </div>
-                            <div class="recont">
-                                <div class="ti">
-                                    <span class="txt-review">444</span>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <span class="txt-date">2022-03-11</span>
-                            </div>
-                        </li>
-                    </a>
-
-                    <a href="app?command=recipe_view&amp;recipeId=17">
-                        <li>
-                            <div class="star">
-                                <div class="grade-star"><span><span style="width:100%;">5</span></span></div>
-                            </div>
-                            <div class="recont">
-                                <div class="ti">
-                                    <span class="txt-review">444</span>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <span class="txt-date">2022-03-11</span>
-                            </div>
-                        </li>
-                    </a>
-
-                    <a href="app?command=recipe_view&amp;recipeId=17">
-                        <li>
-                            <div class="star">
-                                <div class="grade-star"><span><span style="width:100%;">2</span></span></div>
-                            </div>
-                            <div class="recont">
-                                <div class="ti">
-                                    <span class="txt-review">recipeId 17 22</span>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <span class="txt-date">2022-03-11</span>
-                            </div>
-                        </li>
-                    </a>
-
-                    <a href="app?command=recipe_view&amp;recipeId=17">
-                        <li>
-                            <div class="star">
-                                <div class="grade-star"><span><span style="width:100%;">3</span></span></div>
-                            </div>
-                            <div class="recont">
-                                <div class="ti">
-                                    <span class="txt-review">fdfdfd</span>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <span class="txt-date">2022-03-16</span>
-                            </div>
-                        </li>
-                    </a>
-
-                    <a href="app?command=recipe_view&amp;recipeId=17">
-                        <li>
-                            <div class="star">
-                                <div class="grade-star"><span><span style="width:100%;">3</span></span></div>
-                            </div>
-                            <div class="recont">
-                                <div class="ti">
-                                    <span class="txt-review">fdfdfd</span>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <span class="txt-date">2022-03-16</span>
-                            </div>
-                        </li>
-                    </a>
-
+                            </li>
+                        </a>
+                    </c:forEach>
                 </ul>
                 <!-- pagination// -->
                 <div class="pagination">
                             <span class="num">
-                                <a href="javascript:fnReviewAjaxPcList(1, 28);" class="active">1</a>
-                                <a href="javascript:fnReviewAjaxPcList(2, 28);">2</a>
-                                <a href="javascript:fnReviewAjaxPcList(3, 28);">3</a>
-                                <a href="javascript:fnReviewAjaxPcList(4, 28);">4</a>
-                                <a href="javascript:fnReviewAjaxPcList(5, 28);">5</a>
-                                <a href="javascript:fnReviewAjaxPcList(6, 28);">6</a>
+                                <c:forEach var="i" begin="1" end="${commentsByRecipeId.size() / 5 + 1}">
+                                    <c:choose>
+                                        <c:when test="${i eq 1}">
+                                            <a href="javascript:fnReviewAjaxPcList(${i}, ${commentsByRecipeId.size()}, ${recipeVO.id});"
+                                               class="active"><c:out value="${i}"/></a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="javascript:fnReviewAjaxPcList(${i}, ${commentsByRecipeId.size()}, ${recipeVO.id});"><c:out
+                                                    value="${i}"/></a>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                             </span>
                 </div>
                 <!-- //pagination -->
-            			</div>
-        			</section>
-				</article>
-			</div>
-		<jsp:include page='<%="../footer.jsp" %>'/>
-	</div>
+            </div>
+        </section>
+        <jsp:include page='<%="../footer.jsp" %>'/>
+    </div>
 </body>
 
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+<script type="text/javascript" src="js/commentRecipe.js"></script>
 <!-- Javascript -->
 <script type="text/javascript">
-	/* 재료 & 조리법 전환 SJH */
-	$(document).ready(function () {
-		$('#ingredients').on("click", function() {
-			if($(this).parent().hasClass('active') == false) {
-				$(this).parent().addClass('active');
-				$('.list').parent().addClass('active');
-	   			$('#details').parent().removeClass('active');
-	   			$('.step').parent().removeClass('active');
-			}
-		});
-		$('#details').on("click", function() {
-	   		if($(this).parent().hasClass('active') == false) {
-	   			$(this).parent().addClass('active');
-	   			$('.step').parent().addClass('active');
-	   			$('#ingredients').parent().removeClass('active');
-	   			$('.list').parent().removeClass('active');
-	   		}
-		});
-	});
+    /* 재료 & 조리법 전환 SJH */
+    $(document).ready(function () {
+        $('#ingredients').on("click", function () {
+            if ($(this).parent().hasClass('active') == false) {
+                $(this).parent().addClass('active');
+                $('.list').parent().addClass('active');
+                $('#details').parent().removeClass('active');
+                $('.step').parent().removeClass('active');
+            }
+        });
+        $('#details').on("click", function () {
+            if ($(this).parent().hasClass('active') == false) {
+                $(this).parent().addClass('active');
+                $('.step').parent().addClass('active');
+                $('#ingredients').parent().removeClass('active');
+                $('.list').parent().removeClass('active');
+            }
+        });
+    });
 
-	/* 레시피의 평점에 따라 Width의 퍼센트 값을 받아서 별 출력 SJH  */
-	window.onload = function() {
-		var spanId = document.getElementById("star-span");
-	    var grade = $('#star-span').text();
-	    var percent = 20 * grade + "%";
-	    spanId.style.width = percent;
-	}
+    /* 레시피의 평점에 따라 Width의 퍼센트 값을 받아서 별 출력 SJH  */
+    window.onload = function () {
+        var spanId = document.getElementById("star-span");
+        var grade = $('#star-span').text();
+        console.log(grade);
+        var percent = 20 * grade + "%";
+        spanId.style.width = percent;
+    }
 
     /* 레시피 삭제 seop */
     function fnDeleteRecipe() {

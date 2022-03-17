@@ -60,7 +60,7 @@ public class CommentDAO {
                 commentVO.setAuthor(rs.getString("username"));
                 commentVO.setGrade(rs.getInt("grade"));
                 commentVO.setContents(rs.getString("contents"));
-                commentVO.setUpdatedAt(rs.getDate("updatedAt"));
+                commentVO.setUpdatedAt(rs.getDate("updatedAt").toString());
                 // 생성한 각각의 CommentVO 객체를 리스트에 추가
                 commentList.add(commentVO);
             }
@@ -70,6 +70,49 @@ public class CommentDAO {
             e.printStackTrace();
         }
         // 최종적으로 리스트를 반환
+        return commentList;
+    }
+
+    /**
+     * 메소드 : getPagingCommentsByRecipeId
+     * 작성자 : 김지혜
+     * 작성일 : 3/17/22
+     **/
+    public List<CommentVO> getPagingCommentsByRecipeId(int recipe_id, int pageNumber, int pageSize) {
+        List<CommentVO> commentList = new ArrayList<>();
+        try {
+            // DB 연결
+            conn = DBManager.getConnection();
+            // CallableStatement를 통해서 저장프로시저 호출
+            cstmt = conn.prepareCall("{call comment_pack.comment_select_by_recipe_id_paging(?, ?, ?, ?)}");
+            // 입력 파라미터
+            cstmt.setInt(1, recipe_id);
+            cstmt.setInt(2, pageNumber);
+            cstmt.setInt(3, pageSize);
+            // 출력 파라미터
+            cstmt.registerOutParameter(4, oracle.jdbc.OracleTypes.CURSOR);
+            // 저장프로시저 실행
+            cstmt.execute();
+            //레시피 상세 조회 결과 받아오기
+            rs = (ResultSet) cstmt.getObject(4);
+            // ResultSet에 저장된 각각의 결과에 대해서
+            while (rs.next()) {
+                // CommentVO 객체를 생성해서 author, grade, contents, updatedat을 설정
+                CommentVO commentVO = new CommentVO();
+                commentVO.setGrade(rs.getInt("grade"));
+                commentVO.setContents(rs.getString("contents"));
+                commentVO.setCreatedAt(rs.getDate("createdAt").toString());
+                commentVO.setAuthor(rs.getString("username"));
+                commentVO.setUser_id(rs.getInt("user_id"));
+                // total_comments
+                // 생성한 각각의 CommentVO 객체를 리스트에 추가
+                commentList.add(commentVO);
+            }
+            // 사용한 conn, cstmt, rs 종료
+            DBManager.close(conn, cstmt, rs);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return commentList;
     }
 
@@ -101,7 +144,7 @@ public class CommentDAO {
                 commentVO.setRecipe_id(rs.getInt("recipe_id"));
                 commentVO.setGrade(rs.getInt("grade"));
                 commentVO.setContents(rs.getString("contents"));
-                commentVO.setUpdatedAt(rs.getDate("updatedAt"));
+                commentVO.setUpdatedAt(rs.getDate("updatedAt").toString());
                 // 생성한 각각의 CommentVO 객체를 리스트에 추가
                 commentList.add(commentVO);
             }
@@ -143,7 +186,7 @@ public class CommentDAO {
                 commentVO.setRecipe_id(rs.getInt("recipe_id"));
                 commentVO.setGrade(rs.getInt("grade"));
                 commentVO.setContents(rs.getString("contents"));
-                commentVO.setUpdatedAt(rs.getDate("updatedAt"));
+                commentVO.setUpdatedAt(rs.getDate("createdat").toString());
                 // total_comments
                 // 생성한 각각의 CommentVO 객체를 리스트에 추가
                 commentList.add(commentVO);

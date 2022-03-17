@@ -14,6 +14,7 @@
     <link href="css/mypage.css" rel="stylesheet">
     <link href="css/common.css" rel="stylesheet">
     <link href="css/product.css" rel="stylesheet">
+    <link href="css/magazine.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrap" class="mypage mypage main" style="height: fit-content !important;">
@@ -171,8 +172,11 @@
                                 <a href="app?command=recipe_view&recipeId=${commentVO.recipe_id}">
                                     <li>
                                         <div class="star">
-                                            <div class="grade-star"><span><span
-                                                    style="width:100%;">${commentVO.grade}</span></span></div>
+                                            <div class="grade-star">
+                                                    <span>
+                                                        <span id="star-span" style="width:20%">${commentVO.grade}</span>
+                                                    </span>
+                                            </div>
                                         </div>
                                         <div class="recont">
                                             <div class="ti">
@@ -192,11 +196,11 @@
                                 <c:forEach var="i" begin="1" end="${commentList.size() / 5 + 1}">
                                     <c:choose>
                                         <c:when test="${i eq 1}">
-                                            <a href="javascript:fnReviewAjaxPcList(${i}, ${commentList.size()});"
+                                            <a href="javascript:fnReviewAjaxPcList(${i}, ${commentList.size()}, ${loginUser.id});"
                                                class="active"><c:out value="${i}"/></a>
                                         </c:when>
                                         <c:otherwise>
-                                            <a href="javascript:fnReviewAjaxPcList(${i}, ${commentList.size()});"><c:out
+                                            <a href="javascript:fnReviewAjaxPcList(${i}, ${commentList.size()}, ${loginUser.id});"><c:out
                                                     value="${i}"/></a>
                                         </c:otherwise>
                                     </c:choose>
@@ -212,6 +216,15 @@
 </div>
 <%@ include file="../footer.jsp" %>
 <script type="text/javascript" src="js/mypage.js"></script>
-<script type="text/javascript" src="js/comment.js"></script>
+<script type="text/javascript" src="js/commentUser.js"></script>
+<script>
+    $(document).ready(function () {
+        var spanId = document.getElementById("star-span");
+        var grade = $('#star-span').text();
+        console.log(grade);
+        var percent = 20 * grade + "%";
+        spanId.style.width = percent;
+    })
+</script>
 </body>
 </html>
