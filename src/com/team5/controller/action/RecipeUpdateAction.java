@@ -46,9 +46,9 @@ public class RecipeUpdateAction implements Action {
             String category = map.get("category");
             String ingredients = map.get("ingredients").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
             String details = map.get("details").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
+            String fileNm = map.get("fileNm");
             String image = map.get("image");
             int recipeId = Integer.parseInt(map.get("recipeId"));
-
 
             RecipeVO recipeVO = new RecipeVO();
             recipeVO.setId(recipeId);
@@ -57,9 +57,12 @@ public class RecipeUpdateAction implements Action {
             recipeVO.setCategory(category);
             recipeVO.setIngredients(ingredients);
             recipeVO.setDetails(details);
-            recipeVO.setImage(image);
+            if(image==null) {
+            	recipeVO.setImage(fileNm);
+            } else {
+            	recipeVO.setImage(image);
+            }
             recipeVO.setUser_id(loginUser.getId());
-
 
             RecipeDAO recipeDAO = RecipeDAO.getInstance();
             recipeDAO.updateRecipe(recipeId, recipeVO); // 레시피 업데이트

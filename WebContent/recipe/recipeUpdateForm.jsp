@@ -106,7 +106,7 @@
 					            				<input type="file" id="atfl" name="image" accept="image/jpeg, image/png" class="upload-hidden">
 					            				<span class="btn fill gray">파일첨부</span>
 					            			</label>
-					            			<input type="hidden" name="fileNm">
+					            			<input type="hidden" name="fileNm" value="${recipeVO.image}">
 					            		</div>
 					            	</div>
 					            </dd>
@@ -133,7 +133,7 @@
 		$('.upload-hidden').on('change', function() {
 			var filename = $(this)[0].files[0].name;
 			var newFile = $('.upload-display span').text(filename);
-			$('input[name=image]').attr();
+			//$('input[name=image]').attr();
 		});
 	});
 	function recipeSubmit() {
