@@ -3,7 +3,7 @@ package com.team5.vo;
 import java.sql.Date;
 
 /**
- * @author seop
+ * @author 김경섭
  */
 public class RecipeVO {
     private int id; //레시피 id

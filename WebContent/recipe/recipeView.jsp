@@ -268,7 +268,7 @@
 <script type="text/javascript" src="js/commentRecipe.js"></script>
 <!-- Javascript -->
 <script type="text/javascript">
-    /* 재료 & 조리법 전환 SJH */
+    /* 재료 & 조리법 전환 송진호 */
     $(document).ready(function () {
         $('#ingredients').on("click", function () {
             if ($(this).parent().hasClass('active') == false) {
@@ -288,21 +288,21 @@
         });
     });
 
-    /* 레시피 삭제 seop */
+    /* 레시피 삭제 김경섭 */
     function fnDeleteRecipe() {
         if (confirm("삭제하시겠습니까?")) {
             $('form[name=udform]').attr({action: "app?command=recipe_delete", method: 'post'}).submit();
         }
     }
 
-    /* 레시피 수정 seop */
+    /* 레시피 수정 김경섭 */
     function fnUpdateRecipe() {
         if (confirm("수정하시겠습니까?")) {
             $('form[name=udform]').attr({action: "app?command=recipe_update_form", method: 'post'}).submit();
         }
     }
 
-    /* 재료 & 조리법 전환 SJH */
+    /* 재료 & 조리법 전환 송진호 */
     $(document).ready(function () {
         $('#ingredients').on("click", function () {
             if ($(this).parent().hasClass('active') == false) {

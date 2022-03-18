@@ -1,7 +1,7 @@
 package com.team5.vo;
 
 /**
- * @author SJH
+ * @author 송진호
  */
 public class CommentVO {
     private int id;
