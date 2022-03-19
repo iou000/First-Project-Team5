@@ -38,13 +38,19 @@ public class MyPageAction implements Action {
             RecipeDAO recipeDAO = RecipeDAO.getInstance();
             CommentDAO commentDAO = CommentDAO.getInstance();
 
+            // 내가 올린 레시피
             List<RecipeVO> myRecipeList = recipeDAO.selectRecipeListByUserId(loginUser.getId());
+            // 내가 댓글 작성한 레시피
             List<RecipeVO> commentRecipeList = recipeDAO.selectRecipeByComment(loginUser.getId());
+            // 내가 올린 레시피들에 대한 통계
             List<RecipeDesVO> recipeDesVOS = recipeDAO.selectRecipeDescriptionByUserId(loginUser.getId());
+            // 내가 올린 댓글
             List<CommentVO> commentList = commentDAO.getCommentsByUserId(loginUser.getId());
+            // 내가 올린 댓글 (페이징)
             List<CommentVO> pagingCommentsByUserId = commentDAO.getPagingCommentsByUserId(loginUser.getId(), 1, 5);
 
 
+            // 객체 JSP request
             request.setAttribute("loginUser", loginUser);
             request.setAttribute("myRecipeList", myRecipeList);
             request.setAttribute("commentRecipeList", commentRecipeList);

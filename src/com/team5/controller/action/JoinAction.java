@@ -23,11 +23,13 @@ public class JoinAction implements Action {
             throws ServletException, IOException {
 
         String url = "auth/login.jsp";
-        HttpSession session = request.getSession();
+        
+        // joinForm.jsp 에서 생성된 변수로 유저 객체 생성
         UserVO userVO = new UserVO();
         userVO.setUsername(request.getParameter("username"));
         userVO.setPassword(request.getParameter("password"));
 
+        // userDAO insert 메소드 호출
         UserDAO userDAO = UserDAO.getInstance();
         userDAO.insertUser(userVO);
 

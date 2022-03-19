@@ -1,3 +1,11 @@
+/**
+ *
+ *함수 : fnReviewAjaxPcList
+ *작성자 : 김지혜
+ *작성일 : 3/16/22
+ * 내용 : 마이페이지 댓글 페이징 액션 함수
+ *
+ **/
 function fnReviewAjaxPcList(vCurrentPage, vTotalComments, user_id){
     location.href = '#p_proReview';
 

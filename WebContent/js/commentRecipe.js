@@ -1,3 +1,11 @@
+/**
+ *
+ *함수 : fnReviewAjaxPcList
+ *작성자 : 김지혜
+ *작성일 : 3/16/22
+ * 내용 : 레시피 상세보기 댓글 페이징 액션 함수
+ *
+ **/
 function fnReviewAjaxPcList(vCurrentPage, vTotalComments, recipe_id){
     location.href = '#p_proReview';
     // ** 페이징 옵션 변수 **
@@ -11,6 +19,7 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments, recipe_id){
     // 전체 블럭 수
     let commentBlock = Math.ceil(totalComments / commentPerBlock);
 
+    // 레시피 아이디와 페이지 옵션 변수를 바탕으로 댓글 리스트 get 요청 ajax를 통해 보내고 data 변수에 리스트 저장
     $.ajax({
         type : 'get',
         url : 'app?command=comment_list&recipeId=' + recipe_id + '&pageNumber=' + currentPage + '&pageSize=' + commentPerBlock,
@@ -31,6 +40,7 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments, recipe_id){
                 tmpStr += '   </div>\n';
 
             } else {
+                // 받아온 댓글 리스트를 HTML 태그로 변환
                 tmpStr += '<ul>\n';
                 $(data).each(function (index) {
                     tmpStr += '<a href=\"app?command=recipe_view&recipeId=' + data[index].recipe_id + '\">';
@@ -55,10 +65,6 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments, recipe_id){
 
                 tmpStr += '</ul>\n';
                 // 네비게이션 스크립트 시작
-
-
-
-
                 tmpStr += '<!-- pagination// -->\n';
                 tmpStr += '<div class="pagination">\n';
                 tmpStr += '   <span class="num">\n';
@@ -75,18 +81,8 @@ function fnReviewAjaxPcList(vCurrentPage, vTotalComments, recipe_id){
                 tmpStr += '<!-- //pagination -->\n';
             }
 
-            // 리뷰 리스트 출력
+            // HTML 태그 제이쿼리 문법을 통해 원래 HTML 태그에 붙여준다.
             $('#p_proReview').find('.review-list').html(tmpStr);
-
-            // 별점
-            $(document).ready(function () {
-                var spanId = document.getElementById("star-span");
-                var grade = $('#star-span').text();
-                console.log("commentRecipePage===============================")
-                console.log(grade);
-                var percent = 20 * grade + "%";
-                spanId.style.width = percent;
-            })
         }
 
     })
