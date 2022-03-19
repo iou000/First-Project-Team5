@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author 송진호
- */
-
-/**
  * 클래스 : CommentDAO
  * 작성자 : 김지혜
  * 작성일 : 3/15/22
@@ -226,6 +222,11 @@ public class CommentDAO {
         }
     }
 
+    /**
+     * 메소드 : updateComments
+     * 작성자 : 송진호
+     * 작성일 : 3/7/22
+     **/
     // 평가를 수정하는 메소드
     public void updateComments(int id, int grade, String contents) {
         Connection conn = null;
@@ -248,7 +249,11 @@ public class CommentDAO {
             e.printStackTrace();
         }
     }
-
+    /**
+     * 메소드 : updateComments
+     * 작성자 : 송진호
+     * 작성일 : 3/7/22
+     **/
     // 평가를 삭제하는 메소드
     public void deleteComments(int id) {
         Connection conn = null;

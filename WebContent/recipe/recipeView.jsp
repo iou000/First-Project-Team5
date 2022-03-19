@@ -1,4 +1,8 @@
-<!-- @author 송진호 -->
+<%--
+  작성자: 송진호
+  작성일자: 3/13/22
+  내용: 레시피 
+--%>
 <%--
   작성자: 김지혜
   작성일자: 3/15/22
@@ -30,6 +34,7 @@
 <div id="wrap" class="magazine detail">
     <jsp:include page='<%="../header.jsp" %>'/>
     <div id="contents">
+    	<!-- @author 송진호 -->
         <div class="innercon">
             <!-- 컨텐츠 상세// -->
             <div class="detailarea">
@@ -44,7 +49,7 @@
                     </div>
                 </div>
 
-                <!-- 레시피 정보 표시// -->
+                <!-- 레시피 정보 표시 // -->
                 <div class="recipe-info">
                     <dl class="author">
                         <dt>작성자</dt>
@@ -68,18 +73,18 @@
                         </dd>
                     </dl>
                 </div>
-                <!-- //레시피 정보 표시 -->
+                <!-- // 레시피 정보 표시 -->
 
-                <!-- 레시피 대표 이미지 표시// -->
+                <!-- 레시피 대표 이미지 표시 // -->
                 <div class="recipe-view">
                     <img src="./images/recipe/${recipeVO.image}" alt="이미지 없음">
                 </div>
-                <!-- //레시피 대표 이미지 표시 -->
+                <!-- // 레시피 대표 이미지 표시 -->
 
-                <!-- 레시피 소개 표시// -->
+                <!-- 레시피 소개 표시 // -->
                 <div class="recipe-info">
                     <h2>레시피 소개</h2>
-                    <!-- 생성할 때 사용된 레시피ID와 현재 접속한 세션의 레시피ID가 일치하는 경우에 -->
+                    <!-- 생성할 때 사용된 레시피ID와 현재 접속한 세션의 레시피ID가 일치하는 경우에 수정/삭제 버튼 표시 // -->
                     <c:if test="${recipeVO.user_id eq sessionScope.loginUser.id}">
                         <div class="updateAndDelete" align="right">
                             <form name="udform" method='post' action="app?command=recipe_update_form">
@@ -92,24 +97,28 @@
                             </form>
                         </div>
                     </c:if>
+                    <!-- // 생성할 때 사용된 레시피ID와 현재 접속한 세션의 레시피ID가 일치하는 경우에 수정/삭제 버튼 표시 -->
                     <br>
                     ${recipeVO.intro}
                 </div>
-                <!-- //레시피 소개 표시 -->
+                <!-- // 레시피 소개 표시 -->
 
                 <!-- 관리자 등록 영역// -->
                 <div class="edit-recipe">
                     <div class="magazinedetail m12">
                         <div class="mbox tab">
                             <ul class="menu">
+                            	<!-- 재료 탭을 활성화된 상태로 표시 // -->
                                 <li class="active">
                                     <a href="#" id="ingredients" onclick="return false;"><em>재료</em></a>
                                 </li>
                                 <li class="">
                                     <a href="#" id="details" onclick="return false;"><em>조리법</em></a>
                                 </li>
+                                <!-- // 재료 탭을 활성화된 상태로 표시 -->
                             </ul>
                             <ul class="cont">
+                            	<!-- 재료를 쉼표와 엔터로 구분해서 표시 // -->
                                 <li class="active">
                                     <!-- 문자열에 포함된 '\r\n'을 모두 '<br/>으로 변환 -->
                                     <c:set var='convertedIngredients'
@@ -124,14 +133,16 @@
                                         </c:forEach>
                                     </ul>
                                 </li>
+                                <!-- // 재료를 쉼표와 엔터로 구분해서 표시 -->
+                                
+                                <!-- 조리법을 쉼표와 엔터로 구분해서 표시 // -->
                                 <li class="">
                                     <!-- 문자열에 포함된 '\r\n'을 모두 '<br>으로 변환 -->
                                     <c:set var='convertedDetails' value='${fn:replace(recipeVO.details, LF, "<br>")}'/>
                                     <!-- 문자열에 포함된 쉼표(',')를 모두 '<br>으로 변환 -->
                                     <c:set var='replacedDetails' value='${fn:replace(convertedDetails, ",", "<br>")}'/>
                                     <ol class="step">
-                                        <c:forEach var='item' items='${fn:split(replacedDetails, "<br>")}'
-                                                   varStatus="status">
+                                        <c:forEach var='item' items='${fn:split(replacedDetails, "<br>")}' varStatus="status">
                                             <li>
                                                 <strong>STEP <c:out value='${status.count}'/></strong>
                                                 <p>${item}</p>
@@ -139,6 +150,7 @@
                                         </c:forEach>
                                     </ol>
                                 </li>
+                                <!-- // 조리법을 쉼표와 엔터로 구분해서 표시 -->
                             </ul>
                         </div>
                     </div>
@@ -149,6 +161,8 @@
                 </div>
             </div>
         </div>
+        <!-- @author 송진호 -->
+        
         <c:choose>
             <%--        로그인 했다면 댓글 작성하는 화면 노출--%>
             <c:when test="${empty loginUser.username}">
@@ -301,26 +315,6 @@
             $('form[name=udform]').attr({action: "app?command=recipe_update_form", method: 'post'}).submit();
         }
     }
-
-    /* 재료 & 조리법 전환 송진호 */
-    $(document).ready(function () {
-        $('#ingredients').on("click", function () {
-            if ($(this).parent().hasClass('active') == false) {
-                $(this).parent().addClass('active');
-                $('.list').parent().addClass('active');
-                $('#details').parent().removeClass('active');
-                $('.step').parent().removeClass('active');
-            }
-        });
-        $('#details').on("click", function () {
-            if ($(this).parent().hasClass('active') == false) {
-                $(this).parent().addClass('active');
-                $('.step').parent().addClass('active');
-                $('#ingredients').parent().removeClass('active');
-                $('.list').parent().removeClass('active');
-            }
-        });
-    });
 
     function insert_comment() {
         document.comment_insert_form.submit();
