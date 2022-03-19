@@ -20,12 +20,12 @@ import java.util.Map;
 /**
  * @author : 김경섭
  * @Date : 2022. 3. 11.
- * @ClassName : RecipeDeleteAction
+ * @ClassName : RecipeUpdateAction
  * @Comment : 레시피 수정 Action
  * 
  * @author : 송진호
  * @Date : 2022. 3. 13.
- * @ClassName : RecipeCreateAction
+ * @ClassName : RecipeUpdateAction
  * @Comment : 이미지 파일 업로드 기능
  */
 public class RecipeUpdateAction implements Action {
