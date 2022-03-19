@@ -19,7 +19,7 @@ import com.team5.vo.UserVO;
 
 
 /**
- * @author    : seop
+ * @author    : 김경섭
  * @Date      : 2022. 3. 11.
  * @ClassName : RecipeDeleteAction
  * @Comment   : 레시피 삭제 Action
@@ -27,24 +27,21 @@ import com.team5.vo.UserVO;
 public class RecipeDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "main.jsp";
+		String url = "app?command=mainpage";
 		
 		HttpSession session = request.getSession();
 		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
-		int recipe_id = Integer.parseInt(request.getParameter("recipe_id"));
+		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
         
         if (loginUser == null) {
 			url = "app?command=login_form";
 		}
 		else {
-			
 			RecipeDAO recipeDAO = RecipeDAO.getInstance();
-			recipeDAO.deleteRecipe(recipe_id);
-
-			System.out.println("RecipeDeleteAction");
+			recipeDAO.deleteRecipe(recipeId); // 해당 레시피 삭제
 		}
 		
-        request.getRequestDispatcher(url).forward(request, response);
+        response.sendRedirect(url);
 	}
 }
 

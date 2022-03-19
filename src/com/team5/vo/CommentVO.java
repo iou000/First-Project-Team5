@@ -1,16 +1,14 @@
 package com.team5.vo;
 
-import java.sql.Date;
-
 /**
- * @author SJH
+ * @author 송진호
  */
 public class CommentVO {
     private int id;
     private int grade;
     private String contents;
-    private Date createdAt;
-    private Date updatedAt;
+    private String createdAt;
+    private String updatedAt;
     private int user_id;
     private int recipe_id;
     private String author;
@@ -39,19 +37,19 @@ public class CommentVO {
         this.contents = contents;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 

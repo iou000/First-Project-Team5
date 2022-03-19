@@ -1,50 +1,57 @@
 package com.team5.controller.action;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import com.team5.dao.CommentDAO;
+import com.team5.dao.RecipeDAO;
+import com.team5.vo.CommentVO;
+import com.team5.vo.RecipeDesVO;
+import com.team5.vo.RecipeVO;
+import com.team5.vo.UserVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.team5.dao.RecipeDAO;
-import com.team5.dao.UserDAO;
-import com.team5.vo.RecipeVO;
-import com.team5.vo.UserVO;
+import java.io.IOException;
+import java.util.List;
 
 /**
-*
-*클래스 : MyPageAction
-*작성자 : 김지혜
-*작성일 : 3/8/22
-*
-**/
+ * 클래스 : MyPageAction
+ * 작성자 : 김지혜
+ * 작성일 : 3/8/22
+ * <p>
+ * 클래스 : MyPageAction
+ * 작성자 : 송진호
+ * 작성일 : 3/13/22
+ * 내용 : 마이페이지에서 내가 작성한 댓글 보여주는 기능
+ **/
 public class MyPageAction implements Action {
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "/mypage/mypage.jsp";
-		HttpSession session = request.getSession();
-		UserVO loginUser = (UserVO) session.getAttribute("loginUser");
+        String url = "/mypage/mypage.jsp";
+        HttpSession session = request.getSession();
+        UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 
-		if (loginUser == null) {
-			url = "app?command=login_form";
-		}
-		else {
-			UserDAO userDAO = UserDAO.getInstance();
-			RecipeDAO recipeDAO = RecipeDAO.getInstance();
+        if (loginUser == null) {
+            url = "app?command=login_form";
+        } else {
+            RecipeDAO recipeDAO = RecipeDAO.getInstance();
+            CommentDAO commentDAO = CommentDAO.getInstance();
 
-			List<RecipeVO> recipeVOS = recipeDAO.selectRecipeListByUserId(1);
+            List<RecipeVO> myRecipeList = recipeDAO.selectRecipeListByUserId(loginUser.getId());
+            List<RecipeVO> commentRecipeList = recipeDAO.selectRecipeByComment(loginUser.getId());
+            List<RecipeDesVO> recipeDesVOS = recipeDAO.selectRecipeDescriptionByUserId(loginUser.getId());
+            List<CommentVO> commentList = commentDAO.getCommentsByUserId(loginUser.getId());
+            List<CommentVO> pagingCommentsByUserId = commentDAO.getPagingCommentsByUserId(loginUser.getId(), 1, 5);
 
-			System.out.println("MyPageAction");
-			request.setAttribute("loginUser", loginUser);
-			request.setAttribute("recipeVOS", recipeVOS);
-		}
 
-	
-		request.getRequestDispatcher(url).forward(request, response);
-	}
+            request.setAttribute("loginUser", loginUser);
+            request.setAttribute("myRecipeList", myRecipeList);
+            request.setAttribute("commentRecipeList", commentRecipeList);
+            request.setAttribute("commentList", commentList);
+            request.setAttribute("recipeDesVOS", recipeDesVOS);
+            request.setAttribute("pagingCommentsByUserId", pagingCommentsByUserId);
+        }
+        request.getRequestDispatcher(url).forward(request, response);
+    }
 }

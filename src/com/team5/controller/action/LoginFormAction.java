@@ -17,7 +17,7 @@ public class LoginFormAction implements Action {
   @Override
   public void execute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {    
-    String url = "user/login.jsp";
+    String url = "auth/login.jsp";
      
     RequestDispatcher dispatcher=request.getRequestDispatcher(url);
     dispatcher.forward(request, response);    
