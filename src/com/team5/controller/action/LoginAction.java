@@ -30,11 +30,12 @@ public class LoginAction implements Action {
         // 아이디가 있음
         if (userVO.getUsername() != null) {
             // 비밀 번호도 같음
-            if (userVO.getPassword().equals(password)) { // 유저가 존재하고 비밀번호가 일치할 경우
+            if (userVO.getPassword().equals(password)) {
                 System.out.println("로그인 성공");
-                System.out.println("bb");
-                session.setAttribute("loginUser", userVO); // session update
-                url = "app?command=mainpage";  // 홈 화면으로
+                // session update
+                session.setAttribute("loginUser", userVO);
+                // 홈 화면으로 redirect
+                url = "app?command=mainpage"; 
                 response.sendRedirect(url);
                 return;
             }
