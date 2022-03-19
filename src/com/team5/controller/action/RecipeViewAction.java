@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-
 /**
  * @author : 송진호
  * @Date : 2022. 3. 14.
@@ -42,11 +41,14 @@ public class RecipeViewAction implements Action {
 
         // 세션에서 로그인 된 유저 GET by request
         HttpSession session = request.getSession();
+        // 세션으로부터 loginUser 값을 받아와서 loginUser 변수 생성
         UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 
         // 레시피 GET by recipeDAO.selectRecipeById
         RecipeDAO recipeDAO = RecipeDAO.getInstance();
+        // recipeId로 레시피 상세정보를 불러와서 대입
         RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
+        /* 레시피 상세보기 기능 @송진호 */
 
         
         // 댓글 GET
@@ -55,7 +57,6 @@ public class RecipeViewAction implements Action {
         CommentDAO commentDAO = CommentDAO.getInstance();
         List<CommentVO> pagingCommentsByRecipeId = commentDAO.getPagingCommentsByRecipeId(recipeId, 1, 5);
         List<CommentVO> commentsByRecipeId = commentDAO.getCommentsByRecipeId(recipeId);
-
 
         /* 조회수 증가 로직(쿠키 사용) @김경섭 */
         Cookie[] cookies = request.getCookies(); //브라우저에 저장되어있는 쿠키들을 받아옴.
