@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.team5.vo.UserVO;
 
 /**
- * @author SJH
+ * @author 송진호
  *
  */
 public class RecipeInsertFormAction implements Action {

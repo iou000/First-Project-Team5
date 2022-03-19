@@ -19,7 +19,7 @@ import com.team5.vo.UserVO;
 
 
 /**
- * @author    : seop
+ * @author    : 김경섭
  * @Date      : 2022. 3. 11.
  * @ClassName : RecipeDeleteAction
  * @Comment   : 레시피 삭제 Action

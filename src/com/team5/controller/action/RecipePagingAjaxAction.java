@@ -14,7 +14,7 @@ import com.team5.vo.RecipeVO;
 
 
 /**
- * @author    : seop
+ * @author    : 김경섭
  * @Date      : 2022. 3. 13.
  * @ClassName : RecipePagingAction
  * @Comment   : 레시피 페이징 AJAX

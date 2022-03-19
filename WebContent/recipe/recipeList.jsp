@@ -1,4 +1,4 @@
-<!-- author @seop -->
+<!-- @author 김경섭 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,7 +18,7 @@
     <!-- //contents -->
     <!-- 레시피 목록에서 레시피 각각의 정보(이미지, 제목, 작성자) 확인 -->
     <div id="contents">
-    <!-- 페이징 ajax용 @seop-->
+    <!-- 페이징 ajax용 @김경섭-->
     <input type="hidden" name="keywordAjax" value="${keywordAjax}"/>
     <input type="hidden" name="categoryAjax" value="${categoryAjax}"/>
     <input type="hidden" name="sortTypeAjax" value="${sortTypeAjax}"/>
@@ -198,7 +198,7 @@
     var pageNO = 2; // 1페이지는 처음에 불러왔으니 2부터 시작.
     var pageSize = 8 // 불러올 데이터 갯수.
     
-    /* AJAX로 데이터 요청 @seop */
+    /* AJAX로 데이터 요청 김경섭 */
     function next_recipes_load() {
         var keywordAjax = $("input[name=keywordAjax]").val();
         var categoryAjax = $("input[name=categoryAjax]").val();
@@ -271,7 +271,7 @@
         });
     }
 
-    /* 무한 스크롤 @seop */
+    /* 무한 스크롤 김경섭 */
     $(window).scroll(() => {
         if ($(window).scrollTop() + 100 >= $(document).height() - $(window).height()) {
             if (!loading)    //실행 가능 상태라면?
@@ -283,7 +283,7 @@
     });
 
 
-    /* 정렬조건 선택시 레시피 정보를 다시 받아옴 @seop */
+    /* 정렬조건 선택시 레시피 정보를 다시 받아옴 김경섭 */
     function fnSortType(sort_type) {
 		//평점순 선택시
 		if(sort_type == 'sort_grade') {
@@ -315,7 +315,7 @@
 		}
 	}
     
-    /* 메인페이지에서 평점순 or 조회순으로 들어왔을 경우 */
+    /* 메인페이지에서 평점순 or 조회순으로 들어왔을 경우 김경섭 */
      $(window).ready(function(){
     	if($("input[name=sortTypeAjax]").val() == 'grade') {
     		console.log('평점순');

@@ -16,11 +16,17 @@ import java.util.List;
 
 
 /**
- * @author : SJH, seop
+ * @author : 송진호
  * @Date : 2022. 3. 14.
  * @ClassName : RecipeViewAction
  * @Comment : 레시피 상세보기 액션
+ * 
+ * @author : 김경섭
+ * @Date : 2022. 3. 16.
+ * @ClassName : RecipeViewAction
+ * @Comment : 조회수 증가 기능 (쿠키 사용)
  */
+
 public class RecipeViewAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +45,7 @@ public class RecipeViewAction implements Action {
         List<CommentVO> commentsByRecipeId = commentDAO.getCommentsByRecipeId(recipeId);
 
 
-        /* 조회수 증가 로직(쿠키 사용) @author seop */
+        /* 조회수 증가 로직(쿠키 사용) @김경섭 */
         Cookie[] cookies = request.getCookies(); //브라우저에 저장되어있는 쿠키들을 받아옴.
         boolean isVisitRecipe = false; // visitRecipe 존재 여부 (처음엔 없으니까 false).
 

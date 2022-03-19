@@ -13,7 +13,7 @@ import java.util.List;
 
 
 /**
- * @author : seop
+ * @author : 김경섭
  * @Date : 2022. 3. 9.
  * @ClassName : RecipeDAO
  * @Comment : 레시피 DAO
@@ -33,7 +33,7 @@ public class RecipeDAO {
 
     /**
      * @return : void
-     * @Author : seop
+     * @Author : 김경섭
      * @Date : 2022. 3. 9.
      * @Method : insertRecipe
      * @Comment : 레시피 생성
@@ -76,7 +76,7 @@ public class RecipeDAO {
 
     /**
      * @return : void
-     * @Author : seop
+     * @Author : 김경섭
      * @Date : 2022. 3. 9.
      * @Method : updateRecipe
      * @Comment : 레시피 수정
@@ -113,7 +113,7 @@ public class RecipeDAO {
 
     /**
      * @return : void
-     * @Author : seop
+     * @Author : 김경섭
      * @Date : 2022. 3. 9.
      * @Method : deleteRecipe
      * @Comment : 레시피 삭제
@@ -141,7 +141,7 @@ public class RecipeDAO {
 
     /**
      * @return : RecipeVO
-     * @Author : seop
+     * @Author : 김경섭
      * @Date : 2022. 3. 9.
      * @Method : selectRecipeById
      * @Comment : 레시피 상세 조회
@@ -189,7 +189,7 @@ public class RecipeDAO {
 
     /**
      * @return : List<RecipeVO>
-     * @Author : seop
+     * @Author : 김경섭
      * @Date : 2022. 3. 9.
      * @Method : selectRecipeList
      * @Comment : 레시피 리스트 조회(카테고리,검색어, 평점순)
@@ -237,7 +237,7 @@ public class RecipeDAO {
 
     /**
      * @return : RecipeVO
-     * @Author : seop
+     * @Author : 김경섭
      * @Date : 2022. 3. 9.
      * @Method : selectRecipeListById
      * @Comment : 각 유저별 레시피 리스트 조회
@@ -282,7 +282,7 @@ public class RecipeDAO {
 
     /**
      * @return : void
-     * @Author : seop
+     * @Author : 김경섭
      * @Date : 2022. 3. 14.
      * @Method : updateViewCount
      * @Comment : 조회수 +1 증가
@@ -310,7 +310,7 @@ public class RecipeDAO {
     
     
     /**
-     * @Author  : seop
+     * @Author  : 김경섭
      * @Date    : 2022. 3. 16.
      * @Method  : selectRecipeListTot
      * @return  : int

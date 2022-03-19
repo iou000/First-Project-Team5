@@ -1,4 +1,4 @@
-<!-- @author SJH -->
+<!-- @author 송진호 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -154,7 +154,7 @@
         $('#frmMassOrdInqrInf').submit();
     }
 
-    /* submit 유효성 검사 @author seop */
+    /* submit 유효성 검사 @author 김경섭 */
     function checkUpdateForm() {
         if ($('input[name=title]').val() == null || $('input[name=title]').val() == "") {
             alert('레시피 제목을 입력해주세요!!!');

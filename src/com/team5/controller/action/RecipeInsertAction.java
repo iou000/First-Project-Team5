@@ -18,11 +18,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author : seop
- * @author : SJH
+ * @author : 김경섭
  * @Date : 2022. 3. 10.
  * @ClassName : RecipeCreateAction
  * @Comment : 레시피 생성 Action
+ * 
+ * @author : 송진호
  * @Date : 2022. 3. 13.
  * @ClassName : RecipeCreateAction
  * @Comment : 이미지 파일 업로드 기능

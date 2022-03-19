@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author SJH
+ * @author 송진호
  */
 public class MainPageAction implements Action {
 
@@ -23,7 +23,7 @@ public class MainPageAction implements Action {
         String category = request.getParameter("category");
 
         RecipeDAO recipeDAO = RecipeDAO.getInstance();
-        /* 카테고리 또는 검색어를 통해서 레시피 조회 @seop */
+        /* 카테고리 또는 검색어를 통해서 레시피 조회 @김경섭 */
         List<RecipeVO> view_high_recipeList = recipeDAO.selectRecipeList(null, null, "viewcount", 1, 4); // 처음엔 1페이지를 기본으로 가져옴
         List<RecipeVO> grade_high_recipeList = recipeDAO.selectRecipeList(null, null, "grade", 1, 4); // 처음엔 1페이지를 기본으로 가져옴
 

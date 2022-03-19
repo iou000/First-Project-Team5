@@ -12,7 +12,7 @@ import com.team5.vo.RecipeVO;
 import com.team5.vo.UserVO;
 
 /**
- * @author    : seop
+ * @author    : 김경섭
  * @Date      : 2022. 3. 12.
  * @ClassName : RecipeUpdateFormAction
  * @Comment   : 레시피 수정 폼 Action
