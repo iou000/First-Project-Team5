@@ -36,7 +36,7 @@ public class RecipeUpdateAction implements Action {
         String url = "app?command=recipe_view";
         HttpSession session = request.getSession();
         UserVO loginUser = (UserVO) session.getAttribute("loginUser");
-        String path = session.getServletContext().getRealPath("/") + "/images/recipe";
+        String path = session.getServletContext().getRealPath("/") + "\\images\\recipe";
 
         if (loginUser == null) {
             url = "app?command=login_form";
@@ -87,11 +87,11 @@ public class RecipeUpdateAction implements Action {
                     insertFormMap.put(item.getFieldName(), item.getString("utf-8"));
                 else { // item이 폼 필드가 아니면 파일 업로드 기능을 수행
                     if (item.getSize() > 0) {
-                        int idx = item.getName().lastIndexOf("/");
+                        int idx = item.getName().lastIndexOf("\\");
                         String fileName = item.getName().substring(idx + 1);
                         System.out.println("업로드 파일명 : " + fileName);
                         insertFormMap.put(item.getFieldName(), fileName);
-                        File uploadFile = new File(currentDirPath + "/" + fileName);
+                        File uploadFile = new File(currentDirPath + "\\" + fileName);
                         item.write(uploadFile);
                     }
                 }
