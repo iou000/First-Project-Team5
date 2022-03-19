@@ -17,7 +17,6 @@ import com.team5.vo.RecipeVO;
 import com.team5.vo.UserVO;
 
 
-
 /**
  * @author    : 김경섭
  * @Date      : 2022. 3. 11.
@@ -44,4 +43,3 @@ public class RecipeDeleteAction implements Action {
         response.sendRedirect(url);
 	}
 }
-
