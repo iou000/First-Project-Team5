@@ -27,7 +27,7 @@ import java.util.Map;
  * @Date : 2022. 3. 13.
  * @ClassName : RecipeInsertAction
  * @Comment : 레시피 생성 액션 + 이미지 파일 업로드 기능
-
+*/
 public class RecipeInsertAction implements Action {
     //private static final String RECIPE_IMAGE_REPO = "C:\\Users\\SJH\\eclipse-workspace\\RecipeApplication\\WebContent\\images\\recipe";
 
@@ -46,8 +46,8 @@ public class RecipeInsertAction implements Action {
             String title = map.get("title");
             String intro = map.get("intro");
             String category = map.get("category");
-            String ingredients = map.get("ingredients").replace("\r\n", "<br>"); //개행문자를 <br>로 변경 후 DB에 저장
-            String details = map.get("details").replace("\r\n", "<br>"); //개행문자를 <br>로 변경 후 DB에 저장
+            String ingredients = map.get("ingredients").replace("\r\n", "<br>"); //개행문자를 <br>로 변경 후 DB에 저장 @김경섭
+            String details = map.get("details").replace("\r\n", "<br>"); //개행문자를 <br>로 변경 후 DB에 저장 @김경섭
             String image = map.get("image");
 
             // RecipeVO에 포함되는 필드의 값을 초기화

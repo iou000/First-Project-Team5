@@ -46,8 +46,8 @@ public class RecipeUpdateAction implements Action {
             String title = map.get("title");
             String intro = map.get("intro");
             String category = map.get("category");
-            String ingredients = map.get("ingredients").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
-            String details = map.get("details").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장
+            String ingredients = map.get("ingredients").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장 @김경섭
+            String details = map.get("details").replace("\r\n", "<br>"); // 개행문자를 <br>로 변경 후 DB에 저장 @김경섭
             String fileNm = map.get("fileNm");
             String image = map.get("image");
             int recipeId = Integer.parseInt(map.get("recipeId"));
