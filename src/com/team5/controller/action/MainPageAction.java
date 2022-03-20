@@ -12,6 +12,13 @@ import java.util.List;
 /**
  * @author 송진호
  */
+/**
+*
+*클래스 : MainPageAction
+*작성자 : 김지혜
+*작성일 : 3/15/22
+*
+**/
 public class MainPageAction implements Action {
 
     @Override

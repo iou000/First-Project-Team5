@@ -14,12 +14,15 @@
     <div class="inner">
         <!-- toparea// -->
         <div class="toparea">
+        	<!-- 메인 페이지로 이동하는 로고 // -->
             <h1>
                 <a href="app?command=mainpage"><img
                         src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png"
                         alt="현대식품관"></a>
             </h1>
+            <!-- // 메인 페이지로 이동하는 로고 -->
 
+			<!-- 로그인 여부에 따라서 표시되는 화면을 달리함 // -->
             <c:choose>
                 <c:when test="${empty loginUser.username}">
                     <div class="util" id="dawnLoginN" style="display: hidden">
@@ -35,18 +38,19 @@
                     </div>
                 </c:otherwise>
             </c:choose>
-
+			<!-- // 로그인 여부에 따라서 표시되는 화면을 달리함 -->
+			
         </div>
         <!-- //toparea -->
 
         <!-- gnbarea// -->
         <nav class="gnbarea">
-            <!-- 팝업 : category// -->
+            <!-- 카테고리 드롭다운 기능 구현 // -->
             <div id="popCategory">
                 <!-- category -->
                 <button type="button" class="btn-category">음식 카테고리</button>
 
-                <!-- 팝업 : category -->
+                <!-- 카테고리를 누르면 해당 카테고리에 부합하는 음식 리스트 조회 // -->
                 <div id="p_popCategory" class="popcategory">
                     <nav class="lnb-list">
                         <ul class="lnb">
@@ -89,15 +93,17 @@
                     </nav>
                 </div>
 
-                <!-- 카테고리를 통해서 레시미 목록 조회 -->
+                <!-- // 카테고리를 누르면 해당 카테고리에 부합하는 음식 리스트 조회 -->
                 <div id="categorySearch">
                     <form id="categoryForm" method="POST" action="app?command=recipe_list">
                         <input type="hidden" name="category" value=""/>
                     </form>
                 </div>
+                <!-- // 카테고리를 통해서 레시미 목록 조회 -->
             </div>
+            <!-- // 카테고리 드롭다운 기능 구현 -->
 
-            <!-- gnb// -->
+            <!-- 상단메뉴 탭 // -->
             <ul class="gnb-list" id="homeGnbList">
                 <li>
                     <a href="app?command=recipe_insert_form">레시피 만들기</a>
@@ -115,9 +121,9 @@
                     <a href="" onclick="notReady()">커뮤니티</a>
                 </li>
             </ul>
-            <!-- //gnb -->
+            <!-- // 상단메뉴 탭 -->
 
-            <!-- search// -->
+            <!-- 키워드를 통해서 레시피 목록 조회 // -->
             <div class="searcharea">
                 <form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="app?command=recipe_list"
                       onsubmit="return checkSearchForm()">
@@ -132,6 +138,7 @@
                     </fieldset>
                 </form>
             </div>
+            <!-- // 키워드를 통해서 레시피 목록 조회 -->
         </nav>
         <!-- //gnbarea -->
     </div>
@@ -141,7 +148,6 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <!-- Imported Javscript -->
-
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
@@ -156,6 +162,7 @@
 
 <!-- Javascript -->
 <script type="text/javascript">
+	//마우스를 올려놓으면/떼면 카테고리 드롭다운 활성화/비활성화 @author 김지혜
     $(document).ready(function () {
         $('.btn-category').hover(
             function () {
@@ -178,16 +185,19 @@
             });
     });
 
+    // 드롭다운으로 펼쳐진 카테고리를 클릭하면 해당 카테고리에 부합하는 레시피 리스트 출력 @author 송진호
     function searchWithCategory(id) {
         var foodCategory = document.getElementById(id).value;
         $("input[name=category]").attr("value", foodCategory);
         $("#categoryForm").submit();
     }
 
+ 	// 키워드를 통해서 레시피 리스트 검색 @author 송진호
     function searchWithKeyword() {
         $("#pdPcSearchForm").submit();
     }
 
+ 	// 키워드가 입력되지 않은 상태에서 검색 버튼을 누르면 알림창 띄우기 @author 송진호
     function checkSearchForm() {
         // 키워드가 입력되지 않은 상태에서 검색 버튼을 누르면 알림창 띄우기
         if (pdPcSearchForm.keyword.value == "") {
@@ -198,6 +208,7 @@
             return true;
     }
 
+ 	// 미구현 기능 접근시 알림창 띄우기 @author 송진호
     function notReady() {
         event.preventDefault();
         alert('준비중입니다!!!');

@@ -17,6 +17,7 @@
         <div class="innercon">
             <section class="conarea">
                 <h3 class="tit line">레시피 만들기</h3>
+                <!-- 레시피 생성 정보 form // -->
                 <form id="frmMassOrdInqrInf" method="POST" action="app?command=recipe_insert"
                       enctype="multipart/form-data" onsubmit="return checkInsertForm()">
                     <fieldset class="form-field">
@@ -115,12 +116,15 @@
                                 </div>
                             </dd>
                         </dl>
+                        <!-- 입력한 레시피 정보 submit // -->
                         <div class="btns">
                             <button type="button" class="btn fill black" onclick="recipeSubmit()">등록</button>
                             <button type="button" class="btn black" onclick="history.back()">취소</button>
                         </div>
+                        <!-- // 입력한 레시피 정보 submit -->
                     </fieldset>
                 </form>
+                <!-- 레시피 생성 정보 form // -->
             </section>
         </div>
     </div>
@@ -133,6 +137,7 @@
 
 <!-- Javascript -->
 <script type="text/javascript">
+	/* 파일 업로드 @author 송진호 */
     $(document).ready(function () {
         $('.upload-hidden').on('change', function () {
             var filename = $(this)[0].files[0].name;
@@ -140,6 +145,7 @@
         });
     });
 
+	/* 레시피 생성 폼 submit @author 송진호 */
     function recipeSubmit() {
         $('#frmMassOrdInqrInf').submit();
     }

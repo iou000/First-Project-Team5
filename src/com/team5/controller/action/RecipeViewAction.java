@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-
 /**
  * @author : 송진호
  * @Date : 2022. 3. 14.
@@ -25,25 +24,39 @@ import java.util.List;
  * @Date : 2022. 3. 16.
  * @ClassName : RecipeViewAction
  * @Comment : 조회수 증가 기능 (쿠키 사용)
+ *
+ * @author : 김지혜
+ * @Date : 2022. 3. 16.
+ * @ClassName : RecipeViewAction
+ * @Comment : 댓글작성 & 댓글 리스트 (페이징)
  */
 
 public class RecipeViewAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "recipe/recipeView.jsp";
+        
+        // 클릭된 레시피 아이디 GET by request
         int recipeId = Integer.parseInt(request.getParameter("recipeId"));
 
+        // 세션에서 로그인 된 유저 GET by request
         HttpSession session = request.getSession();
+        // 세션으로부터 loginUser 값을 받아와서 loginUser 변수 생성
         UserVO loginUser = (UserVO) session.getAttribute("loginUser");
 
+        // 레시피 GET by recipeDAO.selectRecipeById
         RecipeDAO recipeDAO = RecipeDAO.getInstance();
+        // recipeId로 레시피 상세정보를 불러와서 대입
         RecipeVO recipeVO = recipeDAO.selectRecipeById(recipeId);
+        /* 레시피 상세보기 기능 @송진호 */
 
+        
+        // 댓글 GET
+        // 전체 댓글 by commentDAO.getCommentsByRecipeId
+        // 페이징 처리 된 댓글 by commentDAO.by commentDAO.getCommentsByRecipeId
         CommentDAO commentDAO = CommentDAO.getInstance();
-        List<CommentVO> commentList = commentDAO.getCommentsByRecipeId(recipeId);
         List<CommentVO> pagingCommentsByRecipeId = commentDAO.getPagingCommentsByRecipeId(recipeId, 1, 5);
         List<CommentVO> commentsByRecipeId = commentDAO.getCommentsByRecipeId(recipeId);
-
 
         /* 조회수 증가 로직(쿠키 사용) @김경섭 */
         Cookie[] cookies = request.getCookies(); //브라우저에 저장되어있는 쿠키들을 받아옴.
@@ -70,6 +83,7 @@ public class RecipeViewAction implements Action {
         /* 조회수 증가 로직(쿠키 사용) 끝*/
 
 
+        // 
         request.setAttribute("loginUser", loginUser);
         request.setAttribute("recipeVO", recipeVO);
         request.setAttribute("pagingCommentsByRecipeId", pagingCommentsByRecipeId);

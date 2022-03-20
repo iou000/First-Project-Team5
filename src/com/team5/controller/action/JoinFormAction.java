@@ -6,11 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
-*
 *클래스 : JoinFormAction
 *작성자 : 김지혜
 *작성일 : 3/10/22
-*
 **/
 public class JoinFormAction implements Action {
 

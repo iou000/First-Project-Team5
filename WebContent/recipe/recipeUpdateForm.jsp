@@ -142,14 +142,15 @@
 
 <!-- Javascript -->
 <script type="text/javascript">
+	/* 파일 업로드 @author 송진호 */
     $(document).ready(function () {
         $('.upload-hidden').on('change', function () {
             var filename = $(this)[0].files[0].name;
             var newFile = $('.upload-display span').text(filename);
-            //$('input[name=image]').attr();
         });
     });
 
+    /* 레시피 생성 폼 submit @author 송진호 */
     function recipeSubmit() {
         $('#frmMassOrdInqrInf').submit();
     }
